@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {
 	Route::namespace('Prd')->group(function(){
 		// Group sản phẩm

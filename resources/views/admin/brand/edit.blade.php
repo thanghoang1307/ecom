@@ -22,6 +22,16 @@ Chỉnh sửa thương hiệu {{$brand->name}}
               <div class="form-group">
               <input type="text" class="form-control" name="name" value="{{$brand->name}}">
               </div> 
+              <div class="input-group">
+   <span class="input-group-btn">
+     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+       <i class="fa fa-picture-o"></i> Choose
+     </a>
+   </span>
+   <input id="thumbnail" class="form-control" type="text" name="filepath">
+ </div>
+ <img id="holder" style="margin-top:15px;max-height:100px;">
+            </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 <button type="submit" class="btn btn-primary">
@@ -29,12 +39,15 @@ Chỉnh sửa thương hiệu {{$brand->name}}
                 </button>
               </div>
               </form>
-            </div>
+          </div>
           </div>
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
 @endsection
-@section('modal')
-
+@section('script')
+<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script>
+  $('#lfm').filemanager('image');
+</script>
 @endsection

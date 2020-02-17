@@ -9,4 +9,6 @@ class Brand extends Model
     public function prds(){
     	return $this->hasMany(Prd::class);
     }
+
+    protected $fillable = ['name','slug','logo'];
 }
