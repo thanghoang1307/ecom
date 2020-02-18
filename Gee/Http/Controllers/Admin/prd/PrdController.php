@@ -73,9 +73,11 @@ class PrdController extends Controller
      * @param  \App\Prd  $prd
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prd $prd)
+    public function update($id, Request $request)
     {
-        //
+        $prd = $this->prd->update($id,$request->all());
+        
+
     }
 
     /**

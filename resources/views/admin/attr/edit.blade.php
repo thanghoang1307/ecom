@@ -28,7 +28,7 @@ Chỉnh sửa thuộc tính {{$attr->name}}
                 	<option value="boolean" selected=<?php echo $attr->type = 'boolean' ? true : ""?>>Có/Không</option>
                 	<option value="datetime" selected=<?php echo $attr->type = 'datetime' ? true : ""?>>Thời gian</option>
                 	<option value="date" selected=<?php echo $attr->type = 'date' ? true : ""?>>Ngày tháng năm</option>
-                	<option value="int" selected=<?php echo $attr->type = 'int' ? true : ""?>>Số nguyên</option>
+                	<option value="integer" selected=<?php echo $attr->type = 'int' ? true : ""?>>Số nguyên</option>
                 	<option value="float" selected=<?php echo $attr->type = 'float' ? true : ""?>>Thập phân</option>
                 </select>
               </div>

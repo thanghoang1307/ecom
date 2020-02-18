@@ -15,17 +15,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <div class="form-group">
-                  <label>Date and time range:</label>
-
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="far fa-clock"></i></span>
-                    </div>
-                    <input type="text" class="form-control float-right" id="reservationtime">
-                  </div>
-                  <!-- /.input group -->
-                </div>
+                
                 <!-- /.form group -->
               <div class="form-group">
                 <label>Tên sản phẩm</label>
@@ -95,8 +85,50 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                       <td>{{$loop->iteration}}</td>
                       <td>{{$attr->name}}</td>
                       <td>
-
+                      @switch($attr->type)
                       
+                      @case('boolean')
+                      <div class="form-check">
+                      <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="{{$attr->code}}">
+                      {{$attr->name}}
+                      </label>
+                      @break
+                      @case('datetime')
+                      <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-clock"></i></span>
+                    </div>
+                    <input type="text" class="form-control datetime float-right" name="{{$attr->code}}">
+                  </div>
+                </div>
+                      @break
+                      @case('integer')
+                      <div class="form-group">
+                        <input type="number" class="form-control" name="{{$attr->code}}">
+                      </div>
+                      @break
+                      @case('float')
+                      <div class="form-group">
+                        <input type="number" class="form-control" name="{{$attr->code}}" step="0.01">
+                      </div>
+                      @break
+                      @case('date')
+                      <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-clock"></i></span>
+                    </div>
+                    <input type="text" class="form-control date float-right" name="{{$attr->code}}">
+                  </div>
+                </div>
+                      @break
+                      @default
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="{{$attr->code}}">
+                      </div>
+                      @endswitch                      
                       </td>
                       <td><a href="{{route('admin.prd.delete_attr',[$attr->id,$prd->id])}}"><i class="fas fa-trash"></i></a></td>
                     </tr>
@@ -196,7 +228,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
   $('#lfm').filemanager('image');
 </script>
 <script>
-  $('#reservationtime').daterangepicker({
+  $('.datetime').daterangepicker({
       timePicker: true,
       timePickerIncrement: 30,
       singleDatePicker: true,      
@@ -204,5 +236,14 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         format: 'DD/MM/YYYY hh:mm A'
       },
   });
+
+  $('.date').daterangepicker({
+      singleDatePicker: true,      
+      locale: {
+        format: 'DD/MM/YYYY'
+      },
+  });
+
+
 </script>
 @endsection
