@@ -73,13 +73,22 @@ Danh sách sản phẩm
                 <input class="form-control" type="text" name="name" placeholder="Ten san pham">
               </div>
               <div class="form-group">
+                <label>Nhóm thuộc tính</label>
                 <select class="form-control" name="attr_gr_id">
                   @foreach ($attr_grs as $attr_gr)
                   <option value="{{$attr_gr->id}}">{{$attr_gr->name}}</option>
                   @endforeach
                 </select>
                 </div>
-              
+                <div class="form-group">
+              <label>Thương hiệu</label>
+                <select class="form-control" name="brand_id">
+                  @foreach ($brands as $brand)
+                  <option value="{{$brand->id}}">{{$brand->name}}</option>
+                  @endforeach
+                </select>
+                </div>
+            
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

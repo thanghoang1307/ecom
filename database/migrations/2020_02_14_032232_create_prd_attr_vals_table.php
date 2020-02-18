@@ -23,7 +23,7 @@ class CreatePrdAttrValsTable extends Migration
             $table->boolean('boolean_val')->nullable();
             $table->datetime('datetime_val')->nullable();
             $table->integer('int_val')->nullable();
-            $table->double('float_val')->nullable();
+            $table->float('float_val')->nullable();
             $table->date('date_val')->nullable();
             $table->timestamps();
         });

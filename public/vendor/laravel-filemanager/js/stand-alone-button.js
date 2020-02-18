@@ -1,7 +1,7 @@
 (function( $ ){
 
   $.fn.filemanager = function(type, options) {
-    type = type || 'file';
+    type = type || 'image';
 
     this.on('click', function(e) {
       var route_prefix = (options && options.prefix) ? options.prefix : '/filemanager';

@@ -19,8 +19,11 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {
 Route::prefix('san-pham')->name('prd.')->group(function(){
 Route::get('/', 'PrdController@index')->name('index');
 Route::post('/', 'PrdController@create');
+Route::post('update/{id}','PrdController@update')->name('update');
 Route::get('/edit/{id}', 'PrdController@edit')->name('edit');
 Route::get('/delete/{id}', 'PrdController@delete')->name('delete');
+Route::post('/add_attr/{id}','PrdController@addAttr');
+Route::get('/delete_attr/{attr_id}/{prd_id}', 'PrdController@delete_attr')->name('delete_attr');
 });
 //Kết thức sản phẩm
 // Group danh mục

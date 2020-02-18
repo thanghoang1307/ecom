@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Prd\AttrGrInterface;
+use App\Repositories\Prd\AttrInterface;
+use App\Repositories\Prd\BrandInterface;
+use Illuminate\Support\Facades\DB;
 
 class PrdController extends Controller
 {
@@ -16,21 +19,34 @@ class PrdController extends Controller
      */
     protected $prd;
     protected $attr_gr;
+    protected $brand;
+    protected $attr;
 
-    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr){
+    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr){
     $this->prd = $prd;
     $this->attr_gr = $attr_gr;
+    $this->brand = $brand;
+    $this->attr = $attr;
     }
 
     public function index()
     {   $prds = $this->prd->getAll();
+        $brands = $this->brand->getAll();
         $attr_grs = $this->attr_gr->getAll();
-        return view('admin.prd.index',compact(['prds','attr_grs']));
+        return view('admin.prd.index',compact(['prds','attr_grs','brands']));
     }
 
     public function create(Request $request)
-    {
-        $prd = $this->prd->create($request->all());
+    {   
+        // Chuẩn bị dữ liệu
+        $attrs_in_id = $this->attr_gr->getAttrsInIdArray($request->attr_gr_id);
+        $unique_slug = $this->prd->createUniqueSlug(to_slug($request->name));
+
+        // Tạo record trong bảng sản phẩm
+        $prd = $this->prd->create(array_merge($request->all(),['slug' => $unique_slug]));
+
+        // Tạo record trong sản phẩm - thuộc tính
+        $this->prd->addAttr($prd->id,$attrs_in_id);
         return redirect()->route('admin.prd.edit',$prd->id);
     }
 
@@ -42,9 +58,12 @@ class PrdController extends Controller
      */
     
     public function edit($id)
-    {
+    {   $brands = $this->brand->getAll();
+        $attrs_in = $this->prd->getAttrsIn($id);
+        $attrs_in_id = $this->prd->getAttrsInIdArray($id);
+        $attrs_not_in = $this->attr->getAttrNotIn($attrs_in_id);
         $prd = $this->prd->find($id);
-        return view('admin.prd.edit',compact('prd'));
+        return view('admin.prd.edit',compact(['prd','brands','attrs_in','attrs_not_in']));
     }
 
     /**
@@ -69,5 +88,15 @@ class PrdController extends Controller
     {
      $prd = $this->prd->delete($id);
     return redirect()->route('admin.prd.index');
+    }
+
+    public function addAttr($id, Request $request){
+    $this->prd->addAttr($id,array($request->attr_id));
+    return redirect()->route('admin.prd.edit',$id);
+    }
+
+    public function delete_attr($attr_id, $prd_id){
+    $this->prd->deleteAttrFromPrd($attr_id, $prd_id);
+    return redirect()->route('admin.prd.edit',$prd_id);
     }
 }
