@@ -66,3 +66,5 @@ Route::get('/delete/{id}', 'BrandController@delete')->name('delete');
 //Kết thúc group thuộc tính
 	});
 });
+
+Route::get('/','PageController@index');
