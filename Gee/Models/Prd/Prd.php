@@ -11,6 +11,10 @@ class Prd extends Model
 	}
 
 	public function attrs(){
-		return $this->belongsToMany(\App\Models\Prd\Attr::class,'prd_attr_vals','prd_id','attr_id');
+		return $this->belongsToMany(\App\Models\Prd\Attr::class,'prd_attr_vals','prd_id','attr_id')->withPivot('text_val', 'boolean_val','datetime_val','integer_val','float_val','date_val');
+	}
+
+	public function cats(){
+		return $this->belongsToMany(\App\Models\Prd\Cat::class,'prd_cats','prd_id','cat_id');
 	}
 }

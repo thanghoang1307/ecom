@@ -3,6 +3,8 @@
 Chỉnh sửa sản phẩm {{$prd->name}}
 @endsection
 @section('content')       
+  
+
             <div class="row">
           <div class="col-lg-12">
             <div class="card">
@@ -53,7 +55,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
           <i class="fa fa-picture-o"></i> Choose
           </a>
           </div>
-          <input id="thumbnail" class="form-control" type="text" name="logo" value="{{$prd->thumb}}">
+          <input id="thumbnail" class="form-control" type="text" name="thumb" value="{{$prd->thumb}}">
           </div>
           <div id="holder" style="margin-top:15px;max-height:100px;">
             <img src="{{$prd->thumb}}" style="height:5rem;"/>
@@ -69,6 +71,17 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                   @endforeach
               </select>
               </div>
+              <div class="form-group">
+                <label>Danh mục</label>
+              @foreach ( $cats as $cat)
+                <div class="form-check">
+                      <label class="form-check-label">
+                      <input type="checkbox" name="categories[]" value="{{$cat->id}}" {{$prd->cats->contains($cat->id) ? "checked": ""}}>
+                      {{$cat->name}}
+                      </label>
+                    </div>
+              @endforeach
+            </div>
               <label>Danh sách thuộc tính</label>
                <table class="table table-bordered">
                   <thead>                  
@@ -90,9 +103,11 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                       @case('boolean')
                       <div class="form-check">
                       <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" name="{{$attr->code}}">
+                      <input class="form-check-input attr_boolean" type="checkbox" name="{{$attr->code}}[]" {{$attr->pivot->boolean_val ? "checked": ""}}>
+                      <input type="hidden" name="{{$attr->code}}[]" class="attr_boolean" value="0">
                       {{$attr->name}}
                       </label>
+                    </div>
                       @break
                       @case('datetime')
                       <div class="form-group">
@@ -100,18 +115,18 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-clock"></i></span>
                     </div>
-                    <input type="text" class="form-control datetime float-right" name="{{$attr->code}}">
+                    <input type="text" class="form-control datetime float-right" name="{{$attr->code}}" value="{{$attr->pivot->datetime_val ? date('d/m/Y H:i',strtotime($attr->pivot->datetime_val)) : date('d/m/Y H:i')}}">
                   </div>
                 </div>
                       @break
                       @case('integer')
                       <div class="form-group">
-                        <input type="number" class="form-control" name="{{$attr->code}}">
+                        <input type="number" class="form-control" name="{{$attr->code}}" value="{{$attr->pivot->integer_val}}">
                       </div>
                       @break
                       @case('float')
                       <div class="form-group">
-                        <input type="number" class="form-control" name="{{$attr->code}}" step="0.01">
+                        <input type="number" class="form-control" name="{{$attr->code}}" step="0.01" value="{{$attr->pivot->float_val}}">
                       </div>
                       @break
                       @case('date')
@@ -120,13 +135,13 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-clock"></i></span>
                     </div>
-                    <input type="text" class="form-control date float-right" name="{{$attr->code}}">
+                    <input type="text" class="form-control date float-right" name="{{$attr->code}}" value="{{$attr->pivot->date_val ? date('d/m/Y',strtotime($attr->pivot->date_val)) : ''}}">
                   </div>
                 </div>
                       @break
                       @default
                       <div class="form-group">
-                        <input type="text" class="form-control" name="{{$attr->code}}">
+                        <input type="text" class="form-control" name="{{$attr->code}}" value="{{$attr->pivot->text_val}}">
                       </div>
                       @endswitch                      
                       </td>
@@ -228,22 +243,49 @@ Chỉnh sửa sản phẩm {{$prd->name}}
   $('#lfm').filemanager('image');
 </script>
 <script>
-  $('.datetime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      singleDatePicker: true,      
-      locale: {
-        format: 'DD/MM/YYYY hh:mm A'
-      },
-  });
+  
 
-  $('.date').daterangepicker({
-      singleDatePicker: true,      
+$(function() {
+  $( ".date" ).daterangepicker({
+      singleDatePicker: true,
+      autoUpdateInput: false,
+      autoApply: true,      
       locale: {
         format: 'DD/MM/YYYY'
       },
+});
+
+  $('.date').on('apply.daterangepicker', function(ev, picker) {
+  //do something, like clearing an input
+  $(this).val(picker.startDate.format('DD/MM/YYYY'));
+});
+
+  $('.datetime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      singleDatePicker: true,
+      timePicker24Hour: true,
+      autoUpdateInput: false, 
+      autoApply: true,      
+      locale: {
+        format: 'DD/MM/YYYY hh:mm'
+      },
   });
 
+  $('.datetime').on('apply.daterangepicker', function(ev, picker) {
+  //do something, like clearing an input
+  $(this).val(picker.startDate.format('DD/MM/YYYY hh:mm'));
+});
+}); 
 
+  
 </script>
+<!-- <script>
+  $(document).ready(function(){
+    $('.attr_boolean').val(this.checked ? 1 : 0);
+    $('.attr_boolean').click(function(){
+        $(this).val(this.checked ? 1 : 0);
+    });
+});
+  </script> -->
 @endsection

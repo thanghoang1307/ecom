@@ -8,4 +8,5 @@ interface PrdInterface {
 	public function getAttrsIn($id);
 	public function getAttrsInIdArray($id);
 	public function deleteAttrFromPrd($attr_id,$prd_id);
+	public function addAttrValue($prd_id,$attr_requests);
 }

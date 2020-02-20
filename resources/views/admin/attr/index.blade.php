@@ -76,7 +76,7 @@ Danh sách thuộc tính
                 	<option value="boolean">Có/Không</option>
                 	<option value="datetime">Thời gian</option>
                 	<option value="date">Ngày tháng năm</option>
-                	<option value="int">Số nguyên</option>
+                	<option value="integer">Số nguyên</option>
                 	<option value="float">Thập phân</option>
                 </select>
               </div>

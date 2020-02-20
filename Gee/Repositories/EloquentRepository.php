@@ -22,6 +22,10 @@ public function getAll() {
 	return $this->_model->paginate(10);
 }
 
+public function getAllData() {
+return $this->_model->all();
+}
+
 public function create(array $attributes){
 	return $this->_model->create($attributes);
 }

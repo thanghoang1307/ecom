@@ -8,6 +8,7 @@ use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Prd\AttrGrInterface;
 use App\Repositories\Prd\AttrInterface;
 use App\Repositories\Prd\BrandInterface;
+use App\Repositories\Prd\CatInterface;
 use Illuminate\Support\Facades\DB;
 
 class PrdController extends Controller
@@ -21,12 +22,14 @@ class PrdController extends Controller
     protected $attr_gr;
     protected $brand;
     protected $attr;
+    protected $cat;
 
-    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr){
+    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr, CatInterface $cat){
     $this->prd = $prd;
     $this->attr_gr = $attr_gr;
     $this->brand = $brand;
     $this->attr = $attr;
+    $this->cat = $cat;
     }
 
     public function index()
@@ -62,8 +65,9 @@ class PrdController extends Controller
         $attrs_in = $this->prd->getAttrsIn($id);
         $attrs_in_id = $this->prd->getAttrsInIdArray($id);
         $attrs_not_in = $this->attr->getAttrNotIn($attrs_in_id);
+        $cats = $this->cat->getAll();
         $prd = $this->prd->find($id);
-        return view('admin.prd.edit',compact(['prd','brands','attrs_in','attrs_not_in']));
+        return view('admin.prd.edit',compact(['prd','brands','attrs_in','attrs_not_in','cats']));
     }
 
     /**
@@ -76,8 +80,9 @@ class PrdController extends Controller
     public function update($id, Request $request)
     {
         $prd = $this->prd->update($id,$request->all());
-        
-
+        $this->prd->addCats($id,$request->categories);
+        $this->prd->addAttrValue($id,$request->all());
+        return redirect()->route('admin.prd.index');
     }
 
     /**

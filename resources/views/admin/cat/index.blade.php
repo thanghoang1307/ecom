@@ -3,6 +3,7 @@
 Danh sách danh mục
 @endsection
 @section('content')
+
     <!-- Main content -->
             <div class="row">
           <div class="col-lg-12">
