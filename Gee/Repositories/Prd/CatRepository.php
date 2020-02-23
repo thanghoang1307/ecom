@@ -11,4 +11,8 @@ class CatRepository extends EloquentRepository implements CatInterface {
 	public function getModel() {
 		return \App\Models\Prd\Cat::class;
 	}
+
+	public function getPrdByCat($id){
+	return $this->_model->find($id)->prds()->get();
+	}
 }

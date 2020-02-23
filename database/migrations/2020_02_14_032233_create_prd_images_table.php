@@ -18,7 +18,6 @@ class CreatePrdImagesTable extends Migration
             $table->unsignedBigInteger('prd_id');
             $table->foreign('prd_id')->references('id')->on('prds')->onUpdate('cascade')->onDelete('cascade');
             $table->string('image');
-            $table->string('alt');
             $table->timestamps();
         });
     }

@@ -17,4 +17,8 @@ class Prd extends Model
 	public function cats(){
 		return $this->belongsToMany(\App\Models\Prd\Cat::class,'prd_cats','prd_id','cat_id');
 	}
+
+	public function images(){
+		return $this->hasMany(\App\Models\Prd\PrdImage::class);
+	}
 }

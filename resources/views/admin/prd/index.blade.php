@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Danh sách sản phẩm
+Danh sách bài viết
 @endsection
 @section('content')
     <!-- Main content -->

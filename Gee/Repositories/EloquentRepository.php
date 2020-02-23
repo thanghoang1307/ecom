@@ -52,6 +52,10 @@ public function delete($id){
 	return false;
 }
 
+    public function getFromSlug($slug){
+    return $this->_model->where('slug',$slug)->first();
+    }
+    
   public function where($conditions, $operator = null, $value = null)
     {
         if (func_num_args() == 2) {

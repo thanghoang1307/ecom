@@ -2,9 +2,7 @@
 @section('title')
 Chỉnh sửa sản phẩm {{$prd->name}}
 @endsection
-@section('content')       
-  
-
+@section('content')
             <div class="row">
           <div class="col-lg-12">
             <div class="card">
@@ -47,6 +45,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                 <label>Mô tả</label>
               <textarea id="my-editor" class="form-control" name="long_desc" rows="5">{{$prd->long_desc}}</textarea>
               </div>
+              <div class="form-group">
               <label>Chọn hình đại diện</label>
               <div class="input-group">
                 
@@ -60,6 +59,23 @@ Chỉnh sửa sản phẩm {{$prd->name}}
           <div id="holder" style="margin-top:15px;max-height:100px;">
             <img src="{{$prd->thumb}}" style="height:5rem;"/>
             </div>
+          </div>
+          <div class="form-group">
+              <label>Ảnh sản phẩm</label>
+              <div class="input-group">
+          <div class="input-group-btn">
+          <a id="lfm2" data-input="images" data-preview="holder2" class="btn btn-primary">
+          <i class="fa fa-picture-o"></i> Choose
+          </a>
+          </div>
+          <input id="images" class="form-control" type="text" name="images" value="{{$image}}">
+          </div>
+          <div id="holder2" style="margin-top:15px;max-height:100px;">
+            @foreach ($prd->images as $image)
+            <img src="{{$image->image}}" style="height:5rem;"/>
+            @endforeach
+            </div>
+          </div>
           
               <div class="form-group">
                 <label>Thương hiệu</label>
@@ -241,6 +257,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
   <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script type="text/javascript">
   $('#lfm').filemanager('image');
+  $('#lfm2').filemanager('image');
 </script>
 <script>
   
@@ -280,12 +297,4 @@ $(function() {
 
   
 </script>
-<!-- <script>
-  $(document).ready(function(){
-    $('.attr_boolean').val(this.checked ? 1 : 0);
-    $('.attr_boolean').click(function(){
-        $(this).val(this.checked ? 1 : 0);
-    });
-});
-  </script> -->
 @endsection

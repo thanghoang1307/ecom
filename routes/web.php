@@ -65,6 +65,43 @@ Route::get('/delete/{id}', 'BrandController@delete')->name('delete');
 });
 //Kết thúc group thuộc tính
 	});
+// Kết thúc namespace Prd
+
+// Banner
+Route::prefix('banner')->name('banner.')->group(function(){
+Route::get('/', 'BannerController@index')->name('index');
+Route::post('/', 'BannerController@create');
+Route::get('/edit/{id}', 'BannerController@edit')->name('edit');
+Route::post('/update/{id}', 'BannerController@update')->name('update');
+Route::get('/delete/{id}', 'BannerController@delete')->name('delete');
+});
+// End Banner
+// post
+Route::prefix('bai-viet')->name('post.')->group(function(){
+Route::get('/', 'PostController@index')->name('index');
+Route::post('/', 'PostController@create')->name('create');
+Route::get('/edit/{slug}', 'PostController@edit')->name('edit');
+Route::post('/update/{slug}', 'PostController@update')->name('update');
+Route::get('/delete/{slug}', 'PostController@delete')->name('delete');
+});
+// End post
+// setting
+Route::prefix('cai-dat')->name('setting.')->group(function(){ 
+Route::get('/', 'SettingController@index')->name('index');
+Route::post('/update', 'SettingController@update')->name('update');
+});
+// End setting
 });
 
-Route::get('/','PageController@index');
+Route::name('front.')->namespace('Front')->group(function(){
+Route::get('/','PageController@index')->name('index');
+Route::get('/san-pham/{slug}','PrdController@show')->name('product-detail');
+Route::get('/tin-tuc-cong-nghe','PostController@list')->name('post-list');
+Route::get('/danh-muc/{slug}','CatController@show')->name('category-list');
+Route::get('/thong-tin-dat-hang','PageController@checkOut1')->name('check_out_1');
+Route::post('/add-to-cart/{id}','PrdController@addToCart')->name('add_to_cart');
+Route::post('/buy-now/{id}','PrdController@buyNow')->name('buy_now');
+Route::post('/view-more','PostController@viewMore')->name('view-more');
+Route::get('/{slug}','PostController@show')->name('post-detail');
+});
+

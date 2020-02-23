@@ -9,6 +9,7 @@ use App\Repositories\Prd\AttrGrInterface;
 use App\Repositories\Prd\AttrInterface;
 use App\Repositories\Prd\BrandInterface;
 use App\Repositories\Prd\CatInterface;
+use App\Repositories\Prd\PrdImageInterface;
 use Illuminate\Support\Facades\DB;
 
 class PrdController extends Controller
@@ -23,13 +24,15 @@ class PrdController extends Controller
     protected $brand;
     protected $attr;
     protected $cat;
+    protected $prd_image;
 
-    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr, CatInterface $cat){
+    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr, CatInterface $cat, PrdImageInterface $prd_image ){
     $this->prd = $prd;
     $this->attr_gr = $attr_gr;
     $this->brand = $brand;
     $this->attr = $attr;
     $this->cat = $cat;
+    $this->prd_image = $prd_image;
     }
 
     public function index()
@@ -67,7 +70,8 @@ class PrdController extends Controller
         $attrs_not_in = $this->attr->getAttrNotIn($attrs_in_id);
         $cats = $this->cat->getAll();
         $prd = $this->prd->find($id);
-        return view('admin.prd.edit',compact(['prd','brands','attrs_in','attrs_not_in','cats']));
+        $image = implode(',',$this->prd_image->getInput($id));
+        return view('admin.prd.edit',compact(['prd','brands','attrs_in','attrs_not_in','cats','image']));
     }
 
     /**
@@ -82,6 +86,7 @@ class PrdController extends Controller
         $prd = $this->prd->update($id,$request->all());
         $this->prd->addCats($id,$request->categories);
         $this->prd->addAttrValue($id,$request->all());
+        $this->prd_image->addImages($id,$request->images);
         return redirect()->route('admin.prd.index');
     }
 

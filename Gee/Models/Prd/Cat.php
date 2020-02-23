@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cat extends Model
 {
-    protected $fillable = ['slug','name','meta_title','meta_desc','meta_keys','parent_id'];
+    protected $fillable = ['slug','name','meta_title','meta_desc','meta_keys','parent_id','short_name'];
 
     public function prds(){
 		return $this->belongsToMany(\App\Models\Prd\Prd::class,'prd_cats','cat_id','prd_id');

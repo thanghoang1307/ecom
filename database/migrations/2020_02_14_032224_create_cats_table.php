@@ -17,6 +17,8 @@ class CreateCatsTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('name');
+            $table->string('short_name');
+            $table->string('icon')->nullable();
             $table->integer('parent_id')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_desc')->nullable();

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Repositories\Prd\CatInterface::class,\App\Repositories\Prd\CatRepository::class);
 
         $this->app->singleton(\App\Repositories\Prd\BrandInterface::class,\App\Repositories\Prd\BrandRepository::class);
+        
+        $this->app->singleton(\App\Repositories\Prd\PrdImageInterface::class,\App\Repositories\Prd\PrdImageRepository::class);
+
+        $this->app->singleton(\App\Repositories\Admin\BannerInterface::class,\App\Repositories\Admin\BannerRepository::class);
+
+        $this->app->singleton(\App\Repositories\Admin\SettingInterface::class,\App\Repositories\Admin\SettingRepository::class);
+
+        $this->app->singleton(\App\Repositories\Admin\PostInterface::class,\App\Repositories\Admin\PostRepository::class);
     }
 
     /**
@@ -33,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('cart', \Session::get('cart'));
+        Blade::include('includes.nav','nav');
+        Blade::include('includes.post','post');
     }
 }

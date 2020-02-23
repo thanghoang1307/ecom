@@ -13,6 +13,12 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		return \App\Models\Prd\Prd::class;
 	}
 
+	public function getNew(){
+		return $this->_model->orderBy('created_at','desc')->take(8)->get();
+	}
+
+
+
 	public function createUniqueSlug($slug){
 		$unique_slug = $slug;
 		$i = 1;
@@ -47,8 +53,9 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 	}
 
 	public function addAttrValue($prd_id,$request)
-	{	$attr_default = ['name','sku','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','meta_title','meta_desc','meta_keys','slug','_token','categories'];
+	{	$attr_default = ['name','sku','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','meta_title','meta_desc','meta_keys','slug','_token','categories','images'];
 		$attrs_in = array_diff_key($request, array_flip($attr_default));
+		if ($attrs_in){
 		foreach ($attrs_in as $code => $value)
 		{
 			$attr = DB::table('attrs')->where('code',$code)->first();
@@ -76,10 +83,21 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		}
 		// Sync chưa sync được những value không có trong database
 		
-		$this->_model->find($prd_id)->attrs()->sync($attrs_in);
+		$this->_model->find($prd_id)->attrs()->sync($attrs_in);}
 	}
 
 	public function addCats($id, $request){
 	$this->_model->find($id)->cats()->sync($request);
+	}
+
+	public function sumPrice($prds){
+	$total = 0;
+	foreach ($prds as $prd)
+	if ($prd->sale_price){
+		$total += $prd->sale_price;
+	} else {
+		$total += $prd->regular_price;
+	}
+	return $total;
 	}
 }
