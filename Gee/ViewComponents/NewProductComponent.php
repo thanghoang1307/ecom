@@ -14,7 +14,7 @@ class NewProductComponent implements Htmlable {
 
 	public function toHtml(){
 	$title = 'Sản phẩm mới';
-	return View::make('components.new')->with(['prds' => $this->prd->getNew(),
+	return View::make('components.new')->with(['prds' => $this->prd->getNew(8),
 		'title' => $title])->render();
 	}
 

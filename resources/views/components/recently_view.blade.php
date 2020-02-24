@@ -5,7 +5,6 @@
         <div class="col-12">
           <h2 class="page-title">Bạn đã xem</h2>
           <div id="recently-viewed-slider" class="product-list owl-carousel owl-theme">
-            
           	@foreach ($prds as $prd)
             <div class="item">
               <a href="{{route('front.product-detail',$prd->slug)}}">
@@ -29,7 +28,6 @@
               </a>
             </div>
             @endforeach
-            
           </div>
         </div>
       </div>

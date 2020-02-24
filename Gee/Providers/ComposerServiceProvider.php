@@ -24,8 +24,10 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layouts.front',\App\ViewComposers\CatComposer::class);
-        View::composer('front.index',\App\ViewComposers\RecentlyViewedProductsViewComposer::class);
-         View::composer(['includes.post','front.post-list','front.post-detail'],\App\ViewComposers\PostComposer::class);
+        View::composer(['layouts.front','components.cat'],\App\ViewComposers\CatComposer::class);
+        View::composer('front.index',\App\ViewComposers\SettingComposer::class);
+        View::composer('components.recently_view',\App\ViewComposers\RecentlyViewedProductsViewComposer::class);
+        View::composer(['includes.post','front.post-list','front.post-detail'],\App\ViewComposers\PostComposer::class);
+        View::composer(['components.new'],\App\ViewComposers\NewPrdComposer::class);
     }
 }

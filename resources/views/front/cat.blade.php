@@ -11,31 +11,30 @@
           </ol>
         </nav>
       </div>
-      <h1 class="page-heading">Hệ điều hành</h1>
+      <h1 class="page-heading">{{$cat->name}}</h1>
     </section>
-
     <div class="d-none d-lg-block">
       <section id="product-order">
         <h4 class="order-label">Sắp xếp theo</h4>
         <div class="order-option">
           <div class="radio">
-            <input id="radio-1" name="radio" type="radio" checked>
+            <input id="radio-1" name="orderby" type="radio" value="new" checked>
             <label for="radio-1" class="radio-label">Mới nhất</label>
           </div>
           <div class="radio">
-            <input id="radio-2" name="radio" type="radio">
+            <input id="radio-2" name="orderby" type="radio" value="most_view">
             <label for="radio-2" class="radio-label">Xem nhiều nhất</label>
           </div>
           <div class="radio">
-            <input id="radio-3" name="radio" type="radio">
+            <input id="radio-3" name="orderby" type="radio" value="price_asc">
             <label for="radio-3" class="radio-label">Giá thấp đến cao</label>
           </div>
           <div class="radio">
-            <input id="radio-4" name="radio" type="radio">
+            <input id="radio-4" name="orderby" type="radio" value="price_desc">
             <label for="radio-4" class="radio-label">Giá cao xuống thấp</label>
           </div>
           <div class="radio">
-            <input id="radio-5" name="radio" type="radio">
+            <input id="radio-5" name="orderby" type="radio" value="sale">
             <label for="radio-5" class="radio-label">Bán chạy nhất</label>
           </div>
         </div>
