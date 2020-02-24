@@ -16,53 +16,66 @@ class ModelSeeder extends Seeder
     	'slug' => Str::random(2),
     	'name' => 'Hệ điều hành',
     	'icon' => 'nav-win',
-        'short_name' => 'Windows'
+        'short_name' => 'Windows',
+        'slug' => 'he-dieu-hanh'
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Phần mềm văn phòng',
     	'icon' => 'nav-app',
         'short_name' => 'Văn phòng',
+        'slug' => 'phan-mem-van-phong'
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Phần mềm bảo mật',
     	'icon' => 'nav-security',
-        'short_name' => 'Bảo mật'
+        'short_name' => 'Bảo mật',
+        'slug' => 'phan-mem-bao-mat'
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Thiết kế CAD/CAM/CAE',
     	'icon' => 'nav-cad',
-        'short_name' => 'CAD/CAM'
+        'short_name' => 'CAD/CAM',
+        'slug' => 'thiet-ke-cad-cam-cae'
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Quản lý khách hàng/CRM',
     	'icon' => 'nav-crm',
-        'short_name' => 'CRM'
+        'short_name' => 'CRM',
+        'slug' => 'phan-mem-crm'
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Máy trạm Workstation',
     	'icon' => 'nav-workstation',
-        'short_name' => 'Workstation'
+        'short_name' => 'Workstation',
+        'slug' => 'may-tram-workstation',
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Bộ lưu điện/UPS',
     	'icon' => 'nav-ups',
         'short_name' => 'UPS',
+        'slug' => 'bo-luu-dien-ups'
     	],
     	[
     	'slug' => Str::random(2),
     	'name' => 'Máy in',
     	'icon' => 'nav-plotter',
         'short_name' => 'Máy in',
+        'slug' => 'may-in'
     	],
     	];
     	DB::table('cats')->insert($data);
-
+        $id = 1;
+        foreach ($data as $row){
+        DB::table('prd_cats')->insert(['prd_id' => $id,'cat_id' => $id
+        ]);
+        $id++;
+        }
         $banners =[[
         'name' => 'Banner chính 1',
         'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-01.png'

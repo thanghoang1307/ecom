@@ -13,8 +13,8 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		return \App\Models\Prd\Prd::class;
 	}
 
-	public function getNew(){
-		return $this->_model->orderBy('created_at','desc')->take(8)->get();
+	public function getNew($qty){
+		return $this->_model->orderBy('created_at','desc')->take($qty)->get();
 	}
 
 
