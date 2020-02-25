@@ -17,8 +17,6 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		return $this->_model->orderBy('created_at','desc')->take($qty)->get();
 	}
 
-
-
 	public function createUniqueSlug($slug){
 		$unique_slug = $slug;
 		$i = 1;

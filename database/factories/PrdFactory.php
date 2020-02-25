@@ -38,6 +38,7 @@ return [
 'thumb' => $faker->randomElement($prds_thumb),
 'regular_price' => 4290000,
 'sale_price' => $faker->randomElement([null,3290000]),
+'current_price' => 4290000,
 ];
 });
 

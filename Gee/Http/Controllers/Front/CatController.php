@@ -5,17 +5,31 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Repositories\Prd\CatInterface;
+use App\Repositories\Prd\PrdInterface;
+use App\Repositories\Prd\BrandInterface;
 
 class CatController extends Controller
 {
     protected $cat;
+    protected $prd;
+    protected $brand;
 
-    public function __construct (CatInterface $cat){
+    public function __construct (CatInterface $cat, PrdInterface $prd, BrandInterface $brand){
         $this->cat = $cat;
+        $this->prd = $prd;
+        $this->brand = $brand;
     }
 
-    public function show($slug){
+    public function show($slug, Request $request){
     $cat = $this->cat->getFromSlug($slug);
-    return view('front.cat',compact('cat'));
+  	$brands_id = $this->cat->getBrandId($cat->id);
+  	$brands = $this->brand->getBrandFromIds($brands_id);
+    $prds = $cat->prds()->orderBy('created_at','desc')->paginate(12);
+    return view('front.cat',compact('cat','brands','prds'));
+    }
+
+    public function filter(Request $request){
+    $prds = $this->cat->filter($request)->paginate(12);
+    return response()->json(['html' => view('includes.product-loop-cat', compact('prds'))->render()]);
     }
 }

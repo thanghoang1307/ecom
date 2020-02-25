@@ -28,6 +28,9 @@ class CreatePrdsTable extends Migration
             $table->text('meta_desc')->nullable();
             $table->string('meta_keys')->nullable();
             $table->string('slug')->unique();
+            $table->integer('view')->default(0);
+            $table->integer('sale')->default(0);
+            $table->integer('current_price')->nullable();
             $table->timestamps();
         });
     }

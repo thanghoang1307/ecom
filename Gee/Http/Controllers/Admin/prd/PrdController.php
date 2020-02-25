@@ -82,8 +82,12 @@ class PrdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($id, Request $request)
-    {
-        $prd = $this->prd->update($id,$request->all());
+    {   if ($request->sale_price){
+        $current_price = $request->sale_price;
+        } else {
+        $current_price = $request->regular_price;
+        }
+        $prd = $this->prd->update($id,array_merge($request->all(),['current_price' => $current_price]));
         $this->prd->addCats($id,$request->categories);
         $this->prd->addAttrValue($id,$request->all());
         $this->prd_image->addImages($id,$request->images);

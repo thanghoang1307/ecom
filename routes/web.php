@@ -98,6 +98,7 @@ Route::get('/','PageController@index')->name('index');
 Route::get('/san-pham/{slug}','PrdController@show')->name('product-detail');
 Route::get('/tin-tuc-cong-nghe','PostController@list')->name('post-list');
 Route::get('/danh-muc/{slug}','CatController@show')->name('category-list');
+Route::post('/cat-filter','CatController@filter')->name('prd_filter');
 Route::get('/thong-tin-dat-hang','PageController@checkOut1')->name('check_out_1');
 Route::post('/add-to-cart/{id}','PrdController@addToCart')->name('add_to_cart');
 Route::post('/buy-now/{id}','PrdController@buyNow')->name('buy_now');

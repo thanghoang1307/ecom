@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 if (! function_exists('to_slug')) {
     function to_slug($str) {

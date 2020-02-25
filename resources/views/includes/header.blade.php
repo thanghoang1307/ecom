@@ -78,14 +78,14 @@
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="dropdownFilterButton">
 											@foreach ($cats as $cat)
-											<li class="dropdown-item">{{$cat->short_name}}</li>
+											<li value="{{$cat->slug}}" class="dropdown-item">{{$cat->short_name}}</li>
 											@endforeach
 										</ul>
 									</div>
 								</div>
 								<div class="col-10 col-lg-7">
 									<div class="header-brand-search-input">
-										<input type="text" class="form-control" aria-label="Tìm kiếm sản phẩm" placeholder="Tìm kiếm sản phẩm">
+										<input type="text" name="search" class="form-control" aria-label="Tìm kiếm sản phẩm" placeholder="Tìm kiếm sản phẩm">
 									</div>
 								</div>
 								<div class="col-2 col-lg-1">
@@ -122,7 +122,7 @@
 										<a href="#" class="card-image">
 											<img src="{{$prd->thumb}}" class="img-fluid">
 										</a>
-										<h3 class="product-head-title"><a href="{{route('front.prd.show',$prd->slug)}}">{{$prd->name}}</a></h3>
+										<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
 										<span class="product-price price">{{$prd->sale_price ? $prd->sale_price*$carts[$prd->id] : $prd->regular_price*$carts[$prd->id]}}đ</span>
 									</div>
 								</li>

@@ -19,4 +19,5 @@ class Cat extends Model
 	public function childrens(){
 		return $this->hasMany(\App\Models\Prd\Cat::class,'parent_id');
 	}
+
 }
