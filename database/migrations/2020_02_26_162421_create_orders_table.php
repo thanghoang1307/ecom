@@ -16,11 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('order_number');
-            $table->float('total');
+            $table->float('total',100,2);
             $table->integer('is_vat');
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
             $table->integer('payment_type');
             $table->integer('status');

@@ -20,17 +20,20 @@ $this->prd = $prd;
 }
 public function compose(View $view){
 $cats = $this->cat->getAll();
-$carts = session()->get('cart');
+$carts = session()->get('cart.items');
 if ($carts){
-$cart_key = array_keys(session()->get('cart'));
+$cart_key = array_keys(session()->get('cart.items'));
 $prds_in_cart = $this->prd->find($cart_key);
+$cart_total = $this->prd->sumPrice($carts);
 } else {
 $prds_in_cart = [];
+$cart_total = 0;
 }
 $view->with([
 	'cats' => $cats,
 	'prds_in_cart' => $prds_in_cart,
 	'carts' => $carts,
+	'cart_total' => $cart_total,
 	'top_banner' => $this->banner->find(12),
 	'settings' => $this->setting->getAllData(),
 ]);

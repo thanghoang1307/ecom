@@ -114,7 +114,6 @@
 $(function(){
 var count = 8;
 $('.view-more-btn').on('click',function(){
-console.log('before-ajax');
 $.ajax({
 type: 'POST',
 url:"{{route('front.view-more')}}",

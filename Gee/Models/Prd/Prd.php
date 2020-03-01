@@ -21,4 +21,8 @@ class Prd extends Model
 	public function images(){
 		return $this->hasMany(\App\Models\Prd\PrdImage::class);
 	}
+
+	public function orders(){
+    return $this->belongsToMany(\App\Models\Order\Order::class,'order_prds')->withPivot('qty','total','price');
+    }
 }

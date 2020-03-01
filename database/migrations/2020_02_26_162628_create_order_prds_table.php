@@ -15,11 +15,13 @@ class CreateOrderPrdsTable extends Migration
     {
         Schema::create('order_prds', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('prd_id');
             $table->foreign('prd_id')->references('id')->on('prds')->onUpdate('cascade');
             $table->integer('qty');
-            $table->float('price');
-            $table->float('total');
+            $table->float('price',100,2);
+            $table->float('total',100,2);
             $table->timestamps();
         });
     }

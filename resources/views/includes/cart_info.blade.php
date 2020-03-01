@@ -7,7 +7,8 @@
             <li><a href="check-out-3.html"><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
-        <form action="#">
+        <form action="{{route('front.check_out_2')}}" method="POST">
+          @csrf
           <div class="process-info">
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
             <div class="process-profile">
@@ -31,13 +32,13 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-1" name="gender" type="radio" checked value="male">
+                            <input id="radio-1" name="customer_gender" type="radio" checked value="male">
                             <label for="radio-1" class="radio-label">Anh</label>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-2" name="gender" type="radio" value="female">
+                            <input id="radio-2" name="customer_gender" type="radio" value="female">
                             <label for="radio-2" class="radio-label" >Chị</label>
                           </div>
                         </div>
@@ -45,13 +46,13 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name">
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="customer_name">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="phone">
+                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="customer_phone">
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="email">
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="customer_email">
                       </div>
                     </div>
                   </div>
@@ -79,7 +80,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" name="city" id="exampleFormControlSelect1">
                               <option value="">Tỉnh/Thành</option>
                               <option>Hà Nội</option>
                               <option>TP. Hồ Chí Minh</option>
@@ -88,7 +89,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" name="district" id="exampleFormControlSelect1">
                               <option value="">Quận/Huyện</option>
                               <option>Hà Nội</option>
                               <option>TP. Hồ Chí Minh</option>
@@ -97,7 +98,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
                               <option value="">Phường/Xã</option>
                               <option>Hà Nội</option>
                               <option>TP. Hồ Chí Minh</option>
@@ -106,12 +107,12 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
+                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note"></textarea>
                           </div>
                         </div>
                       </div>

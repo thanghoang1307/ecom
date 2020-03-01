@@ -21,11 +21,11 @@
                 <div class="col-md-4">
                   <div class="cart-price">
                     <div class="text-right">
-                      <span class="active-price price">{{$prd->current_price}}đ</span>
+                      <span class="active-price price">{{$prd->current_price*$carts[$prd->id]}}đ</span>
                     </div>
                     @if($prd->sale_price)
                     <div class="text-right">
-                      <span class="pre-active-price price">{{$prd->regular_price}}đ</span>
+                      <span class="pre-active-price price">{{$prd->regular_price*$carts[$prd->id]}}đ</span>
                     </div>
                     @endif
                   </div>
@@ -33,15 +33,15 @@
               </div>
               <div class="row align-items-center align-content-center">
                 <div class="col-4 col-md-6">
-                  <button class="cart-action btn-remove-item"><i class="icon icon-remove"></i> Xóa</button>
+                  <button class="cart-action btn-remove-item" prd-id="{{$prd->id}}"><i class="icon icon-remove"></i> Xóa</button>
                 </div>
                 <div class="col-8 col-md-6">
                   <div class="text-right">
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn">-</button>
-                      <input disabled type="text" class="form-control" value="1" placeholder="1"
+                    <div class="btn-group prd-qty" role="group">
+                      <button type="button" class="btn minus">-</button>
+                      <input type="text" class="form-control" value="{{session('cart.items.'.$prd->id)}}" placeholder="1" prd-id="{{$prd->id}}"
                              aria-label="Input group example" aria-describedby="btnGroupAddon">
-                      <button type="button" class="btn">+</button>
+                      <button type="button" class="btn plus">+</button>
                     </div>
                   </div>
                 </div>

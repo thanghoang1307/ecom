@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function() {
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
 	Route::namespace('Prd')->group(function(){
 		// Group sản phẩm
 Route::prefix('san-pham')->name('prd.')->group(function(){
@@ -91,6 +91,14 @@ Route::get('/', 'SettingController@index')->name('index');
 Route::post('/update', 'SettingController@update')->name('update');
 });
 // End setting
+// Order
+Route::namespace('Order')->group(function(){
+Route::prefix('don-hang')->name('order.')->group(function(){ 
+Route::get('/', 'OrderController@index')->name('index');
+Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
+Route::post('/update/{order_number}', 'OrderController@update')->name('update');
+});});
+// End order
 });
 
 Route::name('front.')->namespace('Front')->group(function(){
@@ -99,10 +107,24 @@ Route::get('/san-pham/{slug}','PrdController@show')->name('product-detail');
 Route::get('/tin-tuc-cong-nghe','PostController@list')->name('post-list');
 Route::get('/danh-muc/{slug}','CatController@show')->name('category-list');
 Route::post('/cat-filter','CatController@filter')->name('prd_filter');
-Route::get('/thong-tin-dat-hang','PageController@checkOut1')->name('check_out_1');
+Route::get('/thong-tin-dat-hang','PageController@cart')->name('check_out_1');
+Route::get('/thanh-toan','PageController@payment')->name('thanh_toan');
 Route::post('/add-to-cart/{id}','PrdController@addToCart')->name('add_to_cart');
 Route::post('/buy-now/{id}','PrdController@buyNow')->name('buy_now');
 Route::post('/view-more','PostController@viewMore')->name('view-more');
+Route::post('/ajax-update-cart','CartController@ajaxUpdateCart')->name('ajax_update_cart');
+Route::post('/ajax-remove-item','CartController@ajaxRemoveItem')->name('ajax_remove_item');
+Route::post('/checkout2','CartController@checkOut2')->name('check_out_2');
+Route::post('/checkout3','CartController@checkOut3')->name('check_out_3');
+Route::get('/hoan-tat-don-hang/','CartController@success')->name('success');
 Route::get('/{slug}','PostController@show')->name('post-detail');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -29,5 +29,6 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('components.recently_view',\App\ViewComposers\RecentlyViewedProductsViewComposer::class);
         View::composer(['includes.post','front.post-list','front.post-detail'],\App\ViewComposers\PostComposer::class);
         View::composer(['components.new'],\App\ViewComposers\NewPrdComposer::class);
+        View::composer(['includes.cart_detail'],\App\ViewComposers\CartComposer::class);
     }
 }

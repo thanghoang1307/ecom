@@ -34,23 +34,23 @@ class PrdController extends Controller
 
     public function addToCart($id, Request $request){
     
-    if (!session()->get('cart.'.$id)){
-    session()->put('cart.'.$id,1);
+    if (!session()->get('cart.items.'.$id)){
+    session()->put('cart.items.'.$id,1);
     } else {
-    $qty = session('cart.'.$id);
+    $qty = session('cart.items.'.$id);
     $qty += 1;
-    session()->put('cart.'.$id,$qty);
+    session()->put('cart.items.'.$id,$qty);
     }
     return redirect()->back();
     }
 
     public function buyNow($id, Request $request){
-    if (!session()->get('cart.'.$id)){
-    session()->put('cart.'.$id,1);
+    if (!session()->get('cart.items.'.$id)){
+    session()->put('cart.items.'.$id,1);
     } else {
-    $qty = session('cart.'.$id);
+    $qty = session('cart.items.'.$id);
     $qty += 1;
-    session()->put('cart.'.$id,$qty);
+    session()->put('cart.items.'.$id,$qty);
     }
     return redirect()->route('front.check_out_1');
     }

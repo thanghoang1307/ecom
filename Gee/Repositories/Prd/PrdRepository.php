@@ -88,13 +88,12 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 	$this->_model->find($id)->cats()->sync($request);
 	}
 
-	public function sumPrice($prds){
+	public function sumPrice($items){
 	$total = 0;
-	foreach ($prds as $prd)
-	if ($prd->sale_price){
-		$total += $prd->sale_price;
-	} else {
-		$total += $prd->regular_price;
+	$ids = array_keys($items);
+	$prds = $this->find($ids);
+	foreach ($prds as $prd) {
+	$total += $prd->current_price*$items[$prd->id];
 	}
 	return $total;
 	}

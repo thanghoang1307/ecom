@@ -9,11 +9,13 @@ use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Prd\BrandInterface;
 use App\Repositories\Admin\BannerInterface;
 
+
 class PageController extends Controller {
 	protected $cat;
 	protected $prd;
 	protected $brand;
 	protected $banner;
+	
 
 	public function __construct(CatInterface $cat, PrdInterface $prd, BrandInterface $brand, BannerInterface $banner){
 		$this->cat = $cat;
@@ -29,17 +31,12 @@ class PageController extends Controller {
 	return view('front.index',compact(['cats','brands','banners']));
 	}
 
-	public function checkOut1(){
-	$carts = session()->get('cart');
-	if ($carts){
-	$ids = array_keys(session()->get('cart'));
-	$prds = $this->prd->find($ids);
-	$total = $this->prd->sumPrice($prds);
+	public function cart(){
+	return view('front.check-out-1');
 	}
-	else {
-	$prds = [];
-	$total = 0;
+
+	public function payment(){
+		return view('front.check-out-2');
 	}
-	return view('front.check-out-1',compact(['prds','total']));
-	}
+
 }

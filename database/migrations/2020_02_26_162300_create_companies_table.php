@@ -15,7 +15,6 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade');
             $table->string('name');
             $table->string('mst');
             $table->string('address');
