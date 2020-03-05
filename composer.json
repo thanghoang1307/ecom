@@ -34,9 +34,6 @@
         }
     },
     "autoload": {
-        "files": [
-        "gee/helpers.php"
-    ],
         "psr-4": {
             "App\\": ["app/","gee/"]
         },

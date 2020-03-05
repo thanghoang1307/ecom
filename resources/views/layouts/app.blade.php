@@ -191,3 +191,4 @@ function numberWithCommas(x) {
   });
   });
 </script>
+@yield('script')
