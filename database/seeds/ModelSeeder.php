@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class ModelSeeder extends Seeder
 {
@@ -196,5 +197,12 @@ class ModelSeeder extends Seeder
     ];
 
     DB::table('posts')->insert($pages);
+
+    $user = [
+    ['name' => 'admin',
+    'email' => 'onestopshop@gmail.com',
+    'password' => Hash::make('admin123456')],
+    ];
+    DB::table('users')->insert($user);
     }
 }
