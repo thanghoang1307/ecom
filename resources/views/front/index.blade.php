@@ -1,7 +1,6 @@
 @extends('layouts.front')
 @section('content')
 @include('includes.banner')
-<div>Gee Media</div>
 <div id="one-stop-home" class="main home-page">
 @include('includes.brand_slide')
 
