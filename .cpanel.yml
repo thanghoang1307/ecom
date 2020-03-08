@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/onestops/public_html/
+    - export DEPLOYPATH=/home/onestops/ecommerce/
     - /bin/cp -R * $DEPLOYPATH
