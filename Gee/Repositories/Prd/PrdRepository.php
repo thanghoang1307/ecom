@@ -13,6 +13,46 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		return \App\Models\Prd\Prd::class;
 	}
 
+	public function filter($request){
+		if ($request->price){
+			$prices = explode('_',$request->price);
+		} else {$prices = null;}
+		if ($request->orderby){
+		$orderby = explode('-',$request->orderby);
+	} else {$orderby = null;}
+		$search = $request->search;
+		$prds = $this->_model->where(function($q) use ($prices,$search){
+			if ($search){
+				$q->where('name','like','%'.$search.'%');
+			}
+			if ($prices){
+				$i = 0;
+				foreach ($prices as $price){
+					$price = explode('-',$price);
+					if ($i == 0){
+						$q->where([
+							['regular_price','>=',$price[0]],
+							['regular_price','<=',$price[1]],
+						]);
+						$i++;
+					} else {
+						$q->orWhere([
+							['regular_price','>=',$price[0]],
+							['regular_price','<=',$price[1]],
+						]);
+					}
+				}
+			}
+		});
+
+		if (!$orderby){
+			return $prds->orderBy('created_at','desc');
+		} else {
+			return $prds->orderBy($orderby[0] == 'price' ? 'current_price': $orderby[0],$orderby[1]);
+		}
+
+	}
+
 	public function getNew($qty){
 		return $this->_model->orderBy('created_at','desc')->take($qty)->get();
 	}

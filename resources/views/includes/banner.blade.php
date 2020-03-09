@@ -3,7 +3,7 @@
     <div class="row no-gutters">
       <div class="col-md-3 bg-white">
         <div class="product-navigation-wrapper">
-          <a href="#" class="product-navigation-action">
+          <a href="{{route('front.product-list')}}" class="product-navigation-action">
             <i class="icon icon-align-justify"></i>Danh mục sản phẩm
           </a>
           <ul class="product-navigation-list">
