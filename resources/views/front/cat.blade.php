@@ -69,7 +69,7 @@ if (search){
 }
 
 param = '?' + param_arr.join('&');
-const url = 'http://' + window.location.hostname + ':8000' + window.location.pathname;
+const url = 'http://' + window.location.hostname + window.location.pathname;
 window.location.href = url + param;
 };
 
