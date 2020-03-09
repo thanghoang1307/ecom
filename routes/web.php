@@ -104,6 +104,8 @@ Route::post('/update/{order_number}', 'OrderController@update')->name('update');
 Route::name('front.')->namespace('Front')->group(function(){
 Route::get('/','PageController@index')->name('index');
 Route::get('/san-pham/{slug}','PrdController@show')->name('product-detail');
+Route::get('/san-pham/','PrdController@all')->name('product-list');
+Route::post('/search','CatController@search')->name('search');
 Route::get('/tin-tuc-cong-nghe','PostController@list')->name('post-list');
 Route::get('/danh-muc/{slug}','CatController@show')->name('category-list');
 Route::post('/cat-filter','CatController@filter')->name('prd_filter');

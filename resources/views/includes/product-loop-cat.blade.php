@@ -36,5 +36,5 @@
               @endforeach
             </div>
           </div>
-          {{$prds->links('components.paginate')}}
+          {{$prds->appends(request()->input())->links('components.paginate')}}
         

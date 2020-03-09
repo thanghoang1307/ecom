@@ -24,12 +24,16 @@ class CatController extends Controller
     $cat = $this->cat->getFromSlug($slug);
   	$brands_id = $this->cat->getBrandId($cat->id);
   	$brands = $this->brand->getBrandFromIds($brands_id);
-    $prds = $cat->prds()->orderBy('created_at','desc')->paginate(12);
+
+    $prds = $this->cat->filter($request, $cat->id)->paginate(12);
     return view('front.cat',compact('cat','brands','prds'));
     }
 
-    public function filter(Request $request){
-    $prds = $this->cat->filter($request)->paginate(12);
-    return response()->json(['html' => view('includes.product-loop-cat', compact('prds'))->render()]);
+    public function search(Request $request){
+        if ($request->cat != "0"){
+            return redirect('/danh-muc/'.$request->cat.'?search='.$request->search);
+        } else {
+        return redirect('/san-pham?search='.$request->search);  
+        }
     }
 }

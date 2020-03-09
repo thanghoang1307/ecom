@@ -32,6 +32,13 @@ class PrdController extends Controller
         return view('front.prd',compact(['prd']));
     }
 
+    public function all(Request $request){
+    $prds = $this->prd->filter($request)->paginate(12);
+    $brands = null;
+    $cat = null;
+    return view('front.all',compact('prds','brands','cat'));
+    }
+
     public function addToCart($id, Request $request){
     
     if (!session()->get('cart.items.'.$id)){

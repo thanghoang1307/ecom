@@ -67,107 +67,105 @@
 							</a>
 							<!-- End Side Menu -->
 							<div class="header-brand-search-wrapper">
-								<form action="#" class="header-brand-search">
+								<form action="{{route('front.search')}}" class="header-brand-search" method="POST">
+									@csrf
 									<div class="row no-gutters align-items-center">
 										<div class="col-lg-4 d-none d-lg-flex d-lg-block">
 											<div class="header-brand-search-filter">
-												<a href="#" class="header-brand-search-filter-btn dropdown-toggle" id="dropdownFilterButton"
-												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												Danh mục
-											</a>
-											<ul class="dropdown-menu" aria-labelledby="dropdownFilterButton">
-												@foreach ($cats as $cat)
-												<li value="{{$cat->slug}}" class="dropdown-item">{{$cat->short_name}}</li>
-												@endforeach
-											</ul>
+												<select class="header-brand-search-filter-btn dropdown-toggle" name="cat">
+													<option value="0">Danh mục</option>
+													@foreach ($cats as $cat)
+													<option value="{{$cat->slug}}">{{$cat->name}}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+										<div class="col-10 col-lg-7">
+											<div class="header-brand-search-input">
+												<input type="text" class="form-control" aria-label="Tìm kiếm sản phẩm" placeholder="Tìm kiếm sản phẩm" name="search" value="{{app('request')->input('search')}}">
+											</div>
+										</div>
+										<div class="col-2 col-lg-1">
+											<button type="submit" class="header-brand-search-action bg-transparent border-0"><i class="icon icon-search"></i></button>
 										</div>
 									</div>
-									<div class="col-10 col-lg-7">
-										<div class="header-brand-search-input">
-											<input type="text" name="search" class="form-control" aria-label="Tìm kiếm sản phẩm" placeholder="Tìm kiếm sản phẩm">
-										</div>
-									</div>
-									<div class="col-2 col-lg-1">
-										<a href="#" class="header-brand-search-action"><i class="icon icon-search"></i></a>
-									</div>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
-					</div>
-					<div class="col-1 col-md-3">
-						<div class="text-right">
-							<!--USER ACTION-->
-							<a class="user-cart d-none d-md-inline-block" href="#"><span>Đăng nhập/Đăng ký <i
-								class="icon icon-user-head"></i></span></a>
-								<!--USER LOGIN-->
-								<span class="cart-title d-none d-md-inline-block">Giỏ hàng</span>
-								<div class="dropdown dropdown-discount">
-									<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
+						<div class="col-1 col-md-3">
+							<div class="text-right">
+								<!--USER ACTION-->
+								<a class="user-cart d-none d-md-inline-block" href="#"><span>Đăng nhập/Đăng ký <i
+									class="icon icon-user-head"></i></span></a>
+									<!--USER LOGIN-->
+									<span class="cart-title d-none d-md-inline-block">Giỏ hàng</span>
+									<div class="dropdown dropdown-discount">
+										<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
+											<span class="header-cart-number">{{session()->get('cart.items') ? count(session()->get('cart.items')) : 0}}</span>
+											<i class="icon icon-shopping-cart"></i>
+										</a>
+										<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
+										aria-haspopup="true"
+										aria-expanded="false">
 										<span class="header-cart-number">{{session()->get('cart.items') ? count(session()->get('cart.items')) : 0}}</span>
 										<i class="icon icon-shopping-cart"></i>
 									</a>
-									<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
-									aria-haspopup="true"
-									aria-expanded="false">
-									<span class="header-cart-number">{{session()->get('cart.items') ? count(session()->get('cart.items')) : 0}}</span>
-									<i class="icon icon-shopping-cart"></i>
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									@foreach ($prds_in_cart as $prd)
-									<li class="dropdown-item">
-										<div class="product-head">
-											<a href="#" class="card-image">
-												<img src="{{$prd->thumb}}" class="img-fluid">
-											</a>
-											<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-											<span class="product-price price">{{ $prd->current_price*$carts[$prd->id]}}đ</span>
-										</div>
-									</li>
-							@endforeach
-							<li class="dropdown-item">
-								<div class="product-end">
-									<h5 class="product-end-block"><span class="product-end-title">Thành tiền</span> <span
-										class="product-end-block-price price">{{$cart_total}}đ</span></h5>
-										<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										@foreach ($prds_in_cart as $prd)
+										<li class="dropdown-item">
+											<div class="product-head">
+												<a href="#" class="card-image">
+													<img src="{{$prd->thumb}}" class="img-fluid">
+												</a>
+												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
+												<span class="product-price price">{{ $prd->current_price*$carts[$prd->id]}}đ</span>
+											</div>
+										</li>
+										@endforeach
+										<li class="dropdown-item">
+											<div class="product-end">
+												<h5 class="product-end-block"><span class="product-end-title">Thành tiền</span> <span
+													class="product-end-block-price price">{{$cart_total}}đ</span></h5>
+													<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+												</div>
+											</li>
+										</ul>
 									</div>
-								</li>
-							</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<div class="d-none d-md-block">
-		<div class="header-category">
-			<div class="container">
-				<div class="row align-items-center">
-					@foreach ($cats as $cat)
-					<div class="col-sm">
-						<a class="header-category-item" href="{{route('front.category-list',$cat->slug)}}">
-							<i class="icon icon-{{$cat->icon}}"></i><span>{{$cat->short_name}}</span>
-						</a>
+				<div class="d-none d-md-block">
+					<div class="header-category">
+						<div class="container">
+							<div class="row align-items-center">
+								@foreach ($cats as $cat)
+								<div class="col-sm">
+									<a class="header-category-item" href="{{route('front.category-list',$cat->slug)}}">
+										<i class="icon icon-{{$cat->icon}}"></i><span>{{$cat->short_name}}</span>
+									</a>
+								</div>
+								@endforeach
+							</div>
+						</div>
 					</div>
-					@endforeach
+				</div>
+			</header>
+			<!--END HEADER-->
+			<div class="collapse hidden-mobile" id="collapseMenu">
+				<div class="hidden-panel-content">
+					<a href="{{route('front.product-list')}}" class="product-navigation-action">
+						<i class="icon icon-align-justify"></i> Danh mục sản phẩm
+					</a>
+					<ul class="hidden-panel-content-menu">
+						@foreach ( $cats as $cat )
+						<li>
+							<a class="header-category-item" href="{{route('front.category-list',$cat->slug)}}">
+								<i class="icon icon-{{$cat->icon}}"></i> <span>{{$cat->name}}</span>
+							</a>
+						</li>
+						@endforeach      
+					</ul>
 				</div>
 			</div>
-		</div>
-	</div>
-</header>
-<!--END HEADER-->
-<div class="collapse hidden-mobile" id="collapseMenu">
-	<div class="hidden-panel-content">
-		<a href="#" class="product-navigation-action">
-			<i class="icon icon-align-justify"></i> Danh mục sản phẩm
-		</a>
-		<ul class="hidden-panel-content-menu">
-			@foreach ( $cats as $cat )
-			<li>
-				<a class="header-category-item" href="{{route('front.category-list',$cat->slug)}}">
-					<i class="icon icon-{{$cat->icon}}"></i> <span>{{$cat->name}}</span>
-				</a>
-			</li>
-			@endforeach      
-		</ul>
-	</div>
-</div>

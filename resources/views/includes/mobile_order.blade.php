@@ -22,6 +22,7 @@
             Lọc theo
           </div>
           <div class="screen-body">
+            @if ($brands)
             <h4 class="screen-label">Thương hiệu</h4>
       
             <div class="screen-option">
@@ -34,6 +35,7 @@
               </div>
               @endforeach
             </div>
+            @endif
       
             <h4 class="screen-label">Giá bán</h4>
       

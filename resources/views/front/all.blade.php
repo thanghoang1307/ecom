@@ -6,7 +6,7 @@
       <div class="page-breadcrumb">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="{{route('front.index')}}">Trang chủ</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tất cả sản phẩm</li>
           </ol>
         </nav>
@@ -36,52 +36,46 @@
 @endsection
 @section('script')
 <script>
-function ajaxFilter(){
-  data = redirectParam();
-  console.log(data);
-  $.ajax({
-  type:'POST',
-  url: "{{route('front.prd_filter')}}",
-  data: data,
-  success: function(data){
-  $('#product-list').html(data.html);
-  $('.price').each(function(){
-    $(this).html(numberWithCommas($(this).html()));
+  $(function(){
+  $('#product-order').on('change','input[name="d_orderby"]',redirectParam);
+  $('.checkbox').on('change','input[type="checkbox"]',redirectParam);
   });
-  }
-  });
-}
+</script>
+<script>
 function redirectParam(){
 var brand_arr = [];
-var price_arr = [];
 $.each($("input[name='brand_checkbox']:checked"), function(){
 brand_arr.push($(this).val());
 });
+var price_arr = [];
 $.each($("input[name='price_checkbox']:checked"), function(){
 price_arr.push($(this).val());
 });
-var search = $('input[name="search"]').val();
-var orderby = $('input[name="d_orderby"]:checked').val();
-var data ={orderby: orderby};
-if (search){
-  data.search = search;
-}
+
+var search = '{{app("request")->input("search")}}';
+
+var param_arr = [];
+param_arr.push('orderby=' + $('input[name="d_orderby"]:checked').val());
 if (brand_arr.length){
-  data.brand = brand_arr.join('_');
+  param_arr.push('brand=' + brand_arr.join('_'));
 }
 
 if (price_arr.length){
-  data.price = price_arr.join('_');
+  param_arr.push('price=' + price_arr.join('_'));
 }
-data._token = '{{csrf_token()}}';
-data.cat_id = '{{$cat->id}}';
-return data;
+
+if (search){
+  param_arr.push('search='+search);
 }
+
+param = '?' + param_arr.join('&');
+const url = 'http://' + window.location.hostname + ':8000' + window.location.pathname;
+window.location.href = url + param;
+};
 
 $(function(){
-$('#product-order').on('change','input[name="d_orderby"]',ajaxFilter);
-
-$('.checkbox').on('change','input[type="checkbox"]',ajaxFilter);
+$('#product-order').on('change','input[name="d_orderby"]',redirectParam);
+$('.checkbox').on('change','input[type="checkbox"]',redirectParam);
 });
 </script>
 @endsection
