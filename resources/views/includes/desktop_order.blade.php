@@ -1,7 +1,7 @@
-<!-- Desktop -->
 @php
 $orderby = app('request')->input('orderby');
 @endphp
+<!-- Desktop -->
     <div class="d-none d-lg-block">
       <section id="product-order">
         <h4 class="order-label">Sắp xếp theo</h4>

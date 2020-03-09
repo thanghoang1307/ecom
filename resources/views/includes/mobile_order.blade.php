@@ -1,3 +1,8 @@
+@php
+$orderby = app('request')->input('orderby');
+$brand_request = explode('_',app('request')->input('brand'));
+$price_request = explode('_',app('request')->input('price'));
+@endphp
  <div class="d-block d-lg-none">
       <section id="product-filter">
         <div>
@@ -28,7 +33,7 @@
             <div class="screen-option">
             @foreach ($brands as $brand)
               <div class="checkbox">
-                <input id="os-1" name="checkbox" type="checkbox">
+                <input id="os-1" name="mb_checkbox" type="checkbox" value="{{$brand->id}}" {{in_array($brand->id,$brand_request) ? 'checked' : ''}}>
                 <label for="os-1" class="checkbox-label">
                   <img src="{{$brand->logo}}" height="20px">
                 </label>
@@ -41,19 +46,19 @@
       
             <div class="screen-option">
               <div class="checkbox">
-                <input id="price-1" name="checkbox" type="checkbox">
+                <input id="price-1" name="mp_checkbox" type="checkbox" value="0-5000000" {{in_array("0-5000000",$price_request) ? 'checked' : ''}}>
                 <label for="price-1" class="checkbox-label">Dưới 5 triệu</label>
               </div>
               <div class="checkbox">
-                <input id="price-2" name="checkbox" type="checkbox">
+                <input id="price-2" name="mp_checkbox" type="checkbox" value="5000000-7000000" {{in_array("5000000-7000000",$price_request) ? 'checked' : ''}}>
                 <label for="price-2" class="checkbox-label">Từ 5 - 7 triệu</label>
               </div>
               <div class="checkbox">
-                <input id="price-3" name="checkbox" type="checkbox">
+                <input id="price-3" name="mp_checkbox" type="checkbox" value="7000000-10000000" {{in_array("7000000-10000000",$price_request) ? 'checked' : ''}}>
                 <label for="price-3" class="checkbox-label">Từ 7 - 10 triệu</label>
               </div>
               <div class="checkbox">
-                <input id="price-4" name="checkbox" type="checkbox">
+                <input id="price-4" name="mp_checkbox" type="checkbox" value="10000000-1000000000000" {{in_array("10000000-1000000000000",$price_request) ? 'checked' : ''}}>
                 <label for="price-4" class="checkbox-label">Trên 10 triệu</label>
               </div>
             </div>
@@ -88,23 +93,23 @@
           <div class="screen-body">
             <div class="screen-option">
               <div class="radio">
-                <input id="radio-1" name="radio" type="radio" checked>
+                <input id="radio-1" name="d_orderby" type="radio" value="created_at-desc" {{$orderby == "" || $orderby == "created_at-desc" ? "checked" : ""}}>
                 <label for="radio-1" class="radio-label">Mới nhất</label>
               </div>
               <div class="radio">
-                <input id="radio-2" name="radio" type="radio">
+                <input id="radio-2" name="d_orderby" type="radio" value="view-desc" {{$orderby == "view-desc" ? "checked" : ""}}>
                 <label for="radio-2" class="radio-label">Xem nhiều nhất</label>
               </div>
               <div class="radio">
-                <input id="radio-3" name="radio" type="radio">
+                <input id="radio-3" name="d_orderby" type="radio" value="price-asc" {{$orderby == "price-asc" ? "checked" : ""}}>
                 <label for="radio-3" class="radio-label">Giá thấp đến cao</label>
               </div>
               <div class="radio">
-                <input id="radio-4" name="radio" type="radio">
+                <input id="radio-4" name="d_orderby" type="radio" value="price-desc" {{$orderby == "price-desc" ? "checked" : ""}}>
                 <label for="radio-4" class="radio-label">Giá cao xuống thấp</label>
               </div>
               <div class="radio">
-                <input id="radio-5" name="radio" type="radio">
+                <input id="radio-5" name="d_orderby" type="radio" value="sale-desc" {{$orderby == "sale-desc" ? "checked" : ""}}>
                 <label for="radio-5" class="radio-label">Bán chạy nhất</label>
               </div>
             </div>
