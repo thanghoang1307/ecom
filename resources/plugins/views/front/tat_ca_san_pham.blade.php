@@ -6,12 +6,12 @@
       <div class="page-breadcrumb">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('front.index')}}">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{$cat->name}}</li>
+            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tất cả sản phẩm</li>
           </ol>
         </nav>
       </div>
-      <h1 class="page-heading">{{$cat->name}}</h1>
+      <h1 class="page-heading">Tất cả sản phẩm</h1>
     </section>
     @include('includes.desktop_order')
     @include('includes.mobile_order')
@@ -82,27 +82,6 @@ $(function(){
 $('#product-order').on('change','input[name="d_orderby"]',ajaxFilter);
 
 $('.checkbox').on('change','input[type="checkbox"]',ajaxFilter);
-
-// $('input[name="orderby"]').on('click',function(){
-// var old_param_str = window.location.search.substring(1);
-// var old_params = old_param_str.split('&');
-// var param;
-// var new_params = [];
-// var i;
-// for (i = 0; i < old_params.length; i++){
-// param = old_params[i].split('=');
-// if (param[0] == 'orderby'){
-// param[1] = $(this).val();
-// }
-// param = param.join('=');
-// if (old_params.length - i == 1){
-// new_params += param;
-// } else {
-// new_params += param + '&';
-// }
-// }
-// console.log(new_params);
-// });
 });
 </script>
 @endsection

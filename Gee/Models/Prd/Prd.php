@@ -25,4 +25,8 @@ class Prd extends Model
 	public function orders(){
     return $this->belongsToMany(\App\Models\Order\Order::class,'order_prds')->withPivot('qty','total','price');
     }
+
+    public function first_cat() {
+    return $this->cats()->first();
+}
 }
