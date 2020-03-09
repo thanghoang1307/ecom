@@ -69,7 +69,11 @@ if (search){
 }
 
 param = '?' + param_arr.join('&');
+<<<<<<< HEAD
 const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+=======
+const url = 'http://' + window.location.hostname + window.location.pathname;
+>>>>>>> d024f57b87cbb3f9f005e3d635524bf8c0917dea
 window.location.href = url + param;
 };
 
