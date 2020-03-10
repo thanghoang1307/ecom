@@ -10,7 +10,7 @@
 	<link rel="icon" href="/assets/img/favicon.ico">
 	<title>One Stop Shop</title>
 	<!-- Bootstrap core CSS -->
-	<link href="/assets/css/main.css" rel="stylesheet">
+	<link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 	<script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>
 </head>
 <body>
@@ -35,8 +35,13 @@
 									<a class="nav-link" href="{{url('/thong-tin-lien-he')}}">Hỗ trợ trực tuyến</a>
 								</li>
 								<li class="nav-item">
+								@auth('customer')
+								<a class="nav-link" href="profile.html">{{Auth::guard('customer')->user()->name}}</a>
+								@endauth
+								@guest('customer')
 									<a class="nav-link user-action" data-toggle="modal" data-target="#loginModal">Đăng nhập/ Đăng ký <i
 										class="icon icon-user-profile"></i></a>
+								@endguest
 									</li>
 								</ul>
 							</div>
@@ -95,8 +100,15 @@
 						<div class="col-1 col-md-3">
 							<div class="text-right">
 								<!--USER ACTION-->
-								<a class="user-cart d-none d-md-inline-block" href="#"><span>Đăng nhập/Đăng ký <i
+								@auth('customer')
+								<a class="user-cart d-none d-md-inline-block" href="profile.html"><span>{{Auth::guard('customer')->user()->name}}<i
 									class="icon icon-user-head"></i></span></a>
+								@endauth
+								@guest('customer')
+									<a class="user-cart d-none d-md-inline-block" data-toggle="modal" data-target="#loginModal"><span>Đăng nhập/Đăng ký <i
+									class="icon icon-user-head"></i></span></a>
+								@endguest
+								
 									<!--USER LOGIN-->
 									<span class="cart-title d-none d-md-inline-block">Giỏ hàng</span>
 									<div class="dropdown dropdown-discount">

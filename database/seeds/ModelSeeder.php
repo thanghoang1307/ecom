@@ -204,5 +204,16 @@ class ModelSeeder extends Seeder
     'password' => Hash::make('admin123456')],
     ];
     DB::table('users')->insert($user);
+
+    $customer = [
+        [
+        'name' => 'Thang',
+        'email' => 'thang.hoang1307@gmail.com',
+        'password' => Hash::make('koolpro37'),
+        'gender' => 'male',
+        'phone' => '0933894980'],
+    ];
+
+    DB::table('customers')->insert($customer);
     }
 }

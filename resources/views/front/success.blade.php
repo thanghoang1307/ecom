@@ -130,7 +130,7 @@
                       </div>
                       <div class="col-9">
                         <div class="process-profile-success-code">
-                          <p class="process-profile-success-code-pre">Cám ơn bạn <strong>{{$order->customer->name}}</strong> đã lựa
+                          <p class="process-profile-success-code-pre">Cám ơn bạn <strong>{{Auth::guard('customer')->check() ? $order->customer->name : $order->guest->name}}</strong> đã lựa
                             chọn mua hàng tại OneStopShop.vn</p>
                           <p class="process-profile-success-code-detail">
                             Đơn hàng số <a href="#">#{{$order->order_number}}</a> đã được tiếp nhận và đang được xử lý.
@@ -168,7 +168,7 @@
                               <p>Họ và tên</p>
                             </div>
                             <div class="col-7">
-                              <p>{{$order->customer->name}}</p>
+                              <p>{{Auth::guard('customer')->check() ? $order->customer->name : $order->guest->name}}</p>
                             </div>
                           </div>
                           <div class="row">
@@ -176,7 +176,7 @@
                               <p>Điện thoại</p>
                             </div>
                             <div class="col-7">
-                              <p>{{$order->customer->phone}}</p>
+                              <p>{{Auth::guard('customer')->check() ? $order->customer->phone : $order->guest->phone}}</p>
                             </div>
                           </div>
                           <div class="row">
@@ -222,7 +222,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="text-center">
-                  <a href="{{route('front.index')}}"><button class="btn-submit form-end">Tiếp tục mua sắm</button></a>
+                  <a href="{{route('front.index')}}" class="btn-submit form-end">Tiếp tục mua sắm</a>
                 </div>
               </div>
             </div>
