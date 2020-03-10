@@ -100,47 +100,34 @@
             </div>
           </div>
           <div class="process-info">
-            <h2 class="process-info-title">Hình thức nhận hàng</h2>
+            <h2 class="process-info-title">Địa chỉ nhận hàng</h2>
             <div class="process-profile">
               <div class="row no-gutters">
                 <div class="col-12">
                   <div class="process-profile-detail">
-                    <div class="process-profile-block-head">
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="checkbox">
-                            <input id="check-1" name="checkbox" type="checkbox" checked>
-                            <label for="check-1" class="checkbox-label">Nhận hàng tại địa chỉ</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     <div class="process-profile-block-sub">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group selected-box">
                             <select class="form-control" name="city" id="exampleFormControlSelect1">
-                              <option value="">Tỉnh/Thành</option>
-                              <option>Hà Nội</option>
-                              <option>TP. Hồ Chí Minh</option>
+                              <option value="0">Tỉnh/Thành</option>
+                              @foreach ($cities as $city)
+                              <option value="{{$city->matp}}">{{$city->name}}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" name="district" id="exampleFormControlSelect1">
-                              <option value="">Quận/Huyện</option>
-                              <option>Hà Nội</option>
-                              <option>TP. Hồ Chí Minh</option>
+                            <select class="form-control" name="district">
+                              <option value="0">Quận/Huyện</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
                             <select class="form-control" id="exampleFormControlSelect1" name="ward">
-                              <option value="">Phường/Xã</option>
-                              <option>Hà Nội</option>
-                              <option>TP. Hồ Chí Minh</option>
+                              <option value="0">Phường/Xã</option>
                             </select>
                           </div>
                         </div>

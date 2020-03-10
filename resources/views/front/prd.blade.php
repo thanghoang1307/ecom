@@ -76,7 +76,7 @@
             <div class="product-promotion">
               <h4 class="promotion-title"><i></i><span>Ưu đãi</span></h4>
               <div class="promotion-content">
-                {{$prd->short_desc}}
+                {!!$prd->short_desc!!}
               </div>
             </div>
             <div class="product-link">
@@ -128,7 +128,7 @@
                 @endforeach
               </ul>
               <div class="feature-text">
-                {{$prd->long_desc}}
+                {!!$prd->long_desc!!}
               </div>
             </div>
           </section>

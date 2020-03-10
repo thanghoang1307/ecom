@@ -93,9 +93,9 @@ class CartController extends Controller
 		}
 		$shipment = $this->shipment->create([
 			'address' => session('cart.shipment.address'),
-			'city_id' => session('cart.shipment.city'),
-			'district_id' => session('cart.shipment.district'),
-			'ward_id' => session('cart.shipment.ward'),
+			'matp' => session('cart.shipment.city'),
+			'maqh' => session('cart.shipment.district'),
+			'maphuong' => session('cart.shipment.ward'),
 			'order_id' => $order->id,
 		]);
 		return redirect()->route('front.success');

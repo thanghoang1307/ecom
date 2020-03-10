@@ -13,7 +13,6 @@ Danh sách đơn hàng
                     <tr>
                       <th style="width: 10px">#</th>
                       <th>Mã đơn hàng</th>
-                      <th>Khách hàng</th>
                       <th>Giá trị</th>
                       <th>Tình trạng</th>
                     </tr>
@@ -23,8 +22,7 @@ Danh sách đơn hàng
                     <tr>
                       <td>{{$loop->iteration}}</td>
                       <td><a href="{{route('admin.order.edit',$order->order_number)}}">{{$order->order_number}}</a></td>
-                      <td>{{$order->customer->name}}</td>
-                      <td>{{$order->total}}</td>
+                      <td class="price">{{$order->total}}</td>
                       <td>
                       	@switch ($order->status)
                       	@case('1')

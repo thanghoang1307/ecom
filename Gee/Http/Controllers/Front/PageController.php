@@ -8,6 +8,7 @@ use App\Repositories\Prd\CatInterface;
 use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Prd\BrandInterface;
 use App\Repositories\Admin\BannerInterface;
+use Illuminate\Support\Facades\DB;
 
 
 class PageController extends Controller {
@@ -22,6 +23,15 @@ class PageController extends Controller {
 		$this->prd = $prd;
 		$this->brand = $brand;
 		$this->banner = $banner;
+	}
+	public function getQuan(Request $request){
+	$items = DB::table('districts')->where('matp',$request->matp)->get();
+	return response()->json(['html' => view('includes.quan', compact('items'))->render()]);
+	}
+
+	public function getPhuong(Request $request){
+	$items = DB::table('wards')->where('maqh',$request->maqh)->get();
+	return response()->json(['html' => view('includes.phuong', compact('items'))->render()]);
 	}
 
 	public function index() {

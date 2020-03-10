@@ -16,12 +16,12 @@ class CreateShipmentsTable extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('address');
-            $table->string('city_id');
-            // $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade');
-            $table->string('district_id');
-            // $table->foreign('district_id')->references('id')->on('districts')->onUpdate('cascade');
-            $table->string('ward_id');
-            // $table->foreign('ward_id')->references('id')->on('wards')->onUpdate('cascade');
+            $table->string('matp',5);
+            $table->foreign('matp')->references('matp')->on('cities')->onUpdate('cascade');
+            $table->string('maqh',5);
+            $table->foreign('maqh')->references('maqh')->on('districts')->onUpdate('cascade');
+            $table->string('maphuong',5);
+            $table->foreign('maphuong')->references('maphuong')->on('wards')->onUpdate('cascade');
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

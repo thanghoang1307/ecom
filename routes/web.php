@@ -117,6 +117,8 @@ Route::get('/customer/logout','CustomerController@logOut')->name('customer.logou
 Route::post('/customer/login','CustomerController@logIn')->name('customer.login');
 Route::get('/{provider}/redirect','CustomerController@redirect')->name('oauth.redirect');
 Route::get('/{provider}/callback','CustomerController@callback')->name('oauth.callback');
+Route::post('/getquan','PageController@getQuan')->name('getquan');
+Route::post('/getphuong','PageController@getPhuong')->name('getphuong');
 });
 
 

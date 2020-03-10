@@ -26,9 +26,15 @@ Thông tin đơn hàng {{$order->order_number}}
 </div>
 <div>
 <h4>Thông tin khách hàng</h4>
+@if($order->customer_id)
 <div><strong>Họ và tên: </strong> {{$order->customer->gender == 'male'? 'Anh' : 'Chị'}} {{$order->customer->name}}</div>
 <div><strong>Điện thoại: </strong>{{$order->customer->phone}}</div>
 <div><strong>Email: </strong>{{$order->customer->email}}</div>
+@else
+<div><strong>Họ và tên: </strong> {{$order->guest->gender == 'male'? 'Anh' : 'Chị'}} {{$order->guest->name}}</div>
+<div><strong>Điện thoại: </strong>{{$order->guest->phone}}</div>
+<div><strong>Email: </strong>{{$order->guest->email}}</div>
+@endif
 </div>
 <div>
 <h4>Chi tiet don hang</h4>
@@ -58,7 +64,7 @@ Thông tin đơn hàng {{$order->order_number}}
 </div>
 <div>
 <h4>Thong tin giao hang</h4>
-<div><strong>Dia chi: {{$order->shipment->address}}, {{$order->shipment->ward}}, {{$order->shipment->district}}, {{$order->shipment->city}}</strong></div>
+<div><strong>Dia chi: {{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}</strong></div>
 <div><strong>Ghi chu: {{$order->shipment->note}}</strong></div>
 </div>
 @if ($order->is_vat)

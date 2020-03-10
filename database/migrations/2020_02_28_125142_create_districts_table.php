@@ -14,9 +14,12 @@ class CreateDistrictsTable extends Migration
     public function up()
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->string('id')->unique();
-            $table->unsignedBigInteger('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
+            $table->string('maqh',5);
+            $table->primary('maqh');
+            $table->string('name',100);
+            $table->string('type',30);
+            $table->string('matp',5);
+            $table->foreign('matp')->references('matp')->on('cities')->onUpdate('cascade');
         });
     }
 

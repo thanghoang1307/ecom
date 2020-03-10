@@ -184,7 +184,7 @@
                               <p>Địa chỉ</p>
                             </div>
                             <div class="col-7">
-                              <p>{{$order->shipment->address}}, {{$order->shipment->ward}}, {{$order->shipment->district}}, {{$order->shipment->city}}</p>
+                              <p>{{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}</p>
                             </div>
                           </div>
                         </div>
