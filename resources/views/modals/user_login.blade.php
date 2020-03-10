@@ -22,15 +22,16 @@
 
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-            <form action="#">
+            <form action="{{route('front.customer.login')}}" method="POST">
+              @csrf
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Số điện thoại/Email" id="inputUser"
+                    <input type="email" class="form-control" name="email" placeholder="Email" id="inputUser"
                            aria-describedby="inputUser">
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Mật khẩu" id="inputPassword"
+                    <input type="password" class="form-control" name="password" placeholder="Mật khẩu" id="inputPassword"
                            aria-describedby="inputPassword">
                     <a href="#" class="forgot-password">Quên mật khẩu?</a>
                   </div>
@@ -41,10 +42,10 @@
                   <div class="row">
                     <div class="col-6">
 
-                      <button class="btn-facebook open-social-login">Facebook</button>
+                      <a href="{{ route('front.oauth.redirect','facebook') }}" class="btn-facebook">Facebook</a>
                     </div>
                     <div class="col-6">
-                      <button class="btn-google open-social-login">Google</button>
+                      <a href="{{ route('front.oauth.redirect','google') }}" class="btn-google">Google</a>
                     </div>
                   </div>
                 </div>
@@ -52,14 +53,15 @@
             </form>
           </div>
           <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-            <form action="#" class="register-form">
+            <form action="{{route('front.customer.create')}}" class="register-form" method="POST">
+              @csrf
               <div class="row">
                 <div class="col-12">
                   <div class="row">
                     <div class="col-4 col-md-3">
                       <div class="form-group">
                         <div class="radio">
-                          <input id="radio-1" name="radio" type="radio" checked>
+                          <input id="radio-1" name="gender" type="radio" checked>
                           <label for="radio-1" class="radio-label">Anh</label>
                         </div>
                       </div>
@@ -67,7 +69,7 @@
                     <div class="col-4 col-md-3">
                       <div class="form-group">
                         <div class="radio">
-                          <input id="radio-2" name="radio" type="radio">
+                          <input id="radio-2" name="gender" type="radio">
                           <label for="radio-2" class="radio-label">Chị</label>
                         </div>
                       </div>
@@ -78,17 +80,17 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Họ và tên">
+                        <input type="text" name="name" class="form-control" placeholder="Họ và tên">
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Điện thoại">
+                        <input type="text" name="phone" class="form-control" placeholder="Điện thoại">
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Địa chỉ email">
+                        <input type="email" name="email" class="form-control" placeholder="Địa chỉ email">
                       </div>
                     </div>
                   </div>
@@ -97,12 +99,12 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Mật khẩu">
+                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Xác nhận mật khẩu">
+                        <input type="password" name="password_confirm" class="form-control" placeholder="Xác nhận mật khẩu">
                       </div>
                     </div>
                     <div class="col-12">

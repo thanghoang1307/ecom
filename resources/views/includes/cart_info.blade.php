@@ -13,15 +13,53 @@
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
             <div class="process-profile">
               <div class="row no-gutters">
+                @auth('customer')
+                <div class="col-12">
+                  <div class="process-profile-detail">
+                    <div class="process-profile-block-head">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="radio">
+                            @if (Auth::guard('customer')->user()->gender == 'male')
+                            <input id="radio-1" name="gender" type="radio" value="male" checked>
+                            <label for="radio-1" class="radio-label">Anh</label>
+                            @elseif(Auth::guard('customer')->user()->gender == 'female')
+                            <input id="radio-1" name="gender" type="radio" value="female" checked>
+                            <label for="radio-1" class="radio-label">Chị</label>
+                            @else
+                            <input id="radio-1" name="gender" type="radio" value="male" checked>
+                            <label for="radio-1" class="radio-label">Anh</label>
+                            <input id="radio-1" name="gender" type="radio" value="female">
+                            <label for="radio-1" class="radio-label">Chị</label>
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="process-profile-block-body">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                @endauth
+                @guest('customer')
                 <div class="col-md-6">
                   <div class="process-one-click">
                     <h3 class="process-one-click-title">Đặt hàng chỉ một bước với</h3>
                     <ul class="process-one-click-list">
                       <li>
-                        <a class="nav-link user-action process-one-click-facebook" data-toggle="modal" data-target="#loginModal">Facebook</a>
+                        <a class="nav-link user-action process-one-click-facebook" href="{{ route('front.oauth.redirect','facebook') }}">Facebook</a>
                       </li>
                       <li>
-                        <!--<a class="nav-link user-action process-one-click-google" data-toggle="modal" data-target="#loginModal">--><a class="process-one-click-google" href="check-out-with-info.html">Google</a>
+                        <!--<a class="nav-link user-action process-one-click-google" data-toggle="modal" data-target="#loginModal">--><a class="process-one-click-google" href="{{ route('front.oauth.redirect','google') }}">Google</a>
                       </li>
                     </ul>
                   </div>
@@ -32,13 +70,13 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-1" name="customer_gender" type="radio" checked value="male">
+                            <input id="radio-1" name="gender" type="radio" checked value="male">
                             <label for="radio-1" class="radio-label">Anh</label>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-2" name="customer_gender" type="radio" value="female">
+                            <input id="radio-2" name="gender" type="radio" value="female">
                             <label for="radio-2" class="radio-label" >Chị</label>
                           </div>
                         </div>
@@ -46,17 +84,18 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="customer_name">
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="customer_phone">
+                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="phone">
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="customer_email">
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="email">
                       </div>
                     </div>
                   </div>
                 </div>
+                @endguest
               </div>
             </div>
           </div>

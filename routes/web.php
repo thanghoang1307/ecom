@@ -1,19 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Auth::routes();
 
 Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
+Route::get('/',function(){
+return redirect()->route('admin.prd.index');
+});
 	Route::namespace('Prd')->group(function(){
 		// Group sản phẩm
 Route::prefix('san-pham')->name('prd.')->group(function(){
@@ -120,13 +112,12 @@ Route::post('/checkout2','CartController@checkOut2')->name('check_out_2');
 Route::post('/checkout3','CartController@checkOut3')->name('check_out_3');
 Route::get('/hoan-tat-don-hang/','CartController@success')->name('success');
 Route::get('/{slug}','PostController@show')->name('post-detail');
+Route::post('/customer/register','CustomerController@register')->name('customer.create');
+Route::get('/customer/logout','CustomerController@logOut')->name('customer.logout');
+Route::post('/customer/login','CustomerController@logIn')->name('customer.login');
+Route::get('/{provider}/redirect','CustomerController@redirect')->name('oauth.redirect');
+Route::get('/{provider}/callback','CustomerController@callback')->name('oauth.callback');
 });
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

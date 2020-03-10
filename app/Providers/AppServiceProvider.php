@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Repositories\Order\CompanyInterface::class,\App\Repositories\Order\CompanyRepository::class);
         $this->app->singleton(\App\Repositories\Order\ShipmentInterface::class,\App\Repositories\Order\ShipmentRepository::class);
         $this->app->singleton(\App\Repositories\Order\OrderPrdInterface::class,\App\Repositories\Order\OrderPrdRepository::class);
+        $this->app->singleton(\App\Repositories\Order\GuestInterface::class,\App\Repositories\Order\GuestRepository::class);
     }
 
     /**

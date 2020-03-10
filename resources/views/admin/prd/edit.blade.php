@@ -81,9 +81,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                 <label>Thương hiệu</label>
               <select class="form-control" name="brand_id">
                 @foreach ($brands as $brand)
-                <option value="{{$brand->id}}" 
-                selected=<?php echo $brand->id == $prd->brand_id ? true:""?>
-                  >{{$brand->name}}</option>
+                <option value="{{$brand->id}}" {{$brand->id == $prd->brand_id ? "selected": ""}}>{{$brand->name}}</option>
                   @endforeach
               </select>
               </div>
@@ -227,7 +225,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
       path_absolute : "",
       selector: "textarea[name=long_desc]",
       plugins: [
-        "link image"
+        "link image code"
       ],
       relative_urls: false,
       height: 129,
