@@ -142,7 +142,6 @@ ajaxRemoveItem($prd_id);
     data: {'_token':'{{csrf_token()}}', 'matp': matp},
     success: function(data){
     $("select[name='district']").html(data.html);
-    
     }
     });
   });
@@ -155,7 +154,6 @@ ajaxRemoveItem($prd_id);
     data: {'_token':'{{csrf_token()}}', 'maqh': maqh},
     success: function(data){
     $("select[name='ward']").html(data.html);
-    
     }
     });
   });

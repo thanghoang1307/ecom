@@ -215,5 +215,14 @@ class ModelSeeder extends Seeder
     ];
 
     DB::table('customers')->insert($customer);
+
+    $cities = file_get_contents(database_path() . '/mysql/cities.sql');
+    DB::unprepared($cities);
+
+    $districts = file_get_contents(database_path() . '/mysql/districts.sql');
+    DB::unprepared($districts);
+
+    $wards = file_get_contents(database_path() . '/mysql/wards.sql');
+    DB::unprepared($wards);
     }
 }

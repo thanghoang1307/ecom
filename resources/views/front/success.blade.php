@@ -18,8 +18,8 @@
               <div class="row">
                 <div class="col-md-8">
                   <div class="cart-detail">
-                    <h6><a href="#">{{$prd->name}}</a></h6>
-                    <h6><span>Mã sản phẩm: <a href="#" class="cart-code">{{$prd->sku}}</a></span></h6>
+                    <h6><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h6>
+                    <h6><span>Mã sản phẩm: <a href="{{route('front.product-detail',$prd->slug)}}" class="cart-code">{{$prd->sku}}</a></span></h6>
                   </div>
                 </div>
                 <div class="col-md-4">

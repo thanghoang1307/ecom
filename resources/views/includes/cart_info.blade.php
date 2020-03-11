@@ -109,8 +109,8 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1">
-                              <option value="0">Tỉnh/Thành</option>
+                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
+                              <option value="0" disabled selected>Tỉnh/Thành</option>
                               @foreach ($cities as $city)
                               <option value="{{$city->matp}}">{{$city->name}}</option>
                               @endforeach
@@ -120,14 +120,14 @@
                         <div class="col-md-6">
                           <div class="form-group selected-box">
                             <select class="form-control" name="district">
-                              <option value="0">Quận/Huyện</option>
+                              <option value="0" disabled selected>Quận/Huyện</option>
                             </select>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
                             <select class="form-control" id="exampleFormControlSelect1" name="ward">
-                              <option value="0">Phường/Xã</option>
+                              <option value="0" disabled selected>Phường/Xã</option>
                             </select>
                           </div>
                         </div>

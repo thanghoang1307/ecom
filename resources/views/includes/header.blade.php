@@ -36,7 +36,7 @@
 								</li>
 								<li class="nav-item">
 								@auth('customer')
-								<a class="nav-link" href="profile.html">{{Auth::guard('customer')->user()->name}}</a>
+								<a class="nav-link" href="{{route('front.account.index')}}">{{Auth::guard('customer')->user()->name}}</a>
 								@endauth
 								@guest('customer')
 									<a class="nav-link user-action" data-toggle="modal" data-target="#loginModal">Đăng nhập/ Đăng ký <i
@@ -59,7 +59,7 @@
 									</a>
 								</div>
 								<div class="d-block d-lg-none">
-									<a href="#" class="user-action-toggle">
+									<a href="{{route('front.account.index')}}" class="user-action-toggle">
 										<i class="icon icon-user-profile"></i>
 									</a>
 								</div>
@@ -101,7 +101,7 @@
 							<div class="text-right">
 								<!--USER ACTION-->
 								@auth('customer')
-								<a class="user-cart d-none d-md-inline-block" href="profile.html"><span>{{Auth::guard('customer')->user()->name}}<i
+								<a class="user-cart d-none d-md-inline-block" href="{{route('front.account.index')}}"><span>{{Auth::guard('customer')->user()->name}}<i
 									class="icon icon-user-head"></i></span></a>
 								@endauth
 								@guest('customer')
@@ -126,7 +126,7 @@
 										@foreach ($prds_in_cart as $prd)
 										<li class="dropdown-item">
 											<div class="product-head">
-												<a href="#" class="card-image">
+												<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
 													<img src="{{$prd->thumb}}" class="img-fluid">
 												</a>
 												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>

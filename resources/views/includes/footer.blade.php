@@ -15,9 +15,9 @@
               <h3 class="footer-block-title">CÁCH THỨC MUA HÀNG</h3>
               <ul class="footer-block-list">
                 <li>Tổng đài hỗ trợ <a href="tel:0989-123-456" class="main-color">0837 000 247</a></li>
-                <li><a href="#">Hướng dẫn mua hàng</a></li>
-                <li><a href="#">Hưỡng dẫn thanh toán</a></li>
-                <li><a href="#">Phương thức vận chuyển</a></li>
+                <li><a href="{{url('/huong-dan-mua-hang')}}">Hướng dẫn mua hàng</a></li>
+                <li><a href="{{url('/huong-dan-thanh-toan')}}">Hưỡng dẫn thanh toán</a></li>
+                <li><a href="{{url('/huong-dan-thanh-toan')}}">Phương thức vận chuyển</a></li>
               </ul>
             </div>
           </div>
@@ -78,7 +78,7 @@
                   <ul class="footer-block-list">
                     <li><a href="{{url('/huong-dan-mua-hang')}}">Hướng dẫn mua hàng</a></li>
                     <li><a href="{{url('/huong-dan-thanh-toan')}}">Hướng dẫn thanh toán</a></li>
-                    <li><a href="{{url('/phuong-thuc-van-chuyen')}}">Phương thức vận chuyển</a></li>
+                    <li><a href="{{url('/huong-dan-thanh-toan')}}">Phương thức vận chuyển</a></li>
                   </ul>
                 </div>
               </div>

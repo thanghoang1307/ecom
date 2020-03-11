@@ -111,7 +111,6 @@ Route::post('/ajax-remove-item','CartController@ajaxRemoveItem')->name('ajax_rem
 Route::post('/checkout2','CartController@checkOut2')->name('check_out_2');
 Route::post('/checkout3','CartController@checkOut3')->name('check_out_3');
 Route::get('/hoan-tat-don-hang/','CartController@success')->name('success');
-Route::get('/{slug}','PostController@show')->name('post-detail');
 Route::post('/customer/register','CustomerController@register')->name('customer.create');
 Route::get('/customer/logout','CustomerController@logOut')->name('customer.logout');
 Route::post('/customer/login','CustomerController@logIn')->name('customer.login');
@@ -119,6 +118,22 @@ Route::get('/{provider}/redirect','CustomerController@redirect')->name('oauth.re
 Route::get('/{provider}/callback','CustomerController@callback')->name('oauth.callback');
 Route::post('/getquan','PageController@getQuan')->name('getquan');
 Route::post('/getphuong','PageController@getPhuong')->name('getphuong');
+Route::middleware('auth:customer')->prefix('/tai-khoan/')->name('account.')->group(function(){
+Route::get('/','AccountController@index')->name('index');
+Route::get('/chinh-sua','AccountController@edit')->name('edit');
+Route::get('/doi-mat-khau','AccountController@editPassword')->name('edit_password');
+Route::post('/doi-mat-khau','AccountController@updatePassword')->name('update_password');
+Route::post('/cap-nhat','AccountController@update')->name('update');
+Route::get('/them-dia-chi','AccountController@addAddress')->name('add_address');
+Route::post('/them-dia-chi','AccountController@storeAddress')->name('store_address');
+Route::post('/xoa-dia-chi/{id}','AccountController@deleteAddress')->name('delete_address');
+Route::get('/sua-dia-chi/{id}','AccountController@editAddress')->name('edit_address');
+Route::post('/sua-dia-chi/{id}','AccountController@updateAddress')->name('update_address');
+Route::get('/dia-chi','AccountController@address')->name('address');
+Route::get('/lich-su-don-hang','AccountController@orderHistory')->name('order_history');
+Route::get('/chi-tiet-don-hang/{id}','AccountController@orderDetail')->name('order_detail');
+});
+Route::get('/{slug}','PostController@show')->name('post-detail');
 });
 
 
