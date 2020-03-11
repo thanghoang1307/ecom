@@ -26,7 +26,10 @@ class AddressRepository extends EloquentRepository implements AddressInterface {
 
 	public function setFirstAsPrimary(){
 	$primary = $this->_model->where('customer_id',auth('customer')->id())->first();
+	if ($primary){
 	$primary->update(['is_primary' => 1]);
 	return $primary;
+	}
+	return false;
 	}
 }
