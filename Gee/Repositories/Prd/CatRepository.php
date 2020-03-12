@@ -39,6 +39,7 @@ class CatRepository extends EloquentRepository implements CatInterface {
 			}
 			if ($search){
 				$q->where('name','like','%'.$search.'%');
+				$q->orWhere('sku','like','%'.$search.'%');
 			}
 			if ($prices){
 				$i = 0;

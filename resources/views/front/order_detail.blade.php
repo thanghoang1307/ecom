@@ -2,13 +2,31 @@
 @section('content')
 @component('components.profile_sidebar',['check' => 'order'])
 @endcomponent
+@if(auth('customer')->user()->orders->contains($order->id))
           <div class="dashboard-body" style="padding-bottom: 0">
             <section id="profile-order-detail">
               <div class="row">
                 <div class="col-12">
                   <div class="order-detail">
                     <h4 class="section-title">Thông tin đơn hàng <span>#{{$order->order_number}}</span> <span
-                        class="order-status">{{$order->status}}</span></h4>
+                        class="order-status">
+                        @switch ($order->status)
+                        @case('1')
+                        Đã xác nhận đơn hàng
+                        @break
+                        @case('2')
+                        Đã giao hàng, chưa thu tiền
+                        @break
+                        @case('3')
+                        Đã thu tiền
+                        @break
+                        @case('-1')
+                        Hoàn trả sản phẩm
+                        @break
+                        @default
+                        Chưa xử lý
+                        @endswitch
+                        </span></h4>
         @foreach ($order->prds as $prd)
                     <div class="order-detail-body">
                       <div class="row">
@@ -95,7 +113,7 @@
                           <p>Phương thức thanh toán</p>
                         </div>
                         <div class="col-4">
-                          <p class="text-right"><strong>{{$order->payment_type}}</strong></p>
+                          <p class="text-right"><strong>{{$order->payment_type == 0 ? 'COD' : 'Chuyển khoản'}}</strong></p>
                         </div>
                       </div>
                     </div>
@@ -120,4 +138,7 @@
     </div>
   </div>
 </main>
+@else
+<div class="text-center py-5" style="font-size:20px;color:red;"><strong>Bạn không có quyền truy cập trang này</strong></div>
+@endif
 @endsection

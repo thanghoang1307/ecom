@@ -18,9 +18,10 @@ Thông tin đơn hàng {{$order->order_number}}
 
 <select name="status" id="">
   <option value="0" {{$order->status == 0 ? "selected" : ""}}>Chưa xử lý</option>
-  <option value="1" {{$order->status == 1 ? "selected" : ""}}>Đang giao hàng</option>
+  <option value="1" {{$order->status == 1 ? "selected" : ""}}>Đã xác nhận đơn hàng</option>
   <option value="2" {{$order->status == 2 ? "selected" : ""}}>Đã giao hàng, chưa thu tiền</option>
   <option value="3" {{$order->status == 3 ? "selected" : ""}}>Đã thu tiền</option>
+  <option value="-1" {{$order->status == -1 ? "selected" : ""}}>Hoàn trả sản phẩm</option>
 </select>
 </form>
 </div>

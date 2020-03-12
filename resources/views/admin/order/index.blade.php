@@ -26,14 +26,17 @@ Danh sách đơn hàng
                       <td>
                       	@switch ($order->status)
                       	@case('1')
-                      	Đang giao hàng
+                      	Đã xác nhận đơn hàng
                       	@break
                       	@case('2')
-						Đã giao hàng, chưa thu tiền
+						            Đã giao hàng, chưa thu tiền
                       	@break
                       	@case('3')
                       	Đã thu tiền
                       	@break
+                        @case('-1')
+                        Hoàn trả sản phẩm
+                        @break
                       	@default
                       	Chưa xử lý
                       	@endswitch

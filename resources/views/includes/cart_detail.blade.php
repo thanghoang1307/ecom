@@ -6,7 +6,7 @@
             <div class="col-5 col-md-3">
               <div class="cart-image">
                 <figure>
-                  <img src="assets/img/product/item/1.jpg">
+                  <img src="{{$prd->thumb}}">
                 </figure>
               </div>
             </div>

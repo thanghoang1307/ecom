@@ -24,12 +24,12 @@ Chỉnh sửa thuộc tính {{$attr->name}}
               </div> 
               <div class="form-group">
                 <select class="form-control" name="type" placeholder="Loại thuộc tính">
-                	<option value="text" selected=<?php echo $attr->type = 'text' ? true : ""?>>Chữ</option>
-                	<option value="boolean" selected=<?php echo $attr->type = 'boolean' ? true : ""?>>Có/Không</option>
-                	<option value="datetime" selected=<?php echo $attr->type = 'datetime' ? true : ""?>>Thời gian</option>
-                	<option value="date" selected=<?php echo $attr->type = 'date' ? true : ""?>>Ngày tháng năm</option>
-                	<option value="integer" selected=<?php echo $attr->type = 'integer' ? true : ""?>>Số nguyên</option>
-                	<option value="float" selected=<?php echo $attr->type = 'float' ? true : ""?>>Thập phân</option>
+                	<option value="text" selected=<?php echo $attr->type == 'text' ? true : ""?>>Chữ</option>
+                	<option value="boolean" selected=<?php echo $attr->type == 'boolean' ? true : ""?>>Có/Không</option>
+                	<option value="datetime" selected=<?php echo $attr->type == 'datetime' ? true : ""?>>Thời gian</option>
+                	<option value="date" selected=<?php echo $attr->type == 'date' ? true : ""?>>Ngày tháng năm</option>
+                	<option value="integer" selected=<?php echo $attr->type == 'integer' ? true : ""?>>Số nguyên</option>
+                	<option value="float" selected=<?php echo $attr->type == 'float' ? true : ""?>>Thập phân</option>
                 </select>
               </div>
               <div class="form-check">

@@ -24,6 +24,7 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		$prds = $this->_model->where(function($q) use ($prices,$search){
 			if ($search){
 				$q->where('name','like','%'.$search.'%');
+				$q->orWhere('sku','like','%'.$search.'%');
 			}
 			if ($prices){
 				$i = 0;

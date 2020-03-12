@@ -96,12 +96,6 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý nhóm khách hàng</p>
-                </a>
-              </li>   
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
                   <p>Quản lý khách</p>
                 </a>
               </li>
@@ -124,7 +118,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.setting.index')}}" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Cài đặt

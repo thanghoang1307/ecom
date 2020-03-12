@@ -97,17 +97,38 @@
                       @foreach(auth('customer')->user()->orders as $order)
                     <tr>
                       <td>{{date('d/m/Y',strtotime($order->created_at))}}</td>
-                      <td>#{{$order->order_number}}</td>
+                      <td><a href="{{route('front.account.order_detail',$order->id)}}">#{{$order->order_number}}</a></td>
                       <td class="price">{{$order->total}}đ</td>
-                      <td>Hoàn thành</td>
+                      <td>@switch ($order->status)
+                        @case('1')
+                        Đã xác nhận đơn hàng
+                        @break
+                        @case('2')
+                        Đã giao hàng, chưa thu tiền
+                        @break
+                        @case('3')
+                        Đã thu tiền
+                        @break
+                        @case('-1')
+                        Hoàn trả sản phẩm
+                        @break
+                        @default
+                        Chưa xử lý
+                        @endswitch</td>
                     </tr>
                     @endforeach
                     </tbody>
                   </table>
                 </div>
+                @if(auth('customer')->user()->orders->count())
                 <div class="text-right">
                   <a href="{{route('front.account.order_history')}}" class="btn-submit">Xem thêm</a>
                 </div>
+                @else
+                <div class="text-center">
+                  <em>Bạn chưa có đơn hàng nào</em>
+                </div>
+                @endif
             @endif
               </div>
             </section>

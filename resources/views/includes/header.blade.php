@@ -36,7 +36,8 @@
 								</li>
 								<li class="nav-item">
 								@auth('customer')
-								<a class="nav-link" href="{{route('front.account.index')}}">{{Auth::guard('customer')->user()->name}}</a>
+								<a class="nav-link user-action" href="{{route('front.account.index')}}">{{Auth::guard('customer')->user()->name}} <i
+									class="icon icon-user-head"></i></a>
 								@endauth
 								@guest('customer')
 									<a class="nav-link user-action" data-toggle="modal" data-target="#loginModal">Đăng nhập/ Đăng ký <i
@@ -59,9 +60,16 @@
 									</a>
 								</div>
 								<div class="d-block d-lg-none">
+									@auth('customer')
 									<a href="{{route('front.account.index')}}" class="user-action-toggle">
 										<i class="icon icon-user-profile"></i>
 									</a>
+									@endauth
+									@guest('customer')
+									<a data-toggle="modal" data-target="#loginModal" class="user-action-toggle">
+										<i class="icon icon-user-profile"></i>
+									</a>
+									@endguest
 								</div>
 							</div>
 							<div class="col-11 col-md-5">
@@ -101,7 +109,7 @@
 							<div class="text-right">
 								<!--USER ACTION-->
 								@auth('customer')
-								<a class="user-cart d-none d-md-inline-block" href="{{route('front.account.index')}}"><span>{{Auth::guard('customer')->user()->name}}<i
+								<a class="user-cart d-none d-md-inline-block" href="{{route('front.account.index')}}"><span>{{Auth::guard('customer')->user()->name}} <i
 									class="icon icon-user-head"></i></span></a>
 								@endauth
 								@guest('customer')
@@ -123,6 +131,7 @@
 										<i class="icon icon-shopping-cart"></i>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										@if(count($prds_in_cart))
 										@foreach ($prds_in_cart as $prd)
 										<li class="dropdown-item">
 											<div class="product-head">
@@ -141,6 +150,9 @@
 													<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
 												</div>
 											</li>
+											@else
+<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
+											@endif
 										</ul>
 									</div>
 								</div>

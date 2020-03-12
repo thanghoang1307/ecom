@@ -73,12 +73,14 @@
               </div>
             
             </div>
+            @if($prd->short_desc)
             <div class="product-promotion">
               <h4 class="promotion-title"><i></i><span>Ưu đãi</span></h4>
               <div class="promotion-content">
                 {!!$prd->short_desc!!}
               </div>
             </div>
+            @endif
             <div class="product-link">
               <a href="#product-feature">
                 <span>Xem tính năng / Thông số kĩ thuật</span> <i class="icon icon-caret-down"></i>
@@ -99,9 +101,10 @@
               <h4 class="feature-label">Thông số kỹ thuật / Tính năng</h4>
             </div>
             <div class="feature-body">
+              @if($prd->attrs->count() > 0)
               <ul class="specification-list">
                 @foreach ($prd->attrs as $attr)
-                @if ($attr->is_looped)
+                @if($attr->is_looped  && ($attr->pivot->integer_val || $attr->pivot->datetime_val || $attr->pivot->date_val || $attr->type == 'boolean' || $attr->pivot->float_val || $attr->pivot->text_val))
                 <li>
                   <label>{{$attr->name}}</label>
                 @switch($attr->type)
@@ -122,11 +125,12 @@
                   @break
                   @default
                   <span>{{$attr->pivot->text_val}}</span>
-                @endswitch()
+                @endswitch
                 </li>
                 @endif
                 @endforeach
               </ul>
+              @endif
               <div class="feature-text">
                 {!!$prd->long_desc!!}
               </div>
@@ -171,12 +175,7 @@
   </div>
 
   <div class="page-gap"></div>
-
-  @render(\App\ViewComponents\RecentlyViewProductComponent::class)
-
   @post
-  
-
   <div class="page-gap"></div>
 </main>
 

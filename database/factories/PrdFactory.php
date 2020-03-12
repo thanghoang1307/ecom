@@ -59,7 +59,7 @@ $factory->define(\App\Models\Prd\Attr::class,function(Faker $faker){
 return [
 'code' => $faker->unique()->word,
 'name' => $faker->sentence,
-'type' => $faker->randomElement($array = array ('text','boolean','datetime','date','int','float')),
+'type' => $faker->randomElement($array = array ('text','boolean','datetime','date','integer','float')),
 'is_required' => $faker->numberBetween($min = 0, $max = 1),
 'is_looped' => $faker->numberBetween($min = 0, $max = 1),
 ];
