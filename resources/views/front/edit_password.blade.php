@@ -14,6 +14,9 @@
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
                         <input type="password" name="old_password" class="form-control" placeholder="Mật khẩu hiện tại">
+                        @error('old_password')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -21,11 +24,17 @@
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Mật khẩu mới">
+                        @error('password')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="password" name="confirm_password" class="form-control" placeholder="Xác nhận mật khẩu mới">
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Xác nhận mật khẩu mới">
+                        @error('password_confirmation')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>

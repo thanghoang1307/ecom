@@ -172,3 +172,13 @@
 <!--END FOOTER-->
 </body>
 </html>
+@if(Session::has('success'))
+<div id="toast-container" class="toast-top-right"><div class="toast toast-success" aria-live="polite" style=""><div class="toast-message">{{session('success')}}</div></div></div>
+@endif
+@if(Session::has('error'))
+<div id="toast-container" class="toast-top-right"><div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">{{session('error')}}</div></div></div>
+@endif
+<script src="{{asset('assets/js/main.js')}}"></script>
+<script>
+$('#toast-container').delay(3000).fadeOut(300);
+</script>

@@ -11,6 +11,7 @@
 	<title>One Stop Shop</title>
 	<!-- Bootstrap core CSS -->
 	<link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.css')}}">
 	<script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>
 </head>
 <body>
