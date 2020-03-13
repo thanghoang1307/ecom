@@ -5,7 +5,7 @@ namespace App\Models\Prd;
 use Illuminate\Database\Eloquent\Model;
 
 class Prd extends Model
-{	protected $fillable = ['sku','name','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','meta_title','meta_desc','meta_keys','slug','view','sale','current_price'];
+{	protected $fillable = ['sku','name','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','meta_title','meta_desc','meta_keys','slug','view','sale','current_price','attr_family_id'];
 	public function brand() {
 		return $this->belongsTo(\App\Models\Prd\Brand::class);
 	}
@@ -28,5 +28,8 @@ class Prd extends Model
 
     public function first_cat() {
     return $this->cats()->first();
+}
+public function attr_family(){
+	return $this->belongsTo(\App\Models\Prd\AttrFamily::class);
 }
 }

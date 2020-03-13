@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttrGrsTable extends Migration
+class CreateAttrFamiliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAttrGrsTable extends Migration
      */
     public function up()
     {
-        Schema::create('attr_grs', function (Blueprint $table) {
+        Schema::create('attr_families', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('code');
             $table->string('name');
-            $table->timestamps();
+            $table->integer('is_user_defined');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateAttrGrsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attr_grs');
+        Schema::dropIfExists('attr_families');
     }
 }

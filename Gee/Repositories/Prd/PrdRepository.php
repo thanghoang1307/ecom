@@ -68,6 +68,7 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		return $unique_slug;
 	}
 
+
 	public function addAttr($prd_id, array $attrs_id_array = null) {
 		if ($attrs_id_array){
 			foreach ($attrs_id_array as $attr_id){

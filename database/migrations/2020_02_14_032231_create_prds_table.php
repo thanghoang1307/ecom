@@ -19,6 +19,8 @@ class CreatePrdsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands')->onUpdate('cascade');
+            $table->unsignedBigInteger('attr_family_id');
+            $table->foreign('attr_family_id')->references('id')->on('attr_families')->onUpdate('cascade');
             $table->double('regular_price')->nullable();
             $table->double('sale_price')->nullable();
             $table->text('short_desc')->nullable();

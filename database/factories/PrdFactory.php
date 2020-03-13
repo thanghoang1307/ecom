@@ -39,12 +39,7 @@ return [
 'regular_price' => 4290000,
 'sale_price' => $faker->randomElement([null,3290000]),
 'current_price' => 4290000,
-];
-});
-
-$factory->define(\App\Models\Prd\AttrGr::class,function(Faker $faker){
-return [
-'name' => $faker->sentence,
+'attr_family_id' => 1,
 ];
 });
 
@@ -52,15 +47,5 @@ $factory->define(\App\Models\Prd\Cat::class,function(Faker $faker){
 return [
 'slug' => implode('-',$faker->unique()->words(2)),
 'name' => $faker->sentence,
-];
-});
-
-$factory->define(\App\Models\Prd\Attr::class,function(Faker $faker){
-return [
-'code' => $faker->unique()->word,
-'name' => $faker->sentence,
-'type' => $faker->randomElement($array = array ('text','boolean','datetime','date','integer','float')),
-'is_required' => $faker->numberBetween($min = 0, $max = 1),
-'is_looped' => $faker->numberBetween($min = 0, $max = 1),
 ];
 });

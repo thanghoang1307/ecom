@@ -56,9 +56,22 @@ Route::post('/update/{id}', 'BrandController@update')->name('update');
 Route::get('/delete/{id}', 'BrandController@delete')->name('delete');
 });
 //Kết thúc group thuộc tính
-	});
-// Kết thúc namespace Prd
 
+// Nhóm sản phẩm
+Route::prefix('nhom-san-pham')->name('attr_family.')->group(function(){
+Route::get('/', 'AttrFamilyController@index')->name('index');
+Route::post('/', 'AttrFamilyController@create')->name('create');
+Route::post('/them-thuoc-tinh-vao-nhom', 'AttrFamilyController@addAttr')->name('add_attr');
+Route::post('/tao-nhom-thuoc-tinh', 'AttrFamilyController@createAttrGr')->name('create_attr_gr');
+Route::get('/edit/{id}', 'AttrFamilyController@edit')->name('edit');
+Route::post('/xoa-nhom-thuoc-tinh/{attr_gr_id}','AttrFamilyController@deleteAttrGr')->name('delete_attr_gr');
+Route::post('/xoa-thuoc-tinh/{attr_id}','AttrFamilyController@deleteAttr')->name('delete_attr');
+Route::post('/update/{id}', 'AttrFamilyController@update')->name('update');
+Route::get('/delete/{id}', 'AttrFamilyController@delete')->name('delete');
+});
+// End nhóm sản phẩm
+// Kết thúc namespace Prd
+});
 // Banner
 Route::prefix('banner')->name('banner.')->group(function(){
 Route::get('/', 'BannerController@index')->name('index');

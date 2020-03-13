@@ -19,7 +19,6 @@ class CreateAttrGrMappingsTable extends Migration
             $table->foreign('attr_gr_id')->references('id')->on('attr_grs')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('attr_id');
             $table->foreign('attr_id')->references('id')->on('attrs')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
