@@ -74,9 +74,9 @@ Danh sách bài viết
               </div>
               <div class="form-group">
                 <label>Nhóm thuộc tính</label>
-                <select class="form-control" name="attr_gr_id">
-                  @foreach ($attr_grs as $attr_gr)
-                  <option value="{{$attr_gr->id}}">{{$attr_gr->name}}</option>
+                <select class="form-control" name="attr_family_id">
+                  @foreach ($attr_families as $attr_family)
+                  <option value="{{$attr_family->id}}">{{$attr_family->name}}</option>
                   @endforeach
                 </select>
                 </div>

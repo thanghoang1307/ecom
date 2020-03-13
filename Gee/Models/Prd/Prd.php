@@ -5,13 +5,13 @@ namespace App\Models\Prd;
 use Illuminate\Database\Eloquent\Model;
 
 class Prd extends Model
-{	protected $fillable = ['sku','name','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','meta_title','meta_desc','meta_keys','slug','view','sale','current_price'];
+{	protected $fillable = ['sku','name','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','slug','view','sale','current_price','attr_family_id'];
 	public function brand() {
 		return $this->belongsTo(\App\Models\Prd\Brand::class);
 	}
 
 	public function attrs(){
-		return $this->belongsToMany(\App\Models\Prd\Attr::class,'prd_attr_vals','prd_id','attr_id')->withPivot('text_val', 'boolean_val','datetime_val','integer_val','float_val','date_val');
+		return $this->belongsToMany(\App\Models\Prd\Attr::class,'prd_attr_vals','prd_id','attr_id')->withPivot('text_val', 'boolean_val','datetime_val','integer_val','float_val','date_val','textarea_val');
 	}
 
 	public function cats(){
@@ -28,5 +28,8 @@ class Prd extends Model
 
     public function first_cat() {
     return $this->cats()->first();
+}
+public function attr_family(){
+	return $this->belongsTo(\App\Models\Prd\AttrFamily::class);
 }
 }

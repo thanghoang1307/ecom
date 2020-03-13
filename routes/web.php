@@ -6,8 +6,14 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
 Route::get('/',function(){
 return redirect()->route('admin.prd.index');
 });
-	Route::namespace('Prd')->group(function(){
-		// Group sản phẩm
+Route::prefix('nguoi-dung')->name('user.')->group(function(){
+Route::get('/','UserController@index')->name('index');
+Route::post('/create','UserController@create')->name('create');
+Route::post('/delete/{id}','UserController@delete')->name('delete');
+Route::get('/logout','UserController@logout')->name('logout');
+});
+Route::namespace('Prd')->group(function(){
+// Group sản phẩm
 Route::prefix('san-pham')->name('prd.')->group(function(){
 Route::get('/', 'PrdController@index')->name('index');
 Route::post('/', 'PrdController@create');
@@ -56,9 +62,22 @@ Route::post('/update/{id}', 'BrandController@update')->name('update');
 Route::get('/delete/{id}', 'BrandController@delete')->name('delete');
 });
 //Kết thúc group thuộc tính
-	});
-// Kết thúc namespace Prd
 
+// Nhóm sản phẩm
+Route::prefix('nhom-san-pham')->name('attr_family.')->group(function(){
+Route::get('/', 'AttrFamilyController@index')->name('index');
+Route::post('/', 'AttrFamilyController@create')->name('create');
+Route::post('/them-thuoc-tinh-vao-nhom', 'AttrFamilyController@addAttr')->name('add_attr');
+Route::post('/tao-nhom-thuoc-tinh', 'AttrFamilyController@createAttrGr')->name('create_attr_gr');
+Route::get('/edit/{id}', 'AttrFamilyController@edit')->name('edit');
+Route::post('/xoa-nhom-thuoc-tinh/{attr_gr_id}','AttrFamilyController@deleteAttrGr')->name('delete_attr_gr');
+Route::post('/xoa-thuoc-tinh/{attr_id}','AttrFamilyController@deleteAttr')->name('delete_attr');
+Route::post('/update/{id}', 'AttrFamilyController@update')->name('update');
+Route::get('/delete/{id}', 'AttrFamilyController@delete')->name('delete');
+});
+// End nhóm sản phẩm
+// Kết thúc namespace Prd
+});
 // Banner
 Route::prefix('banner')->name('banner.')->group(function(){
 Route::get('/', 'BannerController@index')->name('index');
@@ -89,8 +108,16 @@ Route::prefix('don-hang')->name('order.')->group(function(){
 Route::get('/', 'OrderController@index')->name('index');
 Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
 Route::post('/update/{order_number}', 'OrderController@update')->name('update');
-});});
+});
 // End order
+// Customer
+Route::prefix('khach-hang')->name('customer.')->group(function(){ 
+Route::get('/', 'CustomerController@index')->name('index');
+Route::get('/show/{type}/{id}', 'CustomerController@show')->name('show');
+});
+// End customer
+
+});
 });
 
 Route::name('front.')->namespace('Front')->group(function(){

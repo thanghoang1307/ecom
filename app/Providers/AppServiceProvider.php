@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(\App\Repositories\Prd\AttrInterface::class,\App\Repositories\Prd\AttrRepository::class);
 
+        $this->app->singleton(\App\Repositories\Prd\AttrFamilyInterface::class,\App\Repositories\Prd\AttrFamilyRepository::class);
+
         $this->app->singleton(\App\Repositories\Prd\PrdInterface::class,\App\Repositories\Prd\PrdRepository::class);
 
         $this->app->singleton(\App\Repositories\Prd\AttrGrInterface::class,\App\Repositories\Prd\AttrGrRepository::class);

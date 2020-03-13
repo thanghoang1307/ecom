@@ -27,6 +27,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <a href="{{route('admin.user.logout')}}">Đăng xuất</a>
         </div>
       </div>
 
@@ -63,9 +64,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.attr_gr.index')}}" class="nav-link">
+                <a href="{{route('admin.attr_family.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý nhóm thuộc tính</p>
+                  <p>Quản lý nhóm sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -78,29 +79,15 @@
             </ul>
           </li>
           
-          <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link active">
+          <li class="nav-item ">
+            <a href="{{route('admin.customer.index')}}" class="nav-link">
               <i class="nav-icon fas fa-id-card"></i>
               <p>
                 Quản lý khách hàng
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý khách hàng</p>
-                </a>
-              </li>   
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý khách</p>
-                </a>
-              </li>
-            </ul>
           </li>
+
           <li class="nav-item">
             <a href="{{route('admin.order.index')}}" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
@@ -118,6 +105,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('admin.banner.index')}}" class="nav-link">
+              <i class="fas fa-images"></i>
+              <p>
+                Quản lý banner
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('admin.setting.index')}}" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
@@ -126,7 +121,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.user.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Quản lý người dùng

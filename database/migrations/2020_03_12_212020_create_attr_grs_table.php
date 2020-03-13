@@ -16,7 +16,10 @@ class CreateAttrGrsTable extends Migration
         Schema::create('attr_grs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->timestamps();
+            $table->integer('position');
+            $table->integer('is_user_defined')->default(1);
+            $table->unsignedBigInteger('attr_family_id');
+            $table->foreign('attr_family_id')->references('id')->on('attr_families')->onUpdate('cascade');
         });
     }
 

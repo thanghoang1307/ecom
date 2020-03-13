@@ -10,6 +10,7 @@ use App\Repositories\Prd\AttrInterface;
 use App\Repositories\Prd\BrandInterface;
 use App\Repositories\Prd\CatInterface;
 use App\Repositories\Prd\PrdImageInterface;
+use App\Repositories\Prd\AttrFamilyInterface;
 use Illuminate\Support\Facades\DB;
 
 class PrdController extends Controller
@@ -25,34 +26,37 @@ class PrdController extends Controller
     protected $attr;
     protected $cat;
     protected $prd_image;
+    protected $attr_family;
 
-    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr, CatInterface $cat, PrdImageInterface $prd_image ){
+    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr, CatInterface $cat, PrdImageInterface $prd_image, AttrFamilyInterface $attr_family){
     $this->prd = $prd;
     $this->attr_gr = $attr_gr;
     $this->brand = $brand;
     $this->attr = $attr;
     $this->cat = $cat;
     $this->prd_image = $prd_image;
+    $this->attr_family = $attr_family;
     }
 
     public function index()
     {   $prds = $this->prd->getAll();
-        $brands = $this->brand->getAll();
-        $attr_grs = $this->attr_gr->getAll();
-        return view('admin.prd.index',compact(['prds','attr_grs','brands']));
+        $brands = $this->brand->getAllData();
+        $attr_families = $this->attr_family->getAllData();
+        return view('admin.prd.index',compact(['prds','attr_families','brands']));
     }
 
     public function create(Request $request)
     {   
         // Chuẩn bị dữ liệu
-        $attrs_in_id = $this->attr_gr->getAttrsInIdArray($request->attr_gr_id);
+        $attr_family = $this->attr_family->find($request->attr_family_id);
+        $attr_grs = $attr_family->attr_grs()->orderBy('position','asc')->get();
         $unique_slug = $this->prd->createUniqueSlug(to_slug($request->name));
 
         // Tạo record trong bảng sản phẩm
         $prd = $this->prd->create(array_merge($request->all(),['slug' => $unique_slug]));
 
         // Tạo record trong sản phẩm - thuộc tính
-        $this->prd->addAttr($prd->id,$attrs_in_id);
+        $this->prd->addAttr($prd->id,$attr_family->attr_gr_maps->pluck('attr_id')->toArray());
         return redirect()->route('admin.prd.edit',$prd->id);
     }
 
@@ -65,13 +69,15 @@ class PrdController extends Controller
     
     public function edit($id)
     {   $brands = $this->brand->getAll();
-        $attrs_in = $this->prd->getAttrsIn($id);
-        $attrs_in_id = $this->prd->getAttrsInIdArray($id);
-        $attrs_not_in = $this->attr->getAttrNotIn($attrs_in_id);
-        $cats = $this->cat->getAll();
         $prd = $this->prd->find($id);
+        // $attrs_in = $this->prd->getAttrsIn($id);
+        $attr_grs = $prd->attr_family->attr_grs;
+        // $attrs_in_id = $this->prd->getAttrsInIdArray($id);
+        // $attrs_not_in = $this->attr->getAttrNotIn($attrs_in_id);
+        $cats = $this->cat->getAll();
+        
         $image = implode(',',$this->prd_image->getInput($id));
-        return view('admin.prd.edit',compact(['prd','brands','attrs_in','attrs_not_in','cats','image']));
+        return view('admin.prd.edit',compact(['prd','brands','cats','image','attr_grs']));
     }
 
     /**

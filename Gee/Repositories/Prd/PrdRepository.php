@@ -68,6 +68,7 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		return $unique_slug;
 	}
 
+
 	public function addAttr($prd_id, array $attrs_id_array = null) {
 		if ($attrs_id_array){
 			foreach ($attrs_id_array as $attr_id){
@@ -92,8 +93,9 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 	}
 
 	public function addAttrValue($prd_id,$request)
-	{	$attr_default = ['name','sku','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','meta_title','meta_desc','meta_keys','slug','_token','categories','images'];
+	{	$attr_default = ['name','sku','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','slug','_token','categories','images'];
 		$attrs_in = array_diff_key($request, array_flip($attr_default));
+		
 		if ($attrs_in){
 		foreach ($attrs_in as $code => $value)
 		{

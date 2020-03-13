@@ -16,9 +16,5 @@ class PrdTableSeeder extends Seeder
         	'brand_id' => $b->id,
         ]));
         });
-
-        $attr_gr = factory(\App\Models\Prd\AttrGr::class,3)->create();
-
-        $attr = factory(\App\Models\Prd\Attr::class,5)->create();
     }
 }

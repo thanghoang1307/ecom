@@ -18,9 +18,12 @@ class CreateAttrsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('type');
+            $table->string('position')->default(100);
+            $table->string('validation')->nullable();
             $table->boolean('is_required')->default(0);
             $table->boolean('is_looped')->default(0);
-            $table->timestamps();
+            $table->boolean('is_unique')->default(0);
+            $table->boolean('is_user_defined')->default(0);
         });
     }
 

@@ -23,4 +23,8 @@ class AttrGrMapRepository extends EloquentRepository implements AttrGrMapInterfa
 	$attr_map->delete();
 	}
 
+	public function deleteByAttrId($attr_id){
+	$this->_model->where('attr_id',$attr_id)->delete();
+	}
+
 }
