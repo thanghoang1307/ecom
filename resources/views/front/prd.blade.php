@@ -101,30 +101,31 @@
               <h4 class="feature-label">Thông số kỹ thuật / Tính năng</h4>
             </div>
             <div class="feature-body">
-              @if($prd->attrs->count() > 0)
+              @if($attrs->count() > 0)
               <ul class="specification-list">
-                @foreach ($prd->attrs as $attr)
-                @if($attr->is_looped  && ($attr->pivot->integer_val || $attr->pivot->datetime_val || $attr->pivot->date_val || $attr->type == 'boolean' || $attr->pivot->float_val || $attr->pivot->text_val))
+                @foreach ($attrs as $attr)
+                <?php $pivot = $attr->prds()->where('prd_id',$prd->id)->first()->pivot;?>
+                @if($attr->is_looped  && ($pivot->integer_val || $pivot->datetime_val || $pivot->date_val || $attr->type == 'boolean' || $pivot->float_val || $pivot->text_val))
                 <li>
                   <label>{{$attr->name}}</label>
                 @switch($attr->type)
                   @case('integer')
-                  <span>{{$attr->pivot->integer_val}}</span>
+                  <span>{{$pivot->integer_val}}</span>
                   @break
                   @case('datetime')
-                  <span>{{$attr->pivot->datetime_val}}</span>
+                  <span>{{date('d/m/Y H:i',strtotime($pivot->datetime_val))}}</span>
                   @break
                   @case('date')
-                  <span>{{$attr->pivot->date_val}}</span>
+                  <span>{{date('d/m/Y',strtotime($pivot->date_val))}}</span>
                   @break
                   @case('boolean')
-                  <span>{{$attr->pivot->boolean_val ? "Có" : "Không"}}</span>
+                  <span>{{$pivot->boolean_val ? "Có" : "Không"}}</span>
                   @break
                   @case('float')
-                  <span>{{$attr->pivot->float_val}}</span>
+                  <span>{{$pivot->float_val}}</span>
                   @break
                   @default
-                  <span>{{$attr->pivot->text_val}}</span>
+                  <span>{{$pivot->text_val}}</span>
                 @endswitch
                 </li>
                 @endif

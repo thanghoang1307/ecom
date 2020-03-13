@@ -6,8 +6,14 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
 Route::get('/',function(){
 return redirect()->route('admin.prd.index');
 });
-	Route::namespace('Prd')->group(function(){
-		// Group sản phẩm
+Route::prefix('nguoi-dung')->name('user.')->group(function(){
+Route::get('/','UserController@index')->name('index');
+Route::post('/create','UserController@create')->name('create');
+Route::post('/delete/{id}','UserController@delete')->name('delete');
+Route::get('/logout','UserController@logout')->name('logout');
+});
+Route::namespace('Prd')->group(function(){
+// Group sản phẩm
 Route::prefix('san-pham')->name('prd.')->group(function(){
 Route::get('/', 'PrdController@index')->name('index');
 Route::post('/', 'PrdController@create');
@@ -102,8 +108,16 @@ Route::prefix('don-hang')->name('order.')->group(function(){
 Route::get('/', 'OrderController@index')->name('index');
 Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
 Route::post('/update/{order_number}', 'OrderController@update')->name('update');
-});});
+});
 // End order
+// Customer
+Route::prefix('khach-hang')->name('customer.')->group(function(){ 
+Route::get('/', 'CustomerController@index')->name('index');
+Route::get('/show/{type}/{id}', 'CustomerController@show')->name('show');
+});
+// End customer
+
+});
 });
 
 Route::name('front.')->namespace('Front')->group(function(){

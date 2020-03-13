@@ -3,6 +3,7 @@
 Chỉnh sửa sản phẩm {{$prd->name}}
 @endsection
 @section('content')
+
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
@@ -17,14 +18,14 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         <div class="card-body">
 
           <!-- Accordion General -->
-          <div class="accordion" id="generalAccordionCard">
+          <div class="accordion">
             <div class="card">
               <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
                 General
               </div>
             </div>
           </div>
-          <div id="generalAccordionContent" class="collapse" data-parent="#generalAccordionCard">
+          <div id="generalAccordionContent" class="collapse">
             <div class="card-body">
               <div class="form-group">
                 <label>Tên sản phẩm</label>
@@ -58,14 +59,14 @@ Chỉnh sửa sản phẩm {{$prd->name}}
           </div>
           <!-- End Accordion General-->
           <!-- Accordion Image -->
-          <div class="accordion" id="accordionImageCard">
+          <div class="accordion">
             <div class="card">
               <div class="card-header" data-toggle="collapse" data-target="#accordionImageContent">
                 Hình ảnh
               </div>
             </div>
           </div>
-          <div id="accordionImageContent" data-parent="#accordionImageCard" class="collapse">
+          <div id="accordionImageContent" class="collapse">
             <div class="form-group">
               <label>Chọn hình đại diện</label>
               <div class="input-group">
@@ -99,8 +100,16 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
           </div>
 
-          
-          <div class="form-group">
+          <div class="accordion">
+            <div class="card">
+              <div class="card-header" data-toggle="collapse" data-target="#accordionBrandContent">
+                Thuơng hiệu và Danh mục
+              </div>
+            </div>
+          </div>
+          <div class="collapse" id="accordionBrandContent">
+            <div class="card-body">
+              <div class="form-group">
             <label>Thương hiệu</label>
             <select class="form-control" name="brand_id">
               @foreach ($brands as $brand)
@@ -119,11 +128,85 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
             @endforeach
           </div>
+            </div>
+          </div>
           @foreach($attr_grs as $attr_gr)
-          aaaa
+          <div class="accordion" >
+            <div class="card">
+              <div class="card-header" data-toggle="collapse" data-target="#accordion-{{$attr_gr->id}}">
+                {{$attr_gr->name}}
+              </div>
+            </div>
+          </div>
+          <div class="collapse" id="accordion-{{$attr_gr->id}}">
+            <div class="card-body">
+                  @foreach($attr_gr->attrs as $attr)
+
+                      @switch($attr->type)  
+                      @case('boolean')
+                      <div class="form-group">
+                    <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input attr_boolean" id="customSwitch{{$attr->code}}" name="{{$attr->code}}[]" 
+                      {{($attr->prds()->where('prd_id', $prd->id)->first() ? $attr->prds()->where('prd_id', $prd->id)->first()->pivot->boolean_val : false) ? "checked" : ""}}
+                      >
+                      <input type="hidden" name="{{$attr->code}}[]" class="attr_boolean" value="0">
+                      <label class="custom-control-label" for="customSwitch{{$attr->code}}">{{$attr->name}}</label>
+                    </div>
+                  </div>
+                      @break
+                      @case('textarea')
+                      <div class="form-group">
+                      <label for="">{{$attr->name}}</label>  
+                  <textarea name="{{$attr->code}}" cols="100%" rows="10">{!!$attr->prds()->where('prd_id', $prd->id)->first()->pivot->textarea_val ?? '' !!}</textarea>
+                </div> 
+                      @break
+                      @case('datetime') 
+                      <div class="form-group">
+                        <label>{{$attr->name}}</label>
+                  <div class="input-group"> 
+                    <div class="input-group-prepend"> 
+                      <span class="input-group-text"><i class="far fa-clock"></i></span>  
+                    </div>  
+                    <input type="text" class="form-control datetime float-right" name="{{$attr->code}}" value="{{$attr->prds()->where('prd_id', $prd->id)->first() ? date('d/m/Y H:i',strtotime($attr->prds()->where('prd_id', $prd->id)->first()->pivot->datetime_val)) : date('d/m/Y H:i')}}"> 
+                  </div>  
+                </div>  
+                      @break  
+                      @case('integer')  
+                      <div class="form-group"> 
+                      <label>{{$attr->name}}</label> 
+                        <input type="number" class="form-control" name="{{$attr->code}}" value="{{$attr->prds()->where('prd_id', $prd->id)->first()->pivot->integer_val ?? '' }}"> 
+                      </div>  
+                      @break  
+                      @case('float')  
+                      <div class="form-group">  
+                        <label>{{$attr->name}}</label> 
+                        <input type="number" class="form-control" name="{{$attr->code}}" step="0.01" value="{{$attr->prds()->where('prd_id', $prd->id)->first()->pivot->float_val ?? '' }}"> 
+                      </div>  
+                      @break  
+                      @case('date') 
+                      <div class="form-group">
+                        <label>{{$attr->name}}</label> 
+                  <div class="input-group"> 
+                    <div class="input-group-prepend"> 
+                      <span class="input-group-text"><i class="far fa-clock"></i></span>  
+                    </div>  
+                    <input type="text" class="form-control date float-right" name="{{$attr->code}}" value="{{$attr->prds()->where('prd_id', $prd->id)->first() ? date('d/m/Y',strtotime($attr->prds()->where('prd_id', $prd->id)->first()->pivot->date_val)) : date('d/m/Y')}}">  
+                  </div>  
+                </div>
+                      @break                  
+                      @default  
+                      <div class="form-group"> 
+                        <label>{{$attr->name}}</label>
+                        <input type="text" class="form-control" name="{{$attr->code}}" value="{{$attr->prds()->where('prd_id', $prd->id)->first()->pivot->text_val ?? ''}}">  
+                      </div>  
+                      @endswitch                        
+              @endforeach
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
           @endforeach
-
-
         </div>              
         <!-- /.card-body -->
         <div class="card-footer clearfix">
@@ -148,7 +231,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
 <script>
   var editor_config = {
     path_absolute : "",
-    selector: "textarea[name=long_desc]",
+    selector: "textarea",
     plugins: [
     "link image code"
     ],

@@ -1,3 +1,6 @@
+.accordion .card-header{
+  cursor:pointer;
+}
 .daterangepicker {
   position: absolute;
   color: inherit;

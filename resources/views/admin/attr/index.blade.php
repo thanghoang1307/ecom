@@ -78,6 +78,7 @@ Danh sách thuộc tính
                 	<option value="date">Ngày tháng năm</option>
                 	<option value="integer">Số nguyên</option>
                 	<option value="float">Thập phân</option>
+                  <option value="textarea">Đoạn văn bản</option>
                 </select>
               </div>
               <div class="form-check">

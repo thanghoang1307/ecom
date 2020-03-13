@@ -201,7 +201,8 @@ class ModelSeeder extends Seeder
     $user = [
     ['name' => 'admin',
     'email' => 'onestopshop@gmail.com',
-    'password' => Hash::make('admin123456')],
+    'password' => Hash::make('admin123456'),
+    'role' => 0,]
     ];
     DB::table('users')->insert($user);
 

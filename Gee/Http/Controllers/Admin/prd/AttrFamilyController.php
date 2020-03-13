@@ -28,6 +28,10 @@ class AttrFamilyController extends Controller
         return view('admin.attr_family.index',compact('attr_families'));
     }   
 
+    public function create(Request $request){
+        $attr_family = $this->attr_family->create($request->all());
+        return redirect()->route('admin.attr_family.edit',$attr_family->id);
+    }
     public function edit($id){
         $family = $this->attr_family->find($id);
     $attrs = $this->attr->getAllData()->diff($this->attr->find($family->attr_gr_maps->pluck('attr_id')));

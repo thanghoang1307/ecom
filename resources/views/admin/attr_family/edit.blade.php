@@ -38,7 +38,7 @@ Chỉnh sửa nhóm sản phẩm {{$family->name}}
 	
 	<form class="form-inline" style="float:left;"action="{{route('admin.attr_family.delete_attr_gr',$attr_gr->id)}}" method="POST">
 		@csrf
-	<button class="btn btn-primary" type="button" id="addAttrBtn" data-toggle="modal" data-target="#attrForm" data-id="{{$attr_gr->id}}" data-title="{{$attr_gr->name}}">Thêm thuộc tính</button>
+	<button class="btn btn-primary add-attr-btn" type="button" id="addAttrBtn" data-toggle="modal" data-target="#attrForm" data-id="{{$attr_gr->id}}" data-title="{{$attr_gr->name}}">Thêm thuộc tính</button>
 	<button type="submit" class="btn btn-danger deleteAttrGrBtn">Xoá</button>
 	</form>
       </div>
@@ -96,7 +96,7 @@ Chỉnh sửa nhóm sản phẩm {{$family->name}}
 @section('script')
 <script>
 $(function(){
-$('#addAttrBtn').on('click',function(){
+$('.add-attr-btn').on('click',function(){
 $('#attrForm input[name="attr_gr_id"]').val($(this).data('id'));
 $('#attrForm .add-attr-title').append($(this).data('title'));
 });

@@ -26,9 +26,6 @@ class CreatePrdsTable extends Migration
             $table->text('short_desc')->nullable();
             $table->text('long_desc')->nullable();
             $table->string('thumb')->nullable();
-            $table->string('meta_title')->nullable();
-            $table->text('meta_desc')->nullable();
-            $table->string('meta_keys')->nullable();
             $table->string('slug')->unique();
             $table->integer('view')->default(0);
             $table->integer('sale')->default(0);

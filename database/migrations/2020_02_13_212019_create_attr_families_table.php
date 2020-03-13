@@ -15,9 +15,9 @@ class CreateAttrFamiliesTable extends Migration
     {
         Schema::create('attr_families', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('name');
-            $table->integer('is_user_defined');
+            $table->integer('is_user_defined')->default(1);
         });
     }
 

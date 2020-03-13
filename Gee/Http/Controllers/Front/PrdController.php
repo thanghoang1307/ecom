@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Repositories\Prd\PrdInterface;
+use App\Repositories\Prd\AttrFamilyInterface;
+use App\Repositories\Prd\AttrInterface;
 use Illuminate\Support\Facades\DB;
 
 class PrdController extends Controller
@@ -15,9 +17,12 @@ class PrdController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected $prd;
+    protected $attr_family;
 
-    public function __construct(PrdInterface $prd){
+    public function __construct(PrdInterface $prd, AttrFamilyInterface $attr_family, AttrInterface $attr){
     $this->prd = $prd;
+    $this->attr_family = $attr_family;
+    $this->attr= $attr;
     }
 
     public function show($slug)
@@ -29,7 +34,10 @@ class PrdController extends Controller
         if (!in_array($prd->id,session()->get('products.recently_viewed'))){
         session()->push('products.recently_viewed', $prd->id);
         }
-        return view('front.prd',compact(['prd']));
+        // Chuẩn bị dữ liệu
+        $attr_family = $this->attr_family->find($prd->attr_family_id);
+        $attrs = $this->attr->find($attr_family->attr_gr_maps->pluck('attr_id'));
+        return view('front.prd',compact(['prd','attrs']));
     }
 
     public function all(Request $request){
