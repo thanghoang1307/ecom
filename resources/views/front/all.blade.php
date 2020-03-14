@@ -36,12 +36,7 @@
 @endsection
 @section('script')
 <script>
-  $(function(){
-  $('#product-order').on('change','input[name="d_orderby"]',redirectParam);
-  $('.checkbox').on('change','input[type="checkbox"]',redirectParam);
-  });
-</script>
-<script>
+  // Desktop filter
 function redirectParam(){
 var brand_arr = [];
 $.each($("input[name='brand_checkbox']:checked"), function(){
@@ -51,9 +46,7 @@ var price_arr = [];
 $.each($("input[name='price_checkbox']:checked"), function(){
 price_arr.push($(this).val());
 });
-
 var search = '{{app("request")->input("search")}}';
-
 var param_arr = [];
 param_arr.push('orderby=' + $('input[name="d_orderby"]:checked').val());
 if (brand_arr.length){
@@ -73,9 +66,44 @@ const url = 'http://' + window.location.hostname + ':' + window.location.port + 
 window.location.href = url + param;
 };
 
+// Mobile Filter
+function mobileredirectParam(){
+var brand_arr = [];
+$.each($("input[name='mb_checkbox']:checked"), function(){
+brand_arr.push($(this).val());
+});
+var price_arr = [];
+$.each($("input[name='mp_checkbox']:checked"), function(){
+price_arr.push($(this).val());
+});
+var search = '{{app("request")->input("search")}}';
+var param_arr = [];
+param_arr.push('orderby=' + $('input[name="m_orderby"]:checked').val());
+if (brand_arr.length){
+  param_arr.push('brand=' + brand_arr.join('_'));
+}
+
+if (price_arr.length){
+  param_arr.push('price=' + price_arr.join('_'));
+}
+
+if (search){
+  param_arr.push('search='+search);
+}
+
+param = '?' + param_arr.join('&');
+const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+window.location.href = url + param;
+}
+
 $(function(){
 $('#product-order').on('change','input[name="d_orderby"]',redirectParam);
-$('.checkbox').on('change','input[type="checkbox"]',redirectParam);
+$('input[name="brand_checkbox"]').on('change',redirectParam);
+$('input[name="price_checkbox"]').on('change',redirectParam);
+$('.apply-filter').on('click',function(e){
+e.preventDefault();
+mobileredirectParam();
+});
 });
 </script>
 @endsection

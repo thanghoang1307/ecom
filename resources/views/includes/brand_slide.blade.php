@@ -5,7 +5,7 @@
           <div class="home-partner-list-wrapper">
           	@foreach ($brands as $brand)
             <div class="item">
-              <a href="{{url('/thuong-hieu/'.$brand->slug)}}">
+              <a href="{{route('front.brand-list',$brand->slug)}}">
                 <img src="{{$brand->logo}}" class="img-fluid" alt="">
               </a>
             </div>

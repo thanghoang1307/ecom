@@ -24,7 +24,6 @@ class CatController extends Controller
     $cat = $this->cat->getFromSlug($slug);
   	$brands_id = $this->cat->getBrandId($cat->id);
   	$brands = $this->brand->getBrandFromIds($brands_id);
-
     $prds = $this->cat->filter($request, $cat->id)->paginate(12);
     return view('front.cat',compact('cat','brands','prds'));
     }

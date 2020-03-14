@@ -13,4 +13,8 @@ class BrandRepository extends EloquentRepository implements BrandInterface {
 	public function getBrandFromIds($id){
 	return $this->_model->find($id);
 	}
+
+	public function getFromSlug($brand_slug){
+		return $this->_model->where('slug',$brand_slug)->first();
+	}
 }
