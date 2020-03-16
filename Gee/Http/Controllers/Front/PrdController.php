@@ -9,6 +9,7 @@ use App\Repositories\Prd\AttrFamilyInterface;
 use App\Repositories\Prd\AttrInterface;
 use Illuminate\Support\Facades\DB;
 
+
 class PrdController extends Controller
 {
     /**

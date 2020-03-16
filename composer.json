@@ -10,8 +10,10 @@
     "require": {
         "php": "^7.2",
         "almasaeed2010/adminlte": "~2.4",
+        "barryvdh/laravel-dompdf": "^0.8.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
+        "laravel/slack-notification-channel": "^2.0",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "unisharp/laravel-filemanager": "^2.0"
