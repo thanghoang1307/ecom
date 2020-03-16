@@ -104,7 +104,9 @@
               @if($attrs->count() > 0)
               <ul class="specification-list">
                 @foreach ($attrs as $attr)
-                <?php $pivot = $attr->prds()->where('prd_id',$prd->id)->first()->pivot;?>
+                <?php $check = $attr->prds()->where('prd_id',$prd->id)->first(); ?>
+                @if($check)
+                <?php $pivot = $check->pivot;?>
                 @if($attr->is_looped  && ($pivot->integer_val || $pivot->datetime_val || $pivot->date_val || $attr->type == 'boolean' || $pivot->float_val || $pivot->text_val))
                 <li>
                   <label>{{$attr->name}}</label>
@@ -128,6 +130,7 @@
                   <span>{{$pivot->text_val}}</span>
                 @endswitch
                 </li>
+                @endif
                 @endif
                 @endforeach
               </ul>

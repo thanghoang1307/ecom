@@ -22,6 +22,7 @@ $carts = session()->get('cart.items');
 	$prds = [];
 	$total = 0;
 	}
+	
 $view->with([
 	'prds' => $prds,
 	'total' => $total,

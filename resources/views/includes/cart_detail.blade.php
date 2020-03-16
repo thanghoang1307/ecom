@@ -92,7 +92,7 @@
           <div class="cart-item">
             <div class="row no-gutters align-items-center align-content-center">
               <div class="col-4 col-md-12">
-                <a href="#" class="btn-submit is-white">
+                <a href="{{route('front.tai_bao_gia')}}" target="_blank" class="btn-submit is-white">
                   <span class="d-none d-md-block">Tải về file báo giá (.pdf)</span>
                   <span class="d-block d-md-none">Tải báo giá</span>
                 </a>

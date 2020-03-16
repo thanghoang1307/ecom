@@ -12,6 +12,8 @@ use App\Repositories\Prd\CatInterface;
 use App\Repositories\Prd\PrdImageInterface;
 use App\Repositories\Prd\AttrFamilyInterface;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreProduct;
+use App\Http\Requests\UpdateProduct;
 
 class PrdController extends Controller
 {
@@ -45,8 +47,9 @@ class PrdController extends Controller
         return view('admin.prd.index',compact(['prds','attr_families','brands']));
     }
 
-    public function create(Request $request)
+    public function create(StoreProduct $request)
     {   
+        $validated = $request->validated();
         // Chuẩn bị dữ liệu
         $attr_family = $this->attr_family->find($request->attr_family_id);
         $attr_grs = $attr_family->attr_grs()->orderBy('position','asc')->get();
@@ -87,8 +90,9 @@ class PrdController extends Controller
      * @param  \App\Prd  $prd
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
-    {   if ($request->sale_price){
+    public function update($id, UpdateProduct $request)
+    {   $validator = $request->validated();
+        if ($request->sale_price){
         $current_price = $request->sale_price;
         } else {
         $current_price = $request->regular_price;
@@ -97,6 +101,7 @@ class PrdController extends Controller
         $this->prd->addCats($id,$request->categories);
         $this->prd->addAttrValue($id,$request->all());
         $this->prd_image->addImages($id,$request->images);
+        $request->session()->flash('success','Cập nhật sản phẩm thành công');
         return redirect()->route('admin.prd.index');
     }
 

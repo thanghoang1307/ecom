@@ -120,6 +120,13 @@ Route::get('/show/{type}/{id}', 'CustomerController@show')->name('show');
 });
 });
 
+Route::get('testmail', function () {
+    $order = App\Models\Order\Order::find(2);
+
+    return (new App\Notifications\OrderComplete($order))
+                ->toMail($order->customer);
+});
+
 Route::name('front.')->namespace('Front')->group(function(){
 Route::get('/','PageController@index')->name('index');
 Route::get('/san-pham/{slug}','PrdController@show')->name('product-detail');
@@ -139,6 +146,7 @@ Route::post('/ajax-remove-item','CartController@ajaxRemoveItem')->name('ajax_rem
 Route::post('/checkout2','CartController@checkOut2')->name('check_out_2');
 Route::post('/checkout3','CartController@checkOut3')->name('check_out_3');
 Route::get('/hoan-tat-don-hang/','CartController@success')->name('success');
+Route::get('/tai-bao-gia/','CartController@taiBaoGia')->name('tai_bao_gia');
 Route::post('/customer/register','CustomerController@register')->name('customer.create');
 Route::get('/customer/logout','CustomerController@logOut')->name('customer.logout');
 Route::post('/customer/login','CustomerController@logIn')->name('customer.login');
@@ -163,6 +171,8 @@ Route::get('/chi-tiet-don-hang/{id}','AccountController@orderDetail')->name('ord
 });
 Route::get('/{slug}','PostController@show')->name('post-detail');
 });
+
+
 
 
 

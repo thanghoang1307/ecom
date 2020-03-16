@@ -11,7 +11,10 @@ use App\Repositories\Order\ShipmentInterface;
 use App\Repositories\Order\OrderPrdInterface;
 use App\Repositories\Order\GuestInterface;
 use App\Repositories\Prd\PrdInterface;
+use App\Notifications\OrderComplete;
+use Barryvdh\DomPDF\Facade as PDF;
 use Auth;
+use App\User;
 
 class CartController extends Controller
 {
@@ -104,6 +107,10 @@ class CartController extends Controller
 	public function success(){
 		$order = $this->order->getFromOrderNumber(session('order_number'));
 		session()->forget('cart');
+		$user = User::where('role',0)->first();
+		$customer = $order->customer_id ? $order->customer : $order->guest;
+		$customer->notify(new OrderComplete($order));
+		$user->notify(new OrderComplete($order));
 		return view('front.success',compact('order'));
 	}
 
@@ -117,6 +124,21 @@ class CartController extends Controller
 		session()->forget('cart.items.'.$request->prd_id);
 		$total = $this->prd->sumPrice(session('cart.items'));
 		return response()->json(['total' => $total]);
+	}
+
+	public function taiBaoGia(){
+		$carts = session()->get('cart.items');
+	if ($carts){
+	$ids = array_keys(session()->get('cart.items'));
+	$prds = $this->prd->find($ids);
+	$total = $this->prd->sumPrice($carts);
+	}
+	else {
+	$prds = [];
+	$total = 0;
+	}	
+		$pdf = PDF::loadView('pdf.bao_gia', ['prds' => $prds, 'total' => $total, 'carts' => $carts]);
+		return $pdf->stream();
 	}
 
 }
