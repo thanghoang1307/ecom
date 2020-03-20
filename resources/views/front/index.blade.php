@@ -31,7 +31,6 @@ $bot_cats = ['thiet-ke-cad-cam-cae','may-tram-workstation','bo-luu-dien-ups','ma
 @component('components.cat',['slug' => $value])
 @endcomponent
 @endforeach
-
   <section class="home-mid-banner container">
   	<div class="home-mid-banner-wrapper owl-carousel owl-theme">
   	  <div class="item">

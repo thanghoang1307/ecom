@@ -30,10 +30,10 @@
                   </div>
                   <div class="col-7">
                     <div class="news-text">
-                      <h3 class="news-title">{{ Str::limit($post->content, $limit = 150, $end = '..') }}</h3>
+                      <h3 class="news-title">{{ Str::limit($post->title, $limit = 150, $end = '..') }}</h3>
                       <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($post->created_at))}}</h4>
                       <p class="news-desc">
-                        {!!Str::limit($post->content, $limit = 300, $end = '..') !!}
+                        {{Str::limit(strip_tags($post->content), $limit = 300, $end = '..') }}
                       </p>
                     </div>
                   </div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-6">
                       <div class="video-text">
-                        <h3 class="video-title">{{ Str::limit($post->content, $limit = 60, $end = '..') }}</h3>
+                        <h3 class="video-title">{{ Str::limit(strip_tags($post->title), $limit = 60, $end = '...') }}</h3>
                         <h4 class="video-view">{{$video->view}} lượt xem</h4>
                       </div>
                     </div>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-8">
                       <div class="news-text">
-                        <h3 class="news-title">{{ Str::limit($most_viewed->content, $limit = 150, $end = '..') }}</h3>
+                        <h3 class="news-title">{{ Str::limit(strip_tags($most_viewed->title), $limit = 150, $end = '...') }}</h3>
                         <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($most_viewed->created_at))}}</h4>
                       </div>
                     </div>

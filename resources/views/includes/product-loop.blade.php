@@ -16,16 +16,14 @@
                   <h5 class="percentage-discount">{{number_format(($prd->regular_price - $prd->sale_price)*100/$prd->regular_price, 2)}}%</h5>
                   <h6 class="original-price price">{{$prd->regular_price}}<sup>đ</sup></h6>
                 </div>
-        @endif
+        
                 </div>
               </a>
               <div class="product-hover  {{$prd->sale_price ? '' : 'no-discount'}}">
                 <div class="product-promotion">
                   <i class="sale-label"></i> <span>Ưu đãi/quà tặng từ...</span>
                 </div>
-                <a class="product-add-to-cart" href="#">
-                  <i class="icon icon-shopping-cart"></i> <span>Thêm vào giỏ hàng</span>
-                </a>
+                @endif
               </div>
             </div>
           </a>

@@ -140,4 +140,11 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 	}
 	return $total;
 	}
+
+		public function getRelatedPrd($prd)
+	{
+		return $this->_model->with('cats')->whereHas('cats', function($q) use ($prd){
+		$q->where('cats.id',$prd->cats->pluck('id'));
+		})->get();
+	}
 }

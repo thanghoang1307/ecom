@@ -6,7 +6,6 @@ $cat = $cats->where('slug',$slug)->first();
     <div class="container">
       <div class="row">
         <div class="col-12">
-          
           <h2 class="page-title">{{$cat->name}}</h2>
           <a href="{{route('front.category-list',$cat->slug)}}" class="view-all">Xem tất cả</a>
         </div>

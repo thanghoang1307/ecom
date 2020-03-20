@@ -20,12 +20,11 @@
                 </div>
               </a>
               <div class="product-hover  {{$prd->sale_price ? '' : 'no-discount'}}">
+                @if ($prd->sale_price)
                 <div class="product-promotion">
                   <i class="sale-label"></i> <span>Ưu đãi/quà tặng từ...</span>
                 </div>
-                <a class="product-add-to-cart" href="#">
-                  <i class="icon icon-shopping-cart"></i> <span>Thêm vào giỏ hàng</span>
-                </a>
+                @endif
               </div>
             </div>
           </a>

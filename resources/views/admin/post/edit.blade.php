@@ -77,7 +77,7 @@ Chỉnh sửa bài viết {{$post->name}}
       path_absolute : "",
       selector: "textarea[name=content]",
       plugins: [
-        "link image code"
+        "link image code media"
       ],
       relative_urls: false,
       height: 129,

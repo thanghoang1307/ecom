@@ -27,8 +27,9 @@
                         Chưa xử lý
                         @endswitch
                         </span></h4>
-        @foreach ($order->prds as $prd)
+        
                     <div class="order-detail-body">
+                      @foreach ($order->prds as $prd)
                       <div class="row">
                         <div class="col-3">
                           <div class="order-detail-image">
@@ -38,7 +39,6 @@
                           </div>
                         </div>
                         <div class="col-9">
-                        	
                           <div class="row">
                             <div class="col-md-6">
                               <div class="order-detail-info">
@@ -57,9 +57,10 @@
                               </div>
                             </div>
                           </div>
-                          @endforeach
+                          
                         </div>
                       </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>

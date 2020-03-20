@@ -126,6 +126,9 @@
                   @case('float')
                   <span>{{$pivot->float_val}}</span>
                   @break
+                  @case('textarea')
+                  <span>{!! $pivot->textarea_val !!}</span>
+                  @break
                   @default
                   <span>{{$pivot->text_val}}</span>
                 @endswitch
@@ -177,7 +180,12 @@
       </div>
     </section>
   </div>
-
+@if ($related)
+@component('components.related',['prds' => $related])
+@endcomponent
+@endif
+@component('components.recently_view')
+@endcomponent
   <div class="page-gap"></div>
   @post
   <div class="page-gap"></div>
