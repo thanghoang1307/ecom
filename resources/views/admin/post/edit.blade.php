@@ -47,9 +47,9 @@ Chỉnh sửa bài viết {{$post->name}}
               <div class="form-group">
                 <label>Loai post</label>
               <select class="form-control" name="post_type">
-               <option value="post">Bai viet</option>
-               <option value="page">Trang</option>
-               <option value="video">Video</option>
+               <option value="post" {{$post->post_type == 'post' ? 'selected' : ''}}>Bai viet</option>
+               <option value="page" {{$post->post_type == 'page' ? 'selected' : ''}}>Trang</option>
+               <option value="video" {{$post->post_type == 'video' ? 'selected' : ''}}>Video</option>
               </select>
               </div>
               </div>              

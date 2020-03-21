@@ -25,7 +25,7 @@ class CreatePrdAttrValsTable extends Migration
             $table->integer('integer_val')->nullable();
             $table->float('float_val')->nullable();
             $table->date('date_val')->nullable();
-            $table->string('textarea_val')->nullable();
+            $table->text('textarea_val')->nullable();
         });
     }
 

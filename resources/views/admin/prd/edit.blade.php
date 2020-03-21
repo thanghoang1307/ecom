@@ -48,7 +48,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
                 <input type="number" class="form-control" name="sale_price" value="{{$prd->sale_price}}">
               </div>
               <div class="form-group">
-                <label>Mô tả ngắn</label>
+                <label>Thông tin ưu đãi</label>
                 <textarea class="form-control" name="short_desc" rows="5">{{$prd->short_desc}}</textarea>
               </div>
               <div class="form-group">
