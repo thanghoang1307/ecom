@@ -17,4 +17,9 @@ class AttrRepository extends EloquentRepository implements AttrInterface {
 	public function getAttrNotIn(array $attr_in_id){
 		return $this->_model->whereNotIn('id',$attr_in_id)->get();
 	}
+
+	public function findOrder($id)
+	{
+		return $this->_model->whereIn('id',$id)->orderBy('position','asc')->get();
+	}
 }

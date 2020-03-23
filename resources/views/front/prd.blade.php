@@ -102,12 +102,14 @@
             </div>
             <div class="feature-body">
               @if($attrs->count() > 0)
+              
               <ul class="specification-list">
                 @foreach ($attrs as $attr)
                 <?php $check = $attr->prds()->where('prd_id',$prd->id)->first(); ?>
                 @if($check)
                 <?php $pivot = $check->pivot;?>
-                @if($attr->is_looped  && ($pivot->integer_val || $pivot->datetime_val || $pivot->date_val || $attr->type == 'boolean' || $pivot->float_val || $pivot->text_val))
+
+                @if($attr->is_looped  && ($pivot->integer_val || $pivot->datetime_val || $pivot->date_val || $attr->type == 'boolean' || $pivot->float_val || $pivot->text_val || $pivot->textarea_val))
                 <li>
                   <label>{{$attr->name}}</label>
                 @switch($attr->type)

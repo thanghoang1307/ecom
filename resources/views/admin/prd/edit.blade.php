@@ -140,7 +140,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
           </div>
           <div class="collapse" id="accordion-{{$attr_gr->id}}">
             <div class="card-body">
-                  @foreach($attr_gr->attrs as $attr)
+                  @foreach($attr_gr->attrs()->orderBy('position')->get() as $attr)
 
                       @switch($attr->type)  
                       @case('boolean')

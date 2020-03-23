@@ -37,7 +37,7 @@ class PrdController extends Controller
         }
         // Chuẩn bị dữ liệu
         $attr_family = $this->attr_family->find($prd->attr_family_id);
-        $attrs = $this->attr->find($attr_family->attr_gr_maps->pluck('attr_id'));
+        $attrs = $this->attr->findOrder($attr_family->attr_gr_maps->pluck('attr_id'));
         $related = $this->prd->getRelatedPrd($prd);
         return view('front.prd',compact(['prd','attrs','related']));
     }

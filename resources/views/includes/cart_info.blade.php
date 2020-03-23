@@ -27,7 +27,7 @@
                             <input id="radio-1" name="gender" type="radio" value="female" checked>
                             <label for="radio-1" class="radio-label">Chị</label>
                             @else
-                            <input id="radio-1" name="gender" type="radio" value="male" checked>
+                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
                             <label for="radio-1" class="radio-label">Anh</label>
                             <input id="radio-1" name="gender" type="radio" value="female">
                             <label for="radio-1" class="radio-label">Chị</label>
