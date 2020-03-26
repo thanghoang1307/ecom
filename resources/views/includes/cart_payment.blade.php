@@ -7,7 +7,7 @@
             <li><a href="#"><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
-        <form action="{{route('front.check_out_3')}}" method="POST">
+        <form action="{{route('front.check_out_3',$order_number)}}" method="POST">
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Hình thức nhận hàng</h2>
@@ -19,7 +19,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="radio">
-                            <input id="radio-1" name="payment_type" type="radio" value="0" checked>
+                            <input id="radio-1" name="payment_type" type="radio" value="0" checked="checked">
                             <label for="radio-1" class="radio-label">Thanh toán khi nhận hàng (C.O.D)</label>
                           </div>
                         </div>
@@ -38,30 +38,15 @@
                         <p class="process-note-detail">Thời gian giao hàng trung bình dự kiện từ 3 - 5 ngày làm việc</p>
                       </div>
                       <div class="process-tab process-account">
-					  	<div class="row">Vui lòng chuyển khoản với nội dung, thanh toán cho đơn hàng số xxxx...</div>
+					  	<div class="row">Vui lòng chuyển khoản với nội dung, thanh toán cho đơn hàng số {{$order_number}}</div>
 					  	<div class="page-gap"></div>
                         <div class="row">
-                          <div class="col-md-4">
+                          <div class="col-md-12">
                             <div class="process-account-detail">
-                              <p class="process-account-detail-detail">Ngân hàng Argibank</p>
-                              <h3 class="process-account-detail-title">0313123456789</h3>
-                              <p class="process-account-detail-detail">Đỗ Nam Trung</p>
+                              <p class="process-account-detail-detail">Ngân hàng Thương Mại Cổ Phần Á Châu (ACB), Chi nhánh Bình Thạnh -Tp.HCM</p>
+                              <h3 class="process-account-detail-title">206259009</h3>
+                              <p class="process-account-detail-detail">CÔNG TY TNHH DỊCH VỤ UM</p>
                               <hr class="d-block d-md-none">
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="process-account-detail">
-                              <p class="process-account-detail-detail">Ngân hàng Argibank</p>
-                              <h3 class="process-account-detail-title">0313123456789</h3>
-                              <p class="process-account-detail-detail">Đỗ Nam Trung</p>
-                              <hr class="d-block d-md-none">
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="process-account-detail">
-                              <p class="process-account-detail-detail">Ngân hàng Argibank</p>
-                              <h3 class="process-account-detail-title">0313123456789</h3>
-                              <p class="process-account-detail-detail">Đỗ Nam Trung</p>
                             </div>
                           </div>
                         </div>
@@ -79,7 +64,7 @@
                       <div class="row">
                         <div class="col-12">
                           <div class="checkbox">
-                            <input id="check-1" name="is_vat" type="checkbox" checked>
+                            <input id="check-1" name="is_vat" type="checkbox">
                             <label for="check-1" class="checkbox-label">Yêu cầu xuất hóa đơn GTGT cho đơn hàng
                               này</label>
                           </div>
@@ -93,17 +78,26 @@
                             <input type="text" class="form-control" name="name" id="inputCompany" aria-describedby="inputCompany"
                                    placeholder="Tên công ty">
                           </div>
+                          @error('name')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="text" class="form-control" id="inputMST" aria-describedby="inputMST" name="mst"
                                    placeholder="Mã số thuế">
                           </div>
+                          @error('mst')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
                         </div>
                         <div class="col-12">
                           <div class="form-group">
                             <input type="text" class="form-control" id="inputAddress" aria-describedby="inputName"
                                    placeholder="Số nhà, tên đường" name="address">
+                                   @error('address')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
                           </div>
                         </div>
                         <div class="col-12">

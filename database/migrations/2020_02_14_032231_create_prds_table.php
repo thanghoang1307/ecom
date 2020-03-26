@@ -30,6 +30,7 @@ class CreatePrdsTable extends Migration
             $table->integer('view')->default(0);
             $table->integer('sale')->default(0);
             $table->integer('current_price')->nullable();
+            $table->integer('is_show')->default(1);
             $table->timestamps();
         });
     }

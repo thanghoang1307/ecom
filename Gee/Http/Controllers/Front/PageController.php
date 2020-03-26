@@ -45,8 +45,8 @@ class PageController extends Controller {
 	return view('front.check-out-1');
 	}
 
-	public function payment(){
-		return view('front.check-out-2');
+	public function payment($order_number){
+		return view('front.check-out-2',compact('order_number'));
 	}
 
 }

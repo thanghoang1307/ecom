@@ -16,7 +16,6 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-
           <!-- Accordion General -->
           <div class="accordion">
             <div class="card">
@@ -207,6 +206,12 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
           </div>
           @endforeach
+<div class="form-group">
+  <select name="is_show">
+    <option value="0" {{$prd->is_show ? '': 'selected'}}>Ẩn</option>
+    <option value="1" {{$prd->is_show ? 'selected': ''}}>Hiện</option>
+  </select>
+</div>
         </div>              
         <!-- /.card-body -->
         <div class="card-footer clearfix">

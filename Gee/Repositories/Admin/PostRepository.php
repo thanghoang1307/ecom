@@ -33,6 +33,6 @@ class PostRepository extends EloquentRepository implements PostInterface {
 	}
 
 	public function getMostViewed(){
-		return $this->_model->orderBy('view','desc')->take(5)->get();
+		return $this->_model->whereIn('post_type',['post','video'])->orderBy('view','desc')->take(5)->get();
 	}
 }

@@ -3,7 +3,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('front.index')}}">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tin tức & Công nghệ</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('front.post-list')}}">Tin tức & Công nghệ</a></li>
           </ol>
         </nav>
       </div>

@@ -17,15 +17,15 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('order_number');
             $table->float('total',100,2);
-            $table->integer('is_vat');
+            $table->integer('is_vat')->default(0);
             $table->unsignedBigInteger('guest_id')->nullable();
             $table->foreign('guest_id')->references('id')->on('guests')->onUpdate('cascade');
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade');
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
-            $table->integer('payment_type');
-            $table->integer('status');
+            $table->integer('payment_type')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

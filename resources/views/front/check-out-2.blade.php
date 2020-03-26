@@ -1,4 +1,5 @@
 @extends('layouts.check-out')
+@section('next','front.check_out_3')
 @section('content')
 <div id="one-stop-check-out" class="main check-out-page">
   <div class="row no-gutters">

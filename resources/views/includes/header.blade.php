@@ -15,6 +15,14 @@
 	<script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>
 </head>
 <body>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-579KXRM');</script>
+<!-- End Google Tag Manager -->
+
 	<!--HEADER-->
 	<header id="Header" class="header-wrapper">
 		<div class="header-top-banner d-none d-md-block">
@@ -122,13 +130,13 @@
 									<span class="cart-title d-none d-md-inline-block">Giỏ hàng</span>
 									<div class="dropdown dropdown-discount">
 										<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
-											<span class="header-cart-number">{{session()->get('cart.items') ? count(session()->get('cart.items')) : 0}}</span>
+											<span class="header-cart-number">{{session()->get('cart.items') ? array_sum(session()->get('cart.items')) : 0}}</span>
 											<i class="icon icon-shopping-cart"></i>
 										</a>
 										<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false">
-										<span class="header-cart-number">{{session()->get('cart.items') ? count(session()->get('cart.items')) : 0}}</span>
+										<span class="header-cart-number">{{session()->get('cart.items') ? array_sum(session()->get('cart.items')) : 0}}</span>
 										<i class="icon icon-shopping-cart"></i>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">

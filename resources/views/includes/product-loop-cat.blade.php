@@ -1,6 +1,7 @@
           <div class="product-list-wrapper">
             <div class="row">
               @foreach($prds as $prd)
+              @if($prd->is_show)
               <div class="col-6 col-md-4 col-lg-3">
                 <div class="product-item">
                   <a href="{{route('front.product-detail',$prd->slug)}}">
@@ -33,6 +34,7 @@
                   @endif
                 </div>
               </div>
+              @endif
               @endforeach
             </div>
           </div>

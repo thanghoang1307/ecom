@@ -98,9 +98,12 @@
                 </a>
               </div>
               <div class="col-8">
-                <a href="#" class="btn-submit d-block d-md-none">
+                <form action="@yield('next')" method="POST">
+                  @csrf
+                <button type="submit" class="btn-submit d-block d-md-none">
                   <span>Tiến hành thanh toán</span>
-                </a>
+                </button>
+                </form>
               </div>
             </div>
           </div>

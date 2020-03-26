@@ -11,6 +11,15 @@
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <div class="process-profile">
               <div class="row no-gutters">
                 @auth('customer')
@@ -150,7 +159,7 @@
           </div>
           <div class="process-info">
             <div class="text-right">
-              <button class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
+              <button type="submit" class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
             </div>
           </div>
         </form>

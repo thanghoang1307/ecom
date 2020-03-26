@@ -5,7 +5,8 @@ namespace App\Models\Prd;
 use Illuminate\Database\Eloquent\Model;
 
 class Prd extends Model
-{	protected $fillable = ['sku','name','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','slug','view','sale','current_price','attr_family_id'];
+{	protected $fillable = ['sku','name','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','slug','view','sale','current_price','attr_family_id','is_show'];
+
 	public function brand() {
 		return $this->belongsTo(\App\Models\Prd\Brand::class);
 	}

@@ -16,7 +16,7 @@
   		        <div style="background-image: url('{{$post->thumb}}')"></div>
   		      </div>
   		      <div class="news-text">
-  		        <h3 class="news-title">{{ Str::limit($post->content, $limit = 150, $end = '..') }}</h3>
+  		        <h3 class="news-title">{{ $post->title }}</h3>
   		        <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($post->created_at))}}</h4>
   		      </div>
   		    </a>

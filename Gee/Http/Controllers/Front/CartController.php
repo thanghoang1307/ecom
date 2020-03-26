@@ -37,54 +37,35 @@ class CartController extends Controller
 	}
 
 	public function checkOut2(Request $request){
-
-		session()->put('cart.customer.gender',$request->gender);
-		session()->put('cart.customer.name',$request->name);
-		session()->put('cart.customer.phone',$request->phone);
-		session()->put('cart.customer.email',$request->email);
-		session()->put('cart.shipment.city',$request->city);
-		session()->put('cart.shipment.district',$request->district);
-		session()->put('cart.shipment.ward',$request->ward);
-		session()->put('cart.shipment.address',$request->address);
-		session()->put('cart.shipment.note',$request->note);
-
-		return redirect()->route('front.thanh_toan');
-	}
-
-	public function checkOut3(Request $request){
-		$company = null;
-		if ($request->is_vat){
-			$company = $this->company->create(
-				[
-					'name' => $request->name,
-					'mst' => $request->mst,
-					'address' => $request->address,
-					'note' => $request->note,
-				]
-			);
-		}
+		$validatedData = $request->validate([
+        'gender' => 'required',
+        'name' => 'required',
+        'phone' => 'required',
+        'email' => 'required',
+        'city' => 'required',
+        'district' => 'required',
+        'ward' => 'required',
+        'address' => 'required',
+    ]);
 
 		$order_arr = [
 			'order_number' => $this->order->uniqueOrderNumber(),
 			'total' => $this->prd->sumPrice(session('cart.items')),
-			'is_vat' => $request->is_vat ? 1 : 0,
-			'company_id' => $company ? $company->id : null,
-			'payment_type' => $request->payment_type,
 			'status' => 0,
 		];
 		if (Auth::guard('customer')->check()){
 			$order_arr = array_merge($order_arr,['customer_id' => Auth::guard('customer')->id(),]);
 		} else {
 			$guest = $this->guest->create([
-				'gender' => session('cart.customer.gender'),
-				'name' => session('cart.customer.name'),
-				'phone' => session('cart.customer.phone'),
-				'email' => session('cart.customer.email'),
+				'gender' => $request->gender,
+				'name' => $request->name,
+				'phone' => $request->phone,
+				'email' => $request->email,
 			]);
 			$order_arr = array_merge($order_arr,['guest_id' => $guest->id,]);	
 		}
 		$order = $this->order->create($order_arr);
-		session()->put('order_number',$order->order_number);
+
 		foreach (session('cart.items') as $key => $value){
 			$price = $this->prd->find($key)->current_price;
 			$order_prd = $this->order_prd->create([
@@ -94,18 +75,47 @@ class CartController extends Controller
 				'price' => $price,
 				'total' => $value*$price,]);
 		}
+
 		$shipment = $this->shipment->create([
-			'address' => session('cart.shipment.address'),
-			'matp' => session('cart.shipment.city'),
-			'maqh' => session('cart.shipment.district'),
-			'maphuong' => session('cart.shipment.ward'),
+			'address' => $request->address,
+			'matp' => $request->city,
+			'maqh' => $request->district,
+			'maphuong' => $request->ward,
 			'order_id' => $order->id,
 		]);
-		return redirect()->route('front.success');
+
+		return redirect()->route('front.thanh_toan',$order->order_number);
 	}
 
-	public function success(){
-		$order = $this->order->getFromOrderNumber(session('order_number'));
+	public function checkOut3(Request $request,$order_number){
+		$company = null;
+		if ($request->is_vat){
+			$validatedData = $request->validate([
+        'name' => 'required',
+        'mst' => 'required',
+        'address' => 'required',
+    ]);
+			$company = $this->company->create(
+				[
+					'name' => $request->name,
+					'mst' => $request->mst,
+					'address' => $request->address,
+					'note' => $request->note,
+				]
+			);
+			$order = $this->order->getFromOrderNumber($order_number);
+			$order->update([
+				'is_vat' => 1,
+				'company_id' => $company->id,
+				'payment_type' => $request->payment_type,
+			]);
+		}
+
+		return redirect()->route('front.success',$order_number);
+	}
+
+	public function success($order_number){
+		$order = $this->order->getFromOrderNumber($order_number);
 		session()->forget('cart');
 		$user = User::where('role',0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;

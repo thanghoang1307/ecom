@@ -12,7 +12,7 @@
                       <h3 class="news-title">{{ Str::limit($post->content, $limit = 150, $end = '..') }}</h3>
                       <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($post->created_at))}}</h4>
                       <p class="news-desc">
-                        {!!Str::limit($post->content, $limit = 300, $end = '..') !!}
+                        {!! rip_tags($post->content) !!}
                       </p>
                     </div>
                   </div>

@@ -93,7 +93,7 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 	}
 
 	public function addAttrValue($prd_id,$request)
-	{	$attr_default = ['name','sku','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','slug','_token','categories','images'];
+	{	$attr_default = ['name','sku','brand_id','regular_price','sale_price','short_desc','long_desc','thumb','slug','_token','categories','images','is_show'];
 		$attrs_in = array_diff_key($request, array_flip($attr_default));
 		
 		if ($attrs_in){

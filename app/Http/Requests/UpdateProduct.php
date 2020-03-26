@@ -25,7 +25,6 @@ class UpdateProduct extends FormRequest
     {
         return [
             'sku' => 'required',
-            'regular_price' => 'required',
             'slug' => 'required',
             'categories' => 'required',
             'name' => 'required',

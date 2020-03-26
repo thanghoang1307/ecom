@@ -50,13 +50,18 @@
               
               <h2 class="product-name">{{$prd->name}}</h2>
               <h3 class="product-code">Mã sản phẩm: <span>{{$prd->sku}}</span></h3>
-              <h4 class="product-price price">{{$prd->sale_price ? $prd->sale_price : $prd->regular_price}}<sup>đ</sup></h4>
+              <h4 class="product-price price">@if($prd->regular_price || $prd->current_price)
+                    {{$prd->sale_price ? $prd->sale_price : $prd->regular_price}}<sup>đ</sup>
+                    @else
+                    Liên hệ
+                    @endif</h4>
               @if ($prd->sale_price)
               <div class="product-discount">
                 <h5 class="percentage-discount">-{{number_format(($prd->regular_price - $prd->sale_price)*100/$prd->regular_price, 2)}}%</h5>
                 <h6 class="original-price price">{{$prd->regular_price}}<sup>đ</sup></h6>
               </div>
               @endif
+              @if($prd->regular_price || $prd->current_price)
               <div class="product-action">
                 <div>
                   <form action="{{route('front.buy_now',$prd->id)}}" method="POST">
@@ -71,7 +76,7 @@
                   </form>
                 </div>
               </div>
-            
+            @endif
             </div>
             @if($prd->short_desc)
             <div class="product-promotion">
@@ -154,13 +159,18 @@
                 <h3 class="product-code">Mã sản phẩm: <span>{{$prd->sku}}</span></h3>
               </div>
               <div class="cart-body">
-                <h4 class="product-price price">{{$prd->sale_price ? $prd->sale_price : $prd->regular_price}}<sup>đ</sup></h4>
+                <h4 class="product-price price">@if($prd->regular_price || $prd->current_price)
+                    {{$prd->sale_price ? $prd->sale_price : $prd->regular_price}}<sup>đ</sup>
+                    @else
+                    Liên hệ
+                    @endif</h4>
                 @if ($prd->sale_price)
                 <div class="product-discount">
                   <h5 class="percentage-discount">-{{number_format(($prd->regular_price - $prd->sale_price)*100/$prd->regular_price, 2)}}%</h5>
                   <h6 class="original-price price">{{$prd->regular_price}}<sup>đ</sup></h6>
                 </div>
                 @endif
+                @if($prd->regular_price || $prd->current_price)
                 <div class="product-action">
                   <div>
                    <form action="{{route('front.buy_now',$prd->id)}}" method="POST">
@@ -175,6 +185,7 @@
                   </form>
                   </div>
                 </div>
+                @endif
               </div>
             </section>
           </div>

@@ -12,7 +12,7 @@
   <title>One Stop Shop</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
   <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -65,7 +65,7 @@
 <!--END HEADER-->
 @yield('content')
 <!--END FOOTER-->
-<script src="assets/js/main.js"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
 <script>
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

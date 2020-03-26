@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('front.index')}}">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tin tức & Công nghệ</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('front.post-list')}}">Tin tức & Công nghệ</a></li>
           </ol>
         </nav>
       </div>
@@ -33,7 +33,7 @@
                       <h3 class="news-title">{{ Str::limit($post->title, $limit = 150, $end = '..') }}</h3>
                       <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($post->created_at))}}</h4>
                       <p class="news-desc">
-                        {{Str::limit(strip_tags($post->content), $limit = 300, $end = '..') }}
+                        {!! strip_tags($post->content) !!}
                       </p>
                     </div>
                   </div>

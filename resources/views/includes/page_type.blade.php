@@ -6,7 +6,7 @@
             <h1 class="article-title">{{$post->title}}</h1>
           </div>
           <div class="article-body">
-            {{$post->content}}
+            {!! $post->content!!}
           </div>
         </section>
       </div>
