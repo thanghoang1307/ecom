@@ -148,7 +148,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 													<img src="{{$prd->thumb}}" class="img-fluid">
 												</a>
 												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-												<span class="product-price price">{{ $prd->current_price*$carts[$prd->id]}}đ</span>
+												<span class="product-price price">{{ $prd->current_price}}đ</span>
 											</div>
 										</li>
 										@endforeach

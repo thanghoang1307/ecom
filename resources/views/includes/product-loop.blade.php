@@ -26,11 +26,10 @@
         @endif
                 </div>
               </a>
-              <div class="product-hover {{$prd->short_desc ?? 'no-discount'}}">
+              <div class="product-hover {{$prd->short_desc ? '' : 'no-discount'}}">
                 <div class="product-promotion">
-                  <i class="sale-label"></i> <span>Ưu đãi/quà tặng từ...</span>
+                  <i class="sale-label"></i> <span>{!!strip_tags($prd->short_desc)!!}</span>
                 </div>
-                
               </div>
             </div>
           </a>

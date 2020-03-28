@@ -112,7 +112,7 @@
 @section('script')
 <script>
 $(function(){
-var count = 8;
+var count = 6;
 $('.view-more-btn').on('click',function(){
 $.ajax({
 type: 'POST',

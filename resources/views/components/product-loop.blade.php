@@ -27,7 +27,7 @@
               <div class="product-hover  {{$prd->sale_price ? '' : 'no-discount'}}">
                 @if ($prd->sale_price)
                 <div class="product-promotion">
-                  <i class="sale-label"></i> <span>Ưu đãi/quà tặng từ...</span>
+                  <i class="sale-label"></i> <span>{!!strip_tags($prd->short_desc)!!}</span>
                 </div>
                 @endif
               </div>

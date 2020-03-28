@@ -22,7 +22,7 @@ class PostRepository extends EloquentRepository implements PostInterface {
 		return $unique_slug;
 	}
 	public function getMore($count){
-	return $this->_model->offset($count)->limit(4)->get();
+	return $this->_model->offset($count)->whereIn('post_type',['post','video'])->limit(4)->get();
 	}
 	public function getNewPost(){
 		return $this->_model->whereIn('post_type',['post','video'])->orderBy('created_at','desc')->limit(8)->get();

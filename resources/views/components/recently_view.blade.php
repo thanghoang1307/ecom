@@ -29,9 +29,9 @@
                 </div>
                 @endif
                 </div>
+
                 </div>
               </a>
-            </div>
             @endif
             @endforeach
           </div>

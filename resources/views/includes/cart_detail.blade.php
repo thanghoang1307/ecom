@@ -21,11 +21,11 @@
                 <div class="col-md-4">
                   <div class="cart-price">
                     <div class="text-right">
-                      <span class="active-price price">{{$prd->current_price*$carts[$prd->id]}}đ</span>
+                      <span class="active-price price">{{$prd->current_price}}đ</span>
                     </div>
                     @if($prd->sale_price)
                     <div class="text-right">
-                      <span class="pre-active-price price">{{$prd->regular_price*$carts[$prd->id]}}đ</span>
+                      <span class="pre-active-price price">{{$prd->regular_price}}đ</span>
                     </div>
                     @endif
                   </div>

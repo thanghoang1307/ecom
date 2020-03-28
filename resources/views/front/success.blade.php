@@ -10,7 +10,7 @@
             <div class="col-5 col-md-3">
               <div class="cart-image">
                 <figure>
-                  <img src="assets/img/product/item/1.jpg">
+                  <img src="{{$prd->thumb}}">
                 </figure>
               </div>
             </div>
@@ -90,7 +90,7 @@
           <div class="cart-item">
             <div class="row no-gutters align-items-center align-content-center">
               <div class="col-4 col-md-12">
-                <a href="#" class="btn-submit is-white">
+                <a href="{{route('front.tai_bao_gia')}}" target="_blank" class="btn-submit is-white">
                   <span class="d-none d-md-block">Tải về file báo giá (.pdf)</span>
                   <span class="d-block d-md-none">Tải báo giá</span>
                 </a>
@@ -125,7 +125,7 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col-3">
                         <div class="process-profile-success-img">
-                          <img src="assets/img/icon/sale-icon.png" width="80" alt="">
+                          <img src="{{asset('assets/img/icon/sale-icon.png')}}" width="80" alt="">
                         </div>
                       </div>
                       <div class="col-9">

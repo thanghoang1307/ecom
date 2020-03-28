@@ -18,7 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('mst');
             $table->string('address');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

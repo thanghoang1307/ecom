@@ -92,6 +92,9 @@
                           <span class="user-name">{{$order->company->name}}</span>
                         </li>
                         <li>
+                          <span class="user-name">{{$order->company->mst}}</span>
+                        </li>
+                        <li>
                           <span>{{$order->company->phone}}</span>
                         </li>
                         <li>

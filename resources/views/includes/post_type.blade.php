@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-8">
                       <div class="news-text">
-                        <h3 class="news-title">{{ Str::limit(strip_tags($most_viewed->content), $limit = 150, $end = '..') }}</h3>
+                        <h3 class="news-title">{{ Str::limit(strip_tags($most_viewed->title), $limit = 150, $end = '..') }}</h3>
                         <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($most_viewed->created_at))}}</h4>
                       </div>
                     </div>

@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="col-11 col-sm-4">
-            <a href="{{route('front.index')}}"><img src="assets/img/logo.png" class="img-fluid" alt=""></a>
+            <a href="{{route('front.index')}}"><img src="{{$settings->find('logo')->value}}" class="img-fluid" alt=""></a>
         </div>
         <div class="col-12 col-sm-7">
           <div class="page-contact">

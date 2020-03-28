@@ -26,16 +26,12 @@
                        @endif
                     </div>
                   </a>
-                  @if($prd->sale_price)
-                  <div class="product-hover">
-
-                    <div class="product-promotion">
-                      <i class="sale-label"></i> <span>Ưu đãi/quà tặng từ...</span>
-                    </div>
-                    <a class="product-add-to-cart" href="#">
-                      <i class="icon icon-shopping-cart"></i> <span>Thêm vào giỏ hàng</span>
-                    </a>
-                  </div>
+                  @if($prd->short_desc)
+                  <div class="product-hover {{$prd->short_desc ? '' : 'no-discount'}}">
+                <div class="product-promotion">
+                  <i class="sale-label"></i> <span>{!!strip_tags($prd->short_desc)!!}</span>
+                </div>
+              </div>
                   @endif
                 </div>
               </div>
