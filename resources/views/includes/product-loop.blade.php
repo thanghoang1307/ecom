@@ -26,7 +26,7 @@
         @endif
                 </div>
               </a>
-              <div class="product-hover {{$prd->sale_price ?? 'no-discount'}}">
+              <div class="product-hover {{$prd->short_desc ?? 'no-discount'}}">
                 <div class="product-promotion">
                   <i class="sale-label"></i> <span>Ưu đãi/quà tặng từ...</span>
                 </div>

@@ -79,4 +79,5 @@
     </div>
 
     <div class="page-gap"></div>
-@render(\App\ViewComponents\RecentlyViewProductComponent::class)    
+@component('components.recently_view')
+@endcomponent

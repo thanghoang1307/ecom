@@ -29,7 +29,7 @@
 # Thông tin nhận hàng
 Nhận hàng tại địa chỉ: *{{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}*
 
-Cảm ơn {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} {{$order->guest->name}},<br>
+Cảm ơn {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} {{$order->customer->name}},<br>
 {{ config('app.name') }}
 @else
 ## Cảm ơn {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} {{$order->guest->name}} đã mua sắm tại {{ config('app.name') }},

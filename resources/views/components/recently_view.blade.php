@@ -22,12 +22,12 @@
                     @else
                     Liên hệ
                     @endif</h4>
-                  @if ($prd->sale_price)
+                    @if ($prd->sale_price)
                 <div class="product-discount">
                   <h5 class="percentage-discount price">{{number_format(($prd->regular_price - $prd->sale_price)*100/$prd->regular_price, 2)}} %</h5>
                   <h6 class="original-price price">{{$prd->regular_price}}<sup>đ</sup></h6>
                 </div>
-        @endif
+                @endif
                 </div>
                 </div>
               </a>

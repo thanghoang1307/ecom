@@ -13,7 +13,7 @@ return [
 	'phone' => 'Số điện thoại',
 	'email' => 'Email',
 	'city' => 'Thành phố/Tỉnh',
-	'distrct' => 'Quận/Huyện',
+	'district' => 'Quận/Huyện',
 	'ward' => 'Phường/Xã',
 ],
 ];

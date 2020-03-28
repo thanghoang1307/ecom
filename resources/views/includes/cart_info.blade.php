@@ -30,10 +30,10 @@
                         <div class="col-12">
                           <div class="radio">
                             @if (Auth::guard('customer')->user()->gender == 'male')
-                            <input id="radio-1" name="gender" type="radio" value="male" checked>
+                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
                             <label for="radio-1" class="radio-label">Anh</label>
                             @elseif(Auth::guard('customer')->user()->gender == 'female')
-                            <input id="radio-1" name="gender" type="radio" value="female" checked>
+                            <input id="radio-1" name="gender" type="radio" value="female" checked="checked">
                             <label for="radio-1" class="radio-label">Chị</label>
                             @else
                             <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
@@ -47,13 +47,13 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" name="name" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
+                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" name="phone" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" name="email" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
                       </div>
                     </div>
                   </div>
@@ -79,7 +79,7 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-1" name="gender" type="radio" checked value="male">
+                            <input id="radio-1" name="gender" type="radio" checked="checked" value="male">
                             <label for="radio-1" class="radio-label">Anh</label>
                           </div>
                         </div>
@@ -117,6 +117,7 @@
                     <div class="process-profile-block-sub">
                       <div class="row">
                         <div class="col-md-6">
+                          @guest('customer')
                           <div class="form-group selected-box">
                             <select class="form-control" name="city" id="exampleFormControlSelect1" >
                               <option value="0" disabled selected>Tỉnh/Thành</option>
@@ -145,6 +146,72 @@
                             <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
                           </div>
                         </div>
+                        @endguest
+                        @auth('customer')
+                        @php
+                        $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
+                        @endphp
+                      @if($address)
+<div class="form-group selected-box">
+                            <select class="form-control" name="city" id="exampleFormControlSelect1" disabled="disabled" >
+                              <option value="{{$address->matp}}" >{{$address->city->name}}</option>
+                            </select>
+                            <input type="hidden" name="city" value="{{$address->matp}}">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group selected-box">
+                            <select class="form-control" name="district" disabled="disabled">
+                              <option value="{{$address->maqh}}" >{{$address->district->name}}</option>
+                            </select>
+                            <input type="hidden" name="district" value="{{$address->maqh}}">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group selected-box">
+                            <select class="form-control" id="exampleFormControlSelect1" name="ward" disabled="disabled">
+                              <option value="{{$address->maphuong}}" >{{$address->ward->name}}</option>
+                            </select>
+                            <input type="hidden" name="ward" value="{{$address->maphuong}}">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input disabled="disabled" name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" value="{{$address->address}}">
+                            <input type="hidden" name="address" value="{{$address->address}}">
+                          </div>
+                        </div>
+                      @else
+<div class="form-group selected-box">
+                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
+                              <option value="0" disabled selected>Tỉnh/Thành</option>
+                              @foreach ($cities as $city)
+                              <option value="{{$city->matp}}">{{$city->name}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group selected-box">
+                            <select class="form-control" name="district">
+                              <option value="0" disabled selected>Quận/Huyện</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group selected-box">
+                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
+                              <option value="0" disabled selected>Phường/Xã</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
+                          </div>
+                        </div>
+                      @endif
+                        @endauth
                         <div class="col-12">
                           <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note"></textarea>
@@ -165,3 +232,10 @@
         </form>
       </section>
     </div>
+    <script>
+      $('form').submit(function(e) {
+    $(':disabled').each(function(e) {
+        $(this).removeAttr('disabled');
+    })
+});
+    </script>

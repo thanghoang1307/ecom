@@ -83,7 +83,7 @@ Chỉnh sửa nhóm sản phẩm {{$family->name}}
 		</div>
 		<div class="modal-body">			
 					@foreach($attrs as $attr)
-					<input type="checkbox" name="{{$attr->code}}" value="{{$attr->id}}"><label>{{$attr->name}}</label>
+					<div><input type="checkbox" name="{{$attr->code}}" value="{{$attr->id}}"><label>{{$attr->name}}</label></div>
 					@endforeach
 				<input type="hidden" name="attr_gr_id" value="">
 		</div>
