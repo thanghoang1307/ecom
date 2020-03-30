@@ -1,3 +1,4 @@
+@if($prds->count())
           <div class="product-list-wrapper">
             <div class="row">
               @foreach($prds as $prd)
@@ -40,4 +41,7 @@
             </div>
           </div>
           {{$prds->appends(request()->input())->links('components.paginate')}}
+          @else
+          <div class="404"><img class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>            
+          @endif
         

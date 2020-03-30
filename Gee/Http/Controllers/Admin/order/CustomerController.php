@@ -19,7 +19,7 @@ class CustomerController extends Controller
     }
 
     public function show($type, $id){
-    if($type = 'customer'){
+    if($type == 'customer'){
         $customer = Customer::find($id);
     } else {
         $customer = Guest::find($id);
