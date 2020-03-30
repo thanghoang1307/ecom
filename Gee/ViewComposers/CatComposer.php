@@ -5,7 +5,7 @@ use Illuminate\View\View;
 use App\Repositories\Prd\CatInterface;
 use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Admin\BannerInterface;
-use App\Repositories\Admin\SettingInterface;
+
 
 
 class CatComposer {
