@@ -224,7 +224,7 @@
               </div>
             </div>
           </div>
-          <div class="process-info">
+          <div class="process-info action">
             <div class="text-right">
               <button type="submit" class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
             </div>
