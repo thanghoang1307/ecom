@@ -21,11 +21,11 @@
                 <div class="col-md-4">
                   <div class="cart-price">
                     <div class="text-right">
-                      <span class="active-price price">{{$prd->current_price}}<sup>đ</sup></span>
+                      <span class="active-price price">{{$prd->current_price}}đ</span>
                     </div>
                     @if($prd->sale_price)
                     <div class="text-right">
-                      <span class="pre-active-price price">{{$prd->regular_price}}<sup>đ</sup></span>
+                      <span class="pre-active-price price">{{$prd->regular_price}}đ</span>
                     </div>
                     @endif
                   </div>
@@ -61,7 +61,7 @@
               <div class="cart-price">
                 <div class="cart-price">
                   <div class="text-right">
-                    <span class="last-price price">{{$total}}<sup>đ</sup></span>
+                    <span class="last-price price">{{$total}}đ</span>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
               <div class="cart-price">
                 <div class="cart-price">
                   <div class="text-right">
-                    <span class="last-price price">{{$total}}<sup>đ</sup></span>
+                    <span class="last-price price">{{$total}}đ</span>
                   </div>
                 </div>
               </div>

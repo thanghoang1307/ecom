@@ -148,14 +148,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 													<img src="{{$prd->thumb}}" class="img-fluid">
 												</a>
 												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-											<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
+												<span class="product-price price">{{ $prd->current_price}}đ</span>
 											</div>
 										</li>
 										@endforeach
 										<li class="dropdown-item">
 											<div class="product-end">
 												<h5 class="product-end-block"><span class="product-end-title">Thành tiền</span> <span
-													class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span></h5>
+													class="product-end-block-price price">{{$cart_total}}đ</span></h5>
 													<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
 												</div>
 											</li>
@@ -187,8 +187,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</header>
 			<!--END HEADER-->
 			<div class="collapse hidden-mobile" id="collapseMenu">
-				<div class="hidden-bg menu-toggle" class="" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="true"
-             aria-controls="collapseMenu" style="background-color: rgba(0,0,0,0.75); width: 15vw; height: 100%; position: absolute; left: 85vw; top: 0; z-index: 19;">&nbsp;</div>
 				<div class="hidden-panel-content">
 					<a href="{{route('front.product-list')}}" class="product-navigation-action">
 						<i class="icon icon-align-justify"></i> Danh mục sản phẩm

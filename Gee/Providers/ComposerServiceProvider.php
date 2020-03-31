@@ -26,7 +26,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer(['layouts.front','components.cat','layouts.check-out'],\App\ViewComposers\CatComposer::class);
         View::composer(['front.check-out-1','front.add_address','front.edit_address'],\App\ViewComposers\LocationComposer::class);
-        View::composer('*',\App\ViewComposers\SettingComposer::class);
+        View::composer('front.index',\App\ViewComposers\SettingComposer::class);
         View::composer('components.recently_view',\App\ViewComposers\RecentlyViewedProductsViewComposer::class);
         View::composer(['includes.post','front.post-list','front.post-detail'],\App\ViewComposers\PostComposer::class);
         View::composer(['components.new'],\App\ViewComposers\NewPrdComposer::class);
