@@ -1,6 +1,6 @@
 <div class="col-md-6">
       <section class="cart-process">
-        <div class="process-list">
+        <div class="process-list d-none d-md-block">
           <ul class="process-list-wrapper">
             <li><a href="#" class="active"><span class="d-none d-sm-block">Thông tin đặt hàng</span></a></li>
             <li><a href="#" class="active"><span>Thanh toán</span></a></li>
