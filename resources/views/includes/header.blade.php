@@ -148,14 +148,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 													<img src="{{$prd->thumb}}" class="img-fluid">
 												</a>
 												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-											<span class="product-price price">{{ $prd->current_price}}đ<strong class="count"> x{{$carts[$prd->id]}}</strong></span>
+											<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
 											</div>
 										</li>
 										@endforeach
 										<li class="dropdown-item">
 											<div class="product-end">
 												<h5 class="product-end-block"><span class="product-end-title">Thành tiền</span> <span
-													class="product-end-block-price price">{{$cart_total}}đ</span></h5>
+													class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span></h5>
 													<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
 												</div>
 											</li>
