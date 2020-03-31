@@ -42,9 +42,9 @@
           </div>
           {{$prds->appends(request()->input())->links('components.paginate')}}
           @else
-          <div class="error404" style="text-align: center; height: 30vh; width: 100%;">
+          <div class="error404" style="text-align: center; width: 100%; display: block;">
 				<p style="text-align: center; font-weight: bold;">Không tìm thấy sản phẩm phù hợp với từ khoá này</p>
 				<br />
-				<img style="max-height: 100%; max-width: 100%;" class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
+				<img style="max-width: 60%; margin-bottom: 30px;" class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
           @endif
         
