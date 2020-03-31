@@ -35,4 +35,15 @@ class CatController extends Controller
         return redirect('/san-pham?search='.$request->search);  
         }
     }
+
+    public function mobileOrder(Request $request)
+    {
+        dd($request->m_orderby);
+    }
+
+    public function mobileFilter()
+    {
+        
+    }
+
 }

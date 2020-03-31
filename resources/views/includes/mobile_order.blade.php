@@ -84,6 +84,8 @@ $price_request = explode('_',app('request')->input('price'));
       
       <section id="sort-screen">
         <div class="sort-screen-wrapper">
+        <form action="{{route('front.mobile_order')}}" method="POST">
+        @csrf
           <div class="screen-header">
             <a class="back-to-screen">
               <i class="icon icon-arrow-left"></i>
@@ -93,23 +95,23 @@ $price_request = explode('_',app('request')->input('price'));
           <div class="screen-body">
             <div class="screen-option">
               <div class="radio">
-                <input id="radio-1" name="m_orderby" type="radio" value="created_at-desc" {{$orderby == "" || $orderby == "created_at-desc" ? "checked" : ""}}>
+                <input id="radio-1" name="m_orderby" type="radio" value="created_at-desc" checked={{$orderby == "" || $orderby == "created_at-desc" ? "checked" : ""}}>
                 <label for="radio-1" class="radio-label">Mới nhất</label>
               </div>
               <div class="radio">
-                <input id="radio-2" name="m_orderby" type="radio" value="view-desc" {{$orderby == "view-desc" ? "checked" : ""}}>
+                <input id="radio-2" name="m_orderby" type="radio" value="view-desc" checked={{$orderby == "view-desc" ? "checked" : ""}}>
                 <label for="radio-2" class="radio-label">Xem nhiều nhất</label>
               </div>
               <div class="radio">
-                <input id="radio-3" name="m_orderby" type="radio" value="price-asc" {{$orderby == "price-asc" ? "checked" : ""}}>
+                <input id="radio-3" name="m_orderby" type="radio" value="price-asc" checked={{$orderby == "price-asc" ? "checked" : ""}}>
                 <label for="radio-3" class="radio-label">Giá thấp đến cao</label>
               </div>
               <div class="radio">
-                <input id="radio-4" name="m_orderby" type="radio" value="price-desc" {{$orderby == "price-desc" ? "checked" : ""}}>
+                <input id="radio-4" name="m_orderby" type="radio" value="price-desc" checked={{$orderby == "price-desc" ? "checked" : ""}}>
                 <label for="radio-4" class="radio-label">Giá cao xuống thấp</label>
               </div>
               <div class="radio">
-                <input id="radio-5" name="m_orderby" type="radio" value="sale-desc" {{$orderby == "sale-desc" ? "checked" : ""}}>
+                <input id="radio-5" name="m_orderby" type="radio" value="sale-desc" checked={{$orderby == "sale-desc" ? "checked" : ""}}>
                 <label for="radio-5" class="radio-label">Bán chạy nhất</label>
               </div>
             </div>
@@ -123,13 +125,14 @@ $price_request = explode('_',app('request')->input('price'));
                   </a>
                 </div>
                 <div class="col-6">
-                  <a href="#" class="btn-submit d-block d-md-none apply-filter">
+                  <button href="#" class="btn-submit d-block d-md-none apply-filter">
                     Áp dụng
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+          </form>
         </div>
       </section>   
     </div>
