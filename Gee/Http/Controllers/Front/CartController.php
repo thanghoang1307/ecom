@@ -147,7 +147,7 @@ class CartController extends Controller
 	$prds = [];
 	$total = 0;
 	}	
-		$pdf = PDF::loadView('pdf.bao_gia', ['prds' => $prds, 'total' => $total, 'carts' => $carts]);
+		$pdf = PDF::loadView('pdf.bao_gia', ['prds' => $prds, 'total' => $total, 'carts' => $carts])->setPaper('a4', 'landscape');
 		return $pdf->stream();
 	}
 
