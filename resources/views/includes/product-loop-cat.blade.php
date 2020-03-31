@@ -42,6 +42,6 @@
           </div>
           {{$prds->appends(request()->input())->links('components.paginate')}}
           @else
-          <div class="404"><img class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>            
+          <div class="error404" style="text-align: center; height: 30vh; width: 100%;"><img style="max-height: 100%; max-width: 100%;" class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
           @endif
         
