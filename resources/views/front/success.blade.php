@@ -218,7 +218,7 @@
               </div>
             </div>
           </div>
-          <div class="process-info action">
+          <div class="process-info">
             <div class="row">
               <div class="col-12">
                 <div class="text-center">

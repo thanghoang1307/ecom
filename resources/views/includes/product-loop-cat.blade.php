@@ -1,4 +1,3 @@
-@if($prds->count())
           <div class="product-list-wrapper">
             <div class="row">
               @foreach($prds as $prd)
@@ -41,10 +40,4 @@
             </div>
           </div>
           {{$prds->appends(request()->input())->links('components.paginate')}}
-          @else
-          <div class="error404" style="text-align: center; width: 100%; display: block;">
-				<p style="text-align: center; font-weight: bold;">Không tìm thấy sản phẩm phù hợp với từ khoá này</p>
-				<br />
-				<img style="max-width: 60%; margin-bottom: 30px;" class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
-          @endif
         
