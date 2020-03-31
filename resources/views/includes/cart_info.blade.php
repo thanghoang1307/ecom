@@ -11,15 +11,6 @@
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
-            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
             <div class="process-profile">
               <div class="row no-gutters">
                 @auth('customer')
@@ -48,12 +39,21 @@
                     <div class="process-profile-block-body">
                       <div class="form-group">
                         <input type="text" class="form-control" id="inputName" aria-describedby="inputName" name="name" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
+                        @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" name="phone" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
+                        @error('phone')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                       <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" name="email" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
+                        @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                   </div>
@@ -94,12 +94,21 @@
                     <div class="process-profile-block-body">
                       <div class="form-group">
                         <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name">
+                        @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="phone">
+                        @error('phone')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="email">
+                        @error('email')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -125,6 +134,9 @@
                               <option value="{{$city->matp}}">{{$city->name}}</option>
                               @endforeach
                             </select>
+                            @error('city')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -132,6 +144,9 @@
                             <select class="form-control" name="district">
                               <option value="0" disabled selected>Quận/Huyện</option>
                             </select>
+                            @error('district')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -139,11 +154,17 @@
                             <select class="form-control" id="exampleFormControlSelect1" name="ward">
                               <option value="0" disabled selected>Phường/Xã</option>
                             </select>
+                            @error('ward')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
+                            @error('address')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         @endguest
@@ -189,6 +210,9 @@
                               <option value="{{$city->matp}}">{{$city->name}}</option>
                               @endforeach
                             </select>
+                            @error('city')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -196,6 +220,9 @@
                             <select class="form-control" name="district">
                               <option value="0" disabled selected>Quận/Huyện</option>
                             </select>
+                            @error('district')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -203,11 +230,17 @@
                             <select class="form-control" id="exampleFormControlSelect1" name="ward">
                               <option value="0" disabled selected>Phường/Xã</option>
                             </select>
+                            @error('ward')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
+                            @error('address')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                       @endif
@@ -215,6 +248,9 @@
                         <div class="col-12">
                           <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note"></textarea>
+                            @error('note')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                           </div>
                         </div>
                       </div>
