@@ -36,14 +36,4 @@ class CatController extends Controller
         }
     }
 
-    public function mobileOrder(Request $request)
-    {
-        dd($request->m_orderby);
-    }
-
-    public function mobileFilter()
-    {
-        
-    }
-
 }

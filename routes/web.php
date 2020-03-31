@@ -155,8 +155,6 @@ Route::post('/search','CatController@search')->name('search');
 Route::get('/danh-muc/{slug}','CatController@show')->name('category-list');
 Route::get('/thuong-hieu/{slug}','BrandController@show')->name('brand-list');
 Route::post('/cat-filter','CatController@filter')->name('prd_filter');
-Route::post('/mobile-order','CatController@mobileOrder')->name('mobile_order');
-Route::post('/mobile-filter','CatController@mobileFilter')->name('mobile_filter');
 
 // Thanh toán
 Route::get('/thong-tin-dat-hang','PageController@cart')->name('check_out_1');

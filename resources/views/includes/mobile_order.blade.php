@@ -72,9 +72,9 @@ $price_request = explode('_',app('request')->input('price'));
                   </a>
                 </div>
                 <div class="col-6">
-                  <a href="#" class="btn-submit d-block d-md-none apply-filter">
+                  <button type="button" class="btn-submit d-block d-md-none apply-filter">
                     Áp dụng
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -84,8 +84,6 @@ $price_request = explode('_',app('request')->input('price'));
       
       <section id="sort-screen">
         <div class="sort-screen-wrapper">
-        <form action="{{route('front.mobile_order')}}" method="POST">
-        @csrf
           <div class="screen-header">
             <a class="back-to-screen">
               <i class="icon icon-arrow-left"></i>
@@ -125,7 +123,7 @@ $price_request = explode('_',app('request')->input('price'));
                   </a>
                 </div>
                 <div class="col-6">
-                  <button href="#" class="btn-submit d-block d-md-none apply-filter">
+                  <button type="button" class="btn-submit d-block d-md-none apply-filter">
                     Áp dụng
                   </button>
                 </div>
