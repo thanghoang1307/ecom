@@ -1,6 +1,6 @@
 <div class="col-md-6">
       <section class="cart-process">
-        <div class="process-list">
+        <div class="process-list d-none d-md-block">
           <ul class="process-list-wrapper">
             <li><a href="#" class="active"><span class="d-none d-sm-block">Thông tin đặt hàng</span></a></li>
             <li><a href="#" class="active"><span>Thanh toán</span></a></li>
@@ -113,7 +113,7 @@
               </div>
             </div>
           </div>
-          <div class="process-info">
+          <div class="process-info action">
             <div class="row">
               <div class="col-6">
                 <div class="text-left">
@@ -122,7 +122,7 @@
               </div>
               <div class="col-6">
                 <div class="text-right">
-                  <button class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
+                  <button type="submit" class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
                 </div>
               </div>
             </div>

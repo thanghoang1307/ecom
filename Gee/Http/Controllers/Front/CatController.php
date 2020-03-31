@@ -35,4 +35,5 @@ class CatController extends Controller
         return redirect('/san-pham?search='.$request->search);  
         }
     }
+
 }

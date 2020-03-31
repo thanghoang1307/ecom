@@ -5,17 +5,16 @@ use Illuminate\View\View;
 use App\Repositories\Prd\CatInterface;
 use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Admin\BannerInterface;
-use App\Repositories\Admin\SettingInterface;
+
 
 
 class CatComposer {
 protected $cat;
 protected $banner;
 protected $prd;
-public function __construct(CatInterface $cat, BannerInterface $banner, SettingInterface $setting, PrdInterface $prd){
+public function __construct(CatInterface $cat, BannerInterface $banner, PrdInterface $prd){
 $this->cat = $cat;
 $this->banner = $banner;
-$this->setting = $setting;
 $this->prd = $prd;
 }
 public function compose(View $view){
@@ -35,7 +34,6 @@ $view->with([
 	'carts' => $carts,
 	'cart_total' => $cart_total,
 	'top_banner' => $this->banner->find(12),
-	'settings' => $this->setting->getAllData(),
 ]);
 }
 }
