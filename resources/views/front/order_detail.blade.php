@@ -53,7 +53,7 @@
                                 </div>
                               </div>
                               <div class="order-number">
-                                <span>{{$prd->pivot->qty}}x</span>
+                                <span>x{{$prd->pivot->qty}}</span>
                               </div>
                             </div>
                           </div>
@@ -95,15 +95,18 @@
                           <span class="user-name">{{$order->company->mst}}</span>
                         </li>
                         <li>
-                          <span>{{$order->company->phone}}</span>
+                          <span class="user-name">{{$order->company->phone}}</span>
                         </li>
                         <li>
-                          <span>{{$order->company->address}}</span>
+                          <span class="user-name">{{$order->company->address}}</span>
+                        </li>
+						<li>
+                          <span class="note">{{$order->company->note}}</span>
                         </li>
                       </ul>
                     </div>
                     <div class="order-detail-body">
-                      <p><strong>Ghi chú:</strong>{{$order->company->note}}</p>
+                      <p><strong>Ghi chú:</strong> {{$order->note}}</p>
                     </div>
                     @endif
                   </div>
