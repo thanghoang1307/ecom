@@ -38,7 +38,7 @@
           <div class="page-contact">
             <div class="text-right">
               <p>Bạn gặp khó khăn khi đặt hàng? Hãy gọi ngay</p>
-              <strong>0837 000 247</strong>
+              <strong><a style="color: white;" href="tel:{{$settings->find('phone')->value}}">{{$settings->find('phone')->value}}</a></strong>
             </div>
           </div>
         </div>
