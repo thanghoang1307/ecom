@@ -127,7 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								@endguest
 								
 									<!--USER LOGIN-->
-									<span class="cart-title d-none d-md-inline-block">Giỏ hàng</span>
+									<span class="cart-title d-none d-md-inline-block"><a href="{{route('front.check_out_1')}}">Giỏ hàng</a></span>
 									<div class="dropdown dropdown-discount">
 										<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
 											<span class="header-cart-number">{{session()->get('cart.items') ? array_sum(session()->get('cart.items')) : 0}}</span>
