@@ -38,16 +38,6 @@
                   </div>
                 </div>
               </div>
-              <!--<div class="row align-items-center align-content-center">
-                <div class="col-8 col-md-6">
-                  <div class="text-right">
-                    <div class="btn-group" role="group">
-                      <input disabled type="text" class="form-control" value="1" placeholder="1"
-                             aria-label="Input group example" aria-describedby="btnGroupAddon">
-                    </div>
-                  </div>
-                </div>
-              </div>-->
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@
                     <div class="btn-group prd-qty" role="group">
                       <button type="button" class="btn minus">-</button>
                       <input type="text" class="form-control" value="{{session('cart.items.'.$prd->id)}}" placeholder="1" prd-id="{{$prd->id}}"
-                             aria-label="Input group example" aria-describedby="btnGroupAddon">
+                             aria-label="Input group example" aria-describedby="btnGroupAddon" disabled="">
                       <button type="button" class="btn plus">+</button>
                     </div>
                   </div>
