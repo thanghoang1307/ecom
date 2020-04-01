@@ -43,7 +43,7 @@
                             <div class="col-md-6">
                               <div class="order-detail-info">
                                 <h6><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h6>
-                                <h6>Mã sản phẩm: <a href="{{route('front.product-detail',$prd->slug)}}" class="order-code">{{$prd->sku}}</a></h6>
+                                <h6 class="code">Mã sản phẩm: <a href="{{route('front.product-detail',$prd->slug)}}" class="order-code">{{$prd->sku}}</a></h6>
                               </div>
                             </div>
                             <div class="col-md-6">
