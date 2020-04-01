@@ -32,10 +32,13 @@
                       <span class="pre-active-price price">{{$prd->regular_price}}đ</span>
                     </div>
                     @endif
+					<div class="text-right">
+                      <span class="">x{{$prd->pivot->qty}}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="row align-items-center align-content-center">
+              <!--<div class="row align-items-center align-content-center">
                 <div class="col-8 col-md-6">
                   <div class="text-right">
                     <div class="btn-group" role="group">
@@ -44,7 +47,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
