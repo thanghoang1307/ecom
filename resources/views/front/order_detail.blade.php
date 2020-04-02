@@ -124,7 +124,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="order-detail-body border-order">
+                    <div class="order-detail-body">
                       <div class="row">
                         <div class="col-8">
                           <p><strong>Tổng tiền đơn hàng</strong></p>
