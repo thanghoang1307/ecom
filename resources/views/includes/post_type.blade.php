@@ -9,7 +9,7 @@
       </div>
     </section>
 <div class="row">
-      <div class="col-xs-12 col-sm-7">
+      <div class="col-xs-12 col-sm-8">
         <section id="news-article">
           <div class="article-header">
             <h1 class="article-title">{{$post->title}}</h1>
@@ -19,7 +19,7 @@
           </div>
         </section>
       </div>
-      <div class="col-xs-12 col-sm-5">
+      <div class="col-xs-12 col-sm-4">
         <section id="most-viewed-articles-list">
           <h2 class="page-title">Xem nhiều nhất</h2>
         

@@ -14,7 +14,7 @@
     </section>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-7">
+      <div class="col-xs-12 col-sm-8">
         <section id="news-list">
           <h2 class="page-title">Tin tức & Công nghệ</h2>
         
@@ -48,7 +48,7 @@
           </div>
         </section>
       </div>
-      <div class="col-xs-12 col-sm-5">
+      <div class="col-xs-12 col-sm-4">
         <section id="video-list">
           <h2 class="page-title">Video</h2>
         
