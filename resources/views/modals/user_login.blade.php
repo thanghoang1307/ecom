@@ -61,7 +61,7 @@
                     <div class="col-4 col-md-3">
                       <div class="form-group">
                         <div class="radio">
-                          <input id="radio-1" name="gender" type="radio" checked>
+                          <input id="radio-1" name="gender" type="radio" checked="checked">
                           <label for="radio-1" class="radio-label">Anh</label>
                         </div>
                       </div>
@@ -80,17 +80,26 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Họ và tên">
+                        <input type="text" name="name" class="form-control" placeholder="Họ và tên" value="{{old('name')}}">
+                        @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="text" name="phone" class="form-control" placeholder="Điện thoại">
+                        <input type="text" name="phone" class="form-control" placeholder="Điện thoại" value="{{old('phone')}}">
+                        @error('phone')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Địa chỉ email">
+                        <input type="email" name="email" class="form-control" placeholder="Địa chỉ email" value="{{old('email')}}">
+                        @error('email')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -100,11 +109,17 @@
                     <div class="col-12">
                       <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                        @error('password')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
                         <input type="password" name="password_confirm" class="form-control" placeholder="Xác nhận mật khẩu">
+                        @error('password_confirm')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
                     </div>
                     <div class="col-12">

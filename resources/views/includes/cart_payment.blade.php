@@ -117,7 +117,7 @@
             <div class="row">
               <div class="col-6">
                 <div class="text-left">
-                  <button class="btn-submit form-back">Trở về <i class="icon icon-arrow-left"></i></button>
+                  <a href="{{ URL::previous() }}" class="btn-submit form-back">Trở về <i class="icon icon-arrow-left"></i></a>
                 </div>
               </div>
               <div class="col-6">

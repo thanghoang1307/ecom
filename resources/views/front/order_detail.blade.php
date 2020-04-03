@@ -106,7 +106,7 @@
                       </ul>
                     </div>
                     <div class="order-detail-body">
-                      <p><strong>Ghi chú:</strong> {{$order->note}}</p>
+                      <p><strong>Ghi chú:</strong> {{$order->shipment->note}}</p>
                     </div>
                     @endif
                   </div>

@@ -136,7 +136,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 										<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false">
-										<span class="header-cart-number">{{session()->get('cart.items') ? array_sum(session()->get('cart.items')) : 0}}</span>
+										@if(session()->get('cart.items'))
+										<span class="header-cart-number">{{array_sum(session()->get('cart.items'))}}</span>
+										@endif
 										<i class="icon icon-shopping-cart"></i>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">

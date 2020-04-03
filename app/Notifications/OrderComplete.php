@@ -45,6 +45,7 @@ class OrderComplete extends Notification
     public function toMail($notifiable)
     {   $order = $this->order;
         return (new MailMessage)
+                    ->subject('ONESTOPSHOP.VN: Đơn hàng #'.$order->order_number.'đã được tiếp nhận')
                     ->markdown('mail.order.complete',['order' => $order]);
     }
 

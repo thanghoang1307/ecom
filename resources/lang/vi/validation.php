@@ -2,6 +2,8 @@
 return [
 'required' => ':attribute không được để trống',
 'unique' => 'Trùng lặp :attribute',
+'confirmed' => ':attribute không trùng khớp',
+'min' => ['string' => ':attribute phải có độ dài tối thiểu là :min'],
 'attributes' => [
 	'sku' => 'Mã sản phẩm',
 	'regular_price' => 'Giá sản phẩm',
@@ -15,5 +17,6 @@ return [
 	'city' => 'Thành phố/Tỉnh',
 	'district' => 'Quận/Huyện',
 	'ward' => 'Phường/Xã',
+	'password' => 'Mật khẩu',
 ],
 ];

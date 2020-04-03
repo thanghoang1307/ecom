@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shipment extends Model
 {
-    protected $fillable = ['address','matp','maqh','maphuong','order_id'];
+    protected $fillable = ['address','matp','maqh','maphuong','order_id','note'];
 
     public function order(){
     	return $this->belongsTo(\App\Models\Order\Order::class);

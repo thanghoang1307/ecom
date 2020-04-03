@@ -24,6 +24,7 @@ class CreateShipmentsTable extends Migration
             $table->foreign('maphuong')->references('maphuong')->on('wards')->onUpdate('cascade');
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
+            $table->text('note');
             $table->timestamps();
         });
     }

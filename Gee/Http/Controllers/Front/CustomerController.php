@@ -21,7 +21,14 @@ class CustomerController extends Controller
 
     public function register(Request $request)
     {	
-    	$password = Hash::make($request->password);
+        $password = Hash::make($request->password);
+        $request->validate([
+            'phone' => 'required|min:9',
+            'email' => 'required|email',
+            'name' => 'required',
+            'password' => 'required|confirmed',
+            'gender' => 'required',
+            ]);
         $customer = $this->customer->create([
         	'name' => $request->name,
         	'password' => $password,

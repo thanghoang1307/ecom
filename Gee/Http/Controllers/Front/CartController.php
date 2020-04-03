@@ -13,6 +13,7 @@ use App\Repositories\Order\GuestInterface;
 use App\Repositories\Prd\PrdInterface;
 use App\Notifications\OrderComplete;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Auth;
 use App\User;
 
@@ -40,8 +41,8 @@ class CartController extends Controller
 		$validatedData = $request->validate([
         'gender' => 'required',
         'name' => 'required',
-        'phone' => 'required',
-        'email' => 'required',
+        'phone' => 'required|min:9',
+        'email' => 'required|email',
         'city' => 'required',
         'district' => 'required',
         'ward' => 'required',
@@ -64,8 +65,8 @@ class CartController extends Controller
 			]);
 			$order_arr = array_merge($order_arr,['guest_id' => $guest->id,]);	
 		}
-		$order = $this->order->create($order_arr);
 
+		$order = $this->order->create($order_arr);
 		foreach (session('cart.items') as $key => $value){
 			$price = $this->prd->find($key)->current_price;
 			$order_prd = $this->order_prd->create([
@@ -82,6 +83,7 @@ class CartController extends Controller
 			'maqh' => $request->district,
 			'maphuong' => $request->ward,
 			'order_id' => $order->id,
+			'note' => $request->note,
 		]);
 
 		return redirect()->route('front.thanh_toan',$order->order_number);
@@ -148,7 +150,7 @@ class CartController extends Controller
 	$total = 0;
 	}	
 		$pdf = PDF::loadView('pdf.bao_gia', ['prds' => $prds, 'total' => $total, 'carts' => $carts])->setPaper('a4', 'landscape');
-		return $pdf->stream();
+		return $pdf->stream('Bao_Gia_'.Carbon::now()->format('d-m-Y_H-i')."_OneStopShop_VN.pdf");
 	}
 
 }
