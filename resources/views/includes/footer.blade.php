@@ -150,7 +150,7 @@
       </div>
       <div class="footer-bottom">
         <div class="row">
-          <div class="col-md-10 order-1 order-md-0">
+          <div class="col-md-8 order-2 order-md-0">
             <div class="footer-bottom-detail">
               <h3 class="footer-bottom-detail-title">Công ty TNHH Dịch Vụ UM - </h3>
               <p class="footer-bottom-detail-content">OneStopShop IT - Lựa chọn hàng đầu về giải pháp và thiết bị trong
@@ -159,7 +159,17 @@
                 cấp:???, Sở kế hoạch và đầu tư thành phố Hồ Chí Minh.</p>
             </div>
           </div>
-          <div class="col-md-2 order-0 order-md-1">
+          <div class="col-md-2 order-1 order-md-1">
+            <div class="image-check">
+              <a style="color: #999; text-decoration: none;" href="https://comodosslstore.com">
+				<img style="width: 50%; height: 50%;" src="https://ssl.comodo.com/images/trusted-site-seal.png" 
+				alt="Comodo Trusted Site Seal" style="border: 0px;"><br>
+				<span style="font-weight:bold; font-size:7pt; font-weight: normal; position: relative; top: -5px;">
+				Secured By Comodo</a>
+				</span>
+            </div>
+          </div>
+		  <div class="col-md-2 order-2 order-md-2">
             <div class="image-check">
               <img src="/assets/img/icon/checked.png" class="img-fluid" alt="">
             </div>
