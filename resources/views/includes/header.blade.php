@@ -142,7 +142,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<div class="dropdown dropdown-discount">
 										<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
 											@if(session()->get('cart.items'))
-											<span class="header-cart-number"></span>
+											<span class="header-cart-number">{{array_sum(session()->get('cart.items'))}}</span>
 											@endif
 											<i class="icon icon-shopping-cart"></i>
 										</a>
