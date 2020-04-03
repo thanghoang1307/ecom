@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/assets/img/favicon.ico">
-	<title>One Stop Shop</title>
+	<title>One Stop Shop - Giải Pháp | Thiết Bị CNTT</title>
 	<!-- Bootstrap core CSS -->
 	<link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.css')}}">
@@ -83,9 +83,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							</div>
 							<div class="col-11 col-md-5">
 								<!-- Start Side Menu -->
-								<a class="menu-toggle" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false"
+								<a class="menu-toggle collapsed" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false"
 								aria-controls="collapseMenu">
-								<span class="menu-toggle-grippy">Toggle</span>
+								<span class="menu-toggle-grippy"></span>
+								<span class="menu-toggle-grippy"></span>
+								<span class="menu-toggle-grippy"></span>
+								<span class="menu-toggle-grippy"></span>
 							</a>
 							<!-- End Side Menu -->
 							<div class="header-brand-search-wrapper">
