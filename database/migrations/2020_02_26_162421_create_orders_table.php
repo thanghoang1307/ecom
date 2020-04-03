@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
             $table->integer('payment_type')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(-2);
             $table->timestamps();
         });
     }

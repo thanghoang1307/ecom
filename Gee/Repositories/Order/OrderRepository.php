@@ -14,14 +14,21 @@ class OrderRepository extends EloquentRepository implements OrderInterface {
 	}
 
 
-	public function uniqueOrderNumber(){
-	
+	public function uniqueOrderNumber()
+	{	
 	do {$order_number = Str::random(10);}
 	while ($this->_model->where('order_number',$order_number)->first());
 	return $order_number;
 	}
 
-	public function getFromOrderNumber($order_number){
+	public function getFromOrderNumber($order_number)
+	{
 		return $this->_model->where('order_number',$order_number)->first();
 	}
+
+	public function getAllOrder()
+	{
+		return $this->_model->where('status','>=',-1)->paginate(12);
+	}
+
 	}

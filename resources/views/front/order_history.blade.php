@@ -21,7 +21,7 @@
                   </tr>
                   </thead>
                   <tbody>
-				@foreach (auth('customer')->user()->orders->paginate(10) as $order)
+				@foreach ($orders as $order)
                   <tr>
                     <td>{{date('d/m/Y',strtotime($order->created_at))}}</td>
                       <td><a href="{{route('front.account.order_detail',$order->id)}}">#{{$order->order_number}}</a></td>

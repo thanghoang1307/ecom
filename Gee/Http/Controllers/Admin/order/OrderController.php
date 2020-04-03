@@ -14,7 +14,7 @@ class OrderController extends Controller
 		$this->order = $order;
 	}
   public function index(){
-  $orders = $this->order->getAll();
+  $orders = $this->order->getAllOrder();
   return view('admin.order.index',compact('orders'));
   }
 

@@ -94,7 +94,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                      @foreach(auth('customer')->user()->orders as $order)
+                      @foreach(auth('customer')->user()->orders()->where('status','>=',-1)->take(5)->get() as $order)
                     <tr>
                       <td>{{date('d/m/Y',strtotime($order->created_at))}}</td>
                       <td><a href="{{route('front.account.order_detail',$order->id)}}">#{{$order->order_number}}</a></td>

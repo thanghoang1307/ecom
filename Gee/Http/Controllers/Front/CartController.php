@@ -52,7 +52,7 @@ class CartController extends Controller
 		$order_arr = [
 			'order_number' => $this->order->uniqueOrderNumber(),
 			'total' => $this->prd->sumPrice(session('cart.items')),
-			'status' => 0,
+			'status' => -2,
 		];
 		if (Auth::guard('customer')->check()){
 			$order_arr = array_merge($order_arr,['customer_id' => Auth::guard('customer')->id(),]);
@@ -118,6 +118,7 @@ class CartController extends Controller
 
 	public function success($order_number){
 		$order = $this->order->getFromOrderNumber($order_number);
+		$order->update(['status' => 0]);
 		session()->forget('cart');
 		$user = User::where('role',0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;
