@@ -84,13 +84,13 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-1" name="gender" type="radio" checked="{{(!old('gender') || old('gender') == 'male') ? 'checked' : ''}}" value="male">
+                            <input id="radio-1" name="gender" type="radio" {{(!old('gender') || old('gender') == 'male') ? 'checked=checked' : ''}} value="male">
                             <label for="radio-1" class="radio-label">Anh</label>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-2" name="gender" type="radio" checked="{{(old('gender') == 'female') ? 'checked' : ''}}" value="female">
+                            <input id="radio-2" name="gender" type="radio" {{(old('gender') == 'female') ? 'checked=checked' : ''}} value="female">
                             <label for="radio-2" class="radio-label" >Chị</label>
                           </div>
                         </div>
