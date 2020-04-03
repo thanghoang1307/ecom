@@ -31,7 +31,7 @@
 												</td>
 												
 												<td width="50%">
-													<p style="padding: 0; margin: 0 10px 0 0; text-align: right;"><a style="color: white; text-decoration: none;" href="tel:0837000247"><span style="font-size: 0.5em;">Hotline</span>
+													<p style="padding: 0; margin: 0 10px 0 0; text-align: right;"><a style="color: white; text-decoration: none;" href="tel:0837000247"><span style="font-size: 1em;">Hotline</span>
 														
 													<br /><span style="font-size: 1.5em; font-weight: bold;">0837.000.247</span></a></p>
 												</td>
@@ -50,28 +50,28 @@
 											@if($order->customer_id)
 											<tr>
 												<td>
-													<div style="margin: 0; padding: 30px; text-align: left;  line-height: 1.5em; color: #666; background: white;">
-														<p>Kính chào {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} {{$order->customer->name}}</p>
+													<div style="margin: 0; padding: 30px; text-align: left;  line-height: 1.5em; color: #666; background: white; font-size: 1.3em;">
+														<p style=" font-size: 1.3em;">Kính chào {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} {{$order->customer->name}}</p>
 														
-														<p>Đơn hàng số <span style="color: #962d91;">#{{$order->order_number}}</span> của {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} đã được {{ config('app.name') }} tiếp nhận xử lý. Chúng tôi sẽ tiến hành xác nhận và giao hàng đến {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} trong thời gian sớm nhất. Vui lòng chú ý cuộc gọi từ nhân viên giao hàng.</p>
+														<p style=" font-size: 1.3em;">Đơn hàng số <span style="color: #962d91;">#{{$order->order_number}}</span> của {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} đã được {{ config('app.name') }} tiếp nhận xử lý. Chúng tôi sẽ tiến hành xác nhận và giao hàng đến {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} trong thời gian sớm nhất. Vui lòng chú ý cuộc gọi từ nhân viên giao hàng.</p>
 														
-														<p>Để được hỗ trợ thêm thông tin về đơn hàng của mình, {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} vui lòng liên hệ số hotline <a style="color:#962d91; text-decoration: none;" href="tel:0837000247">0837.000.247</a></p>
+														<p style=" font-size: 1.3em;">Để được hỗ trợ thêm thông tin về đơn hàng của mình, {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} vui lòng liên hệ số hotline <a style="color:#962d91; text-decoration: none;" href="tel:0837000247">0837.000.247</a></p>
 														
-														<p>ONE STOP SHOP xin chân thành cảm ơn và rất mong sẽ tiếp tục nhận được sự ủng hộ của anh trong tương lai!</p>
+														<p style=" font-size: 1.3em;">ONE STOP SHOP xin chân thành cảm ơn và rất mong sẽ tiếp tục nhận được sự ủng hộ của anh trong tương lai!</p>
 													</div>
 												</td>
 											</tr>
 											@else
 											<tr>
 												<td>
-													<div style="margin: 0; padding: 30px; text-align: left;  line-height: 1.5em; color: #666; background: white;">
-														<p>Kính chào {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} {{$order->guest->name}}</p>
+													<div style="margin: 0; padding: 30px; text-align: left;  line-height: 1.5em; color: #666; background: white; font-size: 1.3em;">
+														<p style=" font-size: 1.3em;">Kính chào {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} {{$order->guest->name}}</p>
 														
-														<p>Đơn hàng số <span style="color: #962d91;">#{{$order->order_number}}</span> của {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} đã được {{ config('app.name') }} tiếp nhận xử lý. Chúng tôi sẽ tiến hành xác nhận và giao hàng đến {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} trong thời gian sớm nhất. Vui lòng chú ý cuộc gọi từ nhân viên giao hàng.</p>
+														<p style=" font-size: 1.3em;">Đơn hàng số <span style="color: #962d91;">#{{$order->order_number}}</span> của {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} đã được {{ config('app.name') }} tiếp nhận xử lý. Chúng tôi sẽ tiến hành xác nhận và giao hàng đến {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} trong thời gian sớm nhất. Vui lòng chú ý cuộc gọi từ nhân viên giao hàng.</p>
 														
-														<p>Để được hỗ trợ thêm thông tin về đơn hàng của mình, {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} vui lòng liên hệ số hotline <a style="color:#962d91; text-decoration: none;" href="tel:0837000247">0837.000.247</a></p>
+														<p style=" font-size: 1.3em;">Để được hỗ trợ thêm thông tin về đơn hàng của mình, {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} vui lòng liên hệ số hotline <a style="color:#962d91; text-decoration: none;" href="tel:0837000247">0837.000.247</a></p>
 														
-														<p>ONE STOP SHOP xin chân thành cảm ơn và rất mong sẽ tiếp tục nhận được sự ủng hộ của anh trong tương lai!</p>
+														<p style=" font-size: 1.3em;">ONE STOP SHOP xin chân thành cảm ơn và rất mong sẽ tiếp tục nhận được sự ủng hộ của anh trong tương lai!</p>
 													</div>
 												</td>
 											</tr>
@@ -86,43 +86,43 @@
 														<tbody>
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder;">Thông tin đơn hàng</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder; font-size: 1.3em;">Thông tin đơn hàng</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td width="30%">
-																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Họ và tên:</p>
+																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Họ và tên:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->customer->name}}</p>
+																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->customer->name}}</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td width="30%">
-																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Số điện thoại:</p>
+																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Số điện thoại:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->customer->phone}}</p>
+																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->customer->phone}}</p>
 																</td>
 															</tr>
 															
 															<tr>
-																<td width="30%">
-																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Địa chỉ nhận hàng:</p>
+																<td width="30%" style="vertical-align: text-top;">
+																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Địa chỉ nhận hàng:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}</p>
+																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 0; padding: 10px 0; text-align: left; font-size: 0.8em; line-height: 1.5em; color: #666; border-top: 1px solid #ddd;"><strong>Lưu ý:</strong> Với những đơn hàng trả trước, xin vui lòng đảm bảo người nhận hàng đúng thông tin đã đăng.</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-top: 1px solid #ddd;"><strong>Lưu ý:</strong> Với những đơn hàng trả trước, xin vui lòng đảm bảo người nhận hàng đúng thông tin đã đăng.</p>
 																</td>
 															</tr>
 														</tbody>
@@ -136,43 +136,43 @@
 														<tbody>
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder;">Thông tin đơn hàng</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder; font-size: 1.3em;">Thông tin đơn hàng</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td width="30%">
-																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Họ và tên:</p>
+																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Họ và tên:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->guest->name}}</p>
+																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->guest->name}}</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td width="30%">
-																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Số điện thoại:</p>
+																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Số điện thoại:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->guest->phone}}</p>
+																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->guest->phone}}</p>
 																</td>
 															</tr>
 															
 															<tr>
-																<td width="30%">
-																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Địa chỉ nhận hàng:</p>
+																<td width="30%" style="vertical-align: text-top;">
+																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Địa chỉ nhận hàng:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}</p>
+																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->shipment->address}}, {{$order->shipment->ward->name}}, {{$order->shipment->district->name}}, {{$order->shipment->city->name}}</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 0; padding: 10px 0; text-align: left; font-size: 0.8em; line-height: 1.5em; color: #666; border-top: 1px solid #ddd;"><strong>Lưu ý:</strong> Với những đơn hàng trả trước, xin vui lòng đảm bảo người nhận hàng đúng thông tin đã đăng.</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-top: 1px solid #ddd;"><strong>Lưu ý:</strong> Với những đơn hàng trả trước, xin vui lòng đảm bảo người nhận hàng đúng thông tin đã đăng.</p>
 																</td>
 															</tr>
 														</tbody>
@@ -190,43 +190,43 @@
 														<tbody>
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder;">Thông tin xuất hoá đơn GTGT</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder; font-size: 1.3em;">Thông tin xuất hoá đơn GTGT</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td width="30%">
-																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Tên công ty</p>
+																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Tên công ty</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->company->name}}</p>
+																	<p style="margin: 20px 0 0 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->company->name}}</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td width="30%">
-																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Mã số thuế:</p>
+																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Mã số thuế:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->company->mst}}</p>
+																	<p style="margin: 3px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->company->mst}}</p>
 																</td>
 															</tr>
 															
 															<tr>
-																<td width="30%">
-																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;">Địa chỉ:</p>
+																<td width="30%" style="vertical-align: text-top;">
+																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Địa chỉ:</p>
 																</td>
 																
 																<td width="70%">
-																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->company->address}}</p>
+																	<p style="margin: 0 0 20px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->company->address}}</p>
 																</td>
 															</tr>
 															
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 0; padding: 10px 0; text-align: left; font-size: 0.8em; line-height: 1.5em; color: #666; border-top: 1px solid #ddd;"><strong>Lưu ý:</strong> ONE STOP SHOP từ chối xử lý các yêu cầu phát sinh trong việc kê khai thuế đối với những hóa đơn từ 20 triệu đồng trở lên thanh toán bằng tiền mặt.</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-top: 1px solid #ddd;"><strong>Lưu ý:</strong> ONE STOP SHOP từ chối xử lý các yêu cầu phát sinh trong việc kê khai thuế đối với những hóa đơn từ 20 triệu đồng trở lên thanh toán bằng tiền mặt.</p>
 																</td>
 															</tr>
 														</tbody>
@@ -243,7 +243,7 @@
 														<tbody>
 															<tr>
 																<td>
-																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder;">Chi tiết đơn hàng</p>
+																	<p style="margin: 0; padding: 10px 0; text-align: left;  line-height: 1.5em; color: #666; border-bottom: 2px solid #ddd; font-weight: bolder; font-size: 1.3em;">Chi tiết đơn hàng</p>
 																</td>
 															</tr>
 															
@@ -255,21 +255,21 @@
 																		<tbody>
 																			<tr>
 																				<td width="70%">
-																					<p style="margin: 0; padding: 5px 0 0 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;"><a href="{{route('front.product-detail',$prd->slug)}}" style="color: #666; text-decoration: none;">{{$prd->name}}</a></p>
+																					<p style="margin: 0; padding: 5px 0 0 0; text-align: left;  line-height: 1.5em; color: #666; font-weight: bold;"><a href="{{route('front.product-detail',$prd->slug)}}" style="color: #666; text-decoration: none; font-size: 1.3em;">{{$prd->name}}</a></p>
 																				</td>
 																				
 																				<td width="30%">
-																					<p style="margin: 0; padding: 5px 0 0 0; text-align: right;  line-height: 1.5em; color: #666;">{{$prd->pivot->total}}<sup>đ</sup></p>
+																					<p class="price" style="margin: 0; padding: 5px 0 0 0; text-align: right;  line-height: 1.5em; color: #666; font-size: 1.3em;">{{$prd->pivot->total}}<sup>đ</sup></p>
 																				</td>
 																			</tr>
 																			
 																			<tr>
 																				<td width="70%">
-																					<p style="margin: 0; padding: 5px 0 10px 0; text-align: left;  line-height: 1.5em; color: #666;">Mã sản phẩm: <a href="{{route('front.product-detail',$prd->slug)}}" style="color: #962d91; text-decoration: none;">{{$prd->sku}}</a></p>
+																					<p style="margin: 0; padding: 5px 0 10px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;">Mã sản phẩm: <a href="{{route('front.product-detail',$prd->slug)}}" style="color: #962d91; text-decoration: none; font-size: 1.3em;">{{$prd->sku}}</a></p>
 																				</td>
 																				
 																				<td width="30%">
-																					<p style="margin: 0; padding: 5px 0 10px 0; text-align: right;  line-height: 1.5em; color: #666;">x{{$prd->pivot->qty}}</p>
+																					<p style="margin: 0; padding: 5px 0 10px 0; text-align: right;  line-height: 1.5em; color: #666; font-size: 1.3em;">x{{$prd->pivot->qty}}</p>
 																				</td>
 																			</tr>
 																		</tbody>
@@ -281,7 +281,7 @@
 															
 															<tr>
 																<td colspan="2">
-																	<p style="margin: 10px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666;"><strong>Ghi chú:</strong> {{$order->shipment->note}}</p>
+																	<p style="margin: 10px 0; padding: 5px 0; text-align: left;  line-height: 1.5em; color: #666; font-size: 1.3em;"><strong>Ghi chú:</strong> {{$order->shipment->note}}</p>
 																</td>
 															</tr>
 															
@@ -291,31 +291,31 @@
 																		<tbody>
 																			<tr>
 																				<td width="70%">
-																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666;">Phương thức thanh toán</p>
+																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-size: 1.3em;">Phương thức thanh toán</p>
 																				</td>
 																				
 																				<td width="30%">
-																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-weight: bold;">{{$order->payment_type == 0 ? 'COD' : 'Chuyển khoản'}}</p>
+																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->payment_type == 0 ? 'COD' : 'Chuyển khoản'}}</p>
 																				</td>
 																			</tr>
 																			
 																			<tr>
 																				<td width="70%">
-																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666;">Phí vận chuyển</p>
+																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-size: 1.3em;">Phí vận chuyển</p>
 																				</td>
 																				
 																				<td width="30%">
-																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-weight: bold;">Miễn phí</p>
+																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">Miễn phí</p>
 																				</td>
 																			</tr>
 																			
 																			<tr>
 																				<td width="70%">
-																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666;">Tổng tiền</p>
+																					<p style="margin: 0; padding: 5px 0; text-align: right;  line-height: 1.5em; color: #666; font-size: 1.3em;">Tổng tiền</p>
 																				</td>
 																				
 																				<td width="30%">
-																					<p style="margin: 0; padding: 5px 0; text-align: right; line-height: 1.5em; color: #666; font-weight: bold;">{{$order->total}}<sup>đ</sup></p>
+																					<p class="price" style="margin: 0; padding: 5px 0; text-align: right; line-height: 1.5em; color: #666; font-weight: bold; font-size: 1.3em;">{{$order->total}}<sup>đ</sup></p>
 																				</td>
 																			</tr>
 																		</tbody>
@@ -338,14 +338,14 @@
 									<table style="background:#f8f9fa; border-bottom: 2px solid #ddd; border-top: 2px solid #ddd; padding: 10px 0; margin: 20px 0 0 0;" width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tr>
 											<td width="50%">
-												<p style="font-size: 0.6em; margin: 0; padding: 10px 30px; text-align: left; color: #666; line-height: 16px;"><strong>CÔNG TY TRÁCH NHIỆM HỮU HẠN DỊCH VỤ UM OneStopShop IT</strong> - Lựa chọn hàng đầu về giải pháp và thiết bị trong lĩnh vực công nghệ thông tin.
+												<p style="font-size: 0.7em; margin: 0; padding: 10px 30px; text-align: left; color: #666; line-height: 16px;"><strong>CÔNG TY TRÁCH NHIỆM HỮU HẠN DỊCH VỤ UM OneStopShop IT</strong> - Lựa chọn hàng đầu về giải pháp và thiết bị trong lĩnh vực công nghệ thông tin.
 													
 													<br />Khu đô thị Vinhomes Central Park, số 208 Nguyễn Hữu Cảnh, Phường 22, Q. Bình Thạnh, Tp.HCM.
 												</p>
 											</td>
 											
 											<td width="25%" style="vertical-align: text-top;">
-												<p style="text-align: left; font-size: 0.7em; margin: 10px 10px 0 10px; padding: 0; color: #666; line-height: 18px;"><a style="color:#666; text-decoration: none;" href="https://onestopshop.vn/chinh-sach-doi-tra" target="_blank">Chính sách đổi trả</a>
+												<p style="text-align: left; font-size: 0.9em; margin: 10px 10px 0 10px; padding: 0; color: #666; line-height: 18px;"><a style="color:#666; text-decoration: none;" href="https://onestopshop.vn/chinh-sach-doi-tra" target="_blank">Chính sách đổi trả</a>
 													
 													<br /><a style="color:#666; text-decoration: none;" href="https://onestopshop.vn/chinh-sach-bao-hanh" target="_blank">Chính sách bảo hành</a>
 													
@@ -355,7 +355,7 @@
 											</td>
 											
 											<td width="25%" style="vertical-align: text-top;">
-												<p style="text-align: left; font-size: 0.7em; margin: 10px 10px 0 10px; padding: 0 10px 0 0; color: #666; line-height: 18px;"><a style="color:#666; text-decoration: none;" href="https://onestopshop.vn/huong-dan-mua-hang" target="_blank">Hướng dẫn mua hàng</a>
+												<p style="text-align: left; font-size: 0.9em; margin: 10px 10px 0 10px; padding: 0 10px 0 0; color: #666; line-height: 18px;"><a style="color:#666; text-decoration: none;" href="https://onestopshop.vn/huong-dan-mua-hang" target="_blank">Hướng dẫn mua hàng</a>
 													
 													<br /><a style="color:#666; text-decoration: none;" href="https://onestopshop.vn/huong-dan-thanh-toan" target="_blank">Hướng dẫn thanh toán</a>
 													
@@ -371,12 +371,22 @@
 							
 							<tr>
 								<td>
-									<p style="text-align: center; margin: 10px; padding: 0; font-size: 0.8em; color: #666; line-height: 18px;"><strong>Lưu ý:</strong> Giá bán và các ưu đãi, quà tặng đi kèm sản phẩm có thể thay đổi bất cứ lúc nào mà không cần báo trước.</p>
+									<p style="text-align: center; margin: 10px; padding: 0;  color: #666; line-height: 18px;"><strong>Lưu ý:</strong> Giá bán và các ưu đãi, quà tặng đi kèm sản phẩm có thể thay đổi bất cứ lúc nào mà không cần báo trước.</p>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</td>
+				<script>
+				function numberWithCommas(x) {
+				    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				  }
+				  $(function(){ 
+				  $('.price').each(function(){
+				    $(this).html(numberWithCommas($(this).html()));
+				  });
+				  });
+				</script>
 			</tr>
 		</tbody>
 	</table>
