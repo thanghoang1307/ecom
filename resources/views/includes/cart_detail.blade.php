@@ -1,7 +1,7 @@
 <div class="col-md-6">
       <section class="cart-info">
         @foreach ($prds as $prd)
-        <div class="cart-item">
+        <div class="cart-item product">
           <div class="row">
             <div class="col-5 col-md-3">
               <div class="cart-image">

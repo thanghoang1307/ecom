@@ -128,9 +128,22 @@
   });
 
   $('.btn-remove-item').on('click',function(){
+if ($('.product').length > 1) {
 $(this).parents('div.cart-item').remove();
 $prd_id = $(this).attr('prd-id');
 ajaxRemoveItem($prd_id);
+} else {
+  if(confirm("Bạn chỉ còn 1 sản phẩm trong giỏ hàng. Bạn có chắc chắn muốn xoá và quay trở về trang chủ ?")){
+    $(this).parents('div.cart-item').remove();
+    $prd_id = $(this).attr('prd-id');
+    ajaxRemoveItem($prd_id);
+    const url = 'http://' + window.location.hostname + ':' + window.location.port;
+    window.location.href = url;
+    }
+    else{
+        return false;
+    }
+}
   });
   });
 
