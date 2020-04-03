@@ -130,18 +130,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								@endguest
 								
 									<!--USER LOGIN-->
-									<span class="cart-title d-none d-md-inline-block"><a href="{{route('front.check_out_1')}}">Giỏ hàng</a></span>
+									<span class="cart-title d-none d-md-inline-block">
+										<a href="{{route('front.check_out_1')}}">Giỏ hàng 
+											@if(session()->get('cart.items'))
+											<span class="cart-number">
+												{{array_sum(session()->get('cart.items'))}}
+											</span>
+											@endif
+										</a>
+									</span>
 									<div class="dropdown dropdown-discount">
 										<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
-											<span class="header-cart-number">{{session()->get('cart.items') ? array_sum(session()->get('cart.items')) : 0}}</span>
 											<i class="icon icon-shopping-cart"></i>
 										</a>
 										<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false">
-										@if(session()->get('cart.items'))
+										<!--@if(session()->get('cart.items'))
 										<span class="header-cart-number">{{array_sum(session()->get('cart.items'))}}</span>
-										@endif
+										@endif-->
 										<i class="icon icon-shopping-cart"></i>
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
