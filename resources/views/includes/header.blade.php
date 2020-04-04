@@ -170,30 +170,38 @@
 										<i class="icon icon-shopping-cart"></i>
 									</a>
 									@endif
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										@if(count($prds_in_cart))
-										@foreach ($prds_in_cart as $prd)
-										<li class="dropdown-item">
-											<div class="product-head">
-												<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
-													<img src="{{$prd->thumb}}" class="img-fluid">
-												</a>
-												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-											<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
-											</div>
-										</li>
-										@endforeach
-										<li class="dropdown-item">
-											<div class="product-end">
-												<h5 class="product-end-block"><span class="product-end-title">Thành tiền</span> <span
-													class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span></h5>
-													<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+									
+									<!-- quick cart -->
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<ul>
+											@if(count($prds_in_cart))
+											@foreach ($prds_in_cart as $prd)
+											<li class="dropdown-item">
+												<div class="product-head">
+													<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
+														<img src="{{$prd->thumb}}" class="img-fluid">
+													</a>
+													<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
+												<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
 												</div>
 											</li>
+											@endforeach
 											@else
-<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
-											@endif
+											<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
+										@endif
 										</ul>
+										@if(count($prds_in_cart))
+										<div class="product-end">
+											<h5 class="product-end-block">
+												<span class="product-end-title">Thành tiền</span> <span
+												class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span>
+											</h5>
+											<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+										</div>
+										@endif
+									</div>
+										<!-- end quick cart -->
+										
 									</div>
 								</div>
 							</div>
