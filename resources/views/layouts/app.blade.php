@@ -24,10 +24,14 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
+		<div style="border-bottom: 1px solid #4f5962; margin-top: 20px;">
+			<h4 style="color: #c2c7d0;"><a style="color:#c2c7d0;" href="{{route('front.index')}}" target="_blank">{{ config('app.name') }}</a></h4>
+		  <h6 style="color: #c2c7d0;">Control Panel</h6>
+	  </div>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="info">
-            <a href="#" class="d-block">{{Auth::user()->name}}</a>
-            <a href="{{route('admin.user.logout')}}">Đăng xuất</a>
+		  	<a href="#" class="d-block"><h6>{{Auth::user()->name}}</h6></a>
+            <a href="{{route('admin.user.logout')}}" style="font-size: 0.8em;">[ Đăng xuất ]</a>
           </div>
         </div>
 
