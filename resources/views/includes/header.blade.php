@@ -9,19 +9,23 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/assets/img/favicon.ico">
 	<title>One Stop Shop - Giải Pháp | Thiết Bị CNTT</title>
+	
+	
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-579KXRM');</script>
+	<!-- End Google Tag Manager -->
+
 	<!-- Bootstrap core CSS -->
 	<link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.css')}}">
 	<script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>
 </head>
 <body>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-579KXRM');</script>
-<!-- End Google Tag Manager -->
+
 
 	<!--HEADER-->
 	<header id="Header" class="header-wrapper">

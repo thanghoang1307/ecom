@@ -135,9 +135,13 @@
                           @guest('customer')
                           <div class="form-group selected-box">
                             <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <option value="0" disabled selected>Tỉnh/Thành</option>
+                              <!--<option value="0" disabled selecte>Tỉnh/Thành</option>-->
                               @foreach ($cities as $city)
-                              <option value="{{$city->matp}}">{{$city->name}}</option>
+							  	@if($city->name == 'Thành phố Hồ Chí Minh')
+							  		<option value="{{$city->matp}}" selected>{{$city->name}}</option>
+							  	@else
+							  		<option value="{{$city->matp}}">{{$city->name}}</option>
+							  	@endif
                               @endforeach
                             </select>
                             @error('city')
@@ -149,6 +153,7 @@
                           <div class="form-group selected-box">
                             <select class="form-control" name="district">
                               <option value="0" disabled selected>Quận/Huyện</option>
+							  
                             </select>
                             @error('district')
                       <div class="alert alert-danger">{{ $message }}</div>
@@ -182,8 +187,8 @@
                         @endphp
                         <!-- Nếu khách hàng có địa chỉ mặc định -->
                       @if($address)
-<div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" disabled="disabled" >
+	<div class="form-group selected-box">
+                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
                               <option value="{{$address->matp}}" >{{$address->city->name}}</option>
                             </select>
                             <input type="hidden" name="city" value="{{$address->matp}}">
@@ -191,7 +196,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" name="district" disabled="disabled">
+                            <select class="form-control" name="district">
                               <option value="{{$address->maqh}}" >{{$address->district->name}}</option>
                             </select>
                             <input type="hidden" name="district" value="{{$address->maqh}}">
@@ -199,7 +204,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward" disabled="disabled">
+                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
                               <option value="{{$address->maphuong}}" >{{$address->ward->name}}</option>
                             </select>
                             <input type="hidden" name="ward" value="{{$address->maphuong}}">
@@ -207,7 +212,7 @@
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input disabled="disabled" name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" value="{{$address->address}}">
+                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" value="{{$address->address}}">
                             <input type="hidden" name="address" value="{{$address->address}}">
                           </div>
                         </div>
@@ -215,9 +220,13 @@
                       @else
 <div class="form-group selected-box">
                             <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <option value="0" disabled selected>Tỉnh/Thành</option>
+                              <option value="0" disabled>Tỉnh/Thành</option>
                               @foreach ($cities as $city)
-                              <option value="{{$city->matp}}">{{$city->name}}</option>
+							  	@if($city->name == 'Thành phố Hồ Chí Minh')
+							  		<option value="{{$city->matp}}" selected>{{$city->name}}</option>
+							  	@else
+							  		<option value="{{$city->matp}}">{{$city->name}}</option>
+							  	@endif
                               @endforeach
                             </select>
                             @error('city')
@@ -278,10 +287,10 @@
         </form>
       </section>
     </div>
-    <script>
-      $('form').submit(function(e) {
-    $(':disabled').each(function(e) {
-        $(this).removeAttr('disabled');
-    })
-});
-    </script>
+<script>
+  $('form').submit(function(e) {
+  	$(':disabled').each(function(e) {
+  		$(this).removeAttr('disabled');
+  	})
+  });
+</script>
