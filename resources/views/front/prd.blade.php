@@ -162,7 +162,7 @@
 				@if($prd->regular_price || $prd->current_price)
 				<h4 class="product-price price">{{$prd->sale_price ? $prd->sale_price : $prd->regular_price}}<sup>đ</sup></h4>
 				@else
-				<h4 class="product-price"><span class="contact"><a href="tel:{{$settings->find('phone')->value}}">Liên hệ</a></span></h4>
+				<h4 class="product-price"><span class="contact"><a href="tel:{{$settings->find('phone')->value}}">Liên hệ {{$settings->find('phone')->value}}</a></span></h4>
 				@endif
                 @if ($prd->sale_price)
                 <div class="product-discount">
