@@ -1,3 +1,4 @@
+@if(session()->get('cart.items'))
 <div class="col-md-6">
       <section class="cart-process">
         <div class="process-list d-none d-md-block">
@@ -279,14 +280,17 @@
               </div>
             </div>
           </div>
+		  
           <div class="process-info action">
             <div class="text-right">
               <button type="submit" class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
             </div>
           </div>
+		  
         </form>
       </section>
     </div>
+@endif
 <script>
   $('form').submit(function(e) {
   	$(':disabled').each(function(e) {

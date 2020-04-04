@@ -1,3 +1,4 @@
+@if(session()->get('cart.items'))
 <div class="col-md-6">
       <section class="cart-process">
         <div class="process-list d-none d-md-block">
@@ -130,3 +131,4 @@
         </form>
       </section>
     </div>
+@endif

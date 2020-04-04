@@ -1,5 +1,6 @@
 <div class="col-md-6">
       <section class="cart-info">
+	@if(session()->get('cart.items'))
         @foreach ($prds as $prd)
         <div class="cart-item product">
           <div class="row">
@@ -50,7 +51,9 @@
           </div>
         </div>
         @endforeach
-        
+    @else
+	<div class="cart-item product" style="text-align: center;">Chưa có sản phẩm trong giỏ hàng</div>
+	@endif
         <!-- Total -->
         <div class="cart-item d-block d-md-none">
           <div class="row align-items-center align-content-center">
