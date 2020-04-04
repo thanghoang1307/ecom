@@ -31,7 +31,7 @@
                   <div class="col-7">
                     <div class="news-text">
                       <h3 class="news-title">{{ Str::limit($post->title, $limit = 150, $end = '..') }}</h3>
-                      <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($post->created_at))}}</h4>
+                      <h4 class="news-datetime">{{date('d/m/Y H:i',strtotime($post->created_at))}}</h4>
                       <p class="news-desc">
                         {!! strip_tags($post->content) !!}
                       </p>
@@ -94,7 +94,7 @@
                     <div class="col-8">
                       <div class="news-text">
                         <h3 class="news-title">{{ Str::limit(strip_tags($most_viewed->title), $limit = 150, $end = '...') }}</h3>
-                        <h4 class="news-datetime">Đăng ngày {{date('d/m/Y H:i',strtotime($most_viewed->created_at))}}</h4>
+                        <h4 class="news-datetime">{{date('d/m/Y H:i',strtotime($most_viewed->created_at))}}</h4>
                       </div>
                     </div>
                   </div>
