@@ -48,9 +48,20 @@
   e.preventDefault();
   mobileRedirectParam();
   });
+
+  $('button.clear-filter').on('click',function(e){
+  e.preventDefault();
+  clearOrderAndFilter();
+  });
+
   });
 </script>
 <script>
+function clearOrderAndFilter(){
+const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+window.location.href = url;
+}
+
 function redirectParam(){
 var brand_arr = [];
 $.each($("input[name='brand_checkbox']:checked"), function(){
@@ -78,7 +89,7 @@ if (search){
 }
 
 param = '?' + param_arr.join('&');
-const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+const url = 'https://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
 window.location.href = url + param;
 };
 
@@ -108,7 +119,6 @@ if (price_arr.length){
 if (search){
   param_arr.push('search='+search);
 }
-
 param = '?' + param_arr.join('&');
 const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
 window.location.href = url + param;
