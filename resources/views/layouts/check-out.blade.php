@@ -154,30 +154,7 @@ ajaxRemoveItem($prd_id);
 }
   });
   });
-
-  $("select[name='city']").on('change',function(){
-    var matp = $(this).val();
-    $.ajax({
-    type: 'POST',
-    url: "{{route('front.getquan')}}",
-    data: {'_token':'{{csrf_token()}}', 'matp': matp},
-    success: function(data){
-    $("select[name='district']").html(data.html);
-    }
-    });
-  });
-
-  $("select[name='district']").on('change',function(){
-    var maqh = $(this).val();
-    $.ajax({
-    type: 'POST',
-    url: "{{route('front.getphuong')}}",
-    data: {'_token':'{{csrf_token()}}', 'maqh': maqh},
-    success: function(data){
-    $("select[name='ward']").html(data.html);
-    }
-    });
-  });
 </script>
 </body>
 </html>
+@yield('script')

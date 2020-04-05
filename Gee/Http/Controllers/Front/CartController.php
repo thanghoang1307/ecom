@@ -38,11 +38,23 @@ class CartController extends Controller
 	}
 
 	public function checkOut2(Request $request){
+		// Lưu thông tin vào session
+		session()->put('cart.gender',$request->gender);
+		session()->put('cart.name',$request->name);
+		session()->put('cart.phone',$request->phone);
+		session()->put('cart.email',$request->email);
+		session()->put('cart.city',$request->city);
+		session()->put('cart.district',$request->district);	
+		session()->put('cart.ward',$request->ward);
+		session()->put('cart.address',$request->address);
+		session()->put('cart.note',$request->note);
+		
+		// Validate
 		$validatedData = $request->validate([
         'gender' => 'required',
         'name' => 'required',
-        'phone' => 'required|min:9',
-        'email' => 'required|email',
+        'phone' => 'required|min:10|numeric',
+        'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
         'city' => 'required',
         'district' => 'required',
         'ward' => 'required',

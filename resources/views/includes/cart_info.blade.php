@@ -85,13 +85,13 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-1" name="gender" type="radio" checked="{{(!old('gender') || old('gender') == 'male') ? 'checked' : ''}}" value="male">
+                            <input id="radio-1" name="gender" type="radio" checked="{{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}}" value="male">
                             <label for="radio-1" class="radio-label">Anh</label>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-2" name="gender" type="radio" checked="{{(old('gender') == 'female') ? 'checked' : ''}}" value="female">
+                            <input id="radio-2" name="gender" type="radio" checked="{{(session()->get('cart.gender') == 'female') ? 'checked' : ''}}" value="female">
                             <label for="radio-2" class="radio-label" >Chị</label>
                           </div>
                         </div>
@@ -99,19 +99,19 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{old('name')}}">
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}">
                         @error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="phone" value="{{old('phone')}}">
+                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}">
                         @error('phone')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="email" value="{{old('email')}}">
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}">
                         @error('email')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -134,51 +134,7 @@
                         <div class="col-md-6">
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách -->
                           @guest('customer')
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <!--<option value="0" disabled selecte>Tỉnh/Thành</option>-->
-                              @foreach ($cities as $city)
-							  	@if($city->name == 'Thành phố Hồ Chí Minh')
-							  		<option value="{{$city->matp}}" selected>{{$city->name}}</option>
-							  	@else
-							  		<option value="{{$city->matp}}">{{$city->name}}</option>
-							  	@endif
-                              @endforeach
-                            </select>
-                            @error('city')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="district">
-                              <option value="0" disabled selected>Quận/Huyện</option>
-							  
-                            </select>
-                            @error('district')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
-                              <option value="0" disabled selected>Phường/Xã</option>
-                            </select>
-                            @error('ward')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường" value="{{old('address')}}">
-                            @error('address')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
+                          @include('includes.address-form-guest')
                         @endguest
 
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách hàng -->
@@ -219,55 +175,12 @@
                         </div>
                         <!-- Nếu khách hàng không có địa chỉ mặc định -->
                       @else
-<div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <option value="0" disabled>Tỉnh/Thành</option>
-                              @foreach ($cities as $city)
-							  	@if($city->name == 'Thành phố Hồ Chí Minh')
-							  		<option value="{{$city->matp}}" selected>{{$city->name}}</option>
-							  	@else
-							  		<option value="{{$city->matp}}">{{$city->name}}</option>
-							  	@endif
-                              @endforeach
-                            </select>
-                            @error('city')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="district">
-                              <option value="0" disabled selected>Quận/Huyện</option>
-                            </select>
-                            @error('district')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
-                              <option value="0" disabled selected>Phường/Xã</option>
-                            </select>
-                            @error('ward')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
-                            @error('address')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
+                      @include('includes.address-form-guest')
                       @endif
                         @endauth
                         <div class="col-12">
                           <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note">{{old('note')}}</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note">{{session()->get('cart.note') ?? ''}}</textarea>
                             @error('note')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -290,11 +203,69 @@
         </form>
       </section>
     </div>
+
 @endif
+@section('script')
+<?php 
+$old_district = session()->get('cart.district'); 
+      $old_city = session()->get('cart.city');
+      $old_ward = session()->get('cart.ward');
+?>
 <script>
-  $('form').submit(function(e) {
-  	$(':disabled').each(function(e) {
-  		$(this).removeAttr('disabled');
-  	})
+  // $('form').submit(function(e) {
+  // 	$(':disabled').each(function(e) {
+  // 		$(this).removeAttr('disabled');
+  // 	})
+  // });
+  function updateDistrict(matp)
+  {
+    $.ajax({
+    type: 'POST',
+    url: "{{route('front.getquan')}}",
+    data: {'_token':'{{csrf_token()}}', 'matp': matp},
+    success: function(data){
+    $("select[name='district']").html(data.html);
+    @if($old_district)
+    $("select[name='district'] option[value='{{$old_district}}']").attr('selected','selected');
+    @endif
+    }
+    });
+  }
+  
+  function updateWard(maqh)
+  {
+    $.ajax({
+    type: 'POST',
+    url: "{{route('front.getphuong')}}",
+    data: {'_token':'{{csrf_token()}}', 'maqh': maqh},
+    success: function(data){
+    $("select[name='ward']").html(data.html);
+    @if($old_ward)
+    $("select[name='ward'] option[value='{{$old_ward}}']").attr('selected','selected');
+    @endif
+    }
+    });
+  }
+  
+  $("select[name='city']").on('change',function()
+  {
+    var matp = $(this).val();
+  updateDistrict(matp);
   });
+
+  $("select[name='district']").on('change',function()
+  {
+    var maqh = $(this).val();
+    updateWard(maqh);
+  });
+
+@if($old_city)
+updateDistrict({{$old_city}});
+updateWard({{$old_district}});
+@else
+$("select[name='city'] option[value='79']").attr('selected','selected');
+updateDistrict(79);
+@endif
 </script>
+
+@endsection

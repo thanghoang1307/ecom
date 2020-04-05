@@ -3,6 +3,8 @@ return [
 'required' => ':attribute không được để trống',
 'unique' => 'Trùng lặp :attribute',
 'confirmed' => ':attribute không trùng khớp',
+'numeric' => ':attribute sai định dạng',
+'regex' => ':attribute sai định dạng',
 'min' => ['string' => ':attribute phải có độ dài tối thiểu là :min'],
 'attributes' => [
 	'sku' => 'Mã sản phẩm',
