@@ -8,7 +8,7 @@
             <li><a href="#"><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
-        <form action="{{route('front.check_out_3',$order_number)}}" method="POST">
+        <form action="{{route('front.check_out_3',$order_number)}}" method="POST" data-parsley-validate>
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Hình thức nhận hàng</h2>
@@ -80,38 +80,38 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="text" class="form-control" name="name" id="inputCompany" aria-describedby="inputCompany"
-                                   placeholder="Tên công ty"
-                        		data-parsley-required-message="Hãy nhập Tên công ty đăng ký hoá đơn"
-                        		data-parsley-required='true'>
+                                   placeholder="Tên công ty">
+                        		<!--data-parsley-required-message="Hãy nhập Tên công ty đăng ký hoá đơn"
+                        		data-parsley-required='true'>-->
                           </div>
-                          <!--@error('name')
+                          @error('name')
 							    <div class="alert alert-danger">{{ $message }}</div>
-							@enderror-->
+							@enderror
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="number" class="form-control" id="inputMST" aria-describedby="inputMST" name="mst"
-                                   placeholder="Mã số thuế"
-								data-parsley-type="integer"
+                                   placeholder="Mã số thuế">
+									<!--data-parsley-type="integer"
 			                        minlength="6"
 									data-parsley-minlength="6"
 									data-parsley-minlength-message="Mã số thuế phải có ít nhất là 6 số"
 			                        data-parsley-required-message="Hãy nhập mã số thuế"
-								data-parsley-required='true'>
+								data-parsley-required='true'>-->
                           </div>
-                          <!--@error('mst')
+                          @error('mst')
 							<div class="alert alert-danger">{{ $message }}</div>
-							@enderror-->
+							@enderror
                         </div>
                         <div class="col-12">
                           <div class="form-group">
                             <input type="text" class="form-control" id="inputAddress" aria-describedby="inputAddress"
-                                   placeholder="Số nhà, tên đường" name="address"
-                                   data-parsley-required-message="Hãy nhập địa chỉ công ty đăng ký hoá đơn"
-                        			data-parsley-required='true'>
-                                   <!--@error('address')
+                                   placeholder="Số nhà, tên đường" name="address">
+                                   <!--data-parsley-required-message="Hãy nhập địa chỉ công ty đăng ký hoá đơn"
+                        			data-parsley-required='true'>-->
+                                   @error('address')
 									<div class="alert alert-danger">{{ $message }}</div>
-									@enderror-->
+									@enderror
                           </div>
                         </div>
                         <div class="col-12">
