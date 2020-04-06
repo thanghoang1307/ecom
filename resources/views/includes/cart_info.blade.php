@@ -231,22 +231,13 @@
         </form>
       </section>
     </div>
-
 @endif
-
 @section('script')
-@auth('customer')
-@php
-$address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
-@endphp
-@if($address)
 <?php 
 	$old_district = session()->get('cart.district'); 
     $old_city = session()->get('cart.city');
     $old_ward = session()->get('cart.ward');
 ?>
-@endif
-@endauth
 <script>
   // $('form').submit(function(e) {
   // 	$(':disabled').each(function(e) {
@@ -295,7 +286,7 @@ $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->
     updateWard(maqh);
   });
 
-@if($old_city)
+@if($old_city && Auth::guard('customer')->check())
 updateDistrict({{$old_city}});
 updateWard({{$old_district}});
 @else
