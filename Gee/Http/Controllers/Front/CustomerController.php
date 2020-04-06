@@ -73,16 +73,22 @@ class CustomerController extends Controller
     }
 
     public function logIn(Request $request)
-    {
+    {   
+        $user = $this->customer->findByEmail($request->email);
+        if(!$user) {
+            return redirect()->back()->with('error','Người dùng không tồn tại hoặc chưa đăng ký');
+        }
+
         $arr = [
             'email' => $request->email,
             'password' => $request->password,
         ];
         
+
         if (Auth::guard('customer')->attempt($arr)) {
-            return redirect()->back();
+            return redirect()->back()->with('success','Đăng nhập thành công');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error','Sai mật khẩu');
         }
     }
 }
