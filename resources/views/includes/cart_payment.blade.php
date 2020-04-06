@@ -20,16 +20,14 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="radio">
-                            <input id="payment-checked-1" name="payment_type" type="radio" value="0" checked='{{old('payment_type') === 0 || !old('payment_type') ? "checkedaa" : "" }}'
-                            ata-parsley-required='true'
-                          	data-parsley-required-message="Hãy chọn phương thức thanh toán"
+                            <input id="payment-checked-1" name="payment_type" type="radio" value="0" checked='{{(old('payment_type') == 0 || !old('payment_type')) ? "checked" : "" }}'
                         	aria-describedby="payment-checked-1">
                             <label for="radio-1" class="radio-label">Thanh toán khi nhận hàng (C.O.D)</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="radio">
-                            <input id="payment-checked-2" name="payment_type" value="1" type="radio" checked='{{old('payment_type') === 1 ? "checked" : "" }}'>
+                            <input id="payment-checked-2" name="payment_type" value="1" type="radio" checked='{{old('payment_type') == 1 ? "checked" : "" }}'>
                             <label for="payment-checked-2" class="radio-label">Chuyển khoản</label>
                           </div>
                         </div>
@@ -80,7 +78,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="text" class="form-control" name="name" id="inputCompany" aria-describedby="inputCompany"
-                                   placeholder="Tên công ty">
+                                   placeholder="Tên công ty" value="{{old('name')}}">
                         		<!--data-parsley-required-message="Hãy nhập Tên công ty đăng ký hoá đơn"
                         		data-parsley-required='true'>-->
                           </div>
@@ -91,7 +89,7 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="number" class="form-control" id="inputMST" aria-describedby="inputMST" name="mst"
-                                   placeholder="Mã số thuế">
+                                   placeholder="Mã số thuế" value="{{old('mst')}}">
 									<!--data-parsley-type="integer"
 			                        minlength="6"
 									data-parsley-minlength="6"
@@ -106,7 +104,7 @@
                         <div class="col-12">
                           <div class="form-group">
                             <input type="text" class="form-control" id="inputAddress" aria-describedby="inputAddress"
-                                   placeholder="Số nhà, tên đường" name="address">
+                                   placeholder="Số nhà, tên đường" name="address" value="{{old('address')}}">
                                    <!--data-parsley-required-message="Hãy nhập địa chỉ công ty đăng ký hoá đơn"
                         			data-parsley-required='true'>-->
                                    @error('address')
@@ -117,7 +115,7 @@
                         <div class="col-12">
                           <div class="form-group">
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"
-                                      placeholder="Lời nhắn cho OneStopShop.vn"></textarea>
+                                      placeholder="Lời nhắn cho OneStopShop.vn">{{old('note')}}</textarea>
                           </div>
                         </div>
                       </div>
