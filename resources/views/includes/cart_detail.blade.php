@@ -54,13 +54,13 @@
     @else
 	<div class="cart-item product" style="text-align: center;">Chưa có sản phẩm trong giỏ hàng</div>
 	<div class="cart-pdf">
-		<div class="cart-item goback">
+		<div class="cart-item">
             <div class="row no-gutters align-items-center align-content-center">
-              <div class="col-4 col-sm-12">
+              <div class="goback"><div class="col-4 col-sm-12">
                 <a href="{{route('front.index')}}" class="btn-submit is-white">
                   <span>TRỞ VỀ</span>
                 </a>
-              </div>
+              </div></div>
             </div>
           </div>
 	</div>
