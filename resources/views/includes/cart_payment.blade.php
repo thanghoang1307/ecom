@@ -20,37 +20,17 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="radio">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <input id="radio-1" name="payment_type" type="radio" value="0"  {{(old('payment_type') === 0 || !old('payment_type')) ? 'checked="checked"' : ''}}>
-=======
-=======
->>>>>>> d2f86aaa8c24fe4e6d830e7f40cc37907bc883ae
-                            <input id="payment-checked-1" name="payment_type" type="radio" value="0" checked="checked"
+                            <input id="payment-checked-1" name="payment_type" type="radio" value="0" checked='{{old('payment_type') === 0 || !old('payment_type') ? "checkedaa" : "" }}'
                             ata-parsley-required='true'
                           	data-parsley-required-message="Hãy chọn phương thức thanh toán"
                         	aria-describedby="payment-checked-1">
-<<<<<<< HEAD
->>>>>>> d2f86aaa8c24fe4e6d830e7f40cc37907bc883ae
-=======
->>>>>>> d2f86aaa8c24fe4e6d830e7f40cc37907bc883ae
                             <label for="radio-1" class="radio-label">Thanh toán khi nhận hàng (C.O.D)</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="radio">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <input id="radio-2" name="payment_type" value="1" type="radio" {{old('payment_type') === 1 ? 'checked="checked"' : ''}} >
-                            <label for="radio-2" class="radio-label">Chuyển khoản</label>
-=======
-                            <input id="payment-checked-2" name="payment_type" value="1" type="radio">
+                            <input id="payment-checked-2" name="payment_type" value="1" type="radio" checked='{{old('payment_type') === 1 ? "checked" : "" }}'>
                             <label for="payment-checked-2" class="radio-label">Chuyển khoản</label>
->>>>>>> d2f86aaa8c24fe4e6d830e7f40cc37907bc883ae
-=======
-                            <input id="payment-checked-2" name="payment_type" value="1" type="radio">
-                            <label for="payment-checked-2" class="radio-label">Chuyển khoản</label>
->>>>>>> d2f86aaa8c24fe4e6d830e7f40cc37907bc883ae
                           </div>
                         </div>
                       </div>
@@ -88,7 +68,7 @@
                       <div class="row">
                         <div class="col-12">
                           <div class="checkbox">
-                            <input id="check-1" name="is_vat" type="checkbox" {{old('is_vat') ? 'checked="checked"' : ''}}>
+                            <input id="check-1" name="is_vat" type="checkbox" checked='{{old('is_vat') ? "checked" : ""}}'>
                             <label for="check-1" class="checkbox-label">Yêu cầu xuất hóa đơn GTGT cho đơn hàng
                               này</label>
                           </div>
