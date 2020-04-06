@@ -159,48 +159,9 @@
                         $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
                         @endphp
                         <!-- Nếu khách hàng có địa chỉ mặc định -->
-						@if($address)
-	<div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <option value="{{$address->matp}}" >{{$address->city->name}}</option>
-                            </select>
-                            <input type="hidden" name="city" value="{{$address->matp}}">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="district"
-                            id="district"
-                            data-parsley-required-message="Quận/Huyện không được để trống"
-                        	data-parsley-required='true'
-                        	aria-describedby="district">
-							  
-                              <option value="{{$address->maqh}}" >{{$address->district->name}}</option>
-                            </select>
-                            <input type="hidden" name="district" value="{{$address->maqh}}">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward"
-                            id="ward"
-                            data-parsley-required-message="Phường/Xã không được để trống"
-                        	data-parsley-required='true'
-                        	aria-describedby="ward">
-                            
-                              <option value="{{$address->maphuong}}" >{{$address->ward->name}}</option>
-                            </select>
-                            <input type="hidden" name="ward" value="{{$address->maphuong}}">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputAddress" value="{{$address->address}}"
-                            data-parsley-required-message="Số nhà, tên đường không được để trống"
-                        	data-parsley-required='true'>
-                            <input type="hidden" name="address" value="{{$address->address}}">
-                          </div>
-                        </div>
+            @if($address)
+
+            @include('includes.address-form-customer')
                         <!-- Nếu khách hàng không có địa chỉ mặc định -->
                       @else
                       	@include('includes.address-form-guest')
@@ -286,9 +247,12 @@
     updateWard(maqh);
   });
 
-@if($old_city && Auth::guard('customer')->check())
+@if($old_city && !Auth::guard('customer')->check())
 updateDistrict({{$old_city}});
 updateWard({{$old_district}});
+@elseif(Auth::guard('customer')->check() && $address)
+updateDistrict({{$address->matp}});
+updateWard({{$address->maqh}});
 @else
 $("select[name='city'] option[value='79']").attr('selected','selected');
 updateDistrict(79);

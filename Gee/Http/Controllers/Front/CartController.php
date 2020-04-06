@@ -106,7 +106,7 @@ class CartController extends Controller
 		if ($request->is_vat){
 			$validatedData = $request->validate([
         'name' => 'required',
-        'mst' => 'required',
+        'mst' => 'required|numeric',
         'address' => 'required',
     ]);
 			$company = $this->company->create(
