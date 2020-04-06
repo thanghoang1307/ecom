@@ -5,7 +5,7 @@ return [
 'confirmed' => ':attribute không trùng khớp',
 'numeric' => ':attribute sai định dạng',
 'regex' => ':attribute sai định dạng',
-'min' => ['numeric' => ':attribute phải có độ dài tối thiểu là 10'],
+'size' => ['numeric' => ':attribute phải có độ dài tối thiểu là 10'],
 'attributes' => [
 	'sku' => 'Mã sản phẩm',
 	'regular_price' => 'Giá sản phẩm',

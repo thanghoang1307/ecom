@@ -9,9 +9,9 @@
           @endif
       @endforeach
     </select>
-    <!--@error('city')
+    @error('city')
 	<div class="alert alert-danger">{{ $message }}</div>
-	@enderror-->
+	@enderror
   </div>
 </div>
 <div class="col-md-6">
@@ -24,9 +24,9 @@
       <option value="0" disabled selected>Quận/Huyện</option>
       
     </select>
-    <!--@error('district')
+    @error('district')
 	<div class="alert alert-danger">{{ $message }}</div>
-	@enderror-->
+	@enderror
   </div>
 </div>
 <div class="col-md-6">
@@ -38,9 +38,9 @@
 	aria-describedby="ward">
       <option value="0" disabled selected>Phường/Xã</option>
     </select>
-    <!--@error('ward')
+    @error('ward')
 	<div class="alert alert-danger">{{ $message }}</div>
-	@enderror-->
+	@enderror
   </div>
 </div>
 <div class="col-md-6">
@@ -48,8 +48,8 @@
     <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputAddress" placeholder="Số nhà, tên đường" value="{{session()->get('cart.address') ?? ''}}"
     data-parsley-required-message="Số nhà, tên đường không được để trống"
     data-parsley-required='true'>
-    <!--@error('address')
+    @error('address')
 	<div class="alert alert-danger">{{ $message }}</div>
-	@enderror-->
+	@enderror
   </div>
 </div>
