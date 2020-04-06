@@ -53,7 +53,7 @@ class CartController extends Controller
 		$validatedData = $request->validate([
         'gender' => 'required',
         'name' => 'required',
-        'phone' => 'required|min:10|numeric',
+        'phone' => 'required|numeric|min:999999999',
         'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
         'city' => 'required',
         'district' => 'required',
