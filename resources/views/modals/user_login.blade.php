@@ -78,8 +78,8 @@
                     <div class="col-4 col-md-3">
                       <div class="form-group">
                         <div class="radio">
-                          <input id="gender-register-1" name="gender" type="radio">
-                          <label for="gender-register-1" class="radio-label">Chị</label>
+                          <input id="gender-register-2" name="gender" type="radio">
+                          <label for="gender-register-2" class="radio-label">Chị</label>   
                         </div>
                       </div>
                     </div>
