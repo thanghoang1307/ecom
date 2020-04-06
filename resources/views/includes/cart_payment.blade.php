@@ -20,14 +20,17 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="radio">
-                            <input id="radio-1" name="payment_type" type="radio" value="0" checked="checked">
+                            <input id="payment-checked-1" name="payment_type" type="radio" value="0" checked="checked"
+                            ata-parsley-required='true'
+                          	data-parsley-required-message="Hãy chọn phương thức thanh toán"
+                        	aria-describedby="payment-checked-1">
                             <label for="radio-1" class="radio-label">Thanh toán khi nhận hàng (C.O.D)</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="radio">
-                            <input id="radio-2" name="payment_type" value="1" type="radio">
-                            <label for="radio-2" class="radio-label">Chuyển khoản</label>
+                            <input id="payment-checked-2" name="payment_type" value="1" type="radio">
+                            <label for="payment-checked-2" class="radio-label">Chuyển khoản</label>
                           </div>
                         </div>
                       </div>
@@ -77,28 +80,38 @@
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="text" class="form-control" name="name" id="inputCompany" aria-describedby="inputCompany"
-                                   placeholder="Tên công ty">
+                                   placeholder="Tên công ty"
+                        		data-parsley-required-message="Hãy nhập Tên công ty đăng ký hoá đơn"
+                        		data-parsley-required='true'>
                           </div>
-                          @error('name')
-    <div class="alert alert-danger">{{ $message }}</div>
-@enderror
+                          <!--@error('name')
+							    <div class="alert alert-danger">{{ $message }}</div>
+							@enderror-->
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="inputMST" aria-describedby="inputMST" name="mst"
-                                   placeholder="Mã số thuế">
+                            <input type="number" class="form-control" id="inputMST" aria-describedby="inputMST" name="mst"
+                                   placeholder="Mã số thuế"
+								data-parsley-type="integer"
+			                        minlength="6"
+									data-parsley-minlength="6"
+									data-parsley-minlength-message="Mã số thuế phải có ít nhất là 6 số"
+			                        data-parsley-required-message="Hãy nhập mã số thuế"
+								data-parsley-required='true'>
                           </div>
-                          @error('mst')
-    <div class="alert alert-danger">{{ $message }}</div>
-@enderror
+                          <!--@error('mst')
+							<div class="alert alert-danger">{{ $message }}</div>
+							@enderror-->
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <input type="text" class="form-control" id="inputAddress" aria-describedby="inputName"
-                                   placeholder="Số nhà, tên đường" name="address">
-                                   @error('address')
-    <div class="alert alert-danger">{{ $message }}</div>
-@enderror
+                            <input type="text" class="form-control" id="inputAddress" aria-describedby="inputAddress"
+                                   placeholder="Số nhà, tên đường" name="address"
+                                   data-parsley-required-message="Hãy nhập địa chỉ công ty đăng ký hoá đơn"
+                        			data-parsley-required='true'>
+                                   <!--@error('address')
+									<div class="alert alert-danger">{{ $message }}</div>
+									@enderror-->
                           </div>
                         </div>
                         <div class="col-12">
