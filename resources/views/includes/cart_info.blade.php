@@ -85,10 +85,10 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="gender-register-1" name="gender" type="radio" checked="{{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}}" value="male"
-                            data-parsley-required='true'
+                            <input id="gender-register-1" name="gender" type="radio" checked="{{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}}" value="male">
+                            <!--data-parsley-required='true'
                           	data-parsley-required-message="Hãy chọn giới tính!"
-                        	aria-describedby="gender-register-1">
+                        	aria-describedby="gender-register-1">-->
                             <label for="gender-register-1" class="radio-label">Anh</label>
                           </div>
                         </div>
@@ -105,13 +105,13 @@
                         <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}"
                         data-parsley-required-message="Họ và tên không được để trống"
                         data-parsley-required='true'>
-                        @error('name')
+                        <!--@error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                       <div class="form-group">
                         <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}"
-                        data-parsley-type="integer"
+                        data-parsley-type="number"
                         minlength="10"
 						data-parsley-minlength="10"
 						data-parsley-minlength-message="Số điện thoại phải là 10 số"
@@ -123,14 +123,13 @@
                       </div>
                       <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}"
-                        id="inputEmail"
                         data-parsley-type="email"
                         data-parsley-type-message="Email chưa đúng định dạng"
                         data-parsley-required-message="Email không được để trống"
                         data-parsley-required='true'>
-                        @error('email')
+                       <!-- @error('email')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                     </div>
                   </div>
@@ -159,9 +158,9 @@
                         $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
                         @endphp
                         <!-- Nếu khách hàng có địa chỉ mặc định -->
-            @if($address)
-
-            @include('includes.address-form-customer')
+			            @if($address)
+			
+			            @include('includes.address-form-customer')
                         <!-- Nếu khách hàng không có địa chỉ mặc định -->
                       @else
                       	@include('includes.address-form-guest')
