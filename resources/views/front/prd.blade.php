@@ -185,6 +185,10 @@
                   </form>
                   </div>
                 </div>
+				@else
+				<div class="product-action-mobile d-block d-sm-none">       
+					<div class="col-12"><a href="tel:{{$settings->find('phone')->value}}" class="btn btn-outline-action lienhe">Liên hệ {{$settings->find('phone')->value}}</a></div>
+			  </div>
                 @endif
               </div>
             </section>
