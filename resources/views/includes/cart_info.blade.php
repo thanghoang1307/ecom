@@ -214,6 +214,8 @@
     $("select[name='district']").html(data.html);
     @if($old_district)
     $("select[name='district'] option[value='{{$old_district}}']").attr('selected','selected');
+    @elseif(Auth::guard('customer')->check() && $address)
+    $("select[name='district'] option[value='{{$address->maqh}}']").attr('selected','selected');
     @endif
     }
     });
@@ -229,6 +231,8 @@
     $("select[name='ward']").html(data.html);
     @if($old_ward)
     $("select[name='ward'] option[value='{{$old_ward}}']").attr('selected','selected');
+    @elseif(Auth::guard('customer')->check() && $address)
+    $("select[name='ward'] option[value='{{$address->maphuong}}']").attr('selected','selected');
     @endif
     }
     });
@@ -250,6 +254,7 @@
 updateDistrict({{$old_city}});
 updateWard({{$old_district}});
 @elseif(Auth::guard('customer')->check() && $address)
+console.log({{$address->matp}});
 updateDistrict({{$address->matp}});
 updateWard({{$address->maqh}});
 @else
