@@ -3,16 +3,16 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Tên</th>
-			<th>Email</th>
-			<th>Hành động</th>
+			<th width="30%" style="vertical-align: middle;">Tên</th>
+			<th width="50%" style="vertical-align: middle;">Email</th>
+			<th width="20%" style="vertical-align: middle;">Hành động</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach($users as $user)
 		<tr>
-			<td>{{$user->name}}</td>
-			<td>{{$user->email}}</td>
+			<td style="vertical-align: middle;">{{$user->name}}</td>
+			<td style="vertical-align: middle;">{{$user->email}}</td>
 			<td>
 				@if($user->role !== 0)
 				<form action="{{route('admin.user.delete',$user->id)}}" method="POST">
@@ -38,10 +38,12 @@
 			</div>
 		</div>
 		<div class="modal-body">
-				@csrf
-				<input type="text" name="name" placeholder="Tên người dùng">
-				<input type="text" name="email" placeholder="Email người dùng">
-				<input type="password" name="new_password" placeholder="Mật khẩu">			
+				<div class="container" style="padding: 10; margin: 10;">
+					@csrf
+					<div style="margin: 10px;"><input style="border: 1px solid #eee; border-radius: 5px; height: 50px;" type="text" name="name" placeholder="Tên người dùng"></div>
+					<div style="margin: 10px;"><input style="border: 1px solid #eee; border-radius: 5px; height: 50px;" type="text" name="email" placeholder="Email người dùng"></div>
+					<div style="margin: 10px;"><input style="border: 1px solid #eee; border-radius: 5px; height: 50px;" type="password" name="new_password" placeholder="Mật khẩu"></div>
+				</div>
 		</div>
 		<div class="modal-footer">
 			<button type="submit" class="btn btn-primary">Tạo</button>

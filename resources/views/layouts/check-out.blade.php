@@ -9,8 +9,16 @@
   <meta name="author" content="">
   <link rel="icon" href="../assets/img/favicon.ico">
 
-  <title>One Stop Shop</title>
-
+  <title>One Stop Shop - Giải Pháp | Thiết Bị CNTT</title>
+  
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-579KXRM');</script>
+	<!-- End Google Tag Manager -->
+  
   <!-- Bootstrap core CSS -->
   <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
   <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
@@ -146,30 +154,7 @@ ajaxRemoveItem($prd_id);
 }
   });
   });
-
-  $("select[name='city']").on('change',function(){
-    var matp = $(this).val();
-    $.ajax({
-    type: 'POST',
-    url: "{{route('front.getquan')}}",
-    data: {'_token':'{{csrf_token()}}', 'matp': matp},
-    success: function(data){
-    $("select[name='district']").html(data.html);
-    }
-    });
-  });
-
-  $("select[name='district']").on('change',function(){
-    var maqh = $(this).val();
-    $.ajax({
-    type: 'POST',
-    url: "{{route('front.getphuong')}}",
-    data: {'_token':'{{csrf_token()}}', 'maqh': maqh},
-    success: function(data){
-    $("select[name='ward']").html(data.html);
-    }
-    });
-  });
 </script>
 </body>
 </html>
+@yield('script')

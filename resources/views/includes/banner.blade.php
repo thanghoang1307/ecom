@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row no-gutters">
       <div class="col-md-3 bg-white">
-        <div class="product-navigation-wrapper">
+        <div class="product-navigation-wrapper d-none d-sm-block">
           <a href="{{route('front.product-list')}}" class="product-navigation-action">
             <i class="icon icon-align-justify"></i>Danh mục sản phẩm
           </a>

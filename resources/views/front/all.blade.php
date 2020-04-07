@@ -36,7 +36,32 @@
 @endsection
 @section('script')
 <script>
-  // Desktop filter
+  $(function(){
+  // Desktop Order
+  $('#product-order').on('change','input[name="d_orderby"]',redirectParam);
+
+  // Desktop Filter
+  $('#product-category').on('change',['input[name="brand_checkbox"]','input[name="price_checkbox"]'],redirectParam);
+  
+  // Mobile Order & Filter
+  $('button.apply-filter').on('click',function(e){
+  e.preventDefault();
+  mobileRedirectParam();
+  });
+
+  $('button.clear-filter').on('click',function(e){
+  e.preventDefault();
+  clearOrderAndFilter();
+  });
+
+  });
+</script>
+<script>
+function clearOrderAndFilter(){
+const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+window.location.href = url;
+}
+
 function redirectParam(){
 var brand_arr = [];
 $.each($("input[name='brand_checkbox']:checked"), function(){
@@ -46,7 +71,9 @@ var price_arr = [];
 $.each($("input[name='price_checkbox']:checked"), function(){
 price_arr.push($(this).val());
 });
+
 var search = '{{app("request")->input("search")}}';
+
 var param_arr = [];
 param_arr.push('orderby=' + $('input[name="d_orderby"]:checked').val());
 if (brand_arr.length){
@@ -62,21 +89,23 @@ if (search){
 }
 
 param = '?' + param_arr.join('&');
-const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+const url = 'https://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
 window.location.href = url + param;
 };
 
-// Mobile Filter
-function mobileredirectParam(){
+function mobileRedirectParam(){
 var brand_arr = [];
 $.each($("input[name='mb_checkbox']:checked"), function(){
 brand_arr.push($(this).val());
 });
+
 var price_arr = [];
 $.each($("input[name='mp_checkbox']:checked"), function(){
 price_arr.push($(this).val());
 });
+
 var search = '{{app("request")->input("search")}}';
+
 var param_arr = [];
 param_arr.push('orderby=' + $('input[name="m_orderby"]:checked').val());
 if (brand_arr.length){
@@ -90,20 +119,10 @@ if (price_arr.length){
 if (search){
   param_arr.push('search='+search);
 }
-
 param = '?' + param_arr.join('&');
 const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
 window.location.href = url + param;
-}
+};
 
-$(function(){
-$('#product-order').on('change','input[name="d_orderby"]',redirectParam);
-$('input[name="brand_checkbox"]').on('change',redirectParam);
-$('input[name="price_checkbox"]').on('change',redirectParam);
-$('.apply-filter').on('click',function(e){
-e.preventDefault();
-mobileredirectParam();
-});
-});
 </script>
 @endsection

@@ -49,7 +49,7 @@
                             <div class="col-md-6">
                               <div class="order-price">
                                 <div class="text-right">
-                                  <span class="active-price price">{{$prd->pivot->total}}đ</span>
+                                  <span class="active-price price">{{$prd->pivot->total}}<sup>đ</sup></span>
                                 </div>
                               </div>
                               <div class="order-number">
@@ -130,7 +130,7 @@
                           <p><strong>Tổng tiền đơn hàng</strong></p>
                         </div>
                         <div class="col-4">
-                          <p class="text-right"><span class="main-color price">{{$order->total}}đ</span></p>
+                          <p class="text-right"><span class="main-color price">{{$order->total}}<sup>đ</sup></span></p>
                         </div>
                       </div>
                     </div>

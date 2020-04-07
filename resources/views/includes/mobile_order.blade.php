@@ -19,6 +19,7 @@ $price_request = explode('_',app('request')->input('price'));
         </div>
       </section>  
       <section id="filter-screen">
+		<div class="hidden-bg back-to-screen" role="button">&nbsp;</div>
         <div class="filter-screen-wrapper">
           <div class="screen-header">
             <a class="back-to-screen">
@@ -67,9 +68,9 @@ $price_request = explode('_',app('request')->input('price'));
             <div class="cart-item">
               <div class="row no-gutters align-items-center align-content-center">
                 <div class="col-6">
-                  <a href="#" class="btn-submit is-white">
+                  <button type="button" class="btn-submit is-white clear-filter">
                     Xóa sắp xếp
-                  </a>
+                  </button>
                 </div>
                 <div class="col-6">
                   <button type="button" class="btn-submit d-block d-md-none apply-filter">
@@ -83,6 +84,7 @@ $price_request = explode('_',app('request')->input('price'));
       </section>
       
       <section id="sort-screen">
+		<div class="hidden-bg back-to-screen" role="button">&nbsp;</div>
         <div class="sort-screen-wrapper">
           <div class="screen-header">
             <a class="back-to-screen">
@@ -118,9 +120,9 @@ $price_request = explode('_',app('request')->input('price'));
             <div class="cart-item">
               <div class="row no-gutters align-items-center align-content-center">
                 <div class="col-6">
-                  <a href="#" class="btn-submit is-white">
+                  <button type="button" class="btn-submit is-white clear-filter">
                     Xóa sắp xếp
-                  </a>
+                  </button>
                 </div>
                 <div class="col-6">
                   <button type="button" class="btn-submit d-block d-md-none apply-filter">

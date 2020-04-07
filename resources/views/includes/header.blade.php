@@ -9,19 +9,23 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/assets/img/favicon.ico">
 	<title>One Stop Shop - Giải Pháp | Thiết Bị CNTT</title>
+	
+	
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-579KXRM');</script>
+	<!-- End Google Tag Manager -->
+
 	<!-- Bootstrap core CSS -->
 	<link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.css')}}">
 	<script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>
 </head>
 <body>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-579KXRM');</script>
-<!-- End Google Tag Manager -->
+
 
 	<!--HEADER-->
 	<header id="Header" class="header-wrapper">
@@ -131,53 +135,73 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								
 									<!--USER LOGIN-->
 									<span class="cart-title d-none d-md-inline-block">
+										@if(session()->get('cart.items'))
 										<a href="{{route('front.check_out_1')}}">Giỏ hàng 
-											@if(session()->get('cart.items'))
 											<span class="cart-number">
 												{{array_sum(session()->get('cart.items'))}}
 											</span>
-											@endif
 										</a>
+										@else
+										<a href="#">Giỏ hàng</a>
+										@endif
 									</span>
 									<div class="dropdown dropdown-discount">
+										@if(session()->get('cart.items'))
 										<a class="highlight d-block d-md-none" href="{{route('front.check_out_1')}}">
-											@if(session()->get('cart.items'))
+											
 											<span class="header-cart-number">{{array_sum(session()->get('cart.items'))}}</span>
-											@endif
+											
 											<i class="icon icon-shopping-cart"></i>
 										</a>
-										<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
+										@else
+										<a class="highlight d-block d-md-none" href=""><i class="icon icon-shopping-cart"></i></a>
+										@endif
+										
+									@if(session()->get('cart.items'))
+									<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false">
-										<!--@if(session()->get('cart.items'))
-										<span class="header-cart-number">{{array_sum(session()->get('cart.items'))}}</span>
-										@endif-->
 										<i class="icon icon-shopping-cart"></i>
 									</a>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										@if(count($prds_in_cart))
-										@foreach ($prds_in_cart as $prd)
-										<li class="dropdown-item">
-											<div class="product-head">
-												<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
-													<img src="{{$prd->thumb}}" class="img-fluid">
-												</a>
-												<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-											<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
-											</div>
-										</li>
-										@endforeach
-										<li class="dropdown-item">
-											<div class="product-end">
-												<h5 class="product-end-block"><span class="product-end-title">Thành tiền</span> <span
-													class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span></h5>
-													<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+									@else
+									<a class="highlight d-none d-md-block" href="#" id="dropdownMenuButton" data-toggle="dropdown"
+										aria-haspopup="true"
+										aria-expanded="false">
+										<i class="icon icon-shopping-cart"></i>
+									</a>
+									@endif
+									
+									<!-- quick cart -->
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<ul>
+											@if(count($prds_in_cart))
+											@foreach ($prds_in_cart as $prd)
+											<li class="dropdown-item">
+												<div class="product-head">
+													<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
+														<img src="{{$prd->thumb}}" class="img-fluid">
+													</a>
+													<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
+												<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
 												</div>
 											</li>
+											@endforeach
 											@else
-<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
-											@endif
+											<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
+										@endif
 										</ul>
+										@if(count($prds_in_cart))
+										<div class="product-end">
+											<h5 class="product-end-block">
+												<span class="product-end-title">Thành tiền</span> <span
+												class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span>
+											</h5>
+											<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+										</div>
+										@endif
+									</div>
+										<!-- end quick cart -->
+										
 									</div>
 								</div>
 							</div>

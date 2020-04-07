@@ -1,3 +1,4 @@
+@if(session()->get('cart.items'))
 <div class="col-md-6">
       <section class="cart-process">
         <div class="process-list d-none d-md-block">
@@ -7,7 +8,7 @@
             <li><a href="#"><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
-        <form action="{{route('front.check_out_2')}}" method="POST">
+        <form action="{{route('front.check_out_2')}}" method="POST" data-parsley-validate>
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
@@ -23,18 +24,18 @@
                           <div class="radio">
                           <!-- Nếu khách hàng là nam -->
                             @if (Auth::guard('customer')->user()->gender == 'male')
-                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
+                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked" readonly="">
                             <label for="radio-1" class="radio-label">Anh</label>
                             <!-- Nếu khách hàng là nữ -->
                             @elseif(Auth::guard('customer')->user()->gender == 'female')
-                            <input id="radio-1" name="gender" type="radio" value="female" checked="checked">
+                            <input id="radio-1" name="gender" type="radio" value="female" checked="checked" readonly="">
                             <label for="radio-1" class="radio-label">Chị</label>
                             <!-- Khách hàng không xác định giới tính -->
-                            @else
-                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
+                            <!--@else-->
+                            <!--<input id="radio-1" name="gender" type="radio" value="male" checked="checked">
                             <label for="radio-1" class="radio-label">Anh</label>
                             <input id="radio-1" name="gender" type="radio" value="female">
-                            <label for="radio-1" class="radio-label">Chị</label>
+                            <label for="radio-1" class="radio-label">Chị</label>-->
                             @endif
                           </div>
                         </div>
@@ -42,28 +43,28 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" name="name" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
-                        @error('name')
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" name="name" readonly="" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
+                        <!--@error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" name="phone" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
-                        @error('phone')
+                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" name="phone" readonly="" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
+                        <!--@error('phone')
                         <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror
+                          @enderror-->
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" name="email" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
-                        @error('email')
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" name="email" readonly="" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
+                        <!--@error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror
+                          @enderror-->
                       </div>
                     </div>
                   </div>
                 </div>
                 @endauth
-                <!-- Phần thông tin cá nhân nếu là khách -->
+                <!-- Phần thông tin cá nhân nếu là guest -->
                 @guest('customer')
                 <div class="col-md-6">
                   <div class="process-one-click">
@@ -84,36 +85,51 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-1" name="gender" type="radio" {{(!old('gender') || old('gender') == 'male') ? 'checked=checked' : ''}} value="male">
-                            <label for="radio-1" class="radio-label">Anh</label>
+                            <input id="gender-register-1" name="gender" type="radio" checked="{{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}}" value="male">
+                            <!--data-parsley-required='true'
+                          	data-parsley-required-message="Hãy chọn giới tính!"
+                        	aria-describedby="gender-register-1">-->
+                            <label for="gender-register-1" class="radio-label">Anh</label>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="radio">
-                            <input id="radio-2" name="gender" type="radio" {{(old('gender') == 'female') ? 'checked=checked' : ''}} value="female">
-                            <label for="radio-2" class="radio-label" >Chị</label>
+                            <input id="gender-register-2" name="gender" type="radio" checked="{{(session()->get('cart.gender') == 'female') ? 'checked' : ''}}" value="female">
+                            <label for="gender-register-2" class="radio-label" >Chị</label>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{old('name')}}">
-                        @error('name')
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}"
+                        data-parsley-required-message="Họ và tên không được để trống"
+                        data-parsley-required='true'>
+                        <!--@error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" placeholder="Điện thoại" name="phone" value="{{old('phone')}}">
+                        <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}"
+                        data-parsley-type="number"
+                        minlength="10"
+						data-parsley-minlength="10"
+						data-parsley-minlength-message="Số điện thoại phải là 10 số"
+                        data-parsley-required-message="Số điện thoại không chính xác"
+                        data-parsley-required='true'>
                         @error('phone')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" placeholder="Địa chỉ email" name="email" value="{{old('email')}}">
-                        @error('email')
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}"
+                        data-parsley-type="email"
+                        data-parsley-type-message="Email chưa đúng định dạng"
+                        data-parsley-required-message="Email không được để trống"
+                        data-parsley-required='true'>
+                       <!-- @error('email')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                     </div>
                   </div>
@@ -133,47 +149,8 @@
                         <div class="col-md-6">
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách -->
                           @guest('customer')
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <option value="0" disabled selected>Tỉnh/Thành</option>
-                              @foreach ($cities as $city)
-                              <option value="{{$city->matp}}">{{$city->name}}</option>
-                              @endforeach
-                            </select>
-                            @error('city')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="district">
-                              <option value="0" disabled selected>Quận/Huyện</option>
-                            </select>
-                            @error('district')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
-                              <option value="0" disabled selected>Phường/Xã</option>
-                            </select>
-                            @error('ward')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường" value="{{old('address')}}">
-                            @error('address')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        @endguest
+                          @include('includes.address-form-guest')
+						  @endguest
 
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách hàng -->
                         @auth('customer')
@@ -181,86 +158,20 @@
                         $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
                         @endphp
                         <!-- Nếu khách hàng có địa chỉ mặc định -->
-                      @if($address)
-<div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" disabled="disabled" >
-                              <option value="{{$address->matp}}" >{{$address->city->name}}</option>
-                            </select>
-                            <input type="hidden" name="city" value="{{$address->matp}}">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="district" disabled="disabled">
-                              <option value="{{$address->maqh}}" >{{$address->district->name}}</option>
-                            </select>
-                            <input type="hidden" name="district" value="{{$address->maqh}}">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward" disabled="disabled">
-                              <option value="{{$address->maphuong}}" >{{$address->ward->name}}</option>
-                            </select>
-                            <input type="hidden" name="ward" value="{{$address->maphuong}}">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input disabled="disabled" name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" value="{{$address->address}}">
-                            <input type="hidden" name="address" value="{{$address->address}}">
-                          </div>
-                        </div>
+			            @if($address)
+			
+			            @include('includes.address-form-customer')
                         <!-- Nếu khách hàng không có địa chỉ mặc định -->
                       @else
-<div class="form-group selected-box">
-                            <select class="form-control" name="city" id="exampleFormControlSelect1" >
-                              <option value="0" disabled selected>Tỉnh/Thành</option>
-                              @foreach ($cities as $city)
-                              <option value="{{$city->matp}}">{{$city->name}}</option>
-                              @endforeach
-                            </select>
-                            @error('city')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" name="district">
-                              <option value="0" disabled selected>Quận/Huyện</option>
-                            </select>
-                            @error('district')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group selected-box">
-                            <select class="form-control" id="exampleFormControlSelect1" name="ward">
-                              <option value="0" disabled selected>Phường/Xã</option>
-                            </select>
-                            @error('ward')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input name="address" type="text" class="form-control" id="inputAddress" aria-describedby="inputName" placeholder="Số nhà, tên đường">
-                            @error('address')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                          </div>
-                        </div>
+                      	@include('includes.address-form-guest')
                       @endif
-                        @endauth
+					  @endauth
                         <div class="col-12">
                           <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note">{{old('note')}}</textarea>
-                            @error('note')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Lời nhắn cho OneStopShop.vn" name="note">{{session()->get('cart.note') ?? ''}}</textarea>
+                            <!--@error('note')
+							<div class="alert alert-danger">{{ $message }}</div>
+	                        @enderror-->
                           </div>
                         </div>
                       </div>
@@ -270,18 +181,86 @@
               </div>
             </div>
           </div>
+		  
           <div class="process-info action">
             <div class="text-right">
               <button type="submit" class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
             </div>
           </div>
+		  
         </form>
       </section>
     </div>
-    <script>
-      $('form').submit(function(e) {
-    $(':disabled').each(function(e) {
-        $(this).removeAttr('disabled');
-    })
-});
-    </script>
+@endif
+@section('script')
+<?php 
+	$old_district = session()->get('cart.district'); 
+    $old_city = session()->get('cart.city');
+    $old_ward = session()->get('cart.ward');
+?>
+<script>
+  // $('form').submit(function(e) {
+  // 	$(':disabled').each(function(e) {
+  // 		$(this).removeAttr('disabled');
+  // 	})
+  // });
+  function updateDistrict(matp)
+  {
+    $.ajax({
+    type: 'POST',
+    url: "{{route('front.getquan')}}",
+    data: {'_token':'{{csrf_token()}}', 'matp': matp},
+    success: function(data){
+    $("select[name='district']").html(data.html);
+    @if($old_district)
+    $("select[name='district'] option[value='{{$old_district}}']").attr('selected','selected');
+    @elseif(Auth::guard('customer')->check() && $address)
+    $("select[name='district'] option[value='{{$address->maqh}}']").attr('selected','selected');
+    @endif
+    }
+    });
+  }
+  
+  function updateWard(maqh)
+  {
+    $.ajax({
+    type: 'POST',
+    url: "{{route('front.getphuong')}}",
+    data: {'_token':'{{csrf_token()}}', 'maqh': maqh},
+    success: function(data){
+    $("select[name='ward']").html(data.html);
+    @if($old_ward)
+    $("select[name='ward'] option[value='{{$old_ward}}']").attr('selected','selected');
+    @elseif(Auth::guard('customer')->check() && $address)
+    $("select[name='ward'] option[value='{{$address->maphuong}}']").attr('selected','selected');
+    @endif
+    }
+    });
+  }
+  
+  $("select[name='city']").on('change',function()
+  {
+    var matp = $(this).val();
+  updateDistrict(matp);
+  });
+
+  $("select[name='district']").on('change',function()
+  {
+    var maqh = $(this).val();
+    updateWard(maqh);
+  });
+
+@if($old_city && !Auth::guard('customer')->check())
+updateDistrict({{$old_city}});
+updateWard({{$old_district}});
+@elseif(Auth::guard('customer')->check() && $address)
+console.log({{$address->matp}});
+updateDistrict({{$address->matp}});
+updateWard({{$address->maqh}});
+@else
+$("select[name='city'] option[value='79']").attr('selected','selected');
+updateDistrict(79);
+@endif
+</script>
+
+@endsection
