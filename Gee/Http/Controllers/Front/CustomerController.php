@@ -57,7 +57,7 @@ class CustomerController extends Controller
 
     // Redirect tới Google, Facebook
     public function redirect($provider){
-    // Session::flash('url',Request::server('HTTP_REFERER'));
+    session()->put('last_url',url()->previous());
     return Socialite::driver($provider)->redirect();
     }
 
@@ -70,9 +70,9 @@ class CustomerController extends Controller
     if (!$check) {
    $customer = $this->createUser($getInfo,$provider);
    Auth::guard('customer')->login($customer); 
-//    return redirect(Session::get('url'));
+   return redirect(Session::get('last_url'));
     } else {
-        // return redirect(Session::get('url'))->with('error','Trùng khớp email trong hệ thống');
+        return redirect(Session::get('last_url'))->with('error','Trùng khớp email trong hệ thống');
     }
     }
 
