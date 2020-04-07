@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Models\Order\Customer;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use App\Repositories\Order\CustomerInterface;
 use App\Http\Controllers\Controller as Controller;
 use Socialite;
@@ -51,11 +52,12 @@ class CustomerController extends Controller
 
         // Đăng nhập sau khi đăng ký thành công
         Auth::guard('customer')->attempt($arr);
-        return redirect()->intended('/');
+        return redirect()->back()->with('success','Đăng ký thành công');
     }
 
     // Redirect tới Google, Facebook
     public function redirect($provider){
+    // Session::flash('url',Request::server('HTTP_REFERER'));
     return Socialite::driver($provider)->redirect();
     }
 
@@ -64,23 +66,23 @@ class CustomerController extends Controller
     $getInfo = Socialite::driver($provider)->user();
     
     // Tạo người dùng mới
-   $customer = $this->createUser($getInfo,$provider); 
+    $check = Customer::where('provider_id', $getInfo->id)->orWhere('email',$getInfo->email)->first();
+    if (!$check) {
+   $customer = $this->createUser($getInfo,$provider);
    Auth::guard('customer')->login($customer); 
-   return redirect()->intended('/');
+//    return redirect(Session::get('url'));
+    } else {
+        // return redirect(Session::get('url'))->with('error','Trùng khớp email trong hệ thống');
+    }
     }
 
     function createUser($getInfo,$provider){
- $customer = Customer::where('provider_id', $getInfo->id)->orWhere('email',$getInfo->email)->first();
- if (!$customer) {
-      $customer = Customer::create([
+       $customer = Customer::create([
          'name'     => $getInfo->name,
          'email'    => $getInfo->email,
          'provider' => $provider,
          'provider_id' => $getInfo->id,
-     ]);
-   } else {
-    return redirect()->intended('/')->with('error','Trùng khớp email trong hệ thống');
-   }
+     ]);  
    return $customer;
  }
 
