@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Order\CustomerInterface;
 use App\Http\Controllers\Controller as Controller;
+use Illuminate\Support\Facades\Mail;
 use Socialite;
 use Auth;
 
@@ -119,4 +120,45 @@ class CustomerController extends Controller
             return redirect()->back()->with('error','Sai mật khẩu');
         }
     }
+
+    public function validatePasswordRequest(Request $request) {
+        // Kiểm tra email có tồn tại
+$customer = DB::table('customers')->where('email', '=', $request->email)
+->first();
+if (count($customer) < 1) {
+return redirect()->back()->withErrors(['email' => 'Không tồn tại người dùng với email này']);
+}
+
+// Create Password Reset Token
+DB::table('password_resets')->insert([
+'email' => $request->email,
+'token' => str_random(60),
+'created_at' => Carbon::now()
+]);
+//Get the token just created above
+$tokenData = DB::table('password_resets')
+->where('email', $request->email)->first();
+
+if ($this->sendResetEmail($request->email, $tokenData->token)) {
+return redirect()->back()->with('success', 'Email tạo lại mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư của bạn');
+} else {
+return redirect()->back()->withErrors(['error' => 'Đã có lỗi xảy ra')]);
+}
+    }
+
+    private function sendResetEmail($email, $token)
+{
+//Retrieve the user from the database
+$customer = Customer::where('email', $email)->first();
+//Generate, the password reset link. The token generated is embedded in the link
+$link = config('base_url') . 'password/reset/' . $token . '?email=' . urlencode($customer->email);
+
+    try {
+    //Here send the link with CURL with an external email API
+        Mail::to($customer)->send(new ResetPassword($link,$customer))
+        return true;
+    } catch (\Exception $e) {
+        return false;
+    }
+}
 }

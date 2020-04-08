@@ -178,6 +178,10 @@ Route::get('/{provider}/callback','CustomerController@callback')->name('oauth.ca
 Route::post('/getquan','PageController@getQuan')->name('getquan');
 Route::post('/getphuong','PageController@getPhuong')->name('getphuong');
 
+// Quên mật khẩu
+Route::post('validate_password', 'CustomerController@validatePasswordRequest');
+Route::post('reset_password', 'CustomerController@resetPassword');
+
 // Account
 Route::middleware('auth:customer')->prefix('/tai-khoan/')->name('account.')->group(function(){
 Route::get('/','AccountController@index')->name('index');
