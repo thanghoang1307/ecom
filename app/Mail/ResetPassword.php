@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use use App\Repositories\Order\CustomerInterface;
 
 class ResetPassword extends Mailable
 {
@@ -19,7 +18,7 @@ class ResetPassword extends Mailable
      */
     protected $link;
     protected $customer;
-    public function __construct($link, CustomerInterface $customer)
+    public function __construct($link, $customer)
     {
         $this->link = $link;
         $this->customer = $customer;
@@ -33,8 +32,8 @@ class ResetPassword extends Mailable
     public function build()
     {
         return $this->view('mail.password.reset_password')->with([
-            'link' = $link,
-            'customer' = $customer,
+            'link' => $this->link,
+            'customer' => $this->customer,
         ]);
     }
 }

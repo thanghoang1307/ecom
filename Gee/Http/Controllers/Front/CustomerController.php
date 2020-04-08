@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Session;
 use App\Repositories\Order\CustomerInterface;
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use App\Mail\ResetPassword;
 use Socialite;
 use Auth;
 
@@ -24,13 +28,13 @@ class CustomerController extends Controller
     public function register(Request $request)
     {	
         // Validate dữ liệu đăng ký
-        $request->validate([
-            'phone' => 'required|regex:/(0)[0-9]{9}/',
-            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
-            'name' => 'required',
-            'password' => 'required|confirmed',
-            'gender' => 'required',
-            ]);
+        // $request->validate([
+        //     'phone' => 'required|regex:/(0)[0-9]{9}/',
+        //     'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+        //     'name' => 'required',
+        //     'password' => 'required|confirmed',
+        //     'gender' => 'required',
+        //     ]);
         
         // Validate trùng khớp email
         $customer = $this->customer->findByEmail($request->email);
@@ -61,10 +65,9 @@ class CustomerController extends Controller
     session()->put('last_url',url()->previous());
     return Socialite::driver($provider)->redirect();
     }
-
+    
     public function callback($provider){
     $getInfo = Socialite::driver($provider)->user();
-    
     /* Nếu tài khoản đã được tạo bằng email
     => Báo lỗi
     /* Nếu tài khoản chưa được tạo bằng social
@@ -77,24 +80,31 @@ class CustomerController extends Controller
     if($customerRegisterByEmail){
         return redirect(Session::get('last_url'))->with('error','Trùng khớp email trong hệ thống');
     } else if (!$customerRegisterBySocial){
-        $customerRegisterBySocial = $this->createUser($getInfo,$provider);
-        Auth::guard('customer')->login($customerRegisterBySocial); 
-        return redirect(Session::get('last_url'))->with('success','Tạo tài khoản thành công');
+        return view('front.profile-complete-register')->with([
+            'name' => $getInfo->name,
+            'email' => $getInfo->email,
+            'provider' => $provider,
+            'id' => $getInfo->id,
+        ]);      
     } else {
         Auth::guard('customer')->login($customerRegisterBySocial);
         return redirect(Session::get('last_url'))->with('success','Đăng nhập thành công');
     }
     }
 
-    function createUser($getInfo,$provider){
-       $customer = Customer::create([
-         'name'     => $getInfo->name,
-         'email'    => $getInfo->email,
-         'provider' => $provider,
-         'provider_id' => $getInfo->id,
-     ]);  
-   return $customer;
- }
+    
+    public function createCustomerBySocial(Request $request){
+        $customer =  Customer::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'provider' => $request->provider,
+            'provider_id' => $request->id,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+        ]); 
+        Auth::guard('customer')->login($customer); 
+        return redirect(Session::get('last_url'))->with('success','Tạo tài khoản thành công');
+    }
 
     public function logOut(){
     Auth::guard('customer')->logout();
@@ -125,14 +135,14 @@ class CustomerController extends Controller
         // Kiểm tra email có tồn tại
 $customer = DB::table('customers')->where('email', '=', $request->email)
 ->first();
-if (count($customer) < 1) {
-return redirect()->back()->withErrors(['email' => 'Không tồn tại người dùng với email này']);
+if (!$customer) {
+return redirect()->back()->with(['email' => 'Không tồn tại người dùng với email này']);
 }
 
 // Create Password Reset Token
 DB::table('password_resets')->insert([
 'email' => $request->email,
-'token' => str_random(60),
+'token' => Str::random(60),
 'created_at' => Carbon::now()
 ]);
 //Get the token just created above
@@ -142,7 +152,7 @@ $tokenData = DB::table('password_resets')
 if ($this->sendResetEmail($request->email, $tokenData->token)) {
 return redirect()->back()->with('success', 'Email tạo lại mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư của bạn');
 } else {
-return redirect()->back()->withErrors(['error' => 'Đã có lỗi xảy ra']);
+    return redirect()->back()->with(['error' => 'Đã có lỗi xảy ra']);
 }
     }
 
@@ -151,14 +161,46 @@ return redirect()->back()->withErrors(['error' => 'Đã có lỗi xảy ra']);
 //Retrieve the user from the database
 $customer = Customer::where('email', $email)->first();
 //Generate, the password reset link. The token generated is embedded in the link
-$link = config('base_url') . 'password/reset/' . $token . '?email=' . urlencode($customer->email);
-
+$link = url('/') . '/cai-lai-mat-khau/' . $token . '?email=' . urlencode($customer->email);
     try {
     //Here send the link with CURL with an external email API
-        Mail::to($customer)->send(new ResetPassword($link,$customer));
+        Mail::to($customer->email)->send(new ResetPassword($link,$customer));
         return true;
     } catch (\Exception $e) {
         return false;
     }
 }
+
+public function resetPassword(Request $request)
+{
+    //Validate input
+    $validatedData = $request->validate([
+        'password' => 'required',
+    ]);
+
+    $password = $request->password;
+// Validate the token
+    $tokenData = DB::table('password_resets')
+    ->where('token', $request->token)->first();
+// Redirect the user back to the password reset request form if the token is invalid
+    if (!$tokenData) return view('front.profile-forgot-password')->with('error','Link đã hết hạn');
+
+    $customer = Customer::where('email', $tokenData->email)->first();
+// Redirect the customer back if the email is invalid
+    if (!$customer) return redirect()->back()->with(['error' => 'Không tìm thấy email']);
+//Hash and update the new password
+    $customer->password = \Hash::make($password);
+    $customer->update(); //or $customer->save();
+
+    //login the customer immediately they change password successfully
+    Auth::guard('customer')->login($customer);
+
+    //Delete the token
+    DB::table('password_resets')->where('email', $customer->email)
+    ->delete();
+
+    return redirect()->route('front.index')->with('success','Mật khẩu đã được tạo lại thành công');
+
+}
+
 }

@@ -39,7 +39,7 @@
                     		data-parsley-required-message="Mật khẩu không được để trống"
                            data-parsley-required='true'
                            aria-describedby="inputPassword">
-                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                    <a href="{{route('front.customer.forget_password_page')}}" class="forgot-password">Quên mật khẩu?</a>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -71,7 +71,7 @@
                           <input id="gender-register-1" name="gender" type="radio"
                           	data-parsley-required='true'
                           	data-parsley-required-message="Hãy chọn giới tính!"
-                        	aria-describedby="gender-register-1">
+                        	aria-describedby="gender-register-1" value="male">
                           <label for="gender-register-1" class="radio-label">Anh</label>
                         </div>
                       </div>
@@ -79,7 +79,7 @@
                     <div class="col-4 col-md-3">
                       <div class="form-group">
                         <div class="radio">
-                          <input id="gender-register-2" name="gender" type="radio">
+                          <input id="gender-register-2" name="gender" type="radio" value="female">
                           <label for="gender-register-2" class="radio-label">Chị</label>   
                         </div>
                       </div>

@@ -175,12 +175,24 @@ Route::get('/customer/logout','CustomerController@logOut')->name('customer.logou
 Route::post('/customer/login','CustomerController@logIn')->name('customer.login');
 Route::get('/{provider}/redirect','CustomerController@redirect')->name('oauth.redirect');
 Route::get('/{provider}/callback','CustomerController@callback')->name('oauth.callback');
+Route::post('/register-by-social','CustomerController@createCustomerBySocial')->name('customer.create_by_social');
 Route::post('/getquan','PageController@getQuan')->name('getquan');
 Route::post('/getphuong','PageController@getPhuong')->name('getphuong');
 
 // Quên mật khẩu
-Route::post('validate_password', 'CustomerController@validatePasswordRequest');
-Route::post('reset_password', 'CustomerController@resetPassword');
+Route::get('/quen-mat-khau',function(){
+return view('front.profile-forgot-password');
+})->name('customer.forget_password_page');
+
+Route::post('/validate_password', 'CustomerController@validatePasswordRequest')->name('customer.forget_password');
+Route::get('/cai-lai-mat-khau/{token}',function($token){
+return view('front.profile-reset-password')->with([
+    'token' => $token,
+    'email' => urldecode($_GET['email']),
+    ]);
+});
+Route::post('/reset_password', 'CustomerController@resetPassword')->name('customer.reset_password');
+
 
 // Account
 Route::middleware('auth:customer')->prefix('/tai-khoan/')->name('account.')->group(function(){

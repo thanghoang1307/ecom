@@ -120,22 +120,21 @@
                         <div class="col-md-6">
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách -->
                           @guest('customer')
-                          @include('includes.address-form-guest')
-						  @endguest
+                            @include('includes.address-form-guest')
+						              @endguest
 
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách hàng -->
                         @auth('customer')
-                        @php
-                        $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
-                        @endphp
-                        <!-- Nếu khách hàng có địa chỉ mặc định -->
-			            @if($address)
-			
-			            @include('includes.address-form-customer')
-                        <!-- Nếu khách hàng không có địa chỉ mặc định -->
-                      @else
-                      	@include('includes.address-form-guest')
-                      @endif
+                          @php
+                          $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
+                          @endphp
+                            <!-- Nếu khách hàng có địa chỉ mặc định -->
+			                      @if($address)
+			                        @include('includes.address-form-customer')
+                            <!-- Nếu khách hàng không có địa chỉ mặc định -->
+                            @else
+                      	      @include('includes.address-form-guest')
+                            @endif
 					  @endauth
                         <div class="col-12">
                           <div class="form-group">
@@ -183,9 +182,11 @@
     data: {'_token':'{{csrf_token()}}', 'matp': matp},
     success: function(data){
     $("select[name='district']").html(data.html);
-    @if($old_district)
+    console.log('ajax done')
+    @if($old_district && !Auth::guard('customer')->check())
     $("select[name='district'] option[value='{{$old_district}}']").attr('selected','selected');
     @elseif(Auth::guard('customer')->check() && $address)
+    console.log('auth')
     $("select[name='district'] option[value='{{$address->maqh}}']").attr('selected','selected');
     @endif
     }
@@ -200,7 +201,7 @@
     data: {'_token':'{{csrf_token()}}', 'maqh': maqh},
     success: function(data){
     $("select[name='ward']").html(data.html);
-    @if($old_ward)
+    @if($old_ward && !Auth::guard('customer')->check())
     $("select[name='ward'] option[value='{{$old_ward}}']").attr('selected','selected');
     @elseif(Auth::guard('customer')->check() && $address)
     $("select[name='ward'] option[value='{{$address->maphuong}}']").attr('selected','selected');
@@ -225,7 +226,6 @@
 updateDistrict({{$old_city}});
 updateWard({{$old_district}});
 @elseif(Auth::guard('customer')->check() && $address)
-console.log({{$address->matp}});
 updateDistrict({{$address->matp}});
 updateWard({{$address->maqh}});
 @else
@@ -233,5 +233,4 @@ $("select[name='city'] option[value='79']").attr('selected','selected');
 updateDistrict(79);
 @endif
 </script>
-
 @endsection

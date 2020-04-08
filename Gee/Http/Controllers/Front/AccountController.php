@@ -104,7 +104,8 @@ public function storeAddress(Request $request){
 }
 
 public function address(){
-    $addresses = $this->address->getAllData();
+    $customer = Auth::guard('customer')->user();
+    $addresses = $customer->addresses;
     return view('front.address',compact('addresses'));
 }
 
