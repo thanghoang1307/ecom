@@ -142,7 +142,7 @@ $tokenData = DB::table('password_resets')
 if ($this->sendResetEmail($request->email, $tokenData->token)) {
 return redirect()->back()->with('success', 'Email tạo lại mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư của bạn');
 } else {
-return redirect()->back()->withErrors(['error' => 'Đã có lỗi xảy ra')]);
+return redirect()->back()->withErrors(['error' => 'Đã có lỗi xảy ra']);
 }
     }
 
@@ -155,7 +155,7 @@ $link = config('base_url') . 'password/reset/' . $token . '?email=' . urlencode(
 
     try {
     //Here send the link with CURL with an external email API
-        Mail::to($customer)->send(new ResetPassword($link,$customer))
+        Mail::to($customer)->send(new ResetPassword($link,$customer));
         return true;
     } catch (\Exception $e) {
         return false;
