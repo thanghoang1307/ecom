@@ -30,6 +30,7 @@ class CustomerController extends Controller
             'password' => 'required|confirmed',
             'gender' => 'required',
             ]);
+        
         // Validate trùng khớp email
         $customer = $this->customer->findByEmail($request->email);
         if($customer){
@@ -55,24 +56,32 @@ class CustomerController extends Controller
         return redirect()->back()->with('success','Đăng ký thành công');
     }
 
-    // Redirect tới Google, Facebook
     public function redirect($provider){
     session()->put('last_url',url()->previous());
     return Socialite::driver($provider)->redirect();
     }
 
-    // Callback nếu Oauth pass
     public function callback($provider){
     $getInfo = Socialite::driver($provider)->user();
     
-    // Tạo người dùng mới
-    $check = Customer::where('provider_id', $getInfo->id)->orWhere('email',$getInfo->email)->first();
-    if (!$check) {
-   $customer = $this->createUser($getInfo,$provider);
-   Auth::guard('customer')->login($customer); 
-   return redirect(Session::get('last_url'));
-    } else {
+    /* Nếu tài khoản đã được tạo bằng email
+    => Báo lỗi
+    /* Nếu tài khoản chưa được tạo bằng social
+    => Tạo mới
+    /* Nếu tài khoản đã được tạo bằng social
+    => Đăng nhập
+    */
+    $customerRegisterBySocial = Customer::where('provider_id', $getInfo->id)->first();
+    $customerRegisterByEmail = Customer::where('email',$getInfo->email)->where('provider_id',null)->first();
+    if($customerRegisterByEmail){
         return redirect(Session::get('last_url'))->with('error','Trùng khớp email trong hệ thống');
+    } else if (!$customerRegisterBySocial){
+        $customerRegisterBySocial = $this->createUser($getInfo,$provider);
+        Auth::guard('customer')->login($customerRegisterBySocial); 
+        return redirect(Session::get('last_url'))->with('success','Tạo tài khoản thành công');
+    } else {
+        Auth::guard('customer')->login($customerRegisterBySocial);
+        return redirect(Session::get('last_url'))->with('success','Đăng nhập thành công');
     }
     }
 

@@ -142,11 +142,10 @@
                         <input type="password" name="password_confirm" class="form-control" placeholder="Xác nhận mật khẩu *"
                         id="inputConfirmedPassword"
                         data-parsley-equalto="inputPassword"
-                        data-parsley-equalto-message="Xác nhận Mật khẩu chưa chính xác"
+                        data-parsley-equalto-message="Xác nhận Mật khẩu chưa chính xác"                        
                         data-parsley-required-message="Xác nhận Mật khẩu không được để trống"
                         data-parsley-required='true'
                         aria-describedby="inputConfirmedPassword">
-                        
                       </div>
                     </div>
                     <div class="col-12">
