@@ -3,12 +3,12 @@
       <section class="cart-process">
         <div class="process-list d-none d-md-block">
           <ul class="process-list-wrapper">
-            <li><a href="#" class="active"><span>Thông tin đặt hàng</span></a></li>
-            <li><a href="#"><span class="d-none d-sm-block">Thanh toán</span></a></li>
-            <li><a href="#"><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
+            <li><a class="active"><span>Thông tin đặt hàng</span></a></li>
+            <li><a><span class="d-none d-sm-block">Thanh toán</span></a></li>
+            <li><a><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
-        <form action="{{route('front.check_out_2')}}" method="POST" data-parsley-validate>
+        <form action="{{route('front.check_out_2')}}" method="POST">
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
@@ -31,11 +31,6 @@
                             <input id="radio-1" name="gender" type="radio" value="female" checked="checked" readonly="">
                             <label for="radio-1" class="radio-label">Chị</label>
                             <!-- Khách hàng không xác định giới tính -->
-                            @else
-                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
-                            <label for="radio-1" class="radio-label">Anh</label>
-                            <input id="radio-1" name="gender" type="radio" value="female">
-                            <label for="radio-1" class="radio-label">Chị</label>
                             @endif
                           </div>
                         </div>
@@ -44,21 +39,12 @@
                     <div class="process-profile-block-body">
                       <div class="form-group">
                         <input type="text" class="form-control" id="inputName" aria-describedby="inputName" name="name" readonly="" value="{{Auth::guard('customer')->user()->name}}" placeholder="Tên">
-                        <!--@error('name')
-                      <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror-->
                       </div>
                       <div class="form-group">
                         <input type="text" class="form-control" id="inputPhone" aria-describedby="inputName" name="phone" readonly="" value="{{Auth::guard('customer')->user()->phone}}" placeholder="Điện thoại">
-                        <!--@error('phone')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror-->
                       </div>
                       <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail" aria-describedby="inputName" name="email" readonly="" value="{{Auth::guard('customer')->user()->email}}" placeholder="Email">
-                        <!--@error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                          @enderror-->
                       </div>
                     </div>
                   </div>
@@ -86,9 +72,6 @@
                         <div class="col-4">
                           <div class="radio">
                             <input id="gender-register-1" name="gender" type="radio" checked="{{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}}" value="male">
-                            <!--data-parsley-required='true'
-                          	data-parsley-required-message="Hãy chọn giới tính!"
-                        	aria-describedby="gender-register-1">-->
                             <label for="gender-register-1" class="radio-label">Anh</label>
                           </div>
                         </div>
@@ -102,34 +85,22 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}"
-                        data-parsley-required-message="Họ và tên không được để trống"
-                        data-parsley-required='true'>
-                        <!--@error('name')
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}">
+                        @error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror-->
+                        @enderror
                       </div>
                       <div class="form-group">
-                        <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}"
-                        data-parsley-type="number"
-                        minlength="10"
-						data-parsley-minlength="10"
-						data-parsley-minlength-message="Số điện thoại phải là 10 số"
-                        data-parsley-required-message="Số điện thoại không chính xác"
-                        data-parsley-required='true'>
+                        <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}">
                         @error('phone')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}"
-                        data-parsley-type="email"
-                        data-parsley-type-message="Email chưa đúng định dạng"
-                        data-parsley-required-message="Email không được để trống"
-                        data-parsley-required='true'>
-                       <!-- @error('email')
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}">
+                        @error('email')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror-->
+                        @enderror
                       </div>
                     </div>
                   </div>
