@@ -103,10 +103,10 @@
       <section class="cart-process">
         <div class="process-list">
           <ul class="process-list-wrapper">
-            <li><a href="#" class="active"><span class="d-none d-sm-block">Thông tin đặt hàng</span></a>
+            <li><a class="active"><span class="d-none d-sm-block">Thông tin đặt hàng</span></a>
             </li>
-            <li><a href="#" class="active"><span class="d-none d-sm-block">Thanh toán</span></a></li>
-            <li><a href="#" class="active"><span>Hoàn tất đơn hàng</span></a></li>
+            <li><a class="active"><span class="d-none d-sm-block">Thanh toán</span></a></li>
+            <li><a class="active"><span>Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
         <form action="#">
