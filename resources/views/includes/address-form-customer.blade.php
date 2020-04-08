@@ -14,6 +14,9 @@
     data-parsley-required='true'
     aria-describedby="district">
     </select>
+	@error('district')
+	<div class="alert alert-danger">{{ $message }}</div>
+	@enderror
   </div>
 </div>
 <div class="col-md-6">
@@ -24,6 +27,9 @@
     data-parsley-required='true'
     aria-describedby="ward">
     </select>
+	@error('ward')
+	<div class="alert alert-danger">{{ $message }}</div>
+	@enderror
   </div>
 </div>
 <div class="col-md-6">

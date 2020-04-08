@@ -58,6 +58,7 @@
               </div>
             </form>
           </div>
+		  <!-- Tạo tài khoản -->
           <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
             <form action="{{route('front.customer.create')}}" class="register-form" method="POST" data-parsley-validate>
               @csrf
@@ -90,36 +91,36 @@
                     <div class="col-12">
                       <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Họ và tên *" value="{{old('name')}}"
-                        id="inputUser"
+                        id="inputRegUser"
                         data-parsley-required-message="Họ và tên không được để trống"
                         data-parsley-required='true'
-                        aria-describedby="inputUser">
+                        aria-describedby="inputRegUser">
                         
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
                         <input type="number" name="phone" class="form-control" placeholder="Điện thoại *" value="{{old('phone')}}"
-                        id="inputPhone"
+                        id="inputRegPhone"
                         data-parsley-type="integer"
                         minlength="10"
 						data-parsley-minlength="10"
 						data-parsley-minlength-message="Số điện thoại phải có ít nhất 10 chữ số"
                         data-parsley-required-message="Số điện thoại không được để trống"
                         data-parsley-required='true'
-                        aria-describedby="inputPhone">
+                        aria-describedby="inputRegPhone">
                         
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
                         <input type="email" name="email" class="form-control" placeholder="Địa chỉ email *" value="{{old('email')}}"
-                        id="inputEmail"
+                        id="inputRegEmail"
                         data-parsley-type="email"
                         data-parsley-type-message="Email chưa đúng định dạng"
                         data-parsley-required-message="Email không được để trống"
                         data-parsley-required='true'
-                        aria-describedby="inputEmail">
+                        aria-describedby="inputRegEmail">
                         
                       </div>
                     </div>
@@ -130,22 +131,22 @@
                     <div class="col-12">
                       <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Mật khẩu *"
-                        id="inputPassword"
+                        id="inputRegPassword"
                         data-parsley-required-message="Mật khẩu không được để trống"
                         data-parsley-required='true'
-                        aria-describedby="inputPassword">
+                        aria-describedby="inputRegPassword">
                         
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="form-group">
                         <input type="password" name="password_confirm" class="form-control" placeholder="Xác nhận mật khẩu *"
-                        id="inputConfirmedPassword"
-                        data-parsley-equalto="inputPassword"
+                        id="inputConfirmedRegPassword"    
+                        data-parsley-equalto="#inputRegPassword"
                         data-parsley-equalto-message="Xác nhận Mật khẩu chưa chính xác"                        
                         data-parsley-required-message="Xác nhận Mật khẩu không được để trống"
                         data-parsley-required='true'
-                        aria-describedby="inputConfirmedPassword">
+                        aria-describedby="inputConfirmedRegPassword">
                       </div>
                     </div>
                     <div class="col-12">
