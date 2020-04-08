@@ -31,11 +31,11 @@
                             <input id="radio-1" name="gender" type="radio" value="female" checked="checked" readonly="">
                             <label for="radio-1" class="radio-label">Chị</label>
                             <!-- Khách hàng không xác định giới tính -->
-                            <!--@else-->
-                            <!--<input id="radio-1" name="gender" type="radio" value="male" checked="checked">
+                            @else
+                            <input id="radio-1" name="gender" type="radio" value="male" checked="checked">
                             <label for="radio-1" class="radio-label">Anh</label>
                             <input id="radio-1" name="gender" type="radio" value="female">
-                            <label for="radio-1" class="radio-label">Chị</label>-->
+                            <label for="radio-1" class="radio-label">Chị</label>
                             @endif
                           </div>
                         </div>
