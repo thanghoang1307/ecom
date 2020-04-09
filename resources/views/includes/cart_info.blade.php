@@ -85,7 +85,9 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}">
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}"
+                        data-parsley-required-message="Họ và tên không được để trống"
+                        data-parsley-required='true'>
                         <!--@error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror-->
