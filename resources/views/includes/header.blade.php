@@ -8,8 +8,45 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/assets/img/favicon.ico">
-	<title>One Stop Shop - Giải Pháp | Thiết Bị CNTT</title>
-	
+	@if(Request::path() == 'tin-tuc-cong-nghe')
+	@php
+	$title = "Tin tức công nghệ";
+	$desc = "Chuyên trang tin tức công nghệ";
+	@endphp
+	@elseif(Request::path() == 'san-pham')
+	@php
+	$title = "Tất cả sản phẩm";
+	$desc = "Tất cả sản phẩm tại One Stop Shop";
+	@endphp
+	@elseif(isset($post))
+	@php
+	$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+	$desc = $post->meta_desc ?? "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+	@endphp
+	@elseif(isset($prd))
+	@php
+	$title = $prd->meta_title ? $prd->meta_title : $prd->name ? $prd->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+	$desc = $prd->meta_desc ? $prd->meta_desc : $prd->short_desc ? $prd->short_desc : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+	@endphp
+	@elseif(isset($cat))
+	@php
+	$title = $cat->meta_title ? $cat->meta_title : $cat->name ? $cat->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+	$desc = $cat->meta_desc ? $cat->meta_desc : $cat->short_desc ? $cat->short_desc : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+	@endphp
+	@elseif(isset($brand))
+	@php
+	$title = $brand->name ?? 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+	$desc = $brand->name ? 'Các sản phẩm thuộc danh mục '.$brand->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT'; "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+	@endphp
+	@else
+	@php
+	$title = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+	$desc = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+	@endphp
+	@endif
+	<title>{{$title}}</title>
+	<meta name="title" content="{{$title}}">
+<meta name="description" content="{{$desc}}">
 	
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

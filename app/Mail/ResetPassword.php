@@ -31,7 +31,7 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.password.reset_password')->with([
+        return $this->subject('ONESTOPSHOP.VN: Khôi phục mật khẩu')->view('mail.password.reset_password')->with([
             'link' => $this->link,
             'customer' => $this->customer,
         ]);
