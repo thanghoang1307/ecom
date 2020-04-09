@@ -58,7 +58,7 @@ class CustomerController extends Controller
 
         // Đăng nhập sau khi đăng ký thành công
         Auth::guard('customer')->attempt($arr);
-        return redirect()->back()->with('success','Đăng ký thành công');
+        return redirect()->back()->with('success','Tài khoản đã đăng ký thành công');
     }
 
     public function redirect($provider){
@@ -183,7 +183,7 @@ public function resetPassword(Request $request)
     $tokenData = DB::table('password_resets')
     ->where('token', $request->token)->first();
 // Redirect the user back to the password reset request form if the token is invalid
-    if (!$tokenData) return view('front.profile-forgot-password')->with('error','Link đã hết hạn');
+    if (!$tokenData) return view('front.profile-forgot-password')->with('error','Link thiết lập mật khẩu đã hết hạn');
 
     $customer = Customer::where('email', $tokenData->email)->first();
 // Redirect the customer back if the email is invalid

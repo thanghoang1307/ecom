@@ -8,12 +8,16 @@
                 <h4 class="section-title">Đổi mật khẩu</h4>
               </div>
               <div class="change-password-body">
-                <form action="{{route('front.account.update_password')}}" method="POST" class="change-password-form">
+                <form action="{{route('front.account.update_password')}}" method="POST" class="change-password-form" data-parsley-validate>
                   @csrf
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="password" name="old_password" class="form-control" placeholder="Mật khẩu hiện tại">
+                        <input type="password" name="old_password" class="form-control" placeholder="Mật khẩu hiện tại"
+                        id="myCurrentPassword"
+						data-parsley-required-message="Hãy nhập Mật khẩu"
+                      data-parsley-required='true'
+                      aria-describedby="myCurrentPassword">
                         @error('old_password')
                         <div class="alert alert-danger">{{$message}}</div>
                         @enderror
@@ -23,18 +27,31 @@
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu mới">
-                        @error('password')
+                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu mới"
+                        id="myNewPassword"
+                        minlength="6"
+						data-parsley-minlength="6"
+						data-parsley-minlength-message="Mật khẩu phải chứa ít nhất 6 ký tự"
+						data-parsley-required-message="Hãy nhập Mật khẩu"
+                      data-parsley-required='true'
+                      aria-describedby="myNewPassword">
+                        <!--@error('password')
                         <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="password" name="password_confirmation" class="form-control" placeholder="Xác nhận mật khẩu mới">
-                        @error('password_confirmation')
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Xác nhận mật khẩu mới"
+                        id="inputConfirmedNewPassword"
+                                  data-parsley-equalto="#myNewPassword"
+                                  data-parsley-equalto-message="Mật khẩu xác nhận chưa chính xác"
+                                  data-parsley-required-message="Hãy nhập xác nhận Mật khẩu"
+                                  data-parsley-required='true'
+                                  aria-describedby="inputConfirmedNewPassword">
+                        <!--@error('password_confirmation')
                         <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                     </div>
                   </div>

@@ -29,13 +29,16 @@
                   <h4 class="section-title">Thiết lập mật khẩu mới</h4>
                 </div>
                 <div class="change-password-body">
-                <form name="changePasswordForm" class="change-password-form" data-parsley-validate action="{{route('front.customer.reset_password')}}" method="POST">
+                <form name="changePasswordForm" class="change-password-form" action="{{route('front.customer.reset_password')}}" method="POST" data-parsley-validate>
                   @csrf                    
                     <div class="row">
                       <div class="col-12">
                         <div class="form-group">
                           <input type="password" class="form-control" placeholder="Mật khẩu mới"
                                   id="myNewPassword"
+                                  minlength="6"
+									data-parsley-minlength="6"
+									data-parsley-minlength-message="Mật khẩu phải chứa ít nhất 6 ký tự"
                                   data-parsley-required-message="Hãy nhập Mật khẩu"
                                   data-parsley-required='true'
                                   aria-describedby="myNewPassword" name="password">

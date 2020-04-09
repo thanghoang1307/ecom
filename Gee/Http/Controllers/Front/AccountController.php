@@ -67,11 +67,11 @@ public function updatePassword(Request $request){
         'password' => Hash::make($request->password)
     ])->save();
 
-     $request->session()->flash('success', 'Password changed');
+     $request->session()->flash('success', 'Mật khẩu đã được đổi thành công');
      return redirect()->route('front.account.edit_password');
 
  } else {
-    $request->session()->flash('error', 'Password does not match');
+    $request->session()->flash('error', 'Mật khẩu hiện tại chưa chính xác');
     return redirect()->route('front.account.edit_password');
 }
 }

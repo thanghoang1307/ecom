@@ -132,6 +132,9 @@
                       <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Mật khẩu *"
                         id="inputRegPassword"
+                        minlength="6"
+						data-parsley-minlength="6"
+						data-parsley-minlength-message="Mật khẩu phải chứa ít nhất 6 ký tự"
                         data-parsley-required-message="Mật khẩu không được để trống"
                         data-parsley-required='true'
                         aria-describedby="inputRegPassword">
