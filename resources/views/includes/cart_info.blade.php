@@ -85,10 +85,12 @@
                     </div>
                     <div class="process-profile-block-body">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}">
-                        @error('name')
+                        <input type="text" class="form-control" id="inputName" aria-describedby="inputName" placeholder="Họ và tên" name="name" value="{{session()->get('cart.name')}}"
+                        data-parsley-required-message="Họ và tên không được để trống"
+                        data-parsley-required='true'>
+                        <!--@error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                       <div class="form-group">
                         <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}"
@@ -100,9 +102,9 @@
                         data-parsley-required='true'
                         aria-describedby="inputPhone">
 						
-                        @error('phone')
+                       <!-- @error('phone')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                       <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}"
@@ -112,9 +114,9 @@
                         data-parsley-required-message="Email không được để trống"
                         data-parsley-required='true'>
 						
-                        @error('email')
+                        <!--@error('email')
                       <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror-->
                       </div>
                     </div>
                   </div>
