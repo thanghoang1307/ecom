@@ -78,7 +78,7 @@ class CustomerController extends Controller
     $customerRegisterBySocial = Customer::where('provider_id', $getInfo->id)->first();
     $customerRegisterByEmail = Customer::where('email',$getInfo->email)->where('provider_id',null)->first();
     if($customerRegisterByEmail){
-        return redirect(Session::get('last_url'))->with('error','Trùng khớp email trong hệ thống');
+        return redirect(Session::get('last_url'))->with('error','Email này đã được sử dụng');
     } else if (!$customerRegisterBySocial){
         return view('front.profile-complete-register')->with([
             'name' => $getInfo->name,
