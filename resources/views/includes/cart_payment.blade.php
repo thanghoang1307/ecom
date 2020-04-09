@@ -79,34 +79,24 @@
                           <div class="form-group">
                             <input type="text" class="form-control" name="name" id="inputCompany" aria-describedby="inputCompany"
                                    placeholder="Tên công ty" value="{{old('name')}}">
-                        		<!--data-parsley-required-message="Hãy nhập Tên công ty đăng ký hoá đơn"
-                        		data-parsley-required='true'>-->
+								   @error('name')
+									    <div class="alert alert-danger">{{ $message }}</div>
+									@enderror
                           </div>
-                          @error('name')
-							    <div class="alert alert-danger">{{ $message }}</div>
-							@enderror
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <input type="number" class="form-control" id="inputMST" aria-describedby="inputMST" name="mst"
                                    placeholder="Mã số thuế" value="{{old('mst')}}">
-									<!--data-parsley-type="integer"
-			                        minlength="6"
-									data-parsley-minlength="6"
-									data-parsley-minlength-message="Mã số thuế phải có ít nhất là 6 số"
-			                        data-parsley-required-message="Hãy nhập mã số thuế"
-								data-parsley-required='true'>-->
+								   @error('mst')
+									<div class="alert alert-danger">{{ $message }}</div>
+									@enderror
                           </div>
-                          @error('mst')
-							<div class="alert alert-danger">{{ $message }}</div>
-							@enderror
                         </div>
                         <div class="col-12">
                           <div class="form-group">
                             <input type="text" class="form-control" id="inputAddress" aria-describedby="inputAddress"
                                    placeholder="Số nhà, tên đường" name="address" value="{{old('address')}}">
-                                   <!--data-parsley-required-message="Hãy nhập địa chỉ công ty đăng ký hoá đơn"
-                        			data-parsley-required='true'>-->
                                    @error('address')
 									<div class="alert alert-danger">{{ $message }}</div>
 									@enderror

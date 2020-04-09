@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>One Stop Shop</a>
+    <a href="{{route('front.index')}}"><b>One Stop Shop</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

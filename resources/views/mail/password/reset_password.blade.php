@@ -1,3 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<!-- mail bg -->
+		<table style="text-align: center; width:100%; margin:0 auto; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; background:#f8f9fa" width="100%" cellpadding="0" cellspacing="0" border="0">
+		<tbody>
+			<tr>
+				<td>
+					<!-- mail content -->
+					<table style="text-align: center; margin:0 auto; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" width="700" cellpadding="0" cellspacing="0" border="0">
+						<tbody>
+							<tr>
+								<td>
+									<!-- header -->
+									<table style="background:#962d91;" width="100%" cellpadding="0" cellspacing="0" border="0">
+										<tbody>
+											<tr>
+												<td width="50%">
+													<p style="padding: 5px 0 5px 10px;"><a href="https://onestopshop.vn" target="_blank">
+														<a href="https://onestopshop.vn" target="_blank">
+															<img style="border: none;" class="CToWUd" data-image-whitelisted="" src="https://onestopshop.vn/uploads/photos/shares/logo.png" width="100%" alt="" />
+														</a>
+														</a></p>
+												</td>
+												
+												<td width="50%">
+													<p style="padding: 0; margin: 0 10px 0 0; text-align: right;"><a style="color: white; text-decoration: none;" href="tel:0837000247"><span style="font-size: 1em;">Hotline</span>
+														
+													<br /><span style="font-size: 1.5em; font-weight: bold;">0837.000.247</span></a></p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<!-- body -->
+									<table style="background:transparent;" width="100%" cellpadding="0" cellspacing="0" border="0">
+										<tbody>
+											<tr>
+												<td>
+													<div style="margin: 0; padding: 30px; text-align: center;  line-height: 1.5em; color: #666; background: white; font-size: 1.3em;">
+														<!-- welcome -->
+														<p style=" font-size: 1.3em;">Kính chào {{ $customer->name }},</p>
+														
+														<p style=" font-size: 1.3em;">Yêu cầu thay đổi mật khẩu của Quý khách đã được cập nhật.</p>
+														
+														<p style=" font-size: 1.3em;">Vui lòng bấm vào <a style="color:#962d91; text-decoration: none;" href="{{ $link }}">đây</a> để thay đổi mật khẩu</p>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div style="margin: 0; padding: 30px; text-align: center;  line-height: 1.5em; color: #666; background: white; font-size: 1.3em; border-bottom: 2px solid #ddd; border-top: 2px solid #ddd;">
+														<p style=" font-size: 1.3em; margin-bottom: 10px;">Hoặc</p>
+														
+														<p style="text-align: center; font-size: 1.3em;">
+															<a style="color:white; text-decoration: none; text-transform: uppercase; padding: 20px; margin: 10px 0; font-weight: bold; background-color: #962d91;" href="{{ $link }}">Thiết lập lại mật khẩu</a>
+														</p>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div style="margin: 0; padding: 30px; text-align: center;  line-height: 1.5em; color: #666; background: white; font-size: 0.9em;">
+														<p style=" font-size: 0.9em;">ONE STOP SHOP xin chân thành cảm ơn và rất mong sẽ tiếp tục nhận được sự ủng hộ của Quý khách trong tương lai!</p>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+
+
+
 Xin chào {{ $customer->name }},
 
 Link khởi tạo lại mật khẩu: <a href="{{ $link }}">Link tạo lại mật khẩu</a>

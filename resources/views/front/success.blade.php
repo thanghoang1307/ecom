@@ -80,7 +80,7 @@
       	</div>
       	
       	<!-- Proposal -->
-          <div class="cart-item">
+          <!--<div class="cart-item">
             <div class="row no-gutters align-items-center align-content-center">
               <div class="col-4 col-md-12">
                 <a href="{{route('front.tai_bao_gia')}}" target="_blank" class="btn-submit is-white">
@@ -94,7 +94,7 @@
                 </a>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </section>
       

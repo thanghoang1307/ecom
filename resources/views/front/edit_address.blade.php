@@ -8,24 +8,40 @@
                 <h4 class="section-title">Thay đổi địa chỉ</h4>
               </div>
               <div class="add-address-body">
-                <form method="POST" action="{{route('front.account.update_address',$address->id)}}" class="add-address-form">
+                <form method="POST" action="{{route('front.account.update_address',$address->id)}}" class="add-address-form" data-parsley-validate>
                   @csrf
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="text" class="form-control" name="receiver" placeholder="Họ và tên *" value="{{$address->receiver}}">
+                        <input type="text" class="form-control" name="receiver" placeholder="Họ và tên người nhận" value="{{$address->receiver}}"
+                        id="inputReceiver"
+                        data-parsley-required-message="Hãy nhập Họ và tên người nhận"
+                        data-parsley-required='true'
+                        aria-describedby="inputReceiver">
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="text" class="form-control" name="phone" placeholder="Số điện thoại" value="{{$address->phone}}">
+                        <input type="number" class="form-control" name="phone" placeholder="Số điện thoại" value="{{$address->phone}}"
+                        id="inputPhoneReceiver"
+                        data-parsley-type="integer"
+                        minlength="10"
+						data-parsley-minlength="10"
+						data-parsley-minlength-message="Số điện thoại phải là 10 chữ số"
+                        data-parsley-required-message="Hãy nhập Số điện thoại"
+                        data-parsley-required='true'
+                        aria-describedby="inputPhoneReceiver">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-5">
                       <div class="form-group">
-                        <input type="text" name="address" class="form-control" placeholder="Địa chỉ nhận hàng (Tầng, số nhà, đường)" value="{{$address->address}}">
+                        <input type="text" name="address" class="form-control" placeholder="Địa chỉ nhận hàng (Tầng, số nhà, đường)" value="{{$address->address}}"
+                        	id="inputAddrInfo"
+                        	data-parsley-required-message="Hãy nhập Số nhà, tên đường"
+                        	data-parsley-required='true'
+                        	aria-describedby="inputAddrInfo">
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-5">

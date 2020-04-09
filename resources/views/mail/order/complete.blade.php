@@ -371,7 +371,7 @@
 							
 							<tr>
 								<td>
-									<p style="text-align: center; margin: 10px; padding: 0;  color: #666; line-height: 18px;"><strong>Lưu ý:</strong> Giá bán và các ưu đãi, quà tặng đi kèm sản phẩm có thể thay đổi bất cứ lúc nào mà không cần báo trước.</p>
+									<p style="text-align: center; margin: 10px; padding: 0;  color: #666; line-height: 18px; font-size: 0.9em;"><strong>Lưu ý:</strong> Giá bán và các ưu đãi, quà tặng đi kèm sản phẩm có thể thay đổi bất cứ lúc nào mà không cần báo trước.</p>
 								</td>
 							</tr>
 						</tbody>
