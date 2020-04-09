@@ -8,7 +8,7 @@
             <li><a><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a></li>
           </ul>
         </div>
-        <form action="{{route('front.check_out_2')}}" method="POST">
+        <form action="{{route('front.check_out_2')}}" method="POST" data-parsley-validate>
           @csrf
           <div class="process-info">
             <h2 class="process-info-title">Thông tin giỏ hàng</h2>
@@ -91,13 +91,27 @@
                         @enderror
                       </div>
                       <div class="form-group">
-                        <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}">
+                        <input type="number" class="form-control" id="inputPhone" aria-describedby="inputPhone" placeholder="Điện thoại" name="phone" value="{{session()->get('cart.phone')}}"
+                        data-parsley-type="integer"
+                        minlength="10"
+						data-parsley-minlength="10"
+						data-parsley-minlength-message="Số điện thoại phải có ít nhất 10 chữ số"
+                        data-parsley-required-message="Số điện thoại không được để trống và phải là số"
+                        data-parsley-required='true'
+                        aria-describedby="inputPhone">
+						
                         @error('phone')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}">
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="inputEmail" placeholder="Địa chỉ email" name="email" value="{{session()->get('cart.email')}}"
+                        id="inputEmail"
+                        data-parsley-type="email"
+                        data-parsley-type-message="Email chưa đúng định dạng"
+                        data-parsley-required-message="Email không được để trống"
+                        data-parsley-required='true'>
+						
                         @error('email')
                       <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
