@@ -9,40 +9,46 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/assets/img/favicon.ico">
 	@if(Request::path() == 'tin-tuc-cong-nghe')
-	@php
-	$title = "Tin tức công nghệ";
-	$desc = "Chuyên trang tin tức công nghệ";
-	@endphp
+		@php
+		$title = "Tin tức công nghệ";
+		$desc = "Chuyên trang tin tức công nghệ";
+		@endphp
+	
 	@elseif(Request::path() == 'san-pham')
-	@php
-	$title = "Tất cả sản phẩm";
-	$desc = "Tất cả sản phẩm tại One Stop Shop";
-	@endphp
+		@php
+		$title = "Tất cả sản phẩm";
+		$desc = "Tất cả sản phẩm tại One Stop Shop";
+		@endphp
+	
 	@elseif(isset($post))
-	@php
-	$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-	$desc = $post->meta_desc ?? "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
-	@endphp
+		@php
+		$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = $post->meta_desc ?? "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+		@endphp
+	
 	@elseif(isset($prd))
-	@php
-	$title = $prd->meta_title ? $prd->meta_title : $prd->name ? $prd->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-	$desc = $prd->meta_desc ? $prd->meta_desc : $prd->short_desc ? $prd->short_desc : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
-	@endphp
+		@php
+		$title = $prd->meta_title ? $prd->meta_title : $prd->name ? $prd->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = $prd->meta_desc ? $prd->meta_desc : $prd->short_desc ? $prd->short_desc : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+		@endphp
+	
 	@elseif(isset($cat))
-	@php
-	$title = $cat->meta_title ? $cat->meta_title : $cat->name ? $cat->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-	$desc = $cat->meta_desc ? $cat->meta_desc : $cat->short_desc ? $cat->short_desc : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
-	@endphp
+		@php
+		$title = $cat->meta_title ? $cat->meta_title : $cat->name ? $cat->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = $cat->meta_desc ? $cat->meta_desc : $cat->short_desc ? $cat->short_desc : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+		@endphp
+	
 	@elseif(isset($brand))
-	@php
-	$title = $brand->name ?? 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-	$desc = $brand->name ? 'Các sản phẩm thuộc danh mục '.$brand->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT'; "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
-	@endphp
+		@php
+		$title = $brand->name ?? 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = $brand->name ? 'Các sản phẩm thuộc danh mục '.$brand->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT'; "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
+		@endphp
+	
 	@else
-	@php
-	$title = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-	$desc = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-	@endphp
+		@php
+		$title = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		@endphp
 	@endif
 	<title>{{$title}}</title>
 	<meta name="title" content="{{$title}}">
@@ -206,33 +212,35 @@
 									@endif
 									
 									<!-- quick cart -->
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<ul>
+									<div class=" d-none d-md-block">
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<ul>
+												@if(count($prds_in_cart))
+												@foreach ($prds_in_cart as $prd)
+												<li class="dropdown-item">
+													<div class="product-head">
+														<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
+															<img src="{{$prd->thumb}}" class="img-fluid">
+														</a>
+														<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
+													<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
+													</div>
+												</li>
+												@endforeach
+												@else
+												<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
+											@endif
+											</ul>
 											@if(count($prds_in_cart))
-											@foreach ($prds_in_cart as $prd)
-											<li class="dropdown-item">
-												<div class="product-head">
-													<a href="{{route('front.product-detail',$prd->slug)}}" class="card-image">
-														<img src="{{$prd->thumb}}" class="img-fluid">
-													</a>
-													<h3 class="product-head-title"><a href="{{route('front.product-detail',$prd->slug)}}">{{$prd->name}}</a></h3>
-												<span class="product-price price">{{ $prd->current_price}}<sup>đ</sup><strong class="count"> x{{$carts[$prd->id]}}</strong></span>
-												</div>
-											</li>
-											@endforeach
-											@else
-											<li class="dropdown-item px-5 py-5"><em>Chưa có sản phẩm trong giỏ hàng</em></li>
-										@endif
-										</ul>
-										@if(count($prds_in_cart))
-										<div class="product-end">
-											<h5 class="product-end-block">
-												<span class="product-end-title">Thành tiền</span> <span
-												class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span>
-											</h5>
-											<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+											<div class="product-end">
+												<h5 class="product-end-block">
+													<span class="product-end-title">Thành tiền</span> <span
+													class="product-end-block-price price">{{$cart_total}}<sup>đ</sup></span>
+												</h5>
+												<a href="{{route('front.check_out_1')}}" class="view-all-product">Xem giỏ hàng</a>
+											</div>
+											@endif
 										</div>
-										@endif
 									</div>
 										<!-- end quick cart -->
 										
