@@ -46,7 +46,7 @@
 	@endif
 	<title>{{$title}}</title>
 	<meta name="title" content="{{$title}}">
-<meta name="description" content="{{$desc}}">
+	<meta name="description" content="{{$desc}}">
 	
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -173,11 +173,7 @@
 									<!--USER LOGIN-->
 									<span class="cart-title d-none d-md-inline-block">
 										@if(session()->get('cart.items'))
-										<a href="{{route('front.check_out_1')}}">Giỏ hàng 
-											<span class="cart-number">
-												{{array_sum(session()->get('cart.items'))}}
-											</span>
-										</a>
+										<a href="{{route('front.check_out_1')}}">Giỏ hàng</a>
 										@else
 										<a href="#">Giỏ hàng</a>
 										@endif
@@ -198,6 +194,7 @@
 									<a class="highlight d-none d-md-block" href="{{route('front.check_out_1')}}" id="dropdownMenuButton" data-toggle="dropdown"
 										aria-haspopup="true"
 										aria-expanded="false">
+										<span class="header-cart-number">{{array_sum(session()->get('cart.items'))}}</span>
 										<i class="icon icon-shopping-cart"></i>
 									</a>
 									@else
