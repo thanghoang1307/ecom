@@ -10,37 +10,37 @@
 	<link rel="icon" href="/assets/img/favicon.ico">
 	@if(Request::path() == 'tin-tuc-cong-nghe')
 		@php
-		$title = "Tin tức công nghệ";
+		$title = "Tin tức công nghệ | One Stop Shop - Giải Pháp | Thiết Bị CNTT";
 		$desc = "Chuyên trang tin tức công nghệ";
 		@endphp
 	
 	@elseif(Request::path() == 'san-pham')
 		@php
-		$title = "Tất cả sản phẩm";
+		$title = "Tất cả sản phẩm | One Stop Shop - Giải Pháp | Thiết Bị CNTT";
 		$desc = "Tất cả sản phẩm tại One Stop Shop";
 		@endphp
 	
 	@elseif(isset($post))
 		@php
-		$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title.' | One Stop Shop - Giải Pháp | Thiết Bị CNTT' : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
 		$desc = $post->meta_desc ? $post->meta_desc : $post->content ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($post->content))), 0, 300).'...' : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
 		@endphp
 	
 	@elseif(isset($prd))
 		@php
-		$title = $prd->meta_title ? $prd->meta_title : $prd->name ? $prd->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$title = $prd->meta_title ? $prd->meta_title : $prd->name ? $prd->name.' | One Stop Shop - Giải Pháp | Thiết Bị CNTT' : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
 		$desc = $prd->meta_desc ? $prd->meta_desc : $prd->long_desc ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($prd->long_desc))), 0, 300).'...' : "One Stop Shop - Giải Pháp | Thiết Bị CNTT";
 		@endphp
 	
 	@elseif(isset($cat))
 		@php
-		$title = $cat->meta_title ? $cat->meta_title : $cat->name ? $cat->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$title = $cat->meta_title ? $cat->meta_title : $cat->name ? $cat->name.' | One Stop Shop - Giải Pháp | Thiết Bị CNTT' : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
 		$desc = $cat->meta_desc ? $cat->meta_desc : "Các sản phẩm thuộc danh mục ".$cat->name ;
 		@endphp
 	
 	@elseif(isset($brand))
 		@php
-		$title = $brand->name ?? 'Thương hiệu '.$brand->name;
+		$title = $brand->name ?? 'Thương hiệu '.$brand->name.' | One Stop Shop - Giải Pháp | Thiết Bị CNTT';
 		$desc = $brand->name ? 'Các sản phẩm thuộc danh mục '.$brand->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
 		@endphp
 	
