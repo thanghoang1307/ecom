@@ -10,9 +10,10 @@ Chỉnh sửa sản phẩm {{$prd->name}}
       <form method="POST" action="{{route('admin.prd.update',$prd->id)}}">
         @csrf
         <div class="card-header">
-          <button type="submit" class="btn btn-primary">
-            Save
-          </button>
+		  <div class="row">
+		  	<div class="col-md-6 col-12"><button type="submit" class="btn btn-primary">Save</button></div>
+		  	<div class="col-md-6 col-12" style="text-align: right;"><a href="{{route('front.product-detail',$prd->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777;">Xem trên giao diện web</a></div>
+		  </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -215,9 +216,10 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         </div>              
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-          <button type="submit" class="btn btn-primary">
-            Save
-          </button>
+          <div class="row">
+		  	<div class="col-md-6 col-12"><button type="submit" class="btn btn-primary">Save</button></div>
+		  	<div class="col-md-6 col-12" style="text-align: right;"><a href="{{route('front.product-detail',$prd->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777;">Xem trên giao diện web</a></div>
+		  </div>
         </div>
       </form>
     </div>
