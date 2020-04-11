@@ -11,17 +11,41 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         @csrf
         <div class="card-header">
 		  <div class="row">
-		  	<div class="col-md-6 col-12"><button type="submit" class="btn btn-primary">Save</button></div>
-		  	<div class="col-md-6 col-12" style="text-align: right;"><a href="{{route('front.product-detail',$prd->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777;">Xem trên giao diện web</a></div>
+		  	<div class="col-md-6 col-12">
+		  	<button type="submit" class="btn btn-primary">Save</button>
+		  	<a href="{{route('front.product-detail',$prd->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777; margin-left: 10px;">Xem trên giao diện</a>
+		  	</div>
+		  	<div class="col-md-6 col-12" style="text-align: right;">
+		  		<a href="{{route('admin.prd.delete',$prd->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+		  	</div>
 		  </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
           <!-- Accordion General -->
+		  <div class="accordion">
+            <div class="card">
+              <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
+                Tình trạng
+              </div>
+            </div>
+          </div>
+		  <div id="generalAccordionContent" class="collapse">
+            <div class="card-body">
+              <div class="form-group">
+                <label>Hiển thị</label>
+                <select name="is_show" class="form-control">
+				    <option value="0" {{$prd->is_show ? '': 'selected'}}>Ẩn</option>
+				    <option value="1" {{$prd->is_show ? 'selected': ''}}>Hiện</option>
+				</select>
+              </div>
+            </div>
+          </div>
+		  
           <div class="accordion">
             <div class="card">
               <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
-                General
+                Thông tin sản phẩm
               </div>
             </div>
           </div>
@@ -207,18 +231,14 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
           </div>
           @endforeach
-<div class="form-group">
-  <select name="is_show">
-    <option value="0" {{$prd->is_show ? '': 'selected'}}>Ẩn</option>
-    <option value="1" {{$prd->is_show ? 'selected': ''}}>Hiện</option>
-  </select>
-</div>
         </div>              
         <!-- /.card-body -->
         <div class="card-footer clearfix">
           <div class="row">
-		  	<div class="col-md-6 col-12"><button type="submit" class="btn btn-primary">Save</button></div>
-		  	<div class="col-md-6 col-12" style="text-align: right;"><a href="{{route('front.product-detail',$prd->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777;">Xem trên giao diện web</a></div>
+		  	<div class="col-12">
+		  	<button type="submit" class="btn btn-primary">Save</button>
+		  	<a href="{{route('front.product-detail',$prd->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777; margin-left: 10px;">Xem trên giao diện</a>
+		  	</div>
 		  </div>
         </div>
       </form>

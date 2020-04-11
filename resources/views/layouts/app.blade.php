@@ -14,6 +14,12 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
+<style>
+	.btn-danger {
+		margin-left: 15px;
+	}
+</style>
 <body>
 
   <div class="wrapper">

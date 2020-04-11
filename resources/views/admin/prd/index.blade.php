@@ -34,7 +34,7 @@ Danh sách bài viết
                       </td>
                       <td><a href="{{route('admin.prd.edit',$prd->id)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
                       
-                      <a href="{{route('admin.prd.delete',$prd->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                      <!--<a href="{{route('admin.prd.delete',$prd->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>--></td>
                     </tr>
                     @endforeach
                     
