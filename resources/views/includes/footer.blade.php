@@ -134,13 +134,26 @@
                     </h3>
                     <p class="footer-subscriber-detail-content">Đừng bỏ lỡ các thông tin sản phẩm
                       và chương trình siêu hấp dẫn</p>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Email của bạn"
-                             aria-label="Email của bạn">
-                      <div class="input-group-prepend">
-                        <a class="btn-subscriber">Đăng ký</a>
-                      </div>
-                    </div>
+                    <form action="#" data-parsley-validate>
+						<div class="row">
+							<div class="col-9">
+								<div class="form-group">
+			                      <input type="text" class="form-control" placeholder="Email của bạn" aria-label="Email của bạn"
+			                            id="subscriberEmail"
+				                        data-parsley-type="email"
+				                        data-parsley-type-message="Email chưa đúng định dạng"
+				                        data-parsley-required-message="Email không được để trống"
+				                        data-parsley-required='true'
+				                        aria-describedby="subscriberEmail">
+			                    </div>
+							</div>
+							<div class="col-3">
+								<div class="input-group-prepend form-group">
+								  	<button type="submit" class="btn-subscriber">gửi</button>
+								</div>
+							</div>
+						</div>
+					</form>
                   </div>
                 </div>
               </div>
