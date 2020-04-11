@@ -22,15 +22,15 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <!-- Accordion General -->
+          
 		  <div class="accordion">
             <div class="card">
-              <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
+              <div class="card-header" data-toggle="collapse" data-target="#statusAccordionContent">
                 Tình trạng
               </div>
             </div>
           </div>
-		  <div id="generalAccordionContent" class="collapse">
+		  <div id="statusAccordionContent" class="collapse">
             <div class="card-body">
               <div class="form-group">
                 <label>Hiển thị</label>
@@ -42,6 +42,7 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
           </div>
 		  
+		  <!-- Accordion General -->
           <div class="accordion">
             <div class="card">
               <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
