@@ -40,8 +40,8 @@
 	
 	@elseif(isset($brand))
 		@php
-		$title = $brand->name ?? 'Thương hiệu '.$brand->name.' | One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-		$desc = $brand->name ? 'Các sản phẩm thuộc danh mục '.$brand->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$title = $brand->name ? 'Thương hiệu '.$brand->name : ' | One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = $brand->name ? 'Các sản phẩm thuộc thương hiệu '.$brand->name : 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
 		@endphp
 	
 	@else

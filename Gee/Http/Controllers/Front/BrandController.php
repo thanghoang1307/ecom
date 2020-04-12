@@ -25,6 +25,6 @@ class BrandController extends Controller
     $prds = $this->prd->filter($request)->where('brand_id',$brand->id)->paginate(12);
     $cat=null;
     $brands = null;
-    return view('front.all',compact('prds','brands','cat'));
+    return view('front.all',compact('prds','brands','cat', 'brand'));
     }
 }

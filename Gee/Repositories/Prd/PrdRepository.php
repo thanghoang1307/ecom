@@ -147,4 +147,32 @@ class PrdRepository extends EloquentRepository implements PrdInterface {
 		$q->where('cats.id',$prd->cats->pluck('id'));
 		})->get();
 	}
+
+	public function getTopPrdBy($time)
+	{
+		switch ($time) {
+			case 'week':
+				// $start = Carbon::today()->subDay(6);
+				$start = Carbon::yesterday();
+				$end = Carbon::today();
+			break;
+			case 'month':
+				$start = Carbon::today()->subDay(28);
+				$end = Carbon::today();
+			break;
+			default:
+			$start = Carbon::today()->subDay(365);
+			$end = Carbon::today();
+		}
+
+		return $this->_model
+				->leftJoin('order_prds','prds.id','order_prds.prd_id')
+				->whereBetween('order_prds.created_at',[$start, $end])
+				->selectRaw('prds.name, prds.thumb, prds.slug, prds.id, sum(order_prds.qty) total')
+				->groupBy('prds.name', 'prds.thumb', 'prds.slug', 'prds.id')
+				->orderBy('total','desc')
+				->take(3)
+				->get();		
+	}
+
 }

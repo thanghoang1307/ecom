@@ -80,15 +80,6 @@ class CartController extends Controller
 		}
 
 		$order = $this->order->create($order_arr);
-		foreach (session('cart.items') as $key => $value){
-			$price = $this->prd->find($key)->current_price;
-			$order_prd = $this->order_prd->create([
-				'order_id' => $order->id,
-				'prd_id' => $key,
-				'qty' => $value,
-				'price' => $price,
-				'total' => $value*$price,]);
-		}
 
 		$shipment = $this->shipment->create([
 			'address' => $request->address,
@@ -132,6 +123,15 @@ class CartController extends Controller
 	public function success($order_number){
 		$order = $this->order->getFromOrderNumber($order_number);
 		$order->update(['status' => 0]);
+		foreach (session('cart.items') as $key => $value){
+		$price = $this->prd->find($key)->current_price;
+		$order_prd = $this->order_prd->create([
+				'order_id' => $order->id,
+				'prd_id' => $key,
+				'qty' => $value,
+				'price' => $price,
+				'total' => $value*$price,]);
+		}
 		session()->forget('cart');
 		$user = User::where('role',0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;

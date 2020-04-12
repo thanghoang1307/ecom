@@ -19,6 +19,63 @@
 	.btn-danger {
 		margin-left: 15px;
 	}
+  .quick-report {
+	text-align: center;
+	/*padding: 10px;*/
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
+	background-color: #fff;
+	margin: 0 0 20px 0;
+}
+
+.today .date-period, .today .revenue, .today .order-number {
+	color: #007bff!important;
+}
+
+.date-period {
+	font-size: 11px;
+	color: #aaa;
+	text-transform: uppercase;
+	background-color: #eee;
+	padding: 10px 0;
+	margin-bottom: 5px;
+}
+
+.revenue {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 2px 0;
+	color: #333;
+}
+
+.order-number {
+	font-size: 12px;
+	color: #666;
+	padding: 2px 0 10px 0;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.calendar {
+	font-size: 1em!important;
+	font-weight: bold;
+}
+.no-bestsale {
+	font-style: italic;
+	color: #999;
+	margin-bottom: 10px;
+}
+.sold {
+	font-size: 11px;
+	color: #aaa;
+	text-transform: uppercase;
+}
+.item {
+	padding: 10px 0;
+}
 </style>
 <body>
 
@@ -180,10 +237,9 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>One Stop Shop.</strong> All rights reserved.
   </footer>
 </body>
 </html>
