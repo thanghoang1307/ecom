@@ -70,7 +70,7 @@ Danh sách bài viết
                 <input class="form-control" type="text" name="sku" placeholder="Mã sản phẩm">
               </div>
               <div class="form-group">
-                <input class="form-control" type="text" name="name" placeholder="Ten san pham">
+                <input class="form-control" type="text" name="name" placeholder="Tên sản phẩm">
               </div>
               <div class="form-group">
                 <label>Nhóm thuộc tính</label>

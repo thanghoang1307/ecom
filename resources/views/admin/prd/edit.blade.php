@@ -43,6 +43,8 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
           </div>
 		  
+		  <div style="margin: 30px 0 10px;"><h6 style="font-weight: bold;">Thông tin chính</h6></div>
+		  
 		  <!-- Accordion Brand & Category-->
 		  <div class="accordion">
             <div class="card">
@@ -157,6 +159,8 @@ Chỉnh sửa sản phẩm {{$prd->name}}
               </div>
             </div>
           </div>
+		  
+		<div style="margin: 30px 0 10px;"><h6 style="font-weight: bold;">Thông tin kỹ thuật</h6></div>
 		  
 		  <!-- Accordion Atributes-->
           @foreach($attr_grs as $attr_gr)

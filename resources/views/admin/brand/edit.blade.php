@@ -17,10 +17,10 @@ Chỉnh sửa thương hiệu {{$brand->name}}
               <!-- /.card-header -->
               <div class="card-body">
               <div class="form-group">
-              <input type="text" class="form-control" name="slug" value="{{$brand->slug}}">
-              </div> 
-              <div class="form-group">
               <input type="text" class="form-control" name="name" value="{{$brand->name}}">
+              </div> 
+			  <div class="form-group">
+              <input type="text" class="form-control" name="slug" value="{{$brand->slug}}">
               </div> 
               <div class="input-group">
           <span class="input-group-btn">

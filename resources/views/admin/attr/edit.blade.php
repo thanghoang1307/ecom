@@ -17,10 +17,10 @@ Chỉnh sửa thuộc tính {{$attr->name}}
         <!-- /.card-header -->
         <div class="card-body">
           <div class="form-group">
-            <input type="text" class="form-control" name="code" value="{{$attr->code}}">
-          </div> 
-          <div class="form-group">
             <input type="text" class="form-control" name="name" value="{{$attr->name}}">
+          </div> 
+		  <div class="form-group">
+            <input type="text" class="form-control" name="code" value="{{$attr->code}}">
           </div> 
           <div class="form-group">
             <select class="form-control" name="type" placeholder="Loại thuộc tính">

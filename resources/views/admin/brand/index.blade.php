@@ -60,12 +60,12 @@ Danh sách thương hiệu
               </button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                <input class="form-control" type="text" name="slug" placeholder="Slug">
-              </div>
               <div class="form-group">
                 <input class="form-control" type="text" name="name" placeholder="Tên thương hiệu">
-              </div>              
+              </div>
+			  <div class="form-group">
+                <input class="form-control" type="text" name="slug" placeholder="Slug">
+              </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

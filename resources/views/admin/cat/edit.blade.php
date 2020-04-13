@@ -17,15 +17,15 @@ Chỉnh sửa danh mục {{$cat->name}}
               <!-- /.card-header -->
               <div class="card-body">
               <div class="form-group">
-              <input type="text" class="form-control" name="slug" value="{{$cat->slug}}">
-              </div> 
-              <div class="form-group">
               <input type="text" class="form-control" name="name" value="{{$cat->name}}">
+              </div> 
+			  <div class="form-group">
+              <input type="text" class="form-control" name="slug" value="{{$cat->slug}}">
               </div> 
                <div class="form-group">
                  <label for="parent_id">Danh muc cha</label>
               <select name="parent_id" class="form-control">
-                <option value="">Khong thuoc danh muc cha nao</option>
+                <option value="">Không thuộc danh mục nào</option>
                 @foreach( $cats as $item)
                 <option value="{{$item->id}}" <?php 
                 echo $cat->parent_id == $item->id ? "selected" : ""
