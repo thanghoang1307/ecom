@@ -160,7 +160,7 @@ class PrdRepository extends EloquentRepository implements PrdInterface
     {
         switch ($range) {
             case 'past-12-months':
-                $start = Carbon::today()->subDay(11, 'months');
+                $start = Carbon::today()->sub(11, 'months');
                 $end = Carbon::today();
                 break;
             case 'past-28-days':

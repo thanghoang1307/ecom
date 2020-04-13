@@ -136,6 +136,7 @@ ajaxCreateChart(this.value);
 
 $('select[name="top-prds-by"]').on('change', function(){
 ajaxGetTopPrds(this.value);
+console.log(this.value);
 });
 
 });
