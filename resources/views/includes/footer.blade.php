@@ -92,9 +92,9 @@
                 <div class="footer-block mt-4">
                   <h3 class="footer-block-title">KẾT NỐI</h3>
                   <ul class="footer-block-social">
-                    <li><a href="{{$settings->find('facebook')->value}}"><i class="icon icon-facebook-square"></i></a></li>
-                    <li><a href="{{$settings->find('youtube')->value}}"><i class="icon icon-youtube"></i></a></li>
-                    <li><a href="{{$settings->find('instagram')->value}}"><i class="icon icon-instagram"></i></a></li>
+                    <li><a rel ="nofollow" href="{{$settings->find('facebook')->value}}"><i class="icon icon-facebook-square"></i></a></li>
+                    <li><a rel ="nofollow" href="{{$settings->find('youtube')->value}}"><i class="icon icon-youtube"></i></a></li>
+                    <li><a rel ="nofollow" href="{{$settings->find('instagram')->value}}"><i class="icon icon-instagram"></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -174,7 +174,7 @@
           </div>
           <div class="col-md-2 order-1 order-md-1">
             <div class="image-check">
-              <a style="color: #999; text-decoration: none;" href="https://comodosslstore.com">
+              <a style="color: #999; text-decoration: none;" rel ="nofollow" href="https://comodosslstore.com">
 				<img style="width: 50%; height: 50%;" src="https://ssl.comodo.com/images/trusted-site-seal.png" 
 				alt="Comodo Trusted Site Seal" style="border: 0px;"><br>
 				<span style="font-weight:bold; font-size:7pt; font-weight: normal; position: relative; top: -5px;">

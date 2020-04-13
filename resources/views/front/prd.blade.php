@@ -48,7 +48,7 @@
             </div>
             <div class="product-cart">
               
-              <h2 class="product-name">{{$prd->name}}</h2>
+              <h1 class="product-name">{{$prd->name}}</h1>     
               <h3 class="product-code">Mã sản phẩm: <span>{{$prd->sku}}</span></h3>
 				@if($prd->regular_price || $prd->current_price)
 				<h4 class="product-price price">{{$prd->sale_price ? $prd->sale_price : $prd->regular_price}}<sup>đ</sup></h4>
