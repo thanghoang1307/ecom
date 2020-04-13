@@ -134,17 +134,13 @@
                     </h3>
                     <p class="footer-subscriber-detail-content">Đừng bỏ lỡ các thông tin sản phẩm
                       và chương trình siêu hấp dẫn</p>
-                    <form action="#" data-parsley-validate>
+                    <form action="{{route('front.subscribe')}}" method="POST" data-parsley-validate>
+                    @csrf
 						<div class="row">
 							<div class="col-9">
 								<div class="form-group">
 			                      <input type="text" class="form-control" placeholder="Email của bạn" aria-label="Email của bạn"
-			                            id="subscriberEmail"
-				                        data-parsley-type="email"
-				                        data-parsley-type-message="Email chưa đúng định dạng"
-				                        data-parsley-required-message="Email không được để trống"
-				                        data-parsley-required='true'
-				                        aria-describedby="subscriberEmail">
+			                            id="subscriberEmail" name="email">
 			                    </div>
 							</div>
 							<div class="col-3">
@@ -175,7 +171,7 @@
           <div class="col-md-2 order-1 order-md-1">
             <div class="image-check">
               <a style="color: #999; text-decoration: none;" rel ="nofollow" href="https://comodosslstore.com">
-				<img style="width: 50%; height: 50%;" src="https://ssl.comodo.com/images/trusted-site-seal.png" 
+				<img style="width: 50%; height: 50%;" src="https://ssl.comodo.com/images/trusted-site-seal.png"
 				alt="Comodo Trusted Site Seal" style="border: 0px;"><br>
 				<span style="font-weight:bold; font-size:7pt; font-weight: normal; position: relative; top: -5px;">
 				Secured By Comodo</a>

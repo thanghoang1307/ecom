@@ -149,6 +149,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
 Route::name('front.')->namespace('Front')->group(function () {
     Route::get('/', 'PageController@index')->name('index');
 
+// Subcribe email
+    Route::post('/subscribe', 'PageController@subscribe')->name('subscribe');
+
 // Show sản phẩm
     Route::get('/san-pham/{slug}', 'PrdController@show')->name('product-detail');
 
