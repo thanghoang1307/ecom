@@ -23,13 +23,13 @@
             <div class="slider slider-nav d-none d-sm-block">
               <div>
                 <div class="product-thumbnail">
-                  <div style="background-image: url('{{$prd->thumb}}')"></div>
+                  <div style="background: white url('{{$prd->thumb}}') no-repeat center center;background-size: contain;"></div>
                 </div>
               </div>
               @foreach ($prd->images as $image)
               <div>
                 <div class="product-thumbnail">
-                  <div style="background-image: url('{{$image->image}}')"></div>
+                  <div style="background: white url('{{$image->image}}') no-repeat center center;background-size: contain;"></div>
                 </div>
               </div>
               @endforeach
