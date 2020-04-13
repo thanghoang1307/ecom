@@ -3,6 +3,15 @@
 Danh sách bài viết
 @endsection
 @section('content')
+
+<style>
+#page-top {
+	padding-bottom: 0!important;
+}
+#page-top .pagination {
+	margin-bottom: 0!important;    
+}
+</style>
     <!-- Main content -->
             <div class="row">
           <div class="col-lg-12">
@@ -14,6 +23,11 @@ Danh sách bài viết
 
               </div>
               <!-- /.card-header -->
+			  
+			  <div class="card-body" id="page-top">
+                {{$prds->render()}}
+              </div>
+			  
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>                  

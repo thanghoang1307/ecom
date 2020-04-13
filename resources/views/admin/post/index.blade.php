@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+#page-top {
+	padding-bottom: 0!important;
+}
+#page-top .pagination {
+	margin-bottom: 0!important;    
+}
+</style>
 <!-- Main content -->
             <div class="row">
           <div class="col-lg-12">
@@ -11,6 +20,9 @@
                 </button>
               </div>
               <!-- /.card-header -->
+			  <div class="card-body" id="page-top">
+			  	{{$posts->render()}}
+			  </div>
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>                  
