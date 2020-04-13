@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+<i class="nav-icon fas fa-users"></i>  Danh sách quản trị viên
+@endsection
 @section('content')
 <table class="table table-bordered">
 	<thead>

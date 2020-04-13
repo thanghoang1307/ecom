@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Danh sách Banner
+<i class="fas fa-images"></i>  Danh sách banner
 @endsection
 @section('content')
     <!-- Main content -->

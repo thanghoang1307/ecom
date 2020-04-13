@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Dashboard
+<i class="nav-icon fas fa-cogs"></i>  Bảng thông báo
 @endsection
 @section('content')
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Quản lý khách hàng
+<i class="nav-icon fas fa-id-card"></i>  Danh sách Khách hàng
 @endsection
 @section('content')
 <div class="row">

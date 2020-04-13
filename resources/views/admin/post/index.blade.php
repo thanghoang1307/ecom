@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+<i class="nav-icon fas fa-file-alt"></i>  Danh sách bài viết
+@endsection
 @section('content')
 
 <style>

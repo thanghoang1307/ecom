@@ -124,31 +124,31 @@
               <li class="nav-item">
                 <a href="{{route('admin.prd.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý sản phẩm</p>
+                  <p>Sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.cat.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý danh mục</p>
+                  <p>Danh mục sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.brand.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý thương hiệu</p>
+                  <p>Thương hiệu</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.attr_family.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý nhóm sản phẩm</p>
+                  <p>Nhóm thuộc tính</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.attr.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Quản lý thuộc tính</p>
+                  <p>Thuộc tính</p>
                 </a>
               </li>
               
@@ -200,7 +200,7 @@
             <a href="{{route('admin.user.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Quản lý người dùng
+                Quản trị viên
               </p>
             </a>
           </li>

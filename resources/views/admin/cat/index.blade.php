@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Danh sách danh mục
+<i class="nav-icon fas fa-cube"></i>  Danh sách danh mục sản phẩm
 @endsection
 @section('content')
     <!-- Main content -->

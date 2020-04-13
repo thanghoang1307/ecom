@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Cài đặt
+<i class="nav-icon fas fa-cogs"></i>  Cài đặt
 @endsection
 @section('content')
     <!-- Main content -->

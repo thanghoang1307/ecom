@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Danh sách đơn hàng
+<i class="nav-icon fas fa-shopping-cart"></i>  Danh sách đơn hàng
 @endsection
 @section('content')
 
