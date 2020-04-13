@@ -31,7 +31,7 @@
                       </td>
                       <td><a href="{{route('admin.post.edit',$post->slug)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
                       
-                      <a href="{{route('admin.post.delete',$post->slug)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                      <!--<a href="{{route('admin.post.delete',$post->slug)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>-->
                     </tr>
                     @endforeach
                     

@@ -9,9 +9,15 @@ Chỉnh sửa bài viết {{$post->name}}
               <form method="POST" action="{{route('admin.post.update',$post->slug)}}">
                 @csrf 
               <div class="card-header">
-                <button type="submit" class="btn btn-primary">
-                  Save
-                </button>
+				<div class="row">
+				  	<div class="col-md-6 col-12">
+		                <button type="submit" class="btn btn-primary">Save</button>
+						<a href="{{route('front.post-detail',$post->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777; margin-left: 10px;">Xem trên giao diện</a>
+				  	</div>
+				  	<div class="col-md-6 col-12" style="text-align: right;">
+				  		<a href="{{route('admin.post.delete',$post->slug)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+				  	</div>
+				</div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -55,9 +61,12 @@ Chỉnh sửa bài viết {{$post->name}}
               </div>              
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <button type="submit" class="btn btn-primary">
-                  Save
-                </button>
+				<div class="row">
+				  	<div class="col-md-6 col-12">
+		                <button type="submit" class="btn btn-primary">Save</button>
+						<a href="{{route('front.post-detail',$post->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777; margin-left: 10px;">Xem trên giao diện</a>
+				  	</div>
+				</div>
               </div>
               </form>
             </div>
