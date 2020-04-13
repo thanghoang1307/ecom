@@ -51,7 +51,7 @@
 	@else
 		@php
 		$title = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
-		$desc = 'One Stop Shop - Giải Pháp | Thiết Bị CNTT';
+		$desc = 'One Stop Shop Vietnam, One Stop Shop Việt Nam, One Stop Shop .vn, OneStopShop.vn, Giải Pháp | Thiết Bị Công Nghệ Thông Tin';
 		@endphp
 	@endif
 	
@@ -94,8 +94,8 @@ f.parentNode.insertBefore(j, f);
 				<div class="top-banner-wrapper owl-carousel owl-theme">
 					<div class="item">
 						<button class="close-banner"><i class="icon icon-close"></i></button>
-						<a href="{{$top_banner->link}}">
-						<img src="{{$top_banner->image}}" class="img-fluid" alt=""></a></div>
+						<a href="{{$top_banner->link}}"><img src="{{$top_banner->image}}" class="img-fluid" alt=""></a>
+					</div>
 				</div>
 			</div>
 		</div>
