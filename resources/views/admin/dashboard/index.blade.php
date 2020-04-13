@@ -95,7 +95,7 @@ Dashboard
                             </div>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body top-prds-list">
                             @if(count($topPrds->byWeek))
     @foreach ($topPrds->byWeek as $prd)
     <div class="item row">
@@ -129,10 +129,27 @@ Dashboard
 <script>
 var myChart;
 $(function() {
+
 $('select[name="revenue-by"]').on('change', function(){
 ajaxCreateChart(this.value);
 });
+
+$('select[name="top-prds-by"]').on('change', function(){
+ajaxGetTopPrds(this.value);
 });
+
+});
+
+function ajaxGetTopPrds(value) {
+$.ajax({
+    url: '{{route("admin.dashboard.top_prds")}}',
+    method: 'POST',
+    data: {'_token': '{{csrf_token()}}', range: value},
+    success: function(data){
+        $('.top-prds-list').html(data.html);
+    }
+})
+}
 
 function ajaxCreateChart(value){
     $.ajax({

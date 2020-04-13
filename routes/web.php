@@ -14,6 +14,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
 // Route '/admin'
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::post('/chart-data', 'DashboardController@getChartData')->name('dashboard.chart_data');
+    Route::post('/top-prds', 'DashboardController@getTopPrds')->name('dashboard.top_prds');
 
 // Group người dùng
     Route::prefix('nguoi-dung')->name('user.')->group(function () {

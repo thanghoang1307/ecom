@@ -42,7 +42,7 @@ class DashboardController extends Controller
 
         // Top Prd Board
         $topPrds = new \stdClass();
-        $topPrds->byWeek = $this->prd->getTopPrdBy('week');
+        $topPrds->byWeek = $this->prd->getTopPrdsBy('past-7-days');
         return view('admin.dashboard.index', compact('sale', 'topPrds', 'chart'));
     }
 
@@ -52,6 +52,13 @@ class DashboardController extends Controller
         $chart->label = $this->createRange($request->range);
         $chart->value = $this->order->getValueRange($request->range);
         return response()->json(['chart' => $chart]);
+    }
+
+    public function getTopPrds(Request $request)
+    {
+        $topPrds = new \stdClass();
+        $topPrds = $this->prd->getTopPrdsBy($request->range);
+        return response()->json(['html' => view('admin.dashboard.top_prds', compact('topPrds'))->render()]);
     }
 
     private function createRange($range)
