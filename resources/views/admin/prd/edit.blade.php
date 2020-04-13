@@ -22,7 +22,8 @@ Chỉnh sửa sản phẩm {{$prd->name}}
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          
+		  
+          <!-- Accordion Status -->
 		  <div class="accordion">
             <div class="card">
               <div class="card-header" data-toggle="collapse" data-target="#statusAccordionContent">
@@ -42,48 +43,39 @@ Chỉnh sửa sản phẩm {{$prd->name}}
             </div>
           </div>
 		  
-		  <!-- Accordion General -->
-          <div class="accordion">
+		  <!-- Accordion Brand & Category-->
+		  <div class="accordion">
             <div class="card">
-              <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
-                Thông tin sản phẩm
+              <div class="card-header" data-toggle="collapse" data-target="#accordionBrandContent">
+                Thương hiệu và Danh mục
               </div>
             </div>
           </div>
-          <div id="generalAccordionContent" class="collapse">
+          <div class="collapse" id="accordionBrandContent">
             <div class="card-body">
               <div class="form-group">
-                <label>Tên sản phẩm</label>
-                <input type="text" class="form-control" name="name" value="{{$prd->name}}">
-              </div>
-              <div class="form-group">
-                <label>Slug</label>
-                <input type="text" class="form-control" name="slug" value="{{$prd->slug}}">
-              </div>
-              <div class="form-group">
-                <label>Mã sản phẩm</label>
-                <input type="text" class="form-control" name="sku" value="{{$prd->sku}}">
-              </div>
-              <div class="form-group">
-                <label>Giá sản phẩm</label>
-                <input type="number" class="form-control" name="regular_price" value="{{$prd->regular_price}}">
-              </div>
-              <div class="form-group">
-                <label>Giá khuyến mãi</label>
-                <input type="number" class="form-control" name="sale_price" value="{{$prd->sale_price}}">
-              </div>
-              <div class="form-group">
-                <label>Thông tin ưu đãi</label>
-                <textarea class="form-control" name="short_desc" rows="5">{{$prd->short_desc}}</textarea>
-              </div>
-              <div class="form-group">
-                <label>Mô tả</label>
-                <textarea id="my-editor" class="form-control" name="long_desc" rows="5">{{$prd->long_desc}}</textarea>
-              </div>
+            <label>Thương hiệu</label>
+            <select class="form-control" name="brand_id">
+              @foreach ($brands as $brand)
+              <option value="{{$brand->id}}" {{$brand->id == $prd->brand_id ? "selected": ""}}>{{$brand->name}}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Danh mục</label>
+            @foreach ( $cats as $cat)
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" name="categories[]" value="{{$cat->id}}" {{$prd->cats->contains($cat->id) ? "checked": ""}}>
+                {{$cat->name}}
+              </label>
+            </div>
+            @endforeach
+          </div>
             </div>
           </div>
-          <!-- End Accordion General-->
-          <!-- Accordion Image -->
+		  
+		  <!-- Accordion Image -->
           <div class="accordion">
             <div class="card">
               <div class="card-header" data-toggle="collapse" data-target="#accordionImageContent">
@@ -124,37 +116,49 @@ Chỉnh sửa sản phẩm {{$prd->name}}
               </div>
             </div>
           </div>
-
+		  
+		  <!-- Accordion General -->
           <div class="accordion">
             <div class="card">
-              <div class="card-header" data-toggle="collapse" data-target="#accordionBrandContent">
-                Thuơng hiệu và Danh mục
+              <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
+                Thông tin chi tiết sản phẩm
               </div>
             </div>
           </div>
-          <div class="collapse" id="accordionBrandContent">
+          <div id="generalAccordionContent" class="collapse">
             <div class="card-body">
               <div class="form-group">
-            <label>Thương hiệu</label>
-            <select class="form-control" name="brand_id">
-              @foreach ($brands as $brand)
-              <option value="{{$brand->id}}" {{$brand->id == $prd->brand_id ? "selected": ""}}>{{$brand->name}}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Danh mục</label>
-            @foreach ( $cats as $cat)
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" name="categories[]" value="{{$cat->id}}" {{$prd->cats->contains($cat->id) ? "checked": ""}}>
-                {{$cat->name}}
-              </label>
+                <label>Tên sản phẩm</label>
+                <input type="text" class="form-control" name="name" value="{{$prd->name}}">
+              </div>
+              <div class="form-group">
+                <label>Slug</label>
+                <input type="text" class="form-control" name="slug" value="{{$prd->slug}}">
+              </div>
+              <div class="form-group">
+                <label>Mã sản phẩm</label>
+                <input type="text" class="form-control" name="sku" value="{{$prd->sku}}">
+              </div>
+              <div class="form-group">
+                <label>Giá sản phẩm</label>
+                <input type="number" class="form-control" name="regular_price" value="{{$prd->regular_price}}">
+              </div>
+              <div class="form-group">
+                <label>Giá khuyến mãi</label>
+                <input type="number" class="form-control" name="sale_price" value="{{$prd->sale_price}}">
+              </div>
+              <div class="form-group">
+                <label>Thông tin ưu đãi</label>
+                <textarea class="form-control" name="short_desc" rows="5">{{$prd->short_desc}}</textarea>
+              </div>
+              <div class="form-group">
+                <label>Mô tả</label>
+                <textarea id="my-editor" class="form-control" name="long_desc" rows="5">{{$prd->long_desc}}</textarea>
+              </div>
             </div>
-            @endforeach
           </div>
-            </div>
-          </div>
+		  
+		  <!-- Accordion Atributes-->
           @foreach($attr_grs as $attr_gr)
           <div class="accordion" >
             <div class="card">
