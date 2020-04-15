@@ -84,9 +84,6 @@
 	<!-- End Google Tag Manager -->
 
 	<!-- Bootstrap core CSS -->
-	<!--<link rel="preload" as="style" href="{{asset('assets/css/main.css')}}">-->
-	<!--<link rel="preload" as="script" href="{{asset('assets/js/main.js')}}">     -->
-
 	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
 	
 	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.min.css')}}">
