@@ -6,7 +6,7 @@
               <a href="{{route('front.product-detail',$prd->slug)}}">
                 <div class="product-image">
                   <figure>
-                    <img src="{{$prd->thumb}}">
+                    <img src="{{$prd->thumb}}" loading="lazy">
                   </figure>
                 </div>
                 <div class="product-text">

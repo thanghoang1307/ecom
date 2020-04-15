@@ -8,7 +8,7 @@
                   <a href="{{route('front.product-detail',$prd->slug)}}">
                     <div class="product-image">
                       <figure>
-                        <img src="{{$prd->thumb}}">
+                        <img src="{{$prd->thumb}}" loading="lazy">
                       </figure>
                     </div>
                     <div class="product-text">
@@ -47,4 +47,3 @@
 				<br />
 				<img style="max-width: 60%; margin-bottom: 30px;" class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
           @endif
-        
