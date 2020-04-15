@@ -79,22 +79,12 @@ f.parentNode.insertBefore(j, f);
 	<!-- End Google Tag Manager -->
 
 	<!-- Bootstrap core CSS -->
-<<<<<<< HEAD
 	<link rel="preload" as="style" href="{{asset('assets/css/main.css')}}">
 	<!--<link rel="preload" as="script" href="{{asset('assets/js/main.js')}}">     -->
 
 	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
 	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.min.css')}}">
 
-=======
-	<!--<link rel="preload" as="style" href="{{asset('assets/css/main.css')}}">-->
-	<!--<link rel="preload" as="script" href="{{asset('assets/js/main.js')}}">  -->
-	
-	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">       
-	<link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.css')}}">
-	
-	
->>>>>>> d2e226070097b67d9bf03aa7d5b44de59013ac7d
 </head>
 <body>
 
