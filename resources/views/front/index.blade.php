@@ -10,12 +10,13 @@
 	@endcomponent
 	
 	@php
-	$top_cats = ['he-dieu-hanh','phan-mem-van-phong','phan-mem-bao-mat'];
-	$bot_cats = ['thiet-ke-cad-cam-cae','may-tram-workstation','bo-luu-dien-ups','may-in'];
+		$top_cats = ['he-dieu-hanh','phan-mem-van-phong','phan-mem-bao-mat'];
+		$bot_cats = ['thiet-ke-cad-cam-cae','may-tram-workstation','bo-luu-dien-ups','may-in'];
 	@endphp
+	
 	@foreach( $top_cats as $key => $value)
-	@component('components.cat',['slug' => $value])
-	@endcomponent
+		@component('components.cat',['slug' => $value])
+		@endcomponent
 	@endforeach
 	
 	<section class="home-mid-banner container">
@@ -29,8 +30,8 @@
 	</section>
 		
 	@foreach( $bot_cats as $key => $value)
-	@component('components.cat',['slug' => $value])
-	@endcomponent
+		@component('components.cat',['slug' => $value])
+		@endcomponent
 	@endforeach
 		
 	<section class="home-mid-banner container">
