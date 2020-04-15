@@ -161,21 +161,31 @@
         <div class="row">
           <div class="col-md-8 order-2 order-md-0">
             <div class="footer-bottom-detail">
-              <h3 class="footer-bottom-detail-title">Công ty TNHH Dịch Vụ UM - </h3>
-              <p class="footer-bottom-detail-content">OneStopShop IT - Lựa chọn hàng đầu về giải pháp và thiết bị trong
-                lĩnh vực công nghệ thông tin</p>
-              <p class="footer-bottom-detail-content">Số giấy chứng nhận ĐKDN: ???. Đăng ký lần đầu: ???. Cơ quan
-                cấp:???, Sở kế hoạch và đầu tư thành phố Hồ Chí Minh.</p>
+              <h3 class="footer-bottom-detail-title">OneStopShop IT - Lựa chọn hàng đầu về giải pháp và thiết bị trong
+                lĩnh vực công nghệ thông tin</h3>
+              <p class="footer-bottom-detail-content">Giấy chứng nhận ĐKDN số: 0313503636 do Sở KH &amp; ĐT TP.HCM cấp lần đầu ngày 23/10/2015.<br />
+			  Địa chỉ: Khu đô thị Vinhomes Central Park, số 208 Nguyễn Hữu Cảnh, Phường 22, Q. Bình Thạnh, TP.HCM.</p>
+			  <p class="footer-bottom-detail-content">Hotline <a href="tel:0837.000.247">0837.000.247</a> - Email <a href="mailto:cskh@onestopshop.vn">cskh@onestopshop.vn</a>. Copyright © <span id="currentyear">20</span> CÔNG TY TNHH DỊCH VỤ UM.</p>
             </div>
           </div>
           <div class="col-md-2 order-1 order-md-1">
+<<<<<<< HEAD
             <div class="image-check">
+              <!-- <a style="color: #999; text-decoration: none;" rel ="nofollow" href="https://comodosslstore.com" target="_blank">
+				<img style="width: 50%; height: 50%;" src="https://ssl.comodo.com/images/trusted-site-seal.png"
+				alt="Comodo Trusted Site Seal" style="border: 0px;"><br>
+				<span style="font-weight:bold; font-size:7pt; font-weight: normal; position: relative; top: -5px;">
+				Secured By Comodo</span></a> -->
+            </div>
+=======
+            <!--<div class="image-check">
               <a style="color: #999; text-decoration: none;" rel ="nofollow" href="https://comodosslstore.com" target="_blank">
 				<img style="width: 50%; height: 50%;" src="https://ssl.comodo.com/images/trusted-site-seal.png"
 				alt="Comodo Trusted Site Seal" style="border: 0px;"><br>
 				<span style="font-weight:bold; font-size:7pt; font-weight: normal; position: relative; top: -5px;">
 				Secured By Comodo</span></a>
-            </div>
+            </div>-->
+>>>>>>> d2e226070097b67d9bf03aa7d5b44de59013ac7d
           </div>
 		  <div class="col-md-2 order-2 order-md-2">
             <div class="image-check">
@@ -196,9 +206,36 @@
 @if(Session::has('error'))
 <div id="toast-container" class="toast-top-right"><div class="toast toast-error" aria-live="assertive" style=""><div class="toast-message">{{session('error')}}</div></div></div>
 @endif
-
+<<<<<<< HEAD
+<script src="{{asset('bower_components/admin-lte/plugins/jquery/jquery.min.js')}}"></script>
+<script>
+$(function(){
+  let myScript = document.createElement("script");
+  myScript.src = "{{asset('assets/js/main.js')}}";
+  document.body.appendChild(myScript);
+})
+  </script>
 <script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>
+
+
+=======
+
+<!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+<!--<script src="https://getbootstrap.com/docs/4.1//assets/js/vendor/popper.min.js"></script>-->
+
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
 <script src="{{asset('assets/js/main.js')}}"></script>
+>>>>>>> d2e226070097b67d9bf03aa7d5b44de59013ac7d
 <script>
 $('#toast-container').delay(3000).fadeOut(300);
+
+$(document).ready(function () {
+  var d = new Date();
+  var n = d.getFullYear();
+  document.getElementById("currentyear").innerHTML = n;
+});
 </script>
+
