@@ -181,7 +181,7 @@
 			
 			<div class="footer-bottom">
 				<div class="row">
-					<div class="col-md-8 order-2 order-md-0">
+					<div class="col-md-8 order-1 order-md-0">
 						<div class="footer-bottom-detail">
 							<h3 class="footer-bottom-detail-title">OneStopShop IT - Lựa chọn hàng đầu về giải pháp và thiết bị trong
 				                lĩnh vực công nghệ thông tin</h3>
@@ -193,17 +193,18 @@
 						</div>
 					</div>
 					
-					<div class="col-md-2 order-1 order-md-1">
-						<div class="image-check"><a style="color: #999; text-decoration: none;" rel ="nofollow" href="https://comodosslstore.com" target="_blank">
-							<img style="width: 50%; height: 50%;" src="/assets/img/trusted-site-seal.png" class="img-fluid"
-							alt="Comodo Trusted Site Seal" style="border: 0px;">
-							<br><span style="font-weight:bold; font-size:7pt; font-weight: normal; position: relative; top: -5px;">
-							Secured By Comodo</span></a></div>
+					<div class="col-md-2 order-2 order-md-1 col-6">
+						<div class="image-check" style="padding: 10px 0;">
+							<!-- SSL -->
+							<script language="JavaScript" type="text/javascript">
+							TrustLogo("https://onestopshop.vn/assets/img/positivessl_trust_seal_md_167x42.png", "CL1", "none");
+							</script>
+						</div>
 					</div>
 					
-					<div class="col-md-2 order-2 order-md-2">
+					<div class="col-md-2 order-2 order-md-1 col-6">
 						<div class="image-check">
-							<img src="/assets/img/icon/checked.png" class="img-fluid" alt="">
+							<a href="http://online.gov.vn/Home/WebDetails/65479" target="_blank" rel ="nofollow"><img alt="" title="" src="/assets/img/logoSaleNoti.png" class="img-fluid"/></a>
 						</div>
 					</div>
 				</div>
