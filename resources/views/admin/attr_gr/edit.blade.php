@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Chỉnh sửa nhóm thuộc tính {{$attr_gr->name}}
+<i class="far fas fa-object-group nav-icon"></i>  Chỉnh sửa nhóm thuộc tính {{$attr_gr->name}}
 @endsection
 @section('content')       
             <div class="row">

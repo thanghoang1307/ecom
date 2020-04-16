@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Danh sách danh mục sản phẩm
+<i class="far fas fa-layer-group nav-icon"></i>  Danh sách danh mục sản phẩm
 @endsection
 @section('content')
     <!-- Main content -->
@@ -28,8 +28,10 @@
                     <tr>
                       <td>{{$loop->iteration}}</td>
                       <td>{{$cat->name}}</td>
-                      <td><a href="{{route('admin.cat.edit',$cat->id)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
-                      <a href="{{route('admin.cat.delete',$cat->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                      <td>
+					  	<a href="{{route('admin.cat.edit',$cat->id)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                      <!--<a href="{{route('admin.cat.delete',$cat->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>-->
+					  </td>
                     </tr>
                     @endforeach
                     
@@ -61,9 +63,11 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
+				<label>Tên danh mục</label>
                 <input class="form-control" type="text" name="name" placeholder="Tên danh mục">
               </div>
 			  <div class="form-group">
+				<label>Slug</label>
                 <input class="form-control" type="text" name="slug" placeholder="Slug">
               </div>
             </div>

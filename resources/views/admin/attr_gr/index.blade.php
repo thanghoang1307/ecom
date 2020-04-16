@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Danh sách nhóm thuộc tính sản phẩm
+<i class="far fas fa-object-group nav-icon"></i>  Danh sách nhóm thuộc tính sản phẩm
 @endsection
 @section('content')
     <!-- Main content -->

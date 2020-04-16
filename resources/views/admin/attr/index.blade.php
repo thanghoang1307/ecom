@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Danh sách thuộc tính sản phẩm
+<i class="far fa-circle nav-icon"></i>  Danh sách thuộc tính sản phẩm
 @endsection
 @section('content')
     <!-- Main content -->
@@ -33,7 +33,8 @@
                       <td>{{$attr->type}}</td>
                       <td><a href="{{route('admin.attr.edit',$attr->id)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
                       
-                      <a href="{{route('admin.attr.delete',$attr->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                      <a href="{{route('admin.attr.delete',$attr->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+					  </td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -64,12 +65,15 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
+				<label>Tên thuộc tính</label>
                 <input class="form-control" type="text" name="name" placeholder="Tên thuộc tính">
               </div> 
               <div class="form-group">
+				<label>Mã thuộc tính</label>
                 <input class="form-control" type="text" name="code" placeholder="Mã thuộc tính">
               </div>
               <div class="form-group">
+				<label>Loại thuộc tính</label>
                 <select class="form-control" name="type" placeholder="Loại thuộc tính">
                   
                 	<option value="text" >Chữ</option>
