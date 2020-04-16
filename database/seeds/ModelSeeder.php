@@ -77,53 +77,77 @@ class ModelSeeder extends Seeder
         ]);
         $id++;
         }
+        $banner_positions = [[
+            'name' => 'Banner chính',
+        ],
+        ['name' => 'Banner phụ 1'],
+        ['name' => 'Banner phụ 2'],
+        ['name' => 'Banner phụ 3'],
+        ['name' => 'Banner giữa 1'],
+        ['name' => 'Banner giữa 2'],
+        ['name' => 'Banner top'],
+    ];
+
+    DB::table('banner_positions')->insert($banner_positions);
         $banners =[[
         'name' => 'Banner chính 1',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-01.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-01.png',
+        'position_id' => 1,
         ],
         [
         'name' => 'Banner chính 2',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-02.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-02.png',
+        'position_id' => 1,
         ],
         [
         'name' => 'Banner chính 3',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-03.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-03.png',
+        'position_id' => 1,
         ],
         [
         'name' => 'Banner chính 4',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-04.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/900x330-04.png',
+        'position_id' => 1,
         ],
         [
         'name' => 'Banner phụ 1',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/300x120-01.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/300x120-01.png',
+        'position_id' => 2,
         ],
         [
         'name' => 'Banner phụ 2',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/300x120-02.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/300x120-02.png',
+        'position_id' => 3,
         ],
         [
         'name' => 'Banner phụ 3',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/300x120-03.png'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/banner/300x120-03.png',
+        'position_id' => 4,
         ],
         [
         'name' => 'Banner Middle 1',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg',
+        'position_id' => 5,
         ],
         [
         'name' => 'Banner Middle 2',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg',
+        'position_id' => 5,
         ],
         [
         'name' => 'Banner Middle 3',
-        'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg'
+        'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg',
+        'position_id' => 6,
         ],
         [
         'name' => 'Banner Middle 4',
         'image' => 'http://127.0.0.1:8000/assets/img/header/item-banner.jpg',
+        'position_id' => 6,
         ],
         [
         'name' => 'Top Banner',
         'image' => 'http://127.0.0.1:8000/assets/img/header/top-banner-subpage.jpg',
+        'position_id' => 7,
         ],
     ];
     DB::table('banners')->insert($banners);

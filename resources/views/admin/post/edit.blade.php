@@ -21,7 +21,34 @@ Chỉnh sửa bài viết {{$post->name}}
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                
+                 <!-- Accordion Status -->
+		  <div class="accordion">
+            <div class="card">
+              <div class="card-header" data-toggle="collapse" data-target="#statusAccordionContent">
+                Tình trạng
+              </div>
+            </div>
+          </div>
+		  <div id="statusAccordionContent" class="collapse">
+            <div class="card-body">
+              <div class="form-group">
+                <label>Hiển thị</label>
+                <select name="is_show" class="form-control">
+				    <option value="0" {{$post->is_show ? '': 'selected'}}>Ẩn</option>
+				    <option value="1" {{$post->is_show ? 'selected': ''}}>Hiện</option>
+				</select>
+              </div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="card">
+              <div class="card-header" data-toggle="collapse" data-target="#generalAccordionContent">
+                Thông tin chung
+              </div>
+            </div>
+          </div>
+          <div id="generalAccordionContent" class="collapse">
+            <div class="card-body">
                 <!-- /.form group -->
               <div class="form-group">
                 <label>Tiêu đề bài viết</label>
@@ -35,6 +62,27 @@ Chỉnh sửa bài viết {{$post->name}}
                 <label>Noi dung</label>
               <textarea id="my-editor" class="form-control" name="content" rows="5">{{$post->content}}</textarea>
               </div>
+              <div class="form-group">
+                <label>Loai post</label>
+              <select class="form-control" name="post_type">
+               <option value="post" {{$post->post_type == 'post' ? 'selected' : ''}}>Bai viet</option>
+               <option value="page" {{$post->post_type == 'page' ? 'selected' : ''}}>Trang</option>
+               <option value="video" {{$post->post_type == 'video' ? 'selected' : ''}}>Video</option>
+              </select>
+              </div>
+              </div>
+              </div>
+
+              
+              <div class="accordion">
+            <div class="card">
+              <div class="card-header" data-toggle="collapse" data-target="#imgAccordionContent">
+                Hình ảnh
+              </div>
+            </div>
+          </div>
+          <div id="imgAccordionContent" class="collapse">
+            <div class="card-body">
               <div class="form-group">
               <label>Chọn hình đại diện</label>
               <div class="input-group">
@@ -50,14 +98,9 @@ Chỉnh sửa bài viết {{$post->name}}
             <img src="{{$post->thumb}}" style="height:5rem;"/>
             </div>
           </div>
-              <div class="form-group">
-                <label>Loai post</label>
-              <select class="form-control" name="post_type">
-               <option value="post" {{$post->post_type == 'post' ? 'selected' : ''}}>Bai viet</option>
-               <option value="page" {{$post->post_type == 'page' ? 'selected' : ''}}>Trang</option>
-               <option value="video" {{$post->post_type == 'video' ? 'selected' : ''}}>Video</option>
-              </select>
-              </div>
+          </div>
+          </div>
+              
               </div>              
               <!-- /.card-body -->
               <div class="card-footer clearfix">

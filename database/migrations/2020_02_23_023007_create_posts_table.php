@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('meta_keys')->nullable();
             $table->integer('view')->nullable();
             $table->string('thumb')->nullable();
+            $table->integer('is_show')->default(1);
             $table->timestamps();
         });
     }

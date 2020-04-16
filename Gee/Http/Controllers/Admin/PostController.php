@@ -14,7 +14,7 @@ class PostController extends Controller
     }
 
     public function index()
-    {   $posts = $this->post->getAll();
+    {   $posts = $this->post->getAllWithoutScope();
         return view('admin.post.index',compact('posts'));
     }
 
@@ -31,13 +31,13 @@ class PostController extends Controller
     }
 
     public function edit($slug)
-    {   $post = $this->post->find($slug);
+    {   $post = $this->post->findWithoutScope($slug);
         return view('admin.post.edit',compact('post'));
     }
 
     public function update(Request $request, $slug)
     {
-        $this->post->update($slug, $request->all());
+        $this->post->updateWithoutScope($slug, $request->all());
         return redirect()->route('admin.post.index');
     }
 
@@ -49,7 +49,7 @@ class PostController extends Controller
      */
     public function delete($slug)
     {
-        $this->post->delete($slug);
+        $this->post->deleteWithoutScope($slug);
         return redirect()->route('admin.post.index');
     }
 }

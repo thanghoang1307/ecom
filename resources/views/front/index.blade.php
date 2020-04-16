@@ -21,11 +21,10 @@
 	
 	<section class="home-mid-banner container">
 		<div class="home-mid-banner-wrapper owl-carousel owl-theme">
-			<div class="item"><a href="{{$middle_banner_1->link}}">
-			<img src="{{$middle_banner_1->image}}" class="img-fluid" alt=""></a></div>
-			
-			<div class="item"><a href="{{$middle_banner_2->link}}">
-			<img src="{{$middle_banner_2->image}}" class="img-fluid" alt=""></a></div>
+		@foreach ($middle_banners_1 as $middle_banner)
+			<div class="item"><a href="{{$middle_banner->link}}">
+			<img src="{{$middle_banner->image}}" class="img-fluid" alt=""></a></div>
+		@endforeach	
 		</div>
 	</section>
 		
@@ -36,11 +35,10 @@
 		
 	<section class="home-mid-banner container">
 		<div class="home-mid-banner-wrapper owl-carousel owl-theme">
-			<div class="item"><a href="{{$middle_banner_3->link}}">
-			<img src="{{$middle_banner_3->image}}" class="img-fluid" alt=""></a></div>
-			
-			<div class="item"><a href="{{$middle_banner_4->link}}">
-			<img src="{{$middle_banner_4->image}}" class="img-fluid" alt=""></a></div>
+		@foreach ($middle_banners_2 as $middle_banner)
+			<div class="item"><a href="{{$middle_banner->link}}">
+			<img src="{{$middle_banner->image}}" class="img-fluid" alt=""></a></div>
+		@endforeach	
 		</div>
 	</section>
 	

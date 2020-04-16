@@ -18,17 +18,12 @@ class SettingComposer
     {   
         
         $view->with([
-            'main_banner_1' => $this->banner->find(1),
-            'main_banner_2' => $this->banner->find(2),
-            'main_banner_3' => $this->banner->find(3),
-            'main_banner_4' => $this->banner->find(4),
-            'sub_banner_1' => $this->banner->find(5),
-            'sub_banner_2' => $this->banner->find(6),
-            'sub_banner_3' => $this->banner->find(7),
-            'middle_banner_1' => $this->banner->find(8),
-            'middle_banner_2' => $this->banner->find(9),
-            'middle_banner_3' => $this->banner->find(10),
-            'middle_banner_4' => $this->banner->find(11),
+            'main_banners' => $this->banner->getMainBanner(),
+            'sub_banner_1' => $this->banner->getSubBanner1(),
+            'sub_banner_2' => $this->banner->getSubBanner2(),
+            'sub_banner_3' => $this->banner->getSubBanner3(),
+            'middle_banners_1' => $this->banner->getMiddleBanner1(),
+            'middle_banners_2' => $this->banner->getMiddleBanner2(),
             'settings' => $this->setting->getAllData(),
         ]);
     }

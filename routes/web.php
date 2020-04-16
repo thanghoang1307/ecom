@@ -99,7 +99,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
 // Banner
     Route::prefix('banner')->name('banner.')->group(function () {
         Route::get('/', 'BannerController@index')->name('index');
-        Route::post('/', 'BannerController@create');
+        Route::get('/vi-tri-banner/edit/{position_id}','BannerController@editPosition')->name('position_edit');
+        Route::post('/', 'BannerController@create')->name('create');
         Route::get('/edit/{id}', 'BannerController@edit')->name('edit');
         Route::post('/update/{id}', 'BannerController@update')->name('update');
         Route::get('/delete/{id}', 'BannerController@delete')->name('delete');

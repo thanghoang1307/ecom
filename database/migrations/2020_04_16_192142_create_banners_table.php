@@ -16,8 +16,10 @@ class CreateBannersTable extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('link')->default('#');
-            $table->string('image');
+            $table->string('link')->default('#')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('position_id');
+            $table->foreign('position_id')->references('id')->on('banner_positions')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

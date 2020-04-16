@@ -20,5 +20,6 @@ return [
 'post_type' => $faker->randomElement(['post','page','video']),
 'thumb' => $faker->randomElement($thumbs),
 'view' => $faker->numberBetween($min = 1, $max = 300),
+'is_show' => 1,
 ];
 });

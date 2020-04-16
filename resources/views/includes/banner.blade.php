@@ -22,26 +22,11 @@
         <!-- only dekstop -->
         <div class="d-none d-lg-block">
           <div class="big-banner">
-        @if ($main_banner_1)    
+        @foreach($main_banners as $main_banner)           
             <div class="item">
-				<a href="{{$main_banner_1->link}}"><img src="{{$main_banner_1->image}}" class="img-fluid" alt=""></a>
+				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid" alt=""></a>
             </div>
-        @endif
-        @if ($main_banner_2)    
-            <div class="item">
-        <a href="{{$main_banner_2->link}}"><img src="{{$main_banner_2->image}}" class="img-fluid" alt=""></a>
-            </div>
-        @endif
-        @if ($main_banner_3)    
-            <div class="item">
-        <a href="{{$main_banner_3->link}}"><img src="{{$main_banner_3->image}}" class="img-fluid" alt=""></a>
-            </div>
-        @endif
-        @if ($main_banner_4)    
-            <div class="item">
-        <a href="{{$main_banner_4->link}}"><img src="{{$main_banner_4->image}}" class="img-fluid" alt=""></a>
-            </div>
-        @endif
+        @endforeach
           </div>
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -67,26 +52,11 @@
 
   <div class="d-block d-lg-none">
     <div class="big-banner">
-      @if ($main_banner_1)
-      <div class="item">
-        <a href="{{$main_banner_1->link}}"><img src="{{$main_banner_1->image}}" class="img-fluid" alt=""></a>
-      </div>
-      @endif
-      @if ($main_banner_2)
-      <div class="item">
-        <a href="{{$main_banner_2->link}}"><img src="{{$main_banner_2->image}}" class="img-fluid" alt=""></a>
-      </div>
-      @endif
-      @if ($main_banner_3)
-      <div class="item">
-        <a href="{{$main_banner_3->link}}"><img src="{{$main_banner_3->image}}" class="img-fluid" alt=""></a>
-      </div>
-      @endif
-      @if ($main_banner_4)
-      <div class="item">
-        <a href="{{$main_banner_4->link}}"><img src="{{$main_banner_4->image}}" class="img-fluid" alt=""></a>
-      </div>
-      @endif
+    @foreach($main_banners as $main_banner)           
+            <div class="item">
+				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid" alt=""></a>
+            </div>
+        @endforeach
     </div>
     <!-- only mobile 4 product-navigation-wrapper -->
     <div class="product-navigation-wrapper-mobile">
