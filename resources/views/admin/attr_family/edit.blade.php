@@ -105,7 +105,7 @@
 				
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Tiêu đề bài viết</label>
+						<label>Tên nhóm thuộc tính</label>
 						
 						<input type="text" class="form-control" name="name" value="Tên nhóm thuộc tính">
 					</div>

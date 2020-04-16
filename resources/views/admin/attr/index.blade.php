@@ -65,12 +65,15 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
+				<label>Tên thuộc tính</label>
                 <input class="form-control" type="text" name="name" placeholder="Tên thuộc tính">
               </div> 
               <div class="form-group">
+				<label>Mã thuộc tính</label>
                 <input class="form-control" type="text" name="code" placeholder="Mã thuộc tính">
               </div>
               <div class="form-group">
+				<label>Loại thuộc tính</label>
                 <select class="form-control" name="type" placeholder="Loại thuộc tính">
                   
                 	<option value="text" >Chữ</option>
