@@ -15,7 +15,7 @@ Chỉnh sửa bài viết {{$post->name}}
 						<a href="{{route('front.post-detail',$post->slug)}}" target="_blank" class="btn" style="border: 2px solid #999; color: #777; margin-left: 10px;">Xem trên giao diện</a>
 				  	</div>
 				  	<div class="col-md-6 col-12" style="text-align: right;">
-				  		<a href="{{route('admin.post.delete',$post->slug)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+				  		<a href="{{route('admin.post.delete',$post->slug)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
 				  	</div>
 				</div>
               </div>

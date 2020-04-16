@@ -28,8 +28,10 @@
                     <tr>
                       <td>{{$loop->iteration}}</td>
                       <td>{{$cat->name}}</td>
-                      <td><a href="{{route('admin.cat.edit',$cat->id)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
-                      <a href="{{route('admin.cat.delete',$cat->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                      <td>
+					  	<a href="{{route('admin.cat.edit',$cat->id)}}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
+                      <!--<a href="{{route('admin.cat.delete',$cat->id)}}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>-->
+					  </td>
                     </tr>
                     @endforeach
                     

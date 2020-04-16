@@ -59,9 +59,9 @@
                                 <div class="col-md-6 col-12"><strong>Tổng doanh thu</strong></div>
                                 <div class="col-md-6 col-12 align-right">
                                     <select name="revenue-by">
-                                        <option value="past-28-days" selected="">28 ngày qua</option>
+                                        <option value="past-28-days" selected="">Theo ngày</option>
 
-                                        <option value="past-12-months">12 tháng qua</option>
+                                        <option value="past-12-months">Theo tháng</option>
 
                                         <option value="by-year">Theo năm</option>
                                     </select>
@@ -85,11 +85,11 @@
 
                                 <div class="col-md-6 col-12 align-right">
                                     <select name="top-prds-by">
-                                        <option value="past-7-days" selected="">7 ngày qua</option>
+                                        <option value="past-7-days" selected="">Tuần này</option>
 
-                                        <option value="past-28-days">28 ngày qua</option>
+                                        <option value="past-28-days">Tháng này</option>
 
-                                        <option value="past-12-months">12 tháng qua</option>
+                                        <option value="past-12-months">Năm nay</option>
                                     </select>
                                 </div>
                             </div>

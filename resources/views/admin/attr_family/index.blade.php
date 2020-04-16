@@ -1,21 +1,44 @@
 @extends('layouts.app')
 @section('title')
-Danh sách nhóm sản phẩm
+<i class="nav-icon fas fa-cube"></i>  Nhóm thuộc tính sản phẩm
 @endsection
 @section('content')
-<table class="table table-bordered">
-	<tbody>
-@foreach($attr_families as $family)
-<tr>
-	<td>{{$family->code}}</td>
-	<td>{{$family->name}}</td>
-	<td><a href="{{route('admin.attr_family.edit',$family->id)}}" class="btn btn-primary">Chỉnh sửa</a></td>
-</tr>
-@endforeach
-</tbody>
-</table>
-<button type="button" data-toggle="modal" data-target="#createAttrFamily" class="btn btn-primary">Thêm nhóm sản phẩm</button>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<button type="button" data-toggle="modal" data-target="#createAttrFamily" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+			</div>
+            <!-- /.card-header -->
+			<div class="card-body">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Nhóm thuộc tính cấp 1</th>
+							
+							<th>Mã nhóm</th>
+							
+							<th>Hành động</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						@foreach($attr_families as $family)
+						<tr>
+							<td>{{$family->name}}</td>
+							<td>{{$family->code}}</td>
+							<td><a href="{{route('admin.attr_family.edit',$family->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
+
 @section('modal')
 <div id="createAttrFamily" class="modal fade">
 	<div class="modal-dialog">
