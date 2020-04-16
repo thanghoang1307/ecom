@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{asset('bower_components/admin-lte/plugins/toastr/toastr.css')}}">
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <style>
@@ -105,7 +106,7 @@
            with font-awesome or any other icon font library -->
 		  	<li class="nav-item">
             <a href="{{route('admin.dashboard')}}" class="nav-link">
-              <i class="nav-icon fas fa-cogs"></i>
+              <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Bảng thông báo
               </p>
@@ -122,7 +123,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('admin.prd.index')}}" class="nav-link active">
+                <a href="{{route('admin.prd.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sản phẩm</p>
                 </a>
@@ -188,6 +189,14 @@
               </p>
             </a>
           </li>
+		  <li class="nav-item">
+            <a href="{{route('admin.subscriber.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-mail-bulk"></i>
+              <p>
+                Đăng ký nhận bản tin
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="{{route('admin.setting.index')}}" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
@@ -204,14 +213,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('admin.subscriber.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-email"></i>
-              <p>
-                Đăng ký nhận email
-              </p>
-            </a>
-          </li>
+          
           
           
         </ul>
