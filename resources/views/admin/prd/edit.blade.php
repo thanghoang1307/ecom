@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Chỉnh sửa sản phẩm {{$prd->name}}
+<i class="far fa fa-product-hunt nav-icon"></i>  Chỉnh sửa sản phẩm {{$prd->name}}
 @endsection
 @section('content')
 

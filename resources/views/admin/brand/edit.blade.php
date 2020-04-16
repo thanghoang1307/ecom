@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Chỉnh sửa thương hiệu {{$brand->name}}
+<i class="far fas fa-copyright nav-icon"></i>  Chỉnh sửa thương hiệu {{$brand->name}}
 @endsection
 @section('content')
     <!-- Main content -->

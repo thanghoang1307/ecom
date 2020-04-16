@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Chỉnh sửa nhóm thuộc tính sản phẩm {{$family->name}}
+<i class="far fas fa-object-group nav-icon"></i>  Chỉnh sửa nhóm thuộc tính {{$family->name}}
 @endsection
 @section('content')
 
@@ -8,11 +8,19 @@
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-header">
-				<button type="button" data-toggle="modal" data-target="#attrGrForm" class="btn btn-primary">Tạo nhóm thuộc tính cấp 2</button>
-				<!--<button type="button" data-toggle="modal" data-target="#attrGrForm" class="btn btn-primary"><i class="fas fa-plus"></i></button>-->
+				<div class="row">
+					<div class="col-md-6 col-12">
+						<!--<button type="button" data-toggle="modal" data-target="#attrGrForm" class="btn btn-primary">Tạo nhóm thuộc tính cấp 2</button>-->
+					</div>
+					
+					<div class="col-md-6 col-12" style="text-align: right;"><a href="{{route('admin.attr_family.delete',$family->id)}}">
+						<button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+					</a></div>
+				</div>
 			</div>
             <!-- /.card-header -->
 			<div class="card-body">
+				<p><button type="button" data-toggle="modal" data-target="#attrGrForm" class="btn btn-primary">Tạo nhóm thuộc tính cấp 2</button></p>
 				<p><strong>Danh sách nhóm thuộc tính cấp 2</strong></p>
 				
 				@foreach($family->attr_grs()->orderBy('position')->get() as $attr_gr)

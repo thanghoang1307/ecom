@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Chỉnh sửa danh mục {{$cat->name}}
+<i class="far fas fa-layer-group nav-icon"></i>  Chỉnh sửa danh mục {{$cat->name}}
 @endsection
 @section('content')
     <!-- Main content -->

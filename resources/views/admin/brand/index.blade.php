@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Danh sách thương hiệu
+<i class="far fas fa-copyright nav-icon"></i>  Danh sách thương hiệu
 @endsection
 @section('content')
     <!-- Main content -->
@@ -62,10 +62,12 @@
 				
 				<div class="modal-body">
 					<div class="form-group">
+						<label>Tên thương hiệu</label>
 						<input class="form-control" type="text" name="name" placeholder="Tên thương hiệu">
 					</div>
 					
 					<div class="form-group">
+						<label>Slug</label>
 						<input class="form-control" type="text" name="slug" placeholder="Slug">
 					</div>
 				</div>

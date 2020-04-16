@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Danh sách danh mục sản phẩm
+<i class="far fas fa-layer-group nav-icon"></i>  Danh sách danh mục sản phẩm
 @endsection
 @section('content')
     <!-- Main content -->
@@ -63,9 +63,11 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
+				<label>Tên danh mục</label>
                 <input class="form-control" type="text" name="name" placeholder="Tên danh mục">
               </div>
 			  <div class="form-group">
+				<label>Slug</label>
                 <input class="form-control" type="text" name="slug" placeholder="Slug">
               </div>
             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Chỉnh sửa thuộc tính {{$attr->name}}
+<i class="far fa-circle nav-icon"></i>  Chỉnh sửa thuộc tính {{$attr->name}}
 @endsection
 @section('content')
 <!-- Main content -->

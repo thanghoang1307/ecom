@@ -124,25 +124,25 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('admin.prd.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa fa-product-hunt nav-icon"></i>
                   <p>Sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.cat.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-layer-group nav-icon"></i>
                   <p>Danh mục sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.brand.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-copyright nav-icon"></i>
                   <p>Thương hiệu</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin.attr_family.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-object-group nav-icon"></i>
                   <p>Nhóm thuộc tính</p>
                 </a>
               </li>
