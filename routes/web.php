@@ -138,8 +138,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::get('/show/{type}/{id}', 'CustomerController@show')->name('show');
         });
 // End customer
-
     });
+// Subscriber
+Route::get('/subscribers','SubscriberController@index')->name('subscriber.index');
 });
 
 /*

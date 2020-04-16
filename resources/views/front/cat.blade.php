@@ -38,7 +38,7 @@
 <script>
   $(function(){
   // Desktop Order
-  $('#product-order').on('change','input[name="d_orderby"]',redirectParam);
+  $('#product-order').on('click','input[name="d_orderby"]',redirectParam);
 
   // Desktop Filter
   $('#product-category').on('change',['input[name="brand_checkbox"]','input[name="price_checkbox"]'],redirectParam);
@@ -75,7 +75,7 @@ price_arr.push($(this).val());
 var search = '{{app("request")->input("search")}}';
 
 var param_arr = [];
-param_arr.push('orderby=' + $('input[name="d_orderby"]:checked').val());
+param_arr.push('orderby=' + $('input[name="d_orderby"][checked="checked"]').val());
 if (brand_arr.length){
   param_arr.push('brand=' + brand_arr.join('_'));
 }

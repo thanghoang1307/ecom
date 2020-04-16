@@ -24,9 +24,13 @@ class PostController extends Controller
     public function show($slug)
     {   
         $post = $this->post->find($slug);
+        if($post){
         $post->view += 1;
         $post->save();
         return view('front.post-detail',compact('post'));
+    } else {
+        abort(404);
+    }
     }
 
     public function list(){
