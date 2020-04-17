@@ -73,6 +73,19 @@
 <!--END HEADER-->
 @yield('content')
 <!--END FOOTER-->
+<!-- Site JS -->
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('assets/js/jquery.bootstrap-autohidingnavbar.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('assets/js/parsley.min.js')}}"></script>
+<script src="{{asset('assets/js/slick.min.js')}}"></script>
+<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('assets/js/parallax.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
+<script src="{{asset('assets/js/sticky-sidebar.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap-multiselect.min.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
 <script>
   function numberWithCommas(x) {
