@@ -247,6 +247,7 @@
 <script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
 <script src="{{asset('assets/js/sticky-sidebar.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap-multiselect.min.js')}}"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <!--<script src="assets/js/main.js"></script>-->
 <script>
 $(function() {
