@@ -137,7 +137,7 @@
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách -->
                           @guest('customer')
                             @include('includes.address-form-guest')
-						              @endguest
+						  @endguest
 
                         <!-- Phần thông tin địa chỉ nhận hàng nếu là khách hàng -->
                         @auth('customer')
@@ -145,8 +145,8 @@
                           $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
                           @endphp
                             <!-- Nếu khách hàng có địa chỉ mặc định -->
-			                      @if($address)
-			                        @include('includes.address-form-customer')
+		                    @if($address)
+		                      @include('includes.address-form-customer')
                             <!-- Nếu khách hàng không có địa chỉ mặc định -->
                             @else
                       	      @include('includes.address-form-guest')

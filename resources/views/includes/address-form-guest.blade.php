@@ -3,7 +3,11 @@
       <!--<option value="0" disabled selecte>Tỉnh/Thành</option>-->
       @foreach ($cities as $city)
           @if(!session()->get('cart.city'))
-              <option value="{{$city->matp}}">{{$city->name}}</option>
+		  		@if($city->matp == 79)
+		  			<option value="{{$city->matp}}" selected="">{{$city->name}}</option>
+		  		@else
+		  			<option value="{{$city->matp}}">{{$city->name}}</option>
+		  		@endif
           @else
           <option value="{{$city->matp}}" {{$city->matp == session()->get('cart.city') ? 'selected="selected"' : ''}}>{{$city->name}}</option>
           @endif

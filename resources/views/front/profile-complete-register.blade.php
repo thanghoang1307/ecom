@@ -29,6 +29,7 @@
                   <h4 class="section-title">Hoàn tất đăng ký tài khoản</h4>
                 </div>
                 <div class="change-info-body">
+				<p style="margin-bottom: 20px;">Tài khoản chỉ được tạo khi bạn hoàn tất cập nhật thông tin tài khoản!</p>
                 <form name="changeInfoForm" class="change-info-form" data-parsley-validate action="{{route('front.customer.create_by_social')}}" method="POST">
                     @csrf
                     <div class="row">
