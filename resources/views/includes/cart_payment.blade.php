@@ -40,7 +40,13 @@
                         <p class="process-note-detail">Thời gian giao hàng trung bình dự kiện từ 3 - 5 ngày làm việc</p>
                       </div>
                       <div class="process-tab process-account">
-					  	<div class="row">Vui lòng chuyển khoản với nội dung, thanh toán cho đơn hàng số {{$order_number}}</div>
+					  	<div class="row">
+					  		<div class="col-md-12">
+					  			<p>Vui lòng ghi<strong class="important"> đầy đủ và chính xác</strong> để đảm bảo giao dịch thành công:</p>
+					  			<p class="transfer-note">Thanh toán cho đơn hàng số<strong class="order-code"> #{{$order_number}}</strong>, OneStopShop</p>
+					  		</div>
+					  	</div>
+					  	
 					  	<div class="page-gap"></div>
                         <div class="row">
                           <div class="col-md-12">
