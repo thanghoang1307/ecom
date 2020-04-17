@@ -183,7 +183,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('admin.banner.index')}}" class="nav-link">
-              <i class="fas fa-images"></i>
+              <i class="nav-icon fas fa-images"></i>
               <p>
                 Quản lý banner
               </p>
@@ -213,7 +213,14 @@
               </p>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a id="lfm" class="nav-link">
+              <i class="nav-icon fas fa-folder-open"></i>
+              <p>
+                Thư viện ảnh
+              </p>
+            </a>
+          </li>
           
           
         </ul>
@@ -281,5 +288,9 @@
 </script>
 <script>
 $('#toast-container').delay(3000).fadeOut(300);
+</script>
+<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script type="text/javascript">
+  $('#lfm').filemanager('image');
 </script>
 @yield('script')

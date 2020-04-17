@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Thông tin đơn hàng {{$order->order_number}}
+Thông tin đơn hàng #{{$order->order_number}}
 @endsection
 @section('content')
 
