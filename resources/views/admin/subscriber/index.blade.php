@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<i class="nav-icon fas fa-cube"></i>  Danh sách đăng ký email
+<i class="nav-icon fas fa-mail-bulk"></i>  Danh sách đăng ký email
 @endsection
 @section('content')
 
