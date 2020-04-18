@@ -22,8 +22,10 @@
 	<section class="home-mid-banner container">
 		<div class="home-mid-banner-wrapper owl-carousel owl-theme">
 		@foreach ($middle_banners_1 as $middle_banner)
+			@if ($middle_banner)
 			<div class="item"><a href="{{$middle_banner->link}}">
 			<img src="{{$middle_banner->image}}" class="img-fluid" alt=""></a></div>
+			@endif
 		@endforeach	
 		</div>
 	</section>
@@ -36,8 +38,10 @@
 	<section class="home-mid-banner container">
 		<div class="home-mid-banner-wrapper owl-carousel owl-theme">
 		@foreach ($middle_banners_2 as $middle_banner)
+			@if ($middle_banner)
 			<div class="item"><a href="{{$middle_banner->link}}">
 			<img src="{{$middle_banner->image}}" class="img-fluid" alt=""></a></div>
+			@endif
 		@endforeach	
 		</div>
 	</section>

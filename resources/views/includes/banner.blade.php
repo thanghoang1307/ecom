@@ -22,11 +22,13 @@
         <!-- only dekstop -->
         <div class="d-none d-lg-block">
           <div class="big-banner">
-        @foreach($main_banners as $main_banner)           
+		  	@foreach($main_banners as $main_banner)           
+		  	@if ($main_banner)
             <div class="item">
 				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid" alt=""></a>
             </div>
-        @endforeach
+			@endif
+			@endforeach
           </div>
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -52,10 +54,12 @@
 
   <div class="d-block d-lg-none">
     <div class="big-banner">
-    @foreach($main_banners as $main_banner)           
+		@foreach($main_banners as $main_banner)      
+			@if ($main_banner)
             <div class="item">
 				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid" alt=""></a>
             </div>
+			@endif
         @endforeach
     </div>
     <!-- only mobile 4 product-navigation-wrapper -->
