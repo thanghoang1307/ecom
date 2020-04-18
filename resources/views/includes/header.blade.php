@@ -102,6 +102,7 @@ document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/tru
 		<div class="header-top-banner d-none d-md-block">
 			<div class="container">
 				<div class="top-banner-wrapper owl-carousel owl-theme">
+					@foreach($top_banners as $top_banner)  
 					@if ($top_banner)
 					<div class="item">
 						<button class="close-banner"><i class="icon icon-close"></i></button>
@@ -109,6 +110,7 @@ document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/tru
 						<img src="{{$top_banner->image}}" class="img-fluid" alt=""></a>
 					</div>
 					@endif
+					@endforeach
 				</div>
 			</div>
 		</div>
