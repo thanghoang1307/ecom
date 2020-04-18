@@ -294,8 +294,8 @@ document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/tru
 	</header>
 	<!--END HEADER-->
 	<div class="collapse hidden-mobile" id="collapseMenu">
-		<div class="hidden-bg menu-toggle" class="" data-toggle="collapse" role="button" aria-expanded="false"
-        aria-controls="collapseMenu" style="background-color: rgba(0,0,0,0.75); width: 15vw; height: 100%; position: absolute; left: 85vw; top: 0; z-index: 19;">&nbsp;</div>
+		<div class="hidden-bg menu-toggle" data-toggle="collapse" href="#collapseMenu" role="button" aria-expanded="false"
+							aria-controls="collapseMenu">&nbsp;</div>
 		
 		<div class="hidden-panel-content"><a href="{{route('front.product-list')}}" class="product-navigation-action">
 				<i class="fas fa-layer-group"></i> Danh mục sản phẩm

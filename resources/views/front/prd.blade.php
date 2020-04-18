@@ -196,7 +196,8 @@
         </div>
       </div>
     </section>
-  </div>
+  </div> 
+  
 @if ($related)
 @component('components.related',['prds' => $related])
 @endcomponent

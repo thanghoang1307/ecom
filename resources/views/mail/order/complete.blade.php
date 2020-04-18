@@ -287,7 +287,7 @@
 																				</td>
 																				
 																				<td width="40%">
-																					<p class="price" style="margin: 0; padding: 5px 0 0 0; text-align: right; color: #666;font-size: 1.0em;">{{$prd->pivot->total}}<sup>đ</sup></p>
+																					<p class="price" style="margin: 0; padding: 5px 0 0 0; text-align: right; color: #666;font-size: 1.0em;">{{str_replace(".00", "", number_format($prd->pivot->total,2))}}<sup>đ</sup></p>
 																				</td>
 																			</tr>
 																			
@@ -343,7 +343,7 @@
 																				</td>
 																				
 																				<td width="40%">
-																					<p class="price" style="margin: 0; padding: 5px 0; text-align: right; font-size: 1.1em; color: #666; font-weight: bold;">{{$order->total}}<sup>đ</sup></p>
+																					<p class="price" style="margin: 0; padding: 5px 0; text-align: right; font-size: 1.1em; color: #666; font-weight: bold;">{{str_replace(".00", "",number_format($order->total,2))}}<sup>đ</sup></p>
 																				</td>
 																			</tr>
 																		</tbody>

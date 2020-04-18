@@ -60,7 +60,7 @@
           </div>
         </div>
         
-        <div class="cart-pdf">
+        <div class="cart-pdf buoc-3">
       	<!-- Total -->
       	<div class="cart-item d-none  d-md-block">
       	  <div class="row align-items-center align-content-center">
@@ -116,12 +116,12 @@
                 <div class="col-12">
                   <div class="process-profile-success">
                     <div class="row no-gutters align-items-center">
-                      <div class="col-3">
+                      <div class="col-4">
                         <div class="process-profile-success-img">
                           <img src="{{asset('assets/img/icon/sale-icon.png')}}" width="80" alt="">
                         </div>
                       </div>
-                      <div class="col-9">
+                      <div class="col-8">
                         <div class="process-profile-success-code">
                           <p class="process-profile-success-code-pre">Cám ơn bạn <strong>{{Auth::guard('customer')->check() ? $order->customer->name : $order->guest->name}}</strong> đã lựa
                             chọn mua hàng tại OneStopShop.vn</p>
@@ -173,7 +173,7 @@
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-5">
+                            <div class="col-5">   
                               <p>Địa chỉ</p>
                             </div>
                             <div class="col-7">
