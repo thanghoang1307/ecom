@@ -38,21 +38,17 @@ class OrderComplete extends Notification implements ShouldQueue
 
     private function setMailConfig()
     {
-        $existing = config('mail');
-        $new = array_merge(
-            $existing,
-            [
-                'from' => [
-                    'address' => 'sales@onestopshop.vn',
-                    'name' => 'CSKH One Stop Shop',
-                ],
-                'encryption' => $host->encryption,
-                'username' => 'sales@onestopshop.vn',
-                'password' => 'Osop@199',
-            ]
+        $config = array(
+            'driver'     => 'smtp',
+            'host'       => 'smtp.zoho.com',
+            'port'       => 587,
+            'from'       => array('address' => 'sales@onestopshop.vn', 'name' => 'One Stop Shop'),
+            'encryption' => 'tls',
+            'username'   => 'sales@onestopshop.vn',
+            'password'   => 'Osop@199',
         );
 
-        config(['mail' => $new]);
+        Config::set('mail', $config);
     }
     /**
      * Get the mail representation of the notification.
@@ -65,6 +61,7 @@ class OrderComplete extends Notification implements ShouldQueue
         $this->setMailConfig();
         $order = $this->order;
         return (new MailMessage)
+            ->from('sales@onestopshop.vn')
             ->subject('ONESTOPSHOP.VN: Đơn hàng #' . $order->order_number . ' đã được tiếp nhận')
             ->markdown('mail.order.complete', ['order' => $order]);
     }
