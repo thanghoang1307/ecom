@@ -8,10 +8,10 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\Order\Order;
 
-class OrderComplete extends Notification
+class OrderComplete extends Notification implements ShouldQueue
 {
     use Queueable;
-
+    public $tries = 5;
     /**
      * Create a new notification instance.
      *

@@ -49,7 +49,7 @@
                   </tbody>
                 </table>
               </div>
-              {{auth('customer')->user()->orders->paginate(10)->links('components.paginate')}}
+              {{auth('customer')->user()->orders->where('status','>=',-1)->paginate(10)->links('components.paginate')}}
               @endif
             </section>
           </div>

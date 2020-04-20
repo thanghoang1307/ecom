@@ -16,8 +16,11 @@ class OrderRepository extends EloquentRepository implements OrderInterface
     }
 
     public function uniqueOrderNumber()
-    {
-        do {$order_number = Str::random(10);} while ($this->_model->where('order_number', $order_number)->first());
+    {   
+        $currentYear = Carbon::today()->format('y');
+        $currentWeek = Carbon::today()->format('W');
+        $number = 0;
+        do {$order_number = $currentYear.$currentWeek.sprintf("%03d",$number); $number++;} while ($this->_model->where('order_number', $order_number)->first());
         return $order_number;
     }
 

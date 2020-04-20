@@ -13,7 +13,7 @@ class BannerRepository extends EloquentRepository implements BannerInterface {
 	}
 
 	public function getTopBanner() {
-		return $this->_model->where('position_id',7)->first();
+		return $this->_model->where('position_id',7)->get();
 	}
 
 	public function getMainBanner() {

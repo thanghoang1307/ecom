@@ -135,8 +135,8 @@ class CartController extends Controller
 		session()->forget('cart');
 		$user = User::where('role',0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;
-		$customer->notify(new OrderComplete($order));
-		$user->notify(new OrderComplete($order));
+		$customer->notify((new OrderComplete($order))->delay(now()->addMinutes(2)));
+		$user->notify((new OrderComplete($order))->delay(now()->addMinutes(5)));
 		return view('front.success',compact('order'));
 	}
 

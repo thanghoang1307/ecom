@@ -47,7 +47,7 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {   
         $request->validate([
-            'thumbnail' => 'required',
+            'image' => 'required',
         ]);
         $banner = $this->banner->update($id, $request->all());
         return redirect()->route('admin.banner.index');

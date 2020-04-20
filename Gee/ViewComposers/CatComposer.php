@@ -33,7 +33,7 @@ $view->with([
 	'prds_in_cart' => $prds_in_cart,
 	'carts' => $carts,
 	'cart_total' => $cart_total,
-	'top_banner' => $this->banner->getTopBanner(),
+	'top_banners' => $this->banner->getTopBanner(),
 ]);
 }
 }

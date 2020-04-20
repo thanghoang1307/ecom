@@ -107,7 +107,9 @@ class CustomerController extends Controller
     }
 
     public function logOut(){
+    
     Auth::guard('customer')->logout();
+    session()->flush();
     return redirect()->route('front.index');
     }
 

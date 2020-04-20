@@ -2,21 +2,18 @@
 // Auth Route
 Auth::routes();
 
-// Test Route
-Route::get('/test', 'Admin\DashboardController@test');
-
 /*
  * Admin Route
  * Các route cho admin
  */
 Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
 
-// Route '/admin'
+    // Route '/admin'
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::post('/chart-data', 'DashboardController@getChartData')->name('dashboard.chart_data');
     Route::post('/top-prds', 'DashboardController@getTopPrds')->name('dashboard.top_prds');
 
-// Group người dùng
+    // Group người dùng
     Route::prefix('nguoi-dung')->name('user.')->group(function () {
         Route::get('/', 'UserController@index')->name('index');
         Route::post('/create', 'UserController@create')->name('create');
@@ -24,8 +21,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
         Route::get('/logout', 'UserController@logout')->name('logout');
     });
 
-    Route::namespace ('Prd')->group(function () {
-// Group sản phẩm
+    Route::namespace('Prd')->group(function () {
+        // Group sản phẩm
         Route::prefix('san-pham')->name('prd.')->group(function () {
             Route::get('/', 'PrdController@index')->name('index');
             Route::post('/', 'PrdController@create');
@@ -35,9 +32,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::post('/add_attr/{id}', 'PrdController@addAttr');
             Route::get('/delete_attr/{attr_id}/{prd_id}', 'PrdController@delete_attr')->name('delete_attr');
         });
-//Kết thức sản phẩm
+        //Kết thức sản phẩm
 
-// Group danh mục
+        // Group danh mục
         Route::prefix('danh-muc')->name('cat.')->group(function () {
             Route::get('/', 'CatController@index')->name('index');
             Route::post('/', 'CatController@create');
@@ -45,9 +42,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::post('/update/{id}', 'CatController@update')->name('update');
             Route::get('/delete/{id}', 'CatController@delete')->name('delete');
         });
-//Kết thức group danh mục
+        //Kết thức group danh mục
 
-// Group nhóm thuộc tính
+        // Group nhóm thuộc tính
         Route::prefix('nhom-thuoc-tinh')->name('attr_gr.')->group(function () {
             Route::get('/', 'AttrGrController@index')->name('index');
             Route::post('/', 'AttrGrController@create');
@@ -57,9 +54,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::post('/add_attr/{id}', 'AttrGrController@addAttr');
             Route::get('/delete_attr/{attr_id}/{attr_gr_id}', 'AttrGrController@delete_attr')->name('delete_attr');
         });
-//Kết thúc group nhóm thuộc tính
+        //Kết thúc group nhóm thuộc tính
 
-// Group thuộc tính
+        // Group thuộc tính
         Route::prefix('thuoc-tinh')->name('attr.')->group(function () {
             Route::get('/', 'AttrController@index')->name('index');
             Route::post('/', 'AttrController@create');
@@ -67,9 +64,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::post('/update/{id}', 'AttrController@update')->name('update');
             Route::get('/delete/{id}', 'AttrController@delete')->name('delete');
         });
-//Kết thúc group thuộc tính
+        //Kết thúc group thuộc tính
 
-// Group thuộc tính
+        // Group thuộc tính
         Route::prefix('thuong-hieu')->name('brand.')->group(function () {
             Route::get('/', 'BrandController@index')->name('index');
             Route::post('/', 'BrandController@create');
@@ -77,9 +74,9 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::post('/update/{id}', 'BrandController@update')->name('update');
             Route::get('/delete/{id}', 'BrandController@delete')->name('delete');
         });
-//Kết thúc group thuộc tính
+        //Kết thúc group thuộc tính
 
-// Nhóm sản phẩm
+        // Nhóm sản phẩm
         Route::prefix('nhom-san-pham')->name('attr_family.')->group(function () {
             Route::get('/', 'AttrFamilyController@index')->name('index');
             Route::post('/', 'AttrFamilyController@create')->name('create');
@@ -91,23 +88,23 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::post('/update/{id}', 'AttrFamilyController@update')->name('update');
             Route::get('/delete/{id}', 'AttrFamilyController@delete')->name('delete');
         });
-// End nhóm sản phẩm
+        // End nhóm sản phẩm
         // Kết thúc namespace Prd
 
     });
 
-// Banner
+    // Banner
     Route::prefix('banner')->name('banner.')->group(function () {
         Route::get('/', 'BannerController@index')->name('index');
-        Route::get('/vi-tri-banner/edit/{position_id}','BannerController@editPosition')->name('position_edit');
+        Route::get('/vi-tri-banner/edit/{position_id}', 'BannerController@editPosition')->name('position_edit');
         Route::post('/', 'BannerController@create')->name('create');
         Route::get('/edit/{id}', 'BannerController@edit')->name('edit');
         Route::post('/update/{id}', 'BannerController@update')->name('update');
         Route::get('/delete/{id}', 'BannerController@delete')->name('delete');
     });
-// End Banner
+    // End Banner
 
-// post
+    // post
     Route::prefix('bai-viet')->name('post.')->group(function () {
         Route::get('/', 'PostController@index')->name('index');
         Route::post('/', 'PostController@create')->name('create');
@@ -115,33 +112,33 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
         Route::post('/update/{slug}', 'PostController@update')->name('update');
         Route::get('/delete/{slug}', 'PostController@delete')->name('delete');
     });
-// End post
+    // End post
 
-// setting
+    // setting
     Route::prefix('cai-dat')->name('setting.')->group(function () {
         Route::get('/', 'SettingController@index')->name('index');
         Route::post('/update', 'SettingController@update')->name('update');
     });
-// End setting
+    // End setting
 
-// Order
-    Route::namespace ('Order')->group(function () {
+    // Order
+    Route::namespace('Order')->group(function () {
         Route::prefix('don-hang')->name('order.')->group(function () {
             Route::get('/', 'OrderController@index')->name('index');
             Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
             Route::post('/update/{order_number}', 'OrderController@update')->name('update');
         });
-// End order
+        // End order
 
-// Customer
+        // Customer
         Route::prefix('khach-hang')->name('customer.')->group(function () {
             Route::get('/', 'CustomerController@index')->name('index');
             Route::get('/show/{type}/{id}', 'CustomerController@show')->name('show');
         });
-// End customer
+        // End customer
     });
-// Subscriber
-Route::get('/subscribers','SubscriberController@index')->name('subscriber.index');
+    // Subscriber
+    Route::get('/subscribers', 'SubscriberController@index')->name('subscriber.index');
 });
 
 /*
@@ -151,25 +148,25 @@ Route::get('/subscribers','SubscriberController@index')->name('subscriber.index'
 Route::name('front.')->namespace('Front')->group(function () {
     Route::get('/', 'PageController@index')->name('index');
 
-// Subcribe email
+    // Subcribe email
     Route::post('/subscribe', 'PageController@subscribe')->name('subscribe');
 
-// Show sản phẩm
+    // Show sản phẩm
     Route::get('/san-pham/{slug}', 'PrdController@show')->name('product-detail');
 
-// List tất cả sản phẩm
+    // List tất cả sản phẩm
     Route::get('/san-pham/', 'PrdController@all')->name('product-list');
 
-// List tin tức
+    // List tin tức
     Route::get('/tin-tuc-cong-nghe', 'PostController@list')->name('post-list');
 
-// List sản phẩm
+    // List sản phẩm
     Route::post('/search', 'CatController@search')->name('search');
     Route::get('/danh-muc/{slug}', 'CatController@show')->name('category-list');
     Route::get('/thuong-hieu/{slug}', 'BrandController@show')->name('brand-list');
     Route::post('/cat-filter', 'CatController@filter')->name('prd_filter');
 
-// Thanh toán
+    // Thanh toán
     Route::get('/thong-tin-dat-hang', 'PageController@cart')->name('check_out_1');
     Route::get('/thanh-toan/{order_number}', 'PageController@payment')->name('thanh_toan');
     Route::post('/add-to-cart/{id}', 'PrdController@addToCart')->name('add_to_cart');
@@ -182,7 +179,7 @@ Route::name('front.')->namespace('Front')->group(function () {
     Route::get('/hoan-tat-don-hang/{order_number}', 'CartController@success')->name('success');
     Route::get('/tai-bao-gia/', 'CartController@taiBaoGia')->name('tai_bao_gia');
 
-// Đăng ký tài khoản
+    // Đăng ký tài khoản
     Route::post('/customer/register', 'CustomerController@register')->name('customer.create');
     Route::get('/customer/logout', 'CustomerController@logOut')->name('customer.logout');
     Route::post('/customer/login', 'CustomerController@logIn')->name('customer.login');
@@ -192,7 +189,7 @@ Route::name('front.')->namespace('Front')->group(function () {
     Route::post('/getquan', 'PageController@getQuan')->name('getquan');
     Route::post('/getphuong', 'PageController@getPhuong')->name('getphuong');
 
-// Quên mật khẩu
+    // Quên mật khẩu
     Route::get('/quen-mat-khau', function () {
         return view('front.profile-forgot-password');
     })->name('customer.forget_password_page');
@@ -206,7 +203,7 @@ Route::name('front.')->namespace('Front')->group(function () {
     });
     Route::post('/reset_password', 'CustomerController@resetPassword')->name('customer.reset_password');
 
-// Account
+    // Account
     Route::middleware('auth:customer')->prefix('/tai-khoan/')->name('account.')->group(function () {
         Route::get('/', 'AccountController@index')->name('index');
         Route::get('/chinh-sua', 'AccountController@edit')->name('edit');

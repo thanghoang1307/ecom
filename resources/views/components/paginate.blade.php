@@ -4,8 +4,8 @@ $link_limit = 7; // maximum number of links (a little bit inaccurate, but will b
 ?>
 
 @if ($paginator->lastPage() > 1)
-<div class="page-pagination">
-    <ul class="pagination">
+<div class="section-pagination">
+<ul class="pagination">
         <li class="page-item {{ ($paginator->currentPage() == 1) ? ' disabled' : '' }}">
             <a class="page-link" href="{{ $paginator->url(1) }}"><i class="icon icon-chevron-left"></i></a>
          </li>
