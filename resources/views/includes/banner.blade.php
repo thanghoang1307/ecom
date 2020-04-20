@@ -30,7 +30,7 @@
 			@endif
 			@endforeach
           </div>
-          <div class="row no-gutters">
+          <div class="row no-gutters d-none">
             <div class="col-md-4">
               <div class="small-banner">
 			  	<a href="{{$sub_banner_1->link}}"><img src="{{$sub_banner_1->image}}" class="img-fluid" alt=""></a>
