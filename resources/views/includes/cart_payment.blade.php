@@ -156,7 +156,7 @@
 					
 					<div class="col-6">
 						<div class="text-right">
-							<button type="submit" class="btn-submit form-checkout">Tiếp theo <i class="icon icon-arrow-right"></i></button>
+							<button type="submit" class="btn-submit form-checkout">Đặt hàng <i class="icon icon-arrow-right"></i></button>
 						</div>
 					</div>
 				</div>
