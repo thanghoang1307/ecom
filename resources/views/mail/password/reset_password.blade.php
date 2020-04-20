@@ -84,7 +84,7 @@
 														</p>
 														
 														<p style="text-align: center;">
-															<a style="color:white; text-decoration: none; text-transform: uppercase; padding: 20px; margin: 10px 0; font-weight: bold; background-color: #962d91;" href="{{ $link }}">Thiết lập lại mật khẩu</a>
+															<a style="color:white; text-decoration: none; padding: 20px; margin: 10px 0; font-weight: bold; background-color: #962d91;" href="{{ $link }}">Thiết lập lại mật khẩu</a>
 														</p>
 													</div>
 												</td>

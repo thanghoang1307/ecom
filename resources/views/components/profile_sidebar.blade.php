@@ -62,7 +62,7 @@
         <section id="profile-dashboard">
           <div class="dashboard-header">
             <div class="dashboard-greeting">
-              <p>Cảm ơn bạn đã gia nhập gia đình OnStopShop.vn.</p>
+              <p>Cảm ơn bạn đã gia nhập gia đình OneStopShop.vn.</p>
               <p>Bạn sẽ được hưởng quyền lợi giá cả, quà tặng, các dịch vụ đi kèm và nhiều hơn nữa.</p>
               <p>Bắt đầu trải nghiệm nào!</p>
             </div>
