@@ -5,15 +5,15 @@
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<style>
-		@media screen and (max-device-width:768px), screen and (max-width:768px) {
+		/*@media (min-device-width:768px) and (max-device-width:799px), (max-width:768px) and (max-width:768px) {
 			table {
-				font-size: 30px;
-				line-height: 1.2em;
+				/*font-size: 30px;
+				line-height: 1.2em;*!/
 			}
-			.hotline {
+			/*.hotline {
 				font-size: 1.0em;
-			}
-		}
+			}*!/
+		}*/
 		@media screen and (min-device-width:800px), screen and (min-width:800px) {
 			table {
 				font-size: 16px;
@@ -21,6 +21,15 @@
 			}
 			.hotline {
 				font-size: 1.2em;
+			}
+		}
+		@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
+			table {
+				font-size: 30px;
+				line-height: 1.2em;
+			}
+			.hotline {
+				font-size: 1.0em;
 			}
 		}
 	</style>
@@ -32,7 +41,7 @@
 			<tr>
 				<td>
 					<!-- mail content -->
-					<table style="text-align: center; margin:0 auto; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" width="700" cellpadding="0" cellspacing="0" border="0">
+					<table style="text-align: center; margin:0 auto; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" width="600" cellpadding="0" cellspacing="0" border="0">
 						<tbody>
 							<tr>
 								<td>

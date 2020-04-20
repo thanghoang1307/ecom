@@ -5,26 +5,34 @@
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<style>
-		@media screen and (max-device-width:768px), screen and (max-width:768px) {
-	table {
-		font-size: 30px;
-		line-height: 1.2em;
-	}
-	
-	.hotline {
-		font-size: 1.0em;
-	}
-}
+		/*@media screen and (max-device-width:768px), screen and (max-width:768px) {
+			table {
+				font-size: 30px;
+				line-height: 1.2em;
+			}
+			
+			.hotline {
+				font-size: 1.0em;
+			}
+		}*/
 		@media screen and (min-device-width:800px), screen and (min-width:800px) {
-	table {
-		font-size: 16px;
-		line-height: 1.0em;
-	}
-	
-	.hotline {
-		font-size: 1.2em;
-	}
-}
+			table {
+				font-size: 16px;
+				line-height: 1.0em;
+			}
+			.hotline {
+				font-size: 1.2em;
+			}
+		}
+		@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
+			table {
+				font-size: 30px;
+				line-height: 1.2em;
+			}
+			.hotline {
+				font-size: 1.0em;
+			}
+		}
 	</style>
 </head>
 <body>
