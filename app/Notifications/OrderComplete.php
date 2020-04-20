@@ -33,9 +33,27 @@ class OrderComplete extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail','slack'];
+        return ['mail', 'slack'];
     }
 
+    private function setMailConfig()
+    {
+        $existing = config('mail');
+        $new = array_merge(
+            $existing,
+            [
+                'from' => [
+                    'address' => 'sales@onestopshop.vn',
+                    'name' => 'CSKH One Stop Shop',
+                ],
+                'encryption' => $host->encryption,
+                'username' => 'sales@onestopshop.vn',
+                'password' => 'Osop@199',
+            ]
+        );
+
+        config(['mail' => $new]);
+    }
     /**
      * Get the mail representation of the notification.
      *
@@ -43,10 +61,12 @@ class OrderComplete extends Notification implements ShouldQueue
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {   $order = $this->order;
+    {
+        $this->setMailConfig();
+        $order = $this->order;
         return (new MailMessage)
-                    ->subject('ONESTOPSHOP.VN: Đơn hàng #'.$order->order_number.' đã được tiếp nhận')
-                    ->markdown('mail.order.complete',['order' => $order]);
+            ->subject('ONESTOPSHOP.VN: Đơn hàng #' . $order->order_number . ' đã được tiếp nhận')
+            ->markdown('mail.order.complete', ['order' => $order]);
     }
 
     /**
