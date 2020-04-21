@@ -179,7 +179,7 @@
           ajaxRemoveItem($prd_id);
         } else if($('.product').length = 1) {
 
-          if (confirm("Bạn chỉ còn 1 sản phẩm trong giỏ hàng. Bạn có chắc chắn muốn xoá và quay trở về trang chủ ?")) {
+          if (confirm("Bạn chỉ còn 1 sản phẩm trong giỏ hàng. Bạn có chắc chắn muốn xoá?")) {
             $prd_id = $(this).attr('prd-id');
             $(this).parents('div.cart-item').remove();
             ajaxRemoveItem($prd_id);
