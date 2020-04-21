@@ -11,7 +11,6 @@ use App\Repositories\Order\ShipmentInterface;
 use App\Repositories\Order\OrderPrdInterface;
 use App\Repositories\Order\GuestInterface;
 use App\Repositories\Prd\PrdInterface;
-use App\Mail\OrderComplete;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Auth;

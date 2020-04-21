@@ -10,6 +10,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Order\Order;
 use App\Models\Order\Customer;
+use App\Mail\OrderComplete;
 
 class SendOrderCompleteEmail implements ShouldQueue
 {
