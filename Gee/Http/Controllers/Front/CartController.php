@@ -11,11 +11,12 @@ use App\Repositories\Order\ShipmentInterface;
 use App\Repositories\Order\OrderPrdInterface;
 use App\Repositories\Order\GuestInterface;
 use App\Repositories\Prd\PrdInterface;
+use App\Mail\OrderComplete;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Auth;
 use App\User;
-use App\Jobs\SendOrderCompleteEmail;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -139,12 +140,29 @@ class CartController extends Controller
 			]);
 		}
 
-		session()->forget('cart');
+		// session()->forget('cart');
 
 		$user = User::where('role', 0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;
+		// Backup your default mailer
+		$backup = Mail::getSwiftMailer();
 
-		SendOrderCompleteEmail::dispatch($customer, $order)->delay(now()->addMinutes(1));
+		// Setup your gmail mailer
+		$transport = new \Swift_SmtpTransport('smtp.zoho.com', 587, 'tls');
+		$transport->setUsername('sales@onestopshop.vn');
+		$transport->setPassword('Osop@199');
+		// Any other mailer configuration stuff needed...
+
+		$gmail = new \Swift_Mailer($transport);
+		// Set the mailer as gmail
+		Mail::setSwiftMailer($gmail);
+
+		// Send your message
+		Mail::to($customer->email)->send(new OrderComplete($order));
+		Mail::to($user->email)->send(new OrderComplete($order));
+
+		// Restore your original mailer
+		Mail::setSwiftMailer($backup);
 
 		return view('front.success', compact('order'));
 	}

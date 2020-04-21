@@ -9,8 +9,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Order\Order;
-use App\Models\Order\Customer;
 use App\Mail\OrderComplete;
+use App\User;
+use Illuminate\Support\Facades\Log;
 
 class SendOrderCompleteEmail implements ShouldQueue
 {
@@ -21,12 +22,10 @@ class SendOrderCompleteEmail implements ShouldQueue
      *
      * @return void
      */
-    protected $order;
-    protected $customer;
+    public $order;
 
-    public function __construct(Customer $customer, Order $order)
+    public function __construct(Order $order)
     {
-        $this->customer = $customer->withoutRelations();
         $this->order = $order;
     }
 
@@ -37,6 +36,9 @@ class SendOrderCompleteEmail implements ShouldQueue
      */
     public function handle()
     {
+        $user = User::where('role', 0)->first();
+        $customer = $this->order->customer_id ? $this->order->customer : $this->order->guest;
+
         // Backup your default mailer
         $backup = Mail::getSwiftMailer();
 
@@ -51,8 +53,9 @@ class SendOrderCompleteEmail implements ShouldQueue
         Mail::setSwiftMailer($gmail);
 
         // Send your message
-        Mail::to($this->customer->email)->send(new OrderComplete($this->order));
-        // Mail::to($user->email)->send(new OrderComplete($order));
+
+
+        Mail::to($customer->email)->send(new OrderComplete($this->order));
 
         // Restore your original mailer
         Mail::setSwiftMailer($backup);

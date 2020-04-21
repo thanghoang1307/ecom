@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use App\Models\Order\Order;
 use Illuminate\Support\Facades\Log;
 
-class OrderComplete extends Mailable implements ShouldQueue
+class OrderComplete extends Mailable
 {
     use Queueable, SerializesModels;
 
