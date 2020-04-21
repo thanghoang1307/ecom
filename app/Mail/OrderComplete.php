@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Order\Order;
+use Illuminate\Support\Facades\Log;
 
 class OrderComplete extends Mailable implements ShouldQueue
 {
@@ -28,6 +29,6 @@ class OrderComplete extends Mailable implements ShouldQueue
     {
         return $this->from('sales@onestopshop.vn', 'One Stop Shop')
             ->subject('ONESTOPSHOP.VN: Đơn hàng #' . $this->order->order_number . ' đã được tiếp nhận')
-            ->markdown('mail.order.complete', ['order' => $this->order]);
+            ->markdown('mail.order.complete')->with(['order' => $this->order]);
     }
 }

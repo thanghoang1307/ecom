@@ -16,7 +16,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Auth;
 use App\User;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendOrderCompleteEmail;
 
 class CartController extends Controller
 {
@@ -144,25 +144,8 @@ class CartController extends Controller
 
 		$user = User::where('role', 0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;
-		// Backup your default mailer
-		$backup = Mail::getSwiftMailer();
 
-		// Setup your gmail mailer
-		$transport = new \Swift_SmtpTransport('smtp.zoho.com', 587, 'tls');
-		$transport->setUsername('sales@onestopshop.vn');
-		$transport->setPassword('Osop@199');
-		// Any other mailer configuration stuff needed...
-
-		$gmail = new \Swift_Mailer($transport);
-		// Set the mailer as gmail
-		Mail::setSwiftMailer($gmail);
-
-		// Send your message
-		Mail::to($customer->email)->send((new OrderComplete($order))->delay(now()->addMinutes(2)));
-		Mail::to($user->email)->send((new OrderComplete($order))->delay(now()->addMinutes(2)));
-
-		// Restore your original mailer
-		Mail::setSwiftMailer($backup);
+		SendOrderCompleteEmail::dispatch($customer, $order)->delay(now()->addMinutes(1));
 
 		return view('front.success', compact('order'));
 	}
