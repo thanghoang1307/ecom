@@ -140,7 +140,7 @@ class CartController extends Controller
 			]);
 		}
 
-		// session()->forget('cart');
+		session()->forget('cart');
 
 		$user = User::where('role', 0)->first();
 		$customer = $order->customer_id ? $order->customer : $order->guest;
