@@ -151,7 +151,7 @@
 					<div class="col-6">
 						<div class="text-left">
 			                  <!--<button type="button" onclick="history.go(-1);" class="btn-submit form-back">Trở về <i class="icon icon-arrow-left"></i></button>-->
-							  <a href="{{route('front.check_out_1')}}" class="btn-submit form-back">Trở về <i class="icon icon-arrow-left"></i></a></div>
+							  <a href="{{route('front.check_out_1')}}" class="btn-submit outline form-back">Trở về <i class="icon icon-arrow-left"></i></a></div>
 					</div>
 					
 					<div class="col-6">
