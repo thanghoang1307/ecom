@@ -186,7 +186,7 @@
 			
 			$('.form-checkout').addClass('d-none');
 			$('.bao-gia').addClass('d-none');
-			$('.cart-process').addClass('d-none');    
+//			$('.cart-process').addClass('d-none');    
 			$('.no-item').removeClass('d-none');
 
           } else {
