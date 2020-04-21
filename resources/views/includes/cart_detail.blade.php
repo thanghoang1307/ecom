@@ -56,6 +56,18 @@
 		</div>
 	        @endforeach
 	    @else
+			<div class="no-item">
+			<div class="cart-item">Chưa có sản phẩm trong giỏ hàng</div>
+			
+			<div class="cart-item">
+				<div class="row">
+					<div class="goback"><a href="{{route('front.index')}}" class="btn-submit is-white">
+		                  <span>Tiếp tục mua sắm</span>
+		                </a>
+					</div>
+				</div>
+			</div>
+		</div>
 		@endif
 		
 		<div class="no-item d-none">
