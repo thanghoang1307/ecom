@@ -13,10 +13,11 @@
 
 @section('script')
 <script>
-onload=function(){
-var e=document.getElementById("refreshed");
-if(e.value=="no") {e.value="yes";}
-else{ e.value="no";location.reload();}
-}
+window.onpageshow = function (event) {
+  if (event.persisted) {
+	alert('Đơn hàng của bạn đã được đặt thành công, bạn không thể quay về để thay đổi được!');
+    window.location.reload(); //reload page if it has been loaded from cache
+  }
+};
 </script>
 @endsection
