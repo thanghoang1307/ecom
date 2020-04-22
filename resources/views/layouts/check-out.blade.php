@@ -177,12 +177,18 @@
           $(this).parents('div.cart-item').remove();
           $prd_id = $(this).attr('prd-id');
           ajaxRemoveItem($prd_id);
-        } else {
+        } else if ($('.product').length = 1) {
 
-          if (confirm("Bạn chỉ còn 1 sản phẩm trong giỏ hàng. Bạn có chắc chắn muốn xoá ?")) {
+          if (confirm("Bạn chỉ còn 1 sản phẩm trong giỏ hàng. Bạn có chắc chắn muốn xoá?")) {
             $prd_id = $(this).attr('prd-id');
             $(this).parents('div.cart-item').remove();
             ajaxRemoveItem($prd_id);
+
+            $('.form-checkout').addClass('d-none');
+            $('.bao-gia').addClass('d-none');
+            $('.cart-process').addClass('d-none');
+            $('.no-item').removeClass('d-none');
+
           } else {
             return false;
           }
