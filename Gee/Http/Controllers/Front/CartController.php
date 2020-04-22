@@ -99,6 +99,11 @@ class CartController extends Controller
 	public function checkOut3(Request $request, $order_number)
 	{
 		$company = null;
+		$order = $this->order->getFromOrderNumber($order_number);
+		$order->update([
+			'payment_type' => $request->payment_type,
+		]);
+
 		if ($request->is_vat) {
 			$validatedData = $request->validate([
 				'name' => 'required',
@@ -113,11 +118,9 @@ class CartController extends Controller
 					'note' => $request->note,
 				]
 			);
-			$order = $this->order->getFromOrderNumber($order_number);
 			$order->update([
 				'is_vat' => 1,
 				'company_id' => $company->id,
-				'payment_type' => $request->payment_type,
 			]);
 		}
 

@@ -8,6 +8,10 @@
     @include('includes.cart_payment')
   </div>
 </div>
+<div class="ajax-loader">
+  <div class="loader"></div>
+  <div class="loader-bg"></div>
+</div>
 
 @endsection
 
