@@ -18,11 +18,31 @@
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-header">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i></button>
+				<div class="row">
+					<div class="col-md-6 col-12">
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i></button>
+					</div>
+				</div>
 			</div>
             <!-- /.card-header -->
 			  
-			  <div class="card-body" id="page-top">{{$prds->render()}}</div>
+			  <div class="card-body" id="page-top">
+				<div class="row">
+					<div class="col-md-6 col-12">{{$prds->render()}}</div>
+					
+					<div class="col-md-6 col-12" style="text-align: right;">
+						<div class="form-group">
+							<label>Lọc theo</label>
+							
+							<select class="form-control" style="width: 50%; display: inline; margin-left: 10px;">
+								<option selected="">Tất cả danh mục</option>
+								
+								<option>Danh mục 1</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
 			
 			<div class="card-body">
 				<table class="table table-bordered">

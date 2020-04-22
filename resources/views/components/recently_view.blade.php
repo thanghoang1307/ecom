@@ -12,7 +12,7 @@
 						<div class="product-item">
 							<div class="product-image">
 							    <figure>
-							      <img src="{{$prd->thumb}}">
+							      <img src="{{$prd->thumb}}" class="img-fluid d-none">
 							    </figure>
 							</div>
 							<div class="product-text">
