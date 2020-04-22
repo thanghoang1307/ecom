@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-6">
                       <div class="video-text">
-                        <h3 class="video-title">{{ Str::limit(strip_tags($post->content), $limit = 60, $end = '..') }}</h3>
+                        <h3 class="video-title">{{ Str::limit(strip_tags($video->title), $limit = 60, $end = '..') }}</h3>
                         <h4 class="video-view">{{$video->view}} lượt xem</h4>
                       </div>
                     </div>
