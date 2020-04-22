@@ -31,6 +31,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::get('/delete/{id}', 'PrdController@delete')->name('delete');
             Route::post('/add_attr/{id}', 'PrdController@addAttr');
             Route::get('/delete_attr/{attr_id}/{prd_id}', 'PrdController@delete_attr')->name('delete_attr');
+            Route::post('/loc-san-pham', 'PrdController@filter')->name('filter');
         });
         //Kết thức sản phẩm
 
@@ -125,6 +126,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
     Route::namespace('Order')->group(function () {
         Route::prefix('don-hang')->name('order.')->group(function () {
             Route::get('/', 'OrderController@index')->name('index');
+            Route::post('/loc-don-hang', 'OrderController@filter')->name('filter');
             Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
             Route::post('/update/{order_number}', 'OrderController@update')->name('update');
         });

@@ -16,11 +16,14 @@ class OrderRepository extends EloquentRepository implements OrderInterface
     }
 
     public function uniqueOrderNumber()
-    {   
+    {
         $currentYear = Carbon::today()->format('y');
         $currentWeek = Carbon::today()->format('W');
         $number = 0;
-        do {$order_number = $currentYear.$currentWeek.sprintf("%03d",$number); $number++;} while ($this->_model->where('order_number', $order_number)->first());
+        do {
+            $order_number = $currentYear . $currentWeek . sprintf("%03d", $number);
+            $number++;
+        } while ($this->_model->where('order_number', $order_number)->first());
         return $order_number;
     }
 
@@ -141,4 +144,8 @@ class OrderRepository extends EloquentRepository implements OrderInterface
         }
     }
 
+    public function getByStatus($status)
+    {
+        return $this->_model->where('status', $status)->paginate(12);
+    }
 }
