@@ -8,7 +8,7 @@
     @include('includes.cart_payment')
   </div>
 </div>
-<div class="ajax-loader">
+<div class="ajax-loader d-none">
   <div class="loader"></div>
   <div class="loader-bg"></div>
 </div>
@@ -23,5 +23,11 @@
       window.location.reload(); //reload page if it has been loaded from cache
     }
   };
+
+  $(function() {
+    $('.btn-submit').on('click', function() {
+      $('.ajax-loader').removeClass('d-none');
+    })
+  })
 </script>
 @endsection
