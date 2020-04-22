@@ -258,6 +258,12 @@ $(function() {
 </script>-->
 
 <script>
+window.onpageshow = function(event) {
+	if (event.persisted) {
+	  window.location.reload(); //reload page if it has been loaded from cache
+	}
+};
+
 $('#toast-container').delay(3000).fadeOut('fast');
 $(document).ready(function() {
 	//show image when finish load

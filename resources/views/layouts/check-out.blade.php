@@ -10,7 +10,7 @@
   <meta name="author" content="">
   <link rel="icon" href="../assets/img/favicon.ico">
 
-  <title>One Stop Shop - Giải Pháp | Thiết Bị CNTT</title>
+  <title>OneStopShop.vn - Giải Pháp | Thiết Bị CNTT</title>
 
   <!-- Google Tag Manager -->
   <script>
