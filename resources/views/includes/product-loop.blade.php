@@ -4,7 +4,7 @@
 	<div class="product-item"><a href="{{route('front.product-detail',$prd->slug)}}">
 		<div class="product-image">
 			<figure>
-				<img src="{{$prd->thumb}}">
+				<img src="{{$prd->thumb}}" class="img-fluid d-none">
 			</figure>
 		</div>
 		

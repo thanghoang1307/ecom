@@ -6,7 +6,7 @@
           	@foreach ($brands as $brand)
             <div class="item">
               <a href="{{route('front.brand-list',$brand->slug)}}">
-                <img src="{{$brand->logo}}" class="img-fluid" alt="">
+                <img src="{{$brand->logo}}" class="img-fluid d-none" alt="">
               </a>
             </div>
             @endforeach

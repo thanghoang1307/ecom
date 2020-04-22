@@ -24,7 +24,7 @@
 		@foreach ($middle_banners_1 as $middle_banner)
 			@if ($middle_banner)
 			<div class="item"><a href="{{$middle_banner->link}}">
-			<img src="{{$middle_banner->image}}" class="img-fluid" alt=""></a></div>
+			<img src="{{$middle_banner->image}}" class="img-fluid d-none" alt=""></a></div>
 			@endif
 		@endforeach	
 		</div>
@@ -40,7 +40,7 @@
 		@foreach ($middle_banners_2 as $middle_banner)
 			@if ($middle_banner)
 			<div class="item"><a href="{{$middle_banner->link}}">
-			<img src="{{$middle_banner->image}}" class="img-fluid" alt=""></a></div>
+			<img src="{{$middle_banner->image}}" class="img-fluid d-none" alt=""></a></div>
 			@endif
 		@endforeach	
 		</div>

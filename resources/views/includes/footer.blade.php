@@ -260,6 +260,9 @@ $(function() {
 <script>
 $('#toast-container').delay(3000).fadeOut('fast');
 $(document).ready(function() {
+	//show image when finish load
+	$('img').removeClass("d-none");
+	//show current Year
 	var d = new Date();
 	var n = d.getFullYear();
 	document.getElementById("currentyear").innerHTML = n;

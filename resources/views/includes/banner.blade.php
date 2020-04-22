@@ -25,7 +25,7 @@
 		  	@foreach($main_banners as $main_banner)           
 		  	@if ($main_banner)
             <div class="item">
-				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid" alt=""></a>
+				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid d-none" alt=""></a>
             </div>
 			@endif
 			@endforeach
@@ -33,17 +33,17 @@
           <div class="row no-gutters d-none">
             <div class="col-md-4">
               <div class="small-banner">
-			  	<a href="{{$sub_banner_1->link}}"><img src="{{$sub_banner_1->image}}" class="img-fluid" alt=""></a>
+			  	<a href="{{$sub_banner_1->link}}"><img src="{{$sub_banner_1->image}}" class="img-fluid d-none" alt=""></a>
               </div>
             </div>
             <div class="col-md-4">
               <div class="small-banner">
-          <a href="{{$sub_banner_2->link}}"><img src="{{$sub_banner_2->image}}" class="img-fluid" alt=""></a>
+          <a href="{{$sub_banner_2->link}}"><img src="{{$sub_banner_2->image}}" class="img-fluid d-none" alt=""></a>
               </div>
             </div>
             <div class="col-md-4">
               <div class="small-banner">
-          <a href="{{$sub_banner_3->link}}"><img src="{{$sub_banner_3->image}}" class="img-fluid" alt=""></a>
+          <a href="{{$sub_banner_3->link}}"><img src="{{$sub_banner_3->image}}" class="img-fluid d-none" alt=""></a>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
 		@foreach($main_banners as $main_banner)      
 			@if ($main_banner)
             <div class="item">
-				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid" alt=""></a>
+				<a href="{{$main_banner->link}}"><img src="{{$main_banner->image}}" class="img-fluid d-none" alt=""></a>
             </div>
 			@endif
         @endforeach

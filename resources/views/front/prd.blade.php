@@ -9,13 +9,13 @@
             <div class="slider slider-single">
               <div>
                 <figure class="product-image">
-                  <img src="{{$prd->thumb}}">
+                  <img src="{{$prd->thumb}}" class="img-fluid d-none">
                 </figure>
               </div>
               @foreach ($prd->images as $image)
               <div>
                 <figure class="product-image">
-                  <img src="{{$image->image}}">
+                  <img src="{{$image->image}}" class="img-fluid d-none">
                 </figure>
               </div>
               @endforeach

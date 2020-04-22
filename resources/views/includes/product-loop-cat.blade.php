@@ -8,7 +8,7 @@
                   <a href="{{route('front.product-detail',$prd->slug)}}">
                     <div class="product-image">
                       <figure>
-                        <img src="{{$prd->thumb}}" loading="lazy">
+                        <img src="{{$prd->thumb}}" loading="lazy" class="img-fluid d-none">
                       </figure>
                     </div>
                     <div class="product-text">
@@ -40,10 +40,12 @@
               @endforeach
             </div>
           </div>
-          {{$prds->appends(request()->input())->links('components.paginate')}}
+          <div class="page-pagination">
+		  	{{$prds->appends(request()->input())->links('components.paginate')}}
+		  </div>
           @else
           <div class="error404" style="text-align: center; width: 100%; display: block;">
 				<p style="text-align: center; font-weight: bold;">Không tìm thấy sản phẩm phù hợp với từ khoá này</p>
 				<br />
-				<img style="max-width: 60%; margin-bottom: 30px;" class="img-fluid" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
+				<img style="max-width: 60%; margin-bottom: 30px;" class="img-fluid d-none" src="https://onestopshop.vn/assets/img/404_not-found.png"></div>
           @endif
