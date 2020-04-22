@@ -1,4 +1,4 @@
-<h1 style="z-index: -1; position: absolute; top: 0; left: 0; text-align: left;">One Stop Shop - Giải Pháp | Thiết Bị CNTT</h1>
+<h1 style="z-index: -1; position: absolute; top: 0; left: 0; text-align: left;">OneStopShop.vn - Giải Pháp | Thiết Bị CNTT</h1>
 <section class="product-navigation">
   <div class="container">
     <div class="row no-gutters">
