@@ -15,7 +15,7 @@
 <script>
 window.onpageshow = function (event) {
   if (event.persisted) {
-	alert('Đơn hàng của bạn đã được đặt thành công, bạn không thể quay về để thay đổi được!');
+//	alert('Đơn hàng của bạn đã được đặt thành công, bạn không thể quay về để thay đổi được!');
     window.location.reload(); //reload page if it has been loaded from cache
   }
 };
