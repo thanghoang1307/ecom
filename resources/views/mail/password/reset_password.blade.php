@@ -23,7 +23,7 @@
 				font-size: 1.2em;
 			}
 		}
-		@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
+		/*@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
 			table {
 				font-size: 30px;
 				line-height: 1.2em;
@@ -31,7 +31,7 @@
 			.hotline {
 				font-size: 1.0em;
 			}
-		}
+		}*/
 	</style>
 </head>
 <body>

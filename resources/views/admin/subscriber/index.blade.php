@@ -16,12 +16,12 @@
             <div class="row">
           <div class="col-lg-12">
             <div class="card">
-              <div class="card-header">
+              <!--<div class="card-header">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                   <i class="fas fa-plus"></i>
                 </button>
 
-              </div>
+              </div>-->
               <!-- /.card-header -->
 			  
 			  <div class="card-body" id="page-top">

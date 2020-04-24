@@ -21,8 +21,7 @@ $status = app('request')->input('status');
 		<div class="card">
 			<div class="card-body" id="page-top">
 				<div class="row">
-					<div class="col-md-6 col-12">{{$orders->render()}}</div>
-					<div class="col-md-6 col-12" style="text-align: right;">
+					<div class="col-md-6 col-12">
 						<div class="form-group">
 							<label>Lọc theo</label>
 
