@@ -40,14 +40,24 @@ class PrdController extends Controller
         $this->attr_family = $attr_family;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $prds = $this->prd->getAll();
+        if (!$request->cat_id) {
+            $prds = $this->prd->getAll();
+        } else {
+            $chosen_cat = $this->cat->find($request->cat_id);
+            $prds = $chosen_cat->prds()->paginate(10);
+        }
         $brands = $this->brand->getAllData();
         $attr_families = $this->attr_family->getAllData();
         $cats = $this->cat->getAllData();
-        $chosen_cat = "all";
-        return view('admin.prd.index', compact(['prds', 'attr_families', 'brands', 'cats', 'chosen_cat']));
+        return view('admin.prd.index', compact(['prds', 'attr_families', 'brands', 'cats']));
+        // $prds = $this->prd->getAll();
+        // $brands = $this->brand->getAllData();
+        // $attr_families = $this->attr_family->getAllData();
+        // $cats = $this->cat->getAllData();
+        // $chosen_cat = "all";
+
     }
 
     public function filter(Request $request)

@@ -3,6 +3,9 @@
 <i class="far fa fa-product-hunt nav-icon"></i> Danh sách sản phẩm
 @endsection
 @section('content')
+@php
+$cat_id = app('request')->input('cat_id');
+@endphp
 
 <style>
 	#page-top {
@@ -26,9 +29,9 @@
 						<div class="form-group">
 							<label>Lọc theo</label>
 							<select class="form-control cat-filter" style="width: 50%; display: inline; margin-left: 10px;">
-								<option selected="" value="all">Tất cả danh mục</option>
+								<option {{ $cat_id ? '' : 'selected="selected"'}}>Tất cả danh mục</option>
 								@foreach ($cats as $cat)
-								<option value="{{$cat->id}}">{{$cat->name}}</option>
+								<option value="{{$cat->id}}" {{ $cat->id == $cat_id ? 'selected="selected"' : '' }}>{{$cat->name}}</option>
 								@endforeach
 							</select>
 						</div>
@@ -105,21 +108,14 @@
 @section('script')
 <script>
 	$(function() {
-		$('select.cat-filter').on('change', function() {
-			var cat_id = $(this).children("option:selected").val();
-			$.ajax({
-				type: 'POST',
-				url: "{{route('admin.prd.filter')}}",
-				data: {
-					'_token': '{{csrf_token()}}',
-					'cat_id': cat_id,
-				},
-				success: function(data) {
-					console.log(data.html)
-					$('.ajax-table').html(data.html);
-				},
-			});
-		})
-	})
+		$('select.cat-filter').on('change', redirectParam);
+	});
+
+	function redirectParam() {
+		var cat_id = $(this).children("option:selected").val();
+		var param = '?cat_id=' + cat_id;
+		const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+		window.location.href = url + param;
+	}
 </script>
 @endsection

@@ -14,15 +14,20 @@ class OrderController extends Controller
   {
     $this->order = $order;
   }
-  public function index()
+  public function index(Request $request)
   {
-    $orders = $this->order->getAllOrder();
+    if ($request->status !== null) {
+      $orders = $this->order->getByStatus($request->status);
+    } else {
+      $orders = $this->order->getAllOrder();
+    }
+
     return view('admin.order.index', compact('orders'));
   }
 
   public function filter(Request $request)
   {
-    $orders = $this->order->getByStatus($request->status);
+
     return response()->json(['html' => view('admin.order.table', compact('orders'))->render()]);
   }
 

@@ -44,4 +44,4 @@
 </div>
 
 <!-- /.card-body -->
-<div class="card-footer clearfix">{{$orders->render()}}</div>
+<div class="card-footer clearfix">{{$orders->appends(request()->input())->links()}}</div>

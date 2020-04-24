@@ -3,7 +3,9 @@
 <i class="nav-icon fas fa-shopping-cart"></i> Danh sách đơn hàng
 @endsection
 @section('content')
-
+@php
+$status = app('request')->input('status');
+@endphp
 <style>
 	#page-top {
 		padding-bottom: 0 !important;
@@ -25,12 +27,12 @@
 							<label>Lọc theo</label>
 
 							<select class="form-control status-filter" style="width: 50%; display: inline; margin-left: 10px;">
-								<option selected="" value="all">Tất cả tình trạng</option>
-								<option value="0">Chưa xử lý</option>
-								<option value="1">Đã xác nhận đơn hàng</option>
-								<option value="2">Đã giao hàng, chưa thu tiền</option>
-								<option value="3">Đã thu tiền</option>
-								<option value="-1">Hoàn trả sản phẩm</option>
+								<option {{ $status ? '' : 'selected="selected"' }} value=''>Tất cả tình trạng</option>
+								<option {{ $status == '0' ? 'selected="selected"' : '' }} value="0">Chưa xử lý</option>
+								<option {{ $status == 1 ? 'selected="selected"' : '' }} value="1">Đã xác nhận đơn hàng</option>
+								<option {{ $status == 2 ? 'selected="selected"' : '' }} value="2">Đã giao hàng, chưa thu tiền</option>
+								<option {{ $status == 3 ? 'selected="selected"' : '' }} value="3">Đã thu tiền</option>
+								<option {{ $status == -1 ? 'selected="selected"' : '' }} value="-1">Hoàn trả sản phẩm</option>
 							</select>
 						</div>
 					</div>
@@ -48,21 +50,14 @@
 @section('script')
 <script>
 	$(function() {
-		$('select.status-filter').on('change', function() {
-			var status = $(this).children("option:selected").val();
-			$.ajax({
-				type: 'POST',
-				url: "{{route('admin.order.filter')}}",
-				data: {
-					'_token': '{{csrf_token()}}',
-					'status': status,
-				},
-				success: function(data) {
-					console.log('success')
-					$('.ajax-table').html(data.html);
-				},
-			});
-		})
-	})
+		$('select.status-filter').on('change', redirectParam);
+	});
+
+	function redirectParam() {
+		var status = $(this).children("option:selected").val();
+		var param = '?status=' + status;
+		const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+		window.location.href = url + param;
+	}
 </script>
 @endsection

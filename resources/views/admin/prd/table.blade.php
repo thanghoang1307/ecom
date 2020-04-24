@@ -33,4 +33,4 @@
   </table>
 </div>
 <!-- /.card-body -->
-<div class="card-footer clearfix">{{$prds->render()}}</div>
+<div class="card-footer clearfix">{{$prds->appends(request()->input())->links()}}</div>
