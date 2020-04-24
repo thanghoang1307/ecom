@@ -52,28 +52,9 @@ class PrdController extends Controller
         $attr_families = $this->attr_family->getAllData();
         $cats = $this->cat->getAllData();
         return view('admin.prd.index', compact(['prds', 'attr_families', 'brands', 'cats']));
-        // $prds = $this->prd->getAll();
-        // $brands = $this->brand->getAllData();
-        // $attr_families = $this->attr_family->getAllData();
-        // $cats = $this->cat->getAllData();
-        // $chosen_cat = "all";
-
     }
 
-    public function filter(Request $request)
-    {
-        if ($request->cat_id == "all") {
-            $prds = $this->prd->getAll();
-            $chosen_cat = "all";
-        } else {
-            $chosen_cat = $this->cat->find($request->cat_id);
-            $prds = $chosen_cat->prds()->paginate(10);
-        }
-        $brands = $this->brand->getAllData();
-        $attr_families = $this->attr_family->getAllData();
-        $cats = $this->cat->getAllData();
-        return response()->json(['html' => view('admin.prd.table', compact(['prds', 'attr_families', 'brands', 'cats', 'chosen_cat']))->render()]);
-    }
+
 
     public function create(StoreProduct $request)
     {

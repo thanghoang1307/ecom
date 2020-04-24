@@ -25,12 +25,6 @@ class OrderController extends Controller
     return view('admin.order.index', compact('orders'));
   }
 
-  public function filter(Request $request)
-  {
-
-    return response()->json(['html' => view('admin.order.table', compact('orders'))->render()]);
-  }
-
   public function edit($order_number)
   {
     $order = $this->order->getFromOrderNumber($order_number);
