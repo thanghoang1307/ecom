@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="ajax-loader d-none">
-  <div class="loader"></div>
+  <div class="loader"><!--<img src="/assets/img/loading.gif" alt="" />--></div>
   <div class="loader-bg"></div>
 </div>
 

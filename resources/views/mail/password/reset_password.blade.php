@@ -5,33 +5,19 @@
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<style>
-		/*@media (min-device-width:768px) and (max-device-width:799px), (max-width:768px) and (max-width:768px) {
-			table {
-				/*font-size: 30px;
-				line-height: 1.2em;*!/
-			}
-			/*.hotline {
-				font-size: 1.0em;
-			}*!/
-		}*/
-		@media screen and (min-device-width:800px), screen and (min-width:800px) {
-			table {
-				font-size: 16px;
-				line-height: 1.0em;
-			}
-			.hotline {
-				font-size: 1.2em;
+		@media screen and (min-device-width:600px), screen and (min-width:600px) {
+			#main {
+				font-size: 14px;
+				line-height: 1.2em;
+				width: 600px;
 			}
 		}
-		/*@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
-			table {
-				font-size: 30px;
-				line-height: 1.2em;
+		@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
+			#main {
+				width: 95vw;
+				/*font-size: 0.7em;*/
 			}
-			.hotline {
-				font-size: 1.0em;
-			}
-		}*/
+		}
 	</style>
 </head>
 <body>
@@ -41,7 +27,7 @@
 			<tr>
 				<td>
 					<!-- mail content -->
-					<table style="text-align: center; margin:0 auto; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" width="600" cellpadding="0" cellspacing="0" border="0">
+					<table id="main" style="text-align: center; margin:0 auto; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;" cellpadding="0" cellspacing="0" border="0">
 						<tbody>
 							<tr>
 								<td>
@@ -49,18 +35,17 @@
 									<table style="background:#962d91;" width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tbody>
 											<tr>
-												<td width="50%">
-													<p style="padding: 10px 0 5px 10px; margin: 0;"><a href="https://onestopshop.vn" target="_blank">
+												<td width="60%">
+													<p style="padding: 0; margin: 7px 0 3px 10px;"><a href="https://onestopshop.vn" target="_blank">
 														<a href="https://onestopshop.vn" target="_blank">
 															<img style="border: none;" class="CToWUd" data-image-whitelisted="" src="https://onestopshop.vn/uploads/photos/shares/logo-w.png" width="100%" alt="" />
-														</a>
 														</a></p>
 												</td>
-												
-												<td width="50%">
-													<p style="padding: 0; margin-right:10px; text-align: right;"><a style="color: white; text-decoration: none;" href="tel:0837000247"><span style="font-size: 0.7em;">Hotline</span>
-														
-													<br /><span class="hotline" style="font-weight: bold;">0837.000.247</span></a></p>
+												<td width="40%">
+													<p class="hotline" style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none; line-height: 0.9em;">
+														<span style="font-size: 0.7em; margin: 0; padding: 0;">Hotline</span><br />
+														<span style="font-size: 1em; margin: 0; padding: 0;"><a style="color: white; text-decoration: none; font-size: 0.9em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
+													</p>
 												</td>
 											</tr>
 										</tbody>
@@ -75,7 +60,7 @@
 										<tbody>
 											<tr>
 												<td>
-													<div style="margin: 0; padding: 30px; text-align: center; color: #666; background: white;">
+													<div style="margin: 0; padding: 20px; text-align: center; color: #666; background: white;">
 														<!-- welcome -->
 														<p style="">Kính chào {{ $customer->name }},</p>
 														
@@ -87,7 +72,7 @@
 											</tr>
 											<tr>
 												<td>
-													<div style="margin: 0; padding: 30px; text-align: center; color: #666; background: white; border-bottom: 2px solid #ddd; border-top: 2px solid #ddd;">
+													<div style="margin: 0; padding: 20px; text-align: center; color: #666; background: white; border-bottom: 2px solid #ddd; border-top: 2px solid #ddd;">
 														<p style="margin-bottom: 10px; padding-bottom: 10px;">Hoặc<br />
 														<br />
 														</p>
@@ -100,7 +85,7 @@
 											</tr>
 											<tr>
 												<td>
-													<div style="margin: 0; padding: 30px; text-align: center; color: #666; background: white;">
+													<div style="margin: 0; padding: 20px; text-align: center; color: #666; background: white;">
 														<p style=" font-size: 0.7em;">OneStopShop.vn xin chân thành cảm ơn và rất mong sẽ tiếp tục nhận được sự ủng hộ của Quý khách trong tương lai!</p>
 													</div>
 												</td>
