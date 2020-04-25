@@ -203,7 +203,16 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 	window.sessionStorage.setItem("cart-page", window.location.href);
 	//alert('cart:'+sessionStorage.getItem("cart-page"));
 }
-  </script>
+window.onpageshow = function (event) {
+	//desktop
+	if (event.persisted || window.location.hash != "undefined") {
+		if (window.performance.navigation.type == 2) {
+//			alert('aa');
+			window.location.reload(true);
+		}
+	}
+};
+</script>
 </body>
 
 </html>

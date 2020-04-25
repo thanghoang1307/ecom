@@ -295,10 +295,10 @@ window.onpageshow = function(event) {
 	}
 	else {
 		//force reload on desktop
-		if (event.persisted) {
-//		  sessionStorage.removeItem("product-page");
-//		  sessionStorage.removeItem("cart-page");
-		  window.location.reload(true);
+		if (event.persisted || window.location.hash != "undefined") {
+			if (window.performance.navigation.type == 2) {
+				window.location.reload(true);
+			}
 		}
 	}
 };

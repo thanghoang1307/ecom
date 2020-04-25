@@ -30,9 +30,11 @@
 	}
 	else {
 		//desktop
-		if (event.persisted) {
-			window.location.reload(true);
-	    }
+		if (event.persisted || window.location.hash != "undefined") {
+			if (window.performance.navigation.type == 2) {
+				window.location.reload(true);
+			}
+		}
 	}
   };
 
