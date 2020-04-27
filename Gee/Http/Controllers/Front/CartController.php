@@ -129,45 +129,49 @@ class CartController extends Controller
 
 	public function success($order_number)
 	{
-		$order = $this->order->getFromOrderNumber($order_number);
-		$order->update(['status' => 0]);
 
-		foreach (session('cart.items') as $key => $value) {
-			$price = $this->prd->find($key)->current_price;
-			$order_prd = $this->order_prd->create([
-				'order_id' => $order->id,
-				'prd_id' => $key,
-				'qty' => $value,
-				'price' => $price,
-				'total' => $value * $price,
-			]);
+		if (session()->get('cart')) {
+			$order = $this->order->getFromOrderNumber($order_number);
+			$order->update(['status' => 0]);
+
+			foreach (session('cart.items') as $key => $value) {
+				$price = $this->prd->find($key)->current_price;
+				$order_prd = $this->order_prd->create([
+					'order_id' => $order->id,
+					'prd_id' => $key,
+					'qty' => $value,
+					'price' => $price,
+					'total' => $value * $price,
+				]);
+			}
+
+			session()->forget('cart');
+
+			$user = User::where('role', 0)->first();
+			$customer = $order->customer_id ? $order->customer : $order->guest;
+			// Backup your default mailer
+			$backup = Mail::getSwiftMailer();
+
+			// Setup your gmail mailer
+			$transport = new \Swift_SmtpTransport('smtp.zoho.com', 587, 'tls');
+			$transport->setUsername('sales@onestopshop.vn');
+			$transport->setPassword('Osop@199');
+			// Any other mailer configuration stuff needed...
+
+			$gmail = new \Swift_Mailer($transport);
+			// Set the mailer as gmail
+			Mail::setSwiftMailer($gmail);
+
+			// Send your message
+			Mail::to($customer->email)->send(new OrderComplete($order));
+			Mail::to($user->email)->send(new OrderComplete($order));
+
+			// Restore your original mailer
+			Mail::setSwiftMailer($backup);
+			return view('front.success', compact('order'));
+		} else {
+			return redirect()->route('front.check_out_1');
 		}
-
-		session()->forget('cart');
-
-		$user = User::where('role', 0)->first();
-		$customer = $order->customer_id ? $order->customer : $order->guest;
-		// Backup your default mailer
-		$backup = Mail::getSwiftMailer();
-
-		// Setup your gmail mailer
-		$transport = new \Swift_SmtpTransport('smtp.zoho.com', 587, 'tls');
-		$transport->setUsername('sales@onestopshop.vn');
-		$transport->setPassword('Osop@199');
-		// Any other mailer configuration stuff needed...
-
-		$gmail = new \Swift_Mailer($transport);
-		// Set the mailer as gmail
-		Mail::setSwiftMailer($gmail);
-
-		// Send your message
-		Mail::to($customer->email)->send(new OrderComplete($order));
-		Mail::to($user->email)->send(new OrderComplete($order));
-
-		// Restore your original mailer
-		Mail::setSwiftMailer($backup);
-
-		return view('front.success', compact('order'));
 	}
 
 	public function ajaxUpdateCart(Request $request)
