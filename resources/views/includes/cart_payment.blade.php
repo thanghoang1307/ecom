@@ -187,7 +187,7 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="radio">
-												<input id="radio-1" name="payment_type" type="radio" value="0" checked>
+												<input id="radio-1" name="payment_type" type="radio" value="0" {{old('payment_type') == 0 || !old('payment_type') ? "checked" : "" }}>
 
 												<label for="radio-1" class="radio-label">Thanh toán khi nhận hàng (C.O.D)</label>
 											</div>
@@ -195,7 +195,7 @@
 
 										<div class="col-md-6">
 											<div class="radio">
-												<input id="radio-2" name="payment_type" type="radio" value="1">
+												<input id="radio-2" name="payment_type" type="radio" value="1" {{old('payment_type') == 1 ? "checked" : "" }}>
 
 												<label for="radio-2" class="radio-label">Chuyển khoản</label>
 											</div>
