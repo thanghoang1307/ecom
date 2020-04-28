@@ -187,7 +187,7 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="radio">
-												<input id="radio-1" name="payment_type" type="radio" value="0" checked="checked">
+												<input id="radio-1" name="payment_type" type="radio" value="0" checked>
 
 												<label for="radio-1" class="radio-label">Thanh toán khi nhận hàng (C.O.D)</label>
 											</div>
