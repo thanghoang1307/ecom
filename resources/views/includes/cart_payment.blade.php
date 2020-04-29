@@ -6,7 +6,7 @@
 				<li><a class="active"><span class="d-none d-sm-block">Thông tin đặt hàng</span></a></li>
 				<li><a class="active"><span>Thanh toán</span></a></li>
 				<li>
-					<a=><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a>
+					<a><span class="d-none d-sm-block">Hoàn tất đơn hàng</span></a>
 				</li>
 			</ul>
 		</div>
@@ -23,7 +23,7 @@
 								<div class="process-profile-block-head">
 									<div class="row">
 										<div class="col-md-6">
-											<div class="radio">
+											<div class="radio payment">
 												<!--<input id="radio-1" name="radio" type="radio" value="0" checked>-->
 												<input id="radio-1" name="payment_type" type="radio" value="0" {{old('payment_type') == 0 || !old('payment_type') ? "checked" : "" }}>
 
@@ -32,7 +32,7 @@
 										</div>
 
 										<div class="col-md-6">
-											<div class="radio">
+											<div class="radio payment">
 												<!--<input id="radio-2" name="radio" type="radio" value="1" checked>-->
 												<input id="radio-2" name="payment_type" value="1" type="radio" {{old('payment_type') == 1 ? "checked" : "" }}>
 
