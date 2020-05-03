@@ -22,6 +22,9 @@ $status = app('request')->input('status');
 			<div class="card-body" id="page-top">
 				<div class="row">
 					<div class="col-md-6 col-12">
+						<a class="btn btn-secondary" href="{{route('admin.order.export')}}">Export</a>
+					</div>
+					<div class="col-md-6 col-12">
 						<div class="form-group">
 							<label>Lọc theo</label>
 

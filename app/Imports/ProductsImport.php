@@ -7,8 +7,9 @@ use App\Models\Prd\Brand;
 use App\Models\Prd\AttrFamily;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\Repositories\Prd\PrdInterface;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ProductsImport implements ToModel
+class ProductsImport implements ToModel, WithHeadingRow
 {
     /**
      * @param array $row
@@ -24,46 +25,46 @@ class ProductsImport implements ToModel
 
     public function model(array $row)
     {
-        $brand = Brand::where('name', $row[3])->first();
-        $attr_family = AttrFamily::where('name', $row[4])->first();
+        $brand = Brand::where('name', $row['brand'])->first();
+        $attr_family = AttrFamily::where('name', $row['group'])->first();
 
         if (!$brand) {
             $new_brand = Brand::create([
-                'name' => $row[3],
-                'slug' => to_slug($row[3]),
+                'name' => $row['brand'],
+                'slug' => to_slug($row['brand']),
             ]);
-            $row[3] = $new_brand->id;
+            $row['brand'] = $new_brand->id;
         } else {
-            $row[3] = $brand->id;
+            $row['brand'] = $brand->id;
         }
 
         if (!$attr_family) {
             $new_attr_family = AttrFamily::create([
-                'name' => $row[4],
-                'code' => to_slug($row[4]),
+                'name' => $row['group'],
+                'code' => to_slug($row['group']),
             ]);
-            $row[4] = $new_attr_family->id;
+            $row['group'] = $new_attr_family->id;
         } else {
-            $row[4] = $attr_family->id;
+            $row['group'] = $attr_family->id;
         }
 
-        if (!$row[6]) {
-            $current_price = $row[5];
+        if (!$row['sale_price']) {
+            $current_price = $row['regular_price'];
         } else {
-            $current_price = $row[6];
+            $current_price = $row['sale_price'];
         }
 
-        $unique_slug = $this->prd->createUniqueSlug(to_slug($row[2]));
+        $unique_slug = $this->prd->createUniqueSlug(to_slug($row['name']));
 
         return new Prd([
-            'sku' => $row[1],
+            'sku' => $row['sku'],
             'slug' => $unique_slug,
-            'name' => $row[2],
-            'brand_id' => $row[3],
-            'attr_family_id' => $row[4],
-            'regular_price' => $row[5],
-            'sale_price' => $row[6],
-            'thumb' => $row[7],
+            'name' => $row['name'],
+            'brand_id' => $row['brand'],
+            'attr_family_id' => $row['group'],
+            'regular_price' => $row['regular_price'],
+            'sale_price' => $row['sale_price'],
+            'thumb' => $row['thumb'],
             'current_price' => $current_price,
         ]);
     }

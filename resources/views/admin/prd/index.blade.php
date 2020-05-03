@@ -63,6 +63,7 @@ $cat_id = app('request')->input('cat_id');
 				</div>
 				<div class="modal-body">
 					<input type="file" name="prd" id="fileToUpload">
+					<a href="{{route('admin.prd.download_template')}}">Tải mẫu</a>
 				</div>
 				<div class="modal-footer justify-content-between">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

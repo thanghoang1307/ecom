@@ -33,6 +33,10 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::get('/delete_attr/{attr_id}/{prd_id}', 'PrdController@delete_attr')->name('delete_attr');
             Route::get('/export', 'PrdController@productsExport')->name('export');
             Route::post('/import', 'PrdController@productsImport')->name('import');
+            Route::get('/tai-mau', function () {
+                $path = storage_path('products.xlsx');
+                return response()->download($path);
+            })->name('download_template');
         });
         //Kết thức sản phẩm
 
@@ -129,6 +133,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::get('/', 'OrderController@index')->name('index');
             Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
             Route::post('/update/{order_number}', 'OrderController@update')->name('update');
+            Route::get('export', 'OrderController@export')->name('export');
         });
         // End order
 

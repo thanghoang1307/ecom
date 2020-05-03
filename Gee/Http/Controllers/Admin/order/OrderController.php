@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Repositories\Order\OrderInterface;
+use App\Exports\OrdersExport;
+use Maatwebsite\Excel\Excel;
 
 
 class OrderController extends Controller
@@ -14,6 +16,12 @@ class OrderController extends Controller
   {
     $this->order = $order;
   }
+
+  public function export(Request $request)
+  {
+    return \Excel::download(new OrdersExport(), 'orders.xlsx');
+  }
+
   public function index(Request $request)
   {
     if ($request->status !== null) {

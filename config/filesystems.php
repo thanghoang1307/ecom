@@ -42,7 +42,6 @@ return [
     */
 
     'disks' => [
-
         'local' => [
             'driver' => 'local',
             'root' => __DIR__ . '/../../public_html/uploads',
@@ -51,8 +50,13 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => __DIR__ . '/../../public_html/uploads',
-            'url' => env('APP_URL').'/uploads',
+            'url' => env('APP_URL') . '/uploads',
             'visibility' => 'public',
+        ],
+
+        'local_public' => [
+            'driver' => 'local',
+            'root'   => public_path(),
         ],
 
         's3' => [
