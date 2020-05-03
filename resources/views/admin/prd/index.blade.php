@@ -24,6 +24,8 @@ $cat_id = app('request')->input('cat_id');
 				<div class="row">
 					<div class="col-md-6 col-12">
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus"></i></button>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-import">Import</button>
+						<a href="{{route('admin.prd.export')}}" class="btn btn-info">Export</a>
 					</div>
 					<div class="col-md-6 col-12" style="text-align: right;">
 						<div class="form-group">
@@ -50,6 +52,27 @@ $cat_id = app('request')->input('cat_id');
 <!-- /.row -->
 @endsection
 @section('modal')
+<div class="modal fade" id="modal-import" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form action="{{route('admin.prd.import')}}" method="POST" enctype="multipart/form-data">
+				@csrf
+				<div class="modal-header">
+					<h4 class="modal-title">Nhập excel</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				</div>
+				<div class="modal-body">
+					<input type="file" name="prd" id="fileToUpload">
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-secondary">Import</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">

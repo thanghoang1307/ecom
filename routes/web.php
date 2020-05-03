@@ -31,6 +31,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::get('/delete/{id}', 'PrdController@delete')->name('delete');
             Route::post('/add_attr/{id}', 'PrdController@addAttr');
             Route::get('/delete_attr/{attr_id}/{prd_id}', 'PrdController@delete_attr')->name('delete_attr');
+            Route::get('/export', 'PrdController@productsExport')->name('export');
+            Route::post('/import', 'PrdController@productsImport')->name('import');
         });
         //Kết thức sản phẩm
 

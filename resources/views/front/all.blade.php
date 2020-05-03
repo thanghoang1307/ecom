@@ -21,7 +21,7 @@
       </div>
       <div class="col-lg-9">
         <section id="product-list">
-        @include('includes.product-loop-cat')
+          @include('includes.product-loop-cat')
         </section>
       </div>
     </div>
@@ -36,93 +36,92 @@
 @endsection
 @section('script')
 <script>
-  $(function(){
-  // Desktop Order
-  $('#product-order').on('change','input[name="d_orderby"]',redirectParam);
+  $(function() {
+    // Desktop Order
+    $('#product-order').on('click', 'input[name="d_orderby"]', redirectParam);
 
-  // Desktop Filter
-  $('#product-category').on('change',['input[name="brand_checkbox"]','input[name="price_checkbox"]'],redirectParam);
-  
-  // Mobile Order & Filter
-  $('button.apply-filter').on('click',function(e){
-  e.preventDefault();
-  mobileRedirectParam();
-  });
+    // Desktop Filter
+    $('#product-category').on('change', ['input[name="brand_checkbox"]', 'input[name="price_checkbox"]'], redirectParam);
 
-  $('button.clear-filter').on('click',function(e){
-  e.preventDefault();
-  clearOrderAndFilter();
-  });
+    // Mobile Order & Filter
+    $('button.apply-filter').on('click', function(e) {
+      e.preventDefault();
+      mobileRedirectParam();
+    });
+
+    $('button.clear-filter').on('click', function(e) {
+      e.preventDefault();
+      clearOrderAndFilter();
+    });
 
   });
 </script>
 <script>
-function clearOrderAndFilter(){
-const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
-window.location.href = url;
-}
+  function clearOrderAndFilter() {
+    const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+    window.location.href = url;
+  }
 
-function redirectParam(){
-var brand_arr = [];
-$.each($("input[name='brand_checkbox']:checked"), function(){
-brand_arr.push($(this).val());
-});
-var price_arr = [];
-$.each($("input[name='price_checkbox']:checked"), function(){
-price_arr.push($(this).val());
-});
+  function redirectParam() {
+    var brand_arr = [];
+    $.each($("input[name='brand_checkbox']:checked"), function() {
+      brand_arr.push($(this).val());
+    });
+    var price_arr = [];
+    $.each($("input[name='price_checkbox']:checked"), function() {
+      price_arr.push($(this).val());
+    });
 
-var search = '{{app("request")->input("search")}}';
+    var search = '{{app("request")->input("search")}}';
 
-var param_arr = [];
-param_arr.push('orderby=' + $('input[name="d_orderby"]:checked').val());
-if (brand_arr.length){
-  param_arr.push('brand=' + brand_arr.join('_'));
-}
+    var param_arr = [];
+    param_arr.push('orderby=' + $('input[name="d_orderby"][checked="checked"]').val());
+    if (brand_arr.length) {
+      param_arr.push('brand=' + brand_arr.join('_'));
+    }
 
-if (price_arr.length){
-  param_arr.push('price=' + price_arr.join('_'));
-}
+    if (price_arr.length) {
+      param_arr.push('price=' + price_arr.join('_'));
+    }
 
-if (search){
-  param_arr.push('search='+search);
-}
+    if (search) {
+      param_arr.push('search=' + search);
+    }
 
-param = '?' + param_arr.join('&');
-const url = 'https://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
-window.location.href = url + param;
-};
+    param = '?' + param_arr.join('&');
+    const url = 'https://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+    window.location.href = url + param;
+  };
 
-function mobileRedirectParam(){
-var brand_arr = [];
-$.each($("input[name='mb_checkbox']:checked"), function(){
-brand_arr.push($(this).val());
-});
+  function mobileRedirectParam() {
+    var brand_arr = [];
+    $.each($("input[name='mb_checkbox']:checked"), function() {
+      brand_arr.push($(this).val());
+    });
 
-var price_arr = [];
-$.each($("input[name='mp_checkbox']:checked"), function(){
-price_arr.push($(this).val());
-});
+    var price_arr = [];
+    $.each($("input[name='mp_checkbox']:checked"), function() {
+      price_arr.push($(this).val());
+    });
 
-var search = '{{app("request")->input("search")}}';
+    var search = '{{app("request")->input("search")}}';
 
-var param_arr = [];
-param_arr.push('orderby=' + $('input[name="m_orderby"]:checked').val());
-if (brand_arr.length){
-  param_arr.push('brand=' + brand_arr.join('_'));
-}
+    var param_arr = [];
+    param_arr.push('orderby=' + $('input[name="m_orderby"]:checked').val());
+    if (brand_arr.length) {
+      param_arr.push('brand=' + brand_arr.join('_'));
+    }
 
-if (price_arr.length){
-  param_arr.push('price=' + price_arr.join('_'));
-}
+    if (price_arr.length) {
+      param_arr.push('price=' + price_arr.join('_'));
+    }
 
-if (search){
-  param_arr.push('search='+search);
-}
-param = '?' + param_arr.join('&');
-const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
-window.location.href = url + param;
-};
-
+    if (search) {
+      param_arr.push('search=' + search);
+    }
+    param = '?' + param_arr.join('&');
+    const url = 'http://' + window.location.hostname + ':' + window.location.port + window.location.pathname;
+    window.location.href = url + param;
+  };
 </script>
 @endsection

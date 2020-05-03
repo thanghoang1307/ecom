@@ -13,6 +13,9 @@ use App\Repositories\Prd\PrdImageInterface;
 use App\Repositories\Prd\AttrFamilyInterface;
 use App\Http\Requests\StoreProduct;
 use App\Http\Requests\UpdateProduct;
+use App\Exports\ProductsExport;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Excel;
 
 class PrdController extends Controller
 {
@@ -28,9 +31,18 @@ class PrdController extends Controller
     protected $cat;
     protected $prd_image;
     protected $attr_family;
+    protected $excel;
 
-    public function __construct(PrdInterface $prd, AttrGrInterface $attr_gr, BrandInterface $brand, AttrInterface $attr, CatInterface $cat, PrdImageInterface $prd_image, AttrFamilyInterface $attr_family)
-    {
+    public function __construct(
+        PrdInterface $prd,
+        AttrGrInterface $attr_gr,
+        BrandInterface $brand,
+        AttrInterface $attr,
+        CatInterface $cat,
+        PrdImageInterface $prd_image,
+        AttrFamilyInterface $attr_family,
+        Excel $excel
+    ) {
         $this->prd = $prd;
         $this->attr_gr = $attr_gr;
         $this->brand = $brand;
@@ -38,6 +50,18 @@ class PrdController extends Controller
         $this->cat = $cat;
         $this->prd_image = $prd_image;
         $this->attr_family = $attr_family;
+        $this->excel = $excel;
+    }
+
+    public function productsExport(Request $request)
+    {
+        return \Excel::download(new ProductsExport($this->prd), 'products.xlsx');
+    }
+
+    public function productsImport(Request $request)
+    {
+        \Excel::import(new ProductsImport($this->prd), $request->prd);
+        return redirect()->back();
     }
 
     public function index(Request $request)
