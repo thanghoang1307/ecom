@@ -300,10 +300,13 @@ $(function() {
 	// };
 
 	$('#toast-container').delay(3000).fadeOut('fast');
-	$(document).ready(function() {
+	// update quick cart info
+	window.onpageshow = function() {
 		setTimeout(function() {
-			$('#cart').load(document.URL + ' #cart>*');
-		}, 700);
+			$('#cart').load(document.URL + " #cart>*");
+		}, 100);
+	}
+	$(document).ready(function() {
 		//show image when finish load
 		$('img').removeClass("d-none");
 		//show current Year
