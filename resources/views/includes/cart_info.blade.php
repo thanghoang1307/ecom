@@ -1,3 +1,8 @@
+@auth('customer')
+                          @php
+                          $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
+                          @endphp
+                          @endauth
 @if(session()->get('cart.items'))
 <div class="col-md-6">
       <section class="cart-process">

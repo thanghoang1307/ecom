@@ -130,7 +130,7 @@ class CartController extends Controller
 	public function success($order_number)
 	{
 
-		if (session()->get('cart')) {
+		if (session()->get('cart.items')) {
 			$order = $this->order->getFromOrderNumber($order_number);
 			$order->update(['status' => 0]);
 

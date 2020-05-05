@@ -8,8 +8,10 @@ use App\Models\Prd\AttrFamily;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\Repositories\Prd\PrdInterface;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
 
-class ProductsImport implements ToModel, WithHeadingRow
+class ProductsImport implements ToCollection, WithHeadingRow
 {
     /**
      * @param array $row
@@ -23,8 +25,9 @@ class ProductsImport implements ToModel, WithHeadingRow
         $this->prd = $prd;
     }
 
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
+        foreach ($rows as $row) {
         $brand = Brand::where('name', $row['brand'])->first();
         $attr_family = AttrFamily::where('name', $row['group'])->first();
 
@@ -55,10 +58,11 @@ class ProductsImport implements ToModel, WithHeadingRow
         }
 
         $unique_slug = $this->prd->createUniqueSlug(to_slug($row['name']));
-
-        return new Prd([
-            'sku' => $row['sku'],
-            'slug' => $unique_slug,
+        $is_show = $row['is_show'] == "Hiện" ? 1 : 0;
+        
+        Prd::updateOrCreate(
+            ['sku' => $row['sku'],],
+            ['slug' => $unique_slug,
             'name' => $row['name'],
             'brand_id' => $row['brand'],
             'attr_family_id' => $row['group'],
@@ -66,6 +70,8 @@ class ProductsImport implements ToModel, WithHeadingRow
             'sale_price' => $row['sale_price'],
             'thumb' => $row['thumb'],
             'current_price' => $current_price,
-        ]);
+            'is_show' => $is_show,
+            ]);
+    }
     }
 }

@@ -28,11 +28,13 @@ class ProductsExport implements FromCollection, Withmapping, WithHeadings
       'Giá thường',
       'Giá khuyến mãi',
       'Ảnh đại diện',
+      'Ẩn/Hiện'
     ];
   }
 
   public function map($prd): array
   {
+    $status = $prd->is_show == 1? "Hiện" : "Ẩn";
     return [
       $prd->id,
       $prd->sku,
@@ -42,6 +44,7 @@ class ProductsExport implements FromCollection, Withmapping, WithHeadings
       $prd->regular_price,
       $prd->sale_price,
       $prd->thumb,
+      $status,
     ];
   }
 
