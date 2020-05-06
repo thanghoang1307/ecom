@@ -3,6 +3,11 @@
                           $address = Auth::guard('customer')->user()->addresses()->where('is_primary',1)->first();
                           @endphp
                           @endauth
+                          @guest('customer')
+  @php
+  $address = null;
+  @endphp
+                          @endguest
 @if(session()->get('cart.items'))
 <div class="col-md-6">
       <section class="cart-process">
