@@ -36,6 +36,19 @@ Thông tin chi tiết {{ $type == 'customer' ? 'thành viên' : 'khách'}}
 					</tbody>
 				</table>
 			</div>
+			<div class="card-footer">
+				@if($customer->status == 'active')
+				<form action="{{route('admin.customer.deactive',$customer->id)}}" method="POST">
+					@csrf
+					<button class="btn btn-danger">Vô hiệu hoá</button>
+				</form>
+				@else
+				<form action="{{route('admin.customer.active',$customer->id)}}" method="POST">
+					@csrf
+					<button class="btn btn-success">Kích hoạt lại</button>
+				</form>
+				@endif
+			</div>
 		</div>
 	</div>
 </div>

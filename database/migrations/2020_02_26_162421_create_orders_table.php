@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
             $table->integer('payment_type')->nullable();
             $table->integer('status')->default(-2);
+            $table->text('cancel_reason')->nullable();
             $table->timestamps();
         });
     }

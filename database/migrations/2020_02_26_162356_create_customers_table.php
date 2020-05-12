@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->rememberToken();
             $table->string('gender')->nullable();
             $table->string('name');
+            $table->string('status')->default('active');
             $table->string('phone')->nullable();
             $table->timestamps();
         });

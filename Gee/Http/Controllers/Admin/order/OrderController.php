@@ -44,6 +44,23 @@ class OrderController extends Controller
     $order = $this->order->getFromOrderNumber($order_number);
     $order->update(['status' => $request->status]);
     $order->save();
-    return redirect()->route('admin.order.index');
+    return redirect()->route('admin.order.index')->with('success','Cập nhật thành công');
+  }
+
+  public function success($id)
+  {
+    $order = $this->order->find($id);
+    $order->status = 5;
+    $order->save();
+    return redirect()->route('admin.order.index')->with('success','Đơn hàng đã hoàn tất');
+  }
+
+  public function fail($id, Request $request)
+  {
+    $order = $this->order->find($id);
+    $order->status = -3;
+    $order->cancel_reason = $request->cancel_reason;
+    $order->save();
+    return redirect()->route('admin.order.index')->with('error','Đơn hàng đã bị huỷ');
   }
 }

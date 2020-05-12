@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Prd;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
+use App\Models\Prd\Tag;
+use App\Models\Prd\PrdTag;
 use App\Repositories\Prd\PrdInterface;
 use App\Repositories\Prd\AttrGrInterface;
 use App\Repositories\Prd\AttrInterface;
@@ -112,9 +114,10 @@ class PrdController extends Controller
         // $attrs_in_id = $this->prd->getAttrsInIdArray($id);
         // $attrs_not_in = $this->attr->getAttrNotIn($attrs_in_id);
         $cats = $this->cat->getAll();
+        $tags = implode(',',$prd->tags()->pluck('name')->toArray());
 
         $image = implode(',', $this->prd_image->getInput($id));
-        return view('admin.prd.edit', compact(['prd', 'brands', 'cats', 'image', 'attr_grs']));
+        return view('admin.prd.edit', compact(['prd', 'brands', 'cats', 'image', 'attr_grs', 'tags']));
     }
 
     /**
@@ -132,7 +135,21 @@ class PrdController extends Controller
         } else {
             $current_price = $request->regular_price;
         }
-        $prd = $this->prd->update($id, array_merge($request->all(), ['current_price' => $current_price]));
+
+        $prd = $this->prd->find($id);
+        if($request->tags) {
+        $tags = explode(',',$request->tags);
+        $tag_ids = array();
+        foreach ($tags as $tag) {
+            $firstOrCreateTag = Tag::firstOrCreate(['name' => $tag]);
+            $tag_ids[] = $firstOrCreateTag->id;
+        }
+        $prd->tags()->sync($tag_ids);
+        } else {
+            $prd->tags()->sync([]);
+        }
+
+        $this->prd->update($id, array_merge($request->all(), ['current_price' => $current_price]));
         $this->prd->addCats($id, $request->categories);
         $this->prd->addAttrValue($id, $request->all());
         $this->prd_image->addImages($id, $request->images);

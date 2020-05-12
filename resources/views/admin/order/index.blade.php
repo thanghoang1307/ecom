@@ -34,7 +34,10 @@ $status = app('request')->input('status');
 								<option {{ $status == 1 ? 'selected="selected"' : '' }} value="1">Đã xác nhận đơn hàng</option>
 								<option {{ $status == 2 ? 'selected="selected"' : '' }} value="2">Đã giao hàng, chưa thu tiền</option>
 								<option {{ $status == 3 ? 'selected="selected"' : '' }} value="3">Đã thu tiền</option>
+								<option {{ $status == 4 ? 'selected="selected"' : '' }} value="4">Đã chuyển khoản</option>
 								<option {{ $status == -1 ? 'selected="selected"' : '' }} value="-1">Hoàn trả sản phẩm</option>
+								<option {{ $status == -3 ? 'selected="selected"' : '' }} value="-3">Đơn hàng đã huỷ</option>
+								<option {{ $status == 5 ? 'selected="selected"' : '' }} value="5">Đơn hàng đã hoàn tất</option>
 							</select>
 						</div>
 					</div>

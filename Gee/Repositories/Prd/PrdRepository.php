@@ -27,6 +27,10 @@ class PrdRepository extends EloquentRepository implements PrdInterface
             if ($search) {
                 $q->where('name', 'like', '%' . $search . '%');
                 $q->orWhere('sku', 'like', '%' . $search . '%');
+                $q->orWhere('long_desc', 'like', '%' . $search . '%');
+                $q->orWhereHas('tags', function ($tq) use ($search) {
+                    $tq->where('name','like','%'.$search.'%');
+                });
             }
             if ($prices) {
                 $i = 0;
@@ -100,7 +104,7 @@ class PrdRepository extends EloquentRepository implements PrdInterface
     }
 
     public function addAttrValue($prd_id, $request)
-    {$attr_default = ['name', 'sku', 'brand_id', 'regular_price', 'sale_price', 'short_desc', 'long_desc', 'thumb', 'slug', '_token', 'categories', 'images', 'is_show'];
+    {$attr_default = ['name', 'sku', 'brand_id', 'regular_price', 'sale_price', 'short_desc', 'long_desc', 'thumb', 'slug', '_token', 'categories', 'images', 'is_show','tags'];
         $attrs_in = array_diff_key($request, array_flip($attr_default));
 
         if ($attrs_in) {

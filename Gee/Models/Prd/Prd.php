@@ -30,7 +30,12 @@ class Prd extends Model
     public function first_cat() {
     return $this->cats()->first();
 }
+
 public function attr_family(){
 	return $this->belongsTo(\App\Models\Prd\AttrFamily::class);
+}
+
+public function tags(){
+	return $this->belongsToMany(\App\Models\Prd\Tag::class,'prd_tags','prd_id','tag_id');
 }
 }

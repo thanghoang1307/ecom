@@ -19,6 +19,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
         Route::post('/create', 'UserController@create')->name('create');
         Route::post('/delete/{id}', 'UserController@delete')->name('delete');
         Route::get('/logout', 'UserController@logout')->name('logout');
+        Route::get('/edit/{id}', 'UserController@edit')->name('edit');
+        Route::post('/update/{id}', 'UserController@update')->name('update');
     });
 
     Route::namespace('Prd')->group(function () {
@@ -134,6 +136,8 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
             Route::get('/edit/{order_number}', 'OrderController@edit')->name('edit');
             Route::post('/update/{order_number}', 'OrderController@update')->name('update');
             Route::get('export', 'OrderController@export')->name('export');
+            Route::post('/hoan-tat-don-hang/{id}','OrderController@success')->name('success');
+            Route::post('/huy-don-hang/{id}','OrderController@fail')->name('fail');
         });
         // End order
 
@@ -141,11 +145,29 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
         Route::prefix('khach-hang')->name('customer.')->group(function () {
             Route::get('/', 'CustomerController@index')->name('index');
             Route::get('/show/{type}/{id}', 'CustomerController@show')->name('show');
+            Route::post('/deactive/{id}','CustomerController@deactive')->name('deactive');
+            Route::post('/active/{id}','CustomerController@active')->name('active');
         });
         // End customer
     });
     // Subscriber
     Route::get('/subscribers', 'SubscriberController@index')->name('subscriber.index');
+});
+
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+    // Quên mật khẩu User
+    Route::get('/quen-mat-khau', function () {
+        return view('admin.forgot-password');
+    })->name('user.forget_password_page');
+
+    Route::post('/validate_password', 'UserController@validatePasswordRequest')->name('user.forget_password');
+    Route::get('/cai-lai-mat-khau/{token}', function ($token) {
+        return view('admin.reset-password')->with([
+            'token' => $token,
+            'email' => urldecode($_GET['email']),
+        ]);
+    });    
+    Route::post('/reset_password', 'UserController@resetPassword')->name('user.reset_password');
 });
 
 /*
@@ -196,7 +218,7 @@ Route::name('front.')->namespace('Front')->group(function () {
     Route::post('/getquan', 'PageController@getQuan')->name('getquan');
     Route::post('/getphuong', 'PageController@getPhuong')->name('getphuong');
 
-    // Quên mật khẩu
+    // Quên mật khẩu Customer
     Route::get('/quen-mat-khau', function () {
         return view('front.profile-forgot-password');
     })->name('customer.forget_password_page');

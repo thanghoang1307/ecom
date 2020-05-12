@@ -75,6 +75,9 @@ class CustomerController extends Controller
         $existCustomer = Customer::where('email', $getInfo->email)->first();
 
         if ($existCustomer) {
+            if ($existCustomer->status == 'inactive') {
+                return redirect()->back()->with('error','Tài khoản đã bị vô hiệu hoá. Vui lòng liên hệ admin để mở lại');
+            }
 
             if (!$existCustomer->provider_id) {
                 $existCustomer->update([
@@ -82,7 +85,7 @@ class CustomerController extends Controller
                     'provider_id' => $getInfo->id,
                 ]);
             }
-
+        
             Auth::guard('customer')->login($existCustomer);
             return redirect(Session::get('last_url'))->with('success', 'Đăng nhập thành công');
         } else {
@@ -123,6 +126,8 @@ class CustomerController extends Controller
         $user = $this->customer->findByEmail($request->email);
         if (!$user) {
             return redirect()->back()->with('error', 'Người dùng không tồn tại hoặc chưa đăng ký');
+        } elseif ($user->status == 'inactive') {
+            return redirect()->back()->with('error','Tài khoản đã bị vô hiệu hoá');
         }
 
         $arr = [
@@ -144,7 +149,7 @@ class CustomerController extends Controller
         $customer = DB::table('customers')->where('email', '=', $request->email)
             ->first();
         if (!$customer) {
-            return redirect()->back()->with(['email' => 'Không tồn tại người dùng với email này']);
+            return redirect()->back()->with(['error' => 'Không tồn tại người dùng với email này']);
         }
 
         // Create Password Reset Token

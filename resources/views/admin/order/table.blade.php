@@ -34,6 +34,15 @@
           @case('-1')
           Hoàn trả sản phẩm
           @break
+          @case('-3')
+          Đơn hàng bị huỷ
+          @break
+          @case('4')
+          Đã chuyển khoản
+          @break
+          @case('5')
+          Đơn hàng đã hoàn tất
+          @break
           @default
           Chưa xử lý
           @endswitch</td>

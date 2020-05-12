@@ -17,8 +17,9 @@
 			<td style="vertical-align: middle;">{{$user->name}}</td>
 			<td style="vertical-align: middle;">{{$user->email}}</td>
 			<td>
+			<a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-primary"><i class="fas fa-pen"></i></a>
 				@if($user->role !== 0)
-				<form action="{{route('admin.user.delete',$user->id)}}" method="POST">
+				<form style="display:inline;" action="{{route('admin.user.delete',$user->id)}}" method="POST">
 					@csrf
 				<button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
 				</form>

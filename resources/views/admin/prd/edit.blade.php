@@ -159,6 +159,9 @@
                 <label>Mô tả</label>
                 <textarea id="my-editor" class="form-control" name="long_desc" rows="5">{{$prd->long_desc}}</textarea>
               </div>
+              <div class="form-group">
+              <label>Tags/Từ khoá</label>
+              <input type="text" class="form-control" name="tags" data-role="tagsinput" value="{{$tags}}"></div>
             </div>
           </div>
 

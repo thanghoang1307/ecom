@@ -7,7 +7,7 @@ use App\Scopes\OrderScope;
 
 class Order extends Model
 {
-    protected $fillable = ['order_number','total','is_vat','customer_id','company_id','payment_type','status','guest_id'];
+    protected $fillable = ['order_number','total','is_vat','customer_id','company_id','payment_type','status','guest_id','cancel_reason'];
 
     public function customer(){
     	return $this->belongsTo(\App\Models\Order\Customer::class);
