@@ -31,6 +31,15 @@
 						<input type="text" class="form-control" name="link" value="{{$banner->link}}">
 					</div>
 					<p style="margin-bottom: 0;"><label>Hình ảnh</label></p>
+					<div style="font-size: 12px; font-style: italic; color: gray; margin-bottom: 10px;">
+					  	* Định dạng hỗ trợ: jpg (đề xuất), png, gif. Dung lượng file đề xuất < 100kb. Độ phân giải dề xuất: 72dpi.<br />
+					  	Kích thước:<br />
+					  	- Banner chính lớn: 863x412px
+					  	- Banner chính nhỏ: 900x330px
+					  	- Banner phụ: 300x110px
+					  	- Banner giữa: 580x250px
+					  	- Top banner: 1180x80px
+					  </div>
 					<div class="input-group"><span class="input-group-btn">
 				          <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
 				          <i class="fa fa-picture-o"></i> Choose

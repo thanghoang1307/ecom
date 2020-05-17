@@ -90,6 +90,10 @@
           <div id="accordionImageContent" class="collapse">
             <div class="form-group">
               <label>Chọn hình đại diện</label>
+			  <div style="font-size: 12px; font-style: italic; color: gray; margin-bottom: 10px;">
+			  	* Chỉ chọn 1 hình duy nhất làm đại diện<br />
+			  	Định dạng hỗ trợ: jpg (đề xuất), png, gif. Dung lượng file đề xuất < 100kb. Kích thước đề xuất: 500x500px. Độ phân giải dề xuất: 72dpi.
+			  </div>
               <div class="input-group">
 
                 <div class="input-group-btn">
@@ -105,6 +109,10 @@
             </div>
             <div class="form-group">
               <label>Ảnh sản phẩm</label>
+			  <div style="font-size: 12px; font-style: italic; color: gray; margin-bottom: 10px;">
+			  	* Có thể chọn nhiều hình<br />
+			  	Định dạng hỗ trợ: jpg (đề xuất), png, gif. Dung lượng file đề xuất < 100kb. Kích thước đề xuất: 500x500px. Độ phân giải dề xuất: 72dpi.
+			  </div>
               <div class="input-group">
                 <div class="input-group-btn">
                   <a id="lfm2" data-input="images" data-preview="holder2" class="btn btn-primary">
@@ -157,10 +165,14 @@
               </div>
               <div class="form-group">
                 <label>Mô tả</label>
+				<div style="font-size: 12px; font-style: italic; color: gray; margin-bottom: 10px;">
+			  	* Định dạng hình ảnh trong nội dung bài viết: Định dạng hỗ trợ: jpg (đề xuất), png, gif. Dung lượng file đề xuất < 100kb. Kích thước đề xuất: 500x500px. Độ phân giải dề xuất: 72dpi.<br />
+			  	* Định dạng video trong nội dung bài viết: upload video trên kênh youtube (Google đề xuất) copy mã nhúng và nhúng link vào hệ thống tại menu Insert > Media và dán vào tab Embed.
+			  </div>
                 <textarea id="my-editor" class="form-control" name="long_desc" rows="5">{{$prd->long_desc}}</textarea>
               </div>
               <div class="form-group">
-              <label>Tags/Từ khoá</label>
+              <label>Tags/Từ khoá tìm kiếm</label>
               <input type="text" class="form-control" name="tags" data-role="tagsinput" value="{{$tags}}"></div>
             </div>
           </div>

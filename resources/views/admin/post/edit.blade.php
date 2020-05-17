@@ -60,6 +60,10 @@ Chỉnh sửa bài viết {{$post->name}}
               </div>
               <div class="form-group">
                 <label>Noi dung</label>
+				<div style="font-size: 12px; font-style: italic; color: gray; margin-bottom: 10px;">
+			  	* Định dạng hình ảnh trong nội dung bài viết: Định dạng hỗ trợ: jpg (đề xuất), png, gif. Dung lượng file đề xuất < 100kb. Kích thước đề xuất: 500x500px. Độ phân giải dề xuất: 72dpi.<br />
+			  	* Định dạng video trong nội dung bài viết: upload video trên kênh youtube (Google đề xuất) copy mã nhúng và nhúng link vào hệ thống tại menu Insert > Media và dán vào tab Embed.
+			  </div>
               <textarea id="my-editor" class="form-control" name="content" rows="5">{{$post->content}}</textarea>
               </div>
               <div class="form-group">
@@ -85,6 +89,10 @@ Chỉnh sửa bài viết {{$post->name}}
             <div class="card-body">
               <div class="form-group">
               <label>Chọn hình đại diện</label>
+			  <div style="font-size: 12px; font-style: italic; color: gray; margin-bottom: 10px;">
+			  	* Chỉ chọn 1 hình duy nhất làm đại diện<br />
+			  	Định dạng hỗ trợ: jpg (đề xuất), png, gif. Dung lượng file đề xuất < 100kb. Kích thước đề xuất: 500x360px. Độ phân giải dề xuất: 72dpi.
+			  </div>
               <div class="input-group">
                 
           <div class="input-group-btn">
