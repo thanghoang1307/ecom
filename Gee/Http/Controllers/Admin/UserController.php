@@ -34,7 +34,7 @@ class UserController extends Controller
             'name' => $request->name,
             'password' => Hash::make($request->password),
         ]);
-        return redirect()->back()->with('success','Thay đổi thông tin thành công');
+        return redirect()->route('admin.user.index')->with('success','Thay đổi thông tin thành công');
     }
 
     public function create(Request $request){
