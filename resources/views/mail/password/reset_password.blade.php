@@ -11,11 +11,23 @@
 				line-height: 1.2em;
 				width: 600px;
 			}
+			/*.hotline {
+				font-size: 0.8em;
+			}
+			.hotline-number {
+				font-size: 1.5em;
+			}*/
 		}
 		@media (min-device-width:320px) and (max-device-width:599px), (min-width:320px) and (max-width:599px) {
 			#main {
 				width: 95vw;
 				/*font-size: 0.7em;*/
+			}
+			.hotline {
+				font-size: 0.7em;
+			}
+			.hotline-number {
+				font-size: 0.8em;
 			}
 		}
 	</style>
@@ -36,15 +48,15 @@
 										<tbody>
 											<tr>
 												<td width="60%">
-													<p style="padding: 0; margin: 7px 0 3px 10px;"><a href="https://onestopshop.vn" target="_blank">
+													<p style="padding: 0; margin: 7px 0 3px 10px; text-align: left;"><a href="https://onestopshop.vn" target="_blank">
 														<a href="https://onestopshop.vn" target="_blank">
 															<img style="border: none;" class="CToWUd" data-image-whitelisted="" src="https://onestopshop.vn/uploads/photos/shares/logo-w.png" width="100%" alt="" />
 														</a></p>
 												</td>
 												<td width="40%">
-													<p class="hotline" style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none; line-height: 0.9em;">
-														<span style="font-size: 0.7em; margin: 0; padding: 0;">Hotline</span><br />
-														<span style="font-size: 1em; margin: 0; padding: 0;"><a style="color: white; text-decoration: none; font-size: 0.9em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
+													<p style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none;">
+														<span class="hotline" style="margin: 0; padding: 0; font-size: 0.9em;">Hotline</span><br />
+														<span style="font-size: 1em; margin: 0; padding: 0;"><a class="hotline-number" style="color: white; text-decoration: none; font-size: 1.2em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
 													</p>
 												</td>
 											</tr>

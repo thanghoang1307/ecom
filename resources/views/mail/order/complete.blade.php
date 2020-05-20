@@ -29,6 +29,12 @@
 			#main .notice {
 				text-align: justify;
 			}
+			.hotline {
+				font-size: 0.7em;
+			}
+			.hotline-number {
+				font-size: 0.8em;
+			}
 		}
 	</style>
 </head>
@@ -54,9 +60,9 @@
 														</a></p>
 												</td>
 												<td width="40%">
-													<p class="hotline" style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none; line-height: 0.9em;">
-														<span style="font-size: 0.7em; margin: 0; padding: 0;">Hotline</span><br />
-														<span style="font-size: 1em; margin: 0; padding: 0;"><a style="color: white; text-decoration: none; font-size: 0.9em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
+													<p style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none;">
+														<span class="hotline" style="margin: 0; padding: 0; font-size: 0.9em;">Hotline</span><br />
+														<span style="font-size: 1em; margin: 0; padding: 0;"><a class="hotline-number" style="color: white; text-decoration: none; font-size: 1.2em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
 													</p>
 												</td>
 											</tr>
