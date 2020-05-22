@@ -9,6 +9,8 @@
         <th>Giá trị</th>
 
         <th>Tình trạng</th>
+
+        <th>Ngày đặt hàng</th>
       </tr>
     </thead>
 
@@ -46,6 +48,7 @@
           @default
           Chưa xử lý
           @endswitch</td>
+          <td>{{date_format($order->created_at,'H:i d-m-Y')}}</td>
       </tr>
       @endforeach
     </tbody>

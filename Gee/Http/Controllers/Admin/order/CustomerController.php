@@ -15,6 +15,8 @@ class CustomerController extends Controller
     {
         if (!$request->status) {
             $customers = Customer::where('status', 'active')->paginate(12);
+        } else if($request->status == 'guest') {
+            $customers = Guest::paginate(12);
         } else {
             $customers = Customer::where('status', $request->status)->paginate(12);
         }

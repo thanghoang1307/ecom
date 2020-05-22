@@ -100,7 +100,6 @@
                       <td><a href="{{route('front.account.order_detail',$order->id)}}">#{{$order->order_number}}</a></td>
                       <td class="price">{{$order->total}}đ</td>
                       <td>@switch ($order->status)
-                      @switch ($order->status)
           @case('1')
           Đã xác nhận đơn hàng
           @break

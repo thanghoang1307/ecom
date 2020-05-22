@@ -76,7 +76,7 @@ class CustomerController extends Controller
 
         if ($existCustomer) {
             if ($existCustomer->status == 'inactive') {
-                return redirect()->back()->with('error','Tài khoản đã bị vô hiệu hoá. Vui lòng liên hệ admin để mở lại');
+                return redirect(Session::get('last_url'))->with('error','Tài khoản đã bị vô hiệu hoá. Vui lòng liên hệ admin để mở lại');
             }
 
             if (!$existCustomer->provider_id) {

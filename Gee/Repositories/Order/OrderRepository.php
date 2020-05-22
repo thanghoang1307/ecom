@@ -34,7 +34,7 @@ class OrderRepository extends EloquentRepository implements OrderInterface
 
     public function getAllOrder()
     {
-        return $this->_model->where('status', '>=', -1)->paginate(12);
+        return $this->_model->where('status', '>=', -1)->orderBy('created_at','desc')->paginate(12);
     }
 
     public function getTimeSale($time)
@@ -146,6 +146,6 @@ class OrderRepository extends EloquentRepository implements OrderInterface
 
     public function getByStatus($status)
     {
-        return $this->_model->where('status', $status)->paginate(12);
+        return $this->_model->where('status', $status)->orderBy('created_at','desc')->paginate(12);
     }
 }

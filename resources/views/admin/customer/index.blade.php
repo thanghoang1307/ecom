@@ -15,6 +15,7 @@
 							<select class="form-control status-filter" style="width: 50%; display: inline; margin-left: 10px;">
 								<option value="active" {{ app('request')->input('status') == 'active' || app('request')->input('status') ? 'selected="selected"' : '' }}>Đang hoạt động</option>
 								<option value="inactive" {{ app('request')->input('status') == 'inactive' ? 'selected="selected"' : '' }}>Đã vô hiệu</option>
+								<option value="guest" {{ app('request')->input('status') == 'guest' ? 'selected="selected"' : '' }}>Khách vãng lai</option>
 							</select>
 						</div>
 					</div>
