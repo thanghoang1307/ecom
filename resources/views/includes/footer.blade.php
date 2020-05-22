@@ -302,9 +302,14 @@ $(function() {
 	$('#toast-container').delay(3000).fadeOut('fast');
 	// update quick cart info
 	window.onpageshow = function() {
-		setTimeout(function() {
-			$('#cart').load(document.URL + " #cart>*");
-		}, 100);
+		if (event.persisted || window.location.hash != "undefined") {
+			if (window.performance.navigation.type == 2) {
+//				setTimeout(function() {
+//					$('#cart').load(document.URL + " #cart>*");
+//				}, 100);
+				window.location.reload(true);
+			}
+		}
 	}
 	$(document).ready(function() {
 		//show image when finish load

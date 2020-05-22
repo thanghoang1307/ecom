@@ -29,6 +29,12 @@
 			#main .notice {
 				text-align: justify;
 			}
+			.hotline {
+				font-size: 0.7em;
+			}
+			.hotline-number {
+				font-size: 0.8em;
+			}
 		}
 	</style>
 </head>
@@ -54,9 +60,9 @@
 														</a></p>
 												</td>
 												<td width="40%">
-													<p class="hotline" style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none; line-height: 0.9em;">
-														<span style="font-size: 0.7em; margin: 0; padding: 0;">Hotline</span><br />
-														<span style="font-size: 1em; margin: 0; padding: 0;"><a style="color: white; text-decoration: none; font-size: 0.9em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
+													<p style="padding: 0; margin: 5px 10px 5px 0; text-align: right;color: white; text-decoration: none;">
+														<span class="hotline" style="margin: 0; padding: 0; font-size: 0.9em;">Hotline</span><br />
+														<span style="font-size: 1em; margin: 0; padding: 0;"><a class="hotline-number" style="color: white; text-decoration: none; font-size: 1.2em; font-weight: bold;" href="tel:0837000247">0837.000.247</a></span>
 													</p>
 												</td>
 											</tr>
@@ -75,7 +81,7 @@
 											<tr>
 												<td>
 													<div style="margin: 0; padding: 10px; color: #666; background: white;">
-														<p class="welcome" style="font-size: 1em;">Kính chào {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} {{$order->customer->name}}</p>
+														<p class="welcome" style="font-size: 1em;">Kính chào {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} {{$order->customer->name}},</p>
 														
 														<p class="welcome" style="font-size: 1em;">Đơn hàng số <span style="color: #962d91;">#{{$order->order_number}}</span> của {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} đã được {{ config('app.name') }} tiếp nhận xử lý. Chúng tôi sẽ tiến hành xác nhận và giao hàng đến {{$order->customer->gender == 'male' ? 'anh' : 'chị'}} trong thời gian sớm nhất. Vui lòng chú ý cuộc gọi từ nhân viên giao hàng.</p>
 														
@@ -90,7 +96,7 @@
 											<tr>
 												<td>
 													<div style="margin: 0; padding: 10px; text-align: left; color: #666; background: white;">
-														<p class="welcome" style="font-size: 1em;">Kính chào {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} {{$order->guest->name}}</p>
+														<p class="welcome" style="font-size: 1em;">Kính chào {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} {{$order->guest->name}},</p>
 														
 														<p class="welcome" style="font-size: 1em;">Đơn hàng số <span style="color: #962d91;">#{{$order->order_number}}</span> của {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} đã được {{ config('app.name') }} tiếp nhận xử lý. Chúng tôi sẽ tiến hành xác nhận và giao hàng đến {{$order->guest->gender == 'male' ? 'anh' : 'chị'}} trong thời gian sớm nhất. Vui lòng chú ý cuộc gọi từ nhân viên giao hàng.</p>
 														
