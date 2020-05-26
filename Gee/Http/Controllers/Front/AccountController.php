@@ -142,7 +142,7 @@ public function updateAddress($id,Request $request){
 }
 
 public function orderHistory(){
-    $orders = auth('customer')->user()->orders()->where('status','>=',-1)->paginate(10);
+    $orders = auth('customer')->user()->orders()->where('status','>=',-1)->orderBy('created_at','desc')->paginate(10);
     return view('front.order_history',compact('orders'));
 }
 

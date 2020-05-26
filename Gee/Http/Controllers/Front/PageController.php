@@ -58,7 +58,7 @@ class PageController extends Controller
     {
         //Validate input
         $validatedData = $request->validate([
-            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|unique:subscribers',
         ]);
 
         $subscriber = DB::table('subscribers')->insert([

@@ -156,6 +156,9 @@
 												<div class="col-9">
 													<div class="form-group">
 														<input type="email" class="form-control" placeholder="Email của bạn" aria-label="Email của bạn" id="subscriberEmail" name="email" data-parsley-type="email" data-parsley-type-message="Email chưa đúng định dạng" data-parsley-required-message="Hãy nhập Email" data-parsley-required='true' aria-describedby="subscriberEmail">
+														@error('email')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
 													</div>
 												</div>
 

@@ -21,20 +21,22 @@ class ProductsExport implements FromCollection, Withmapping, WithHeadings
   {
     return [
       '#',
-      'Mã sản phẩm',
-      'Tên sản phấm',
-      'Thương hiệu',
-      'Nhóm sản phẩm',
-      'Giá thường',
-      'Giá khuyến mãi',
-      'Ảnh đại diện',
-      'Ẩn/Hiện'
+      'sku',
+      'name',
+      'brand',
+      'group',
+      'regular_price',
+      'sale_price',
+      'thumb',
+      'is_show',
+      'tags'
     ];
   }
 
   public function map($prd): array
   {
     $status = $prd->is_show == 1? "Hiện" : "Ẩn";
+    $tags = implode(',',$prd->tags()->pluck('name')->toArray());
     return [
       $prd->id,
       $prd->sku,
@@ -45,6 +47,7 @@ class ProductsExport implements FromCollection, Withmapping, WithHeadings
       $prd->sale_price,
       $prd->thumb,
       $status,
+      $tags,
     ];
   }
 

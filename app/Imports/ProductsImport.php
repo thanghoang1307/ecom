@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Prd\Prd;
+use App\Models\Prd\Tag;
 use App\Models\Prd\Brand;
 use App\Models\Prd\AttrFamily;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -60,7 +61,7 @@ class ProductsImport implements ToCollection, WithHeadingRow
         $unique_slug = $this->prd->createUniqueSlug(to_slug($row['name']));
         $is_show = $row['is_show'] == "Hiện" ? 1 : 0;
         
-        Prd::updateOrCreate(
+        $prd = Prd::updateOrCreate(
             ['sku' => $row['sku'],],
             ['slug' => $unique_slug,
             'name' => $row['name'],
@@ -72,6 +73,19 @@ class ProductsImport implements ToCollection, WithHeadingRow
             'current_price' => $current_price,
             'is_show' => $is_show,
             ]);
+
+            if($row['tags']) {
+                $tags = explode(',',$row['tags']);
+                $tag_ids = array();
+                foreach ($tags as $tag) {
+                    $firstOrCreateTag = Tag::firstOrCreate(['name' => $tag]);
+                    $tag_ids[] = $firstOrCreateTag->id;
+                }
+                $prd->tags()->sync($tag_ids);
+                } else {
+                $prd->tags()->sync([]);
+                }
+
     }
     }
 }

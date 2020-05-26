@@ -1,7 +1,7 @@
 <?php
 return [
 'required' => ':attribute không được để trống',
-'unique' => 'Trùng lặp :attribute',
+'unique' => ':attribute đã được đăng ký',
 'confirmed' => ':attribute không trùng khớp',
 'numeric' => ':attribute sai định dạng',
 'regex' => ':attribute sai định dạng',
