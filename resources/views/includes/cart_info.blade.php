@@ -81,13 +81,13 @@
                       <div class="row">
                         <div class="col-4">
                           <div class="radio">
-                            <input id="gender-register-1" name="gender" type="radio" checked="{{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}}" value="male">
+                            <input id="gender-register-1" name="gender" type="radio" {{(!session()->get('cart.gender') || session()->get('cart.gender') == 'male') ? 'checked' : ''}} value="male">
                             <label for="gender-register-1" class="radio-label">Anh</label>
                           </div>
                         </div>
                         <div class="col-4">
                           <div class="radio">
-                            <input id="gender-register-2" name="gender" type="radio" checked="{{(session()->get('cart.gender') == 'female') ? 'checked' : ''}}" value="female">
+                            <input id="gender-register-2" name="gender" type="radio" {{(session()->get('cart.gender') == 'female') ? 'checked' : ''}} value="female">
                             <label for="gender-register-2" class="radio-label" >Chị</label>
                           </div>
                         </div>
