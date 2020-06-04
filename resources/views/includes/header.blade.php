@@ -21,25 +21,25 @@
 	@if(Request::path() == 'tin-tuc-cong-nghe')
 	@php
 	$title = "Tin tức công nghệ | OneStopShop.vn - Giải Pháp | Thiết Bị CNTT";
-	$desc = "Chuyên trang tin tức công nghệ";
+	$desc = "OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.";
 	@endphp
 
 	@elseif(Request::path() == 'san-pham')
 	@php
 	$title = "Tất cả sản phẩm | OneStopShop.vn - Giải Pháp | Thiết Bị CNTT";
-	$desc = "Tất cả sản phẩm tại OneStopShop.vn";
+	$desc = "OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.";
 	@endphp
 
 	@elseif(isset($post))
 	@php
 	$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title.' | OneStopShop.vn - Giải Pháp | Thiết Bị CNTT' : 'OneStopShop.vn - Giải Pháp | Thiết Bị CNTT';
-	$desc = $post->meta_desc ? $post->meta_desc : $post->content ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($post->content))), 0, 300).'...' : "OneStopShop.vn - Giải Pháp | Thiết Bị CNTT";
+	$desc = $post->meta_desc ? $post->meta_desc : $post->content ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($post->content))), 0, 300).'...' : "OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.";
 	@endphp
 
 	@elseif(isset($prd))
 	@php
 	$title = $prd->meta_title ? $prd->meta_title : $prd->name ? $prd->name.' | OneStopShop.vn - Giải Pháp | Thiết Bị CNTT' : 'OneStopShop.vn - Giải Pháp | Thiết Bị CNTT';
-	$desc = $prd->meta_desc ? $prd->meta_desc : $prd->long_desc ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($prd->long_desc))), 0, 300).'...' : "OneStopShop.vn - Giải Pháp | Thiết Bị CNTT";
+	$desc = $prd->meta_desc ? $prd->meta_desc : $prd->long_desc ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($prd->long_desc))), 0, 300).'...' : "OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.";
 	@endphp
 
 	@elseif(isset($cat))
@@ -57,7 +57,7 @@
 	@else
 	@php
 	$title = 'OneStopShop.vn - Giải Pháp | Thiết Bị CNTT';
-	$desc = 'Lựa chọn hàng đầu về giải pháp và thiết bị trong lĩnh vực công nghệ thông tin';
+	$desc = 'OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.';
 	@endphp
 	@endif
 
