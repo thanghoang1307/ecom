@@ -33,7 +33,7 @@
 	@elseif(isset($post))
 	@php
 	$title = $post->meta_title ? $post->meta_title : $post->title ? $post->title.' | OneStopShop.vn - Giải Pháp | Thiết Bị CNTT' : 'OneStopShop.vn - Giải Pháp | Thiết Bị CNTT';
-	$desc = $post->meta_desc ? $post->meta_desc : $post->content ? substr(preg_replace( "/\r|\n/", "", html_entity_decode(strip_tags($post->content))), 0, 300).'...' : "OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.";
+	$desc = $post->meta_desc ? $post->meta_desc : $post->content ? html_entity_decode(strip_tags(substr($post->content,0,900))).'...' : "OneStopShop IT | Lựa chọn hàng đầu về giải pháp và thiết bị công nghệ thông tin trong ngành công nghiệp cơ khí chế tạo, sản xuất khuôn mẫu và xây dựng.";
 	@endphp
 
 	@elseif(isset($prd))
